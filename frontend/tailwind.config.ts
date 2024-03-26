@@ -13,6 +13,20 @@ const config: Config = {
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
+      keyframes: {
+        wiggle: {
+          // "0%, 100%": { transform: "rotate(-3deg)" },
+          "50%": { transform: "rotate(3deg)" },
+        },
+        BigImage: {
+          // "0%, 100%": { transform: "rotate(-3deg)" },
+          "50%": { transform: "translateY(-10px)" },
+        },
+      },
+      animation: {
+        wiggle: "wiggle 3s ease-in-out infinite",
+        BigImage: "BigImage 3s ease-in-out infinite",
+      },
     },
   },
   plugins: [],
