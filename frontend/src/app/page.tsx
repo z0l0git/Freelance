@@ -1,3 +1,9 @@
+import { HeaderHero } from "@/components/HeaderHero";
+
 export default function Home() {
-  return <div></div>;
+  return (
+    <div>
+      <HeaderHero />
+    </div>
+  );
 }
