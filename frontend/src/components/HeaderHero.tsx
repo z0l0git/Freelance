@@ -58,7 +58,7 @@ export const HeaderHero = () => {
             <div className="border border-zinc-400 bg-[#1d1b2f] rounded-[32px] mobile:h-[60px] h-[40px] flex items-center ">
               <input
                 className="mx-[25px] bg-[#1d1b2f]  text-white outline-none"
-                placeholder="What you're looking for?"
+                placeholder="What you're looking for"
               />
             </div>
           </div>
