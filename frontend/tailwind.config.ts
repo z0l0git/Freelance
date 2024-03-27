@@ -3,11 +3,13 @@ import type { Config } from "tailwindcss"
 const config = {
   darkMode: ["class"],
   content: [
+
     './pages/**/*.{ts,tsx}',
     './components/**/*.{ts,tsx}',
     './app/**/*.{ts,tsx}',
     './src/**/*.{ts,tsx}',
 	],
+
   prefix: "",
   theme: {
     container: {
@@ -18,6 +20,22 @@ const config = {
       },
     },
     extend: {
+
+
+      spacing: {
+        "108px": "108px",
+      },
+      screens: {
+        tablet: "640px",
+        // => @media (min-width: 640px) { ... }
+
+        laptop: "1024px",
+        // => @media (min-width: 1024px) { ... }
+
+        desktop: "1280px",
+        // => @media (min-width: 1280px) { ... }
+      },
+
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -57,6 +75,15 @@ const config = {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
+
+
+      backgroundImage: {
+        "header-cover-img": "url('https://res.cloudinary.com/dxarul6xr/image/upload/v1711450248/a3hyxq2lk36i49zahacj.jpg')",
+        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
+        "gradient-conic":
+          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+
+
       },
       keyframes: {
         "accordion-down": {
@@ -75,6 +102,12 @@ const config = {
     },
   },
   plugins: [require("tailwindcss-animate")],
+
 } satisfies Config
 
 export default config
+
+} satisfies Config;
+
+export default config;
+
