@@ -18,6 +18,7 @@ const config = {
       },
     },
     extend: {
+
       spacing: {
         "108px": "108px",
       },
@@ -70,6 +71,13 @@ const config = {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
+
+      backgroundImage: {
+        "header-cover-img": "url('https://res.cloudinary.com/dxarul6xr/image/upload/v1711450248/a3hyxq2lk36i49zahacj.jpg')",
+        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
+        "gradient-conic":
+          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+
       },
       keyframes: {
         "accordion-down": {
