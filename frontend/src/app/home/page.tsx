@@ -1,5 +1,12 @@
 import React from "react";
-
-const page = () => {
-  return <div></div>;
+import { HeaderHero } from "@/components/HeaderHero";
+import { Menu } from "@/components/Menu";
+const HomePage = () => {
+  return (
+    <div>
+      <HeaderHero />
+      <Menu />
+    </div>
+  );
 };
+export default HomePage;
