@@ -9,13 +9,12 @@ const Drops = [
     {
         place: "Talent"
     }, {
-        place: "HireMe"
+        place: "Hire Me"
     },
     {
         place: "Professional"
     }
 ]
-
 
 
 
@@ -40,7 +39,7 @@ export const HeaderRight = (props) => {
     }
 
     return <div className="relative h-[80px] flex items-center justify-center  md:w-[574px] md:h-[60px] md:flex md:items-center md:justify-between flex items-center justify-between">
-        <div className="flex items-center justify-between  md:block md:w-[362px] md:h-[60px] md:rounded-3xl md:border md:border-[#3f3877] md:flex md:items-center md:justify-around">
+        <div className="flex items-center justify-between  md:block md:w-[362px] md:h-[60px] md:rounded-3xl md:border md:border-[#3f3877] md:flex md:items-center md:justify-around border border-black">
             <button onClick={() => { handleSearchShow() }} className="w-[30px] h-[30px] flex items-center justify-center border border-black rounded-full block  md:hidden">
                 <CiSearch className="w-[20px] h-[20px] text-white" width={16} height={24} />
             </button>
@@ -48,14 +47,14 @@ export const HeaderRight = (props) => {
                 <CiSearch className="hidden md:block md:w-[25px] md:h-[25px] text-white" width={20} height={20} />
                 <input type="text" id="name" name="name" placeholder="Search" className="hidden md:block md:w-[205px] md:h-[30px] md:bg-transparent border-transparent text-white" />
             </div>
-            <div className="hidden md:relative md:w-[382px] md:flex md:flex-col md:items-center">
+            <div className="hidden md:relative md:w-[382px] md:flex md:flex-col md:items-center md:rounded-[18px]">
                 {!open ? (
-                    <div onClick={() => setOpen((prev) => !prev)} className="md:w-[120px] md:h-[42px] md:cursor-pointer md:bg-gradient-to-r from-sky-600 to-indigo-600 md:rounded-lg md:text-white flex justify-around items-center border-4 border-transparent active:border-white duration-300 active:text-white">
+                    <div onClick={() => setOpen((prev) => !prev)} className="md:w-fit md:h-[42px] md:cursor-pointer md:px-8 md:gap-[10px] md:rounded-full md:bg-gradient-to-r from-sky-600 to-indigo-600 md:rounded-lg md:text-white flex justify-around items-center  border-transparent duration-300">
                         <h1>{select}</h1>
                         <FaChevronDown />
                     </div>
                 ) : (
-                    <div onClick={() => setOpen((prev) => !prev)} className="md:w-[120px] md:h-[42px] md:cursor-pointer md:bg-gradient-to-r from-sky-600 to-indigo-600 md:rounded-lg md:text-white flex justify-around items-center border-4 border-transparent active:border-white duration-300 active:text-white">
+                    <div onClick={() => setOpen((prev) => !prev)} className="md:w-fit md:h-[42px] md:px-8 md:cursor-pointer md:gap-10px] md:rounded-full md:bg-gradient-to-r from-sky-600 to-indigo-600 md:rounded-lg md:text-white flex justify-center items-center">
                         <h1>{select}</h1>
                         <FaChevronUp />
                     </div>
