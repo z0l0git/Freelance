@@ -1,6 +1,10 @@
 # Freelance BackEnd
 Render BackEnd Deployment url: https://freelance-ykar.onrender.com
 
+### Category CRUD:
+- https://freelance-gmjr.onrender.com/categories : get Request, returns all categories
+- https://freelance-gmjr.onrender.com/createCategory : post Request, body: {"name": ""}
+
 # Freelance FrontEnd
 Vercel Deployment url: https://freelance-beta-six.vercel.app/
 
