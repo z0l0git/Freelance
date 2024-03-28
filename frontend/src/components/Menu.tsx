@@ -12,7 +12,7 @@ import { MdOutlineMessage, MdNotifications } from "react-icons/md";
 
 export const Menu = () => {
   return (
-    <div className="w-screen bg-[#13203B] py-4 absolute top-[108px] flex justify-center">
+    <div className="w-screen bg-[#13203B] py-4 absolute top-[108px] flex justify-center z-50">
       <div className="desktop mx-auto px-3 flex justify-between h-10 py-4 items-center gap-4">
         <div className="flex gap-4">
           <DropdownMenu>
