@@ -3,6 +3,7 @@ import { StickyImageLayout } from "@/components/StickyImage/LayOut";
 
 import { Menu } from "@/components/Menu/Menu";
 import { HeaderHero } from "@/components/HeaderHero";
+import { Header } from "@/components/Header/HeaderComp"
 
 export default function Home() {
   return (
