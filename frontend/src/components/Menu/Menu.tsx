@@ -1,4 +1,14 @@
 "use client";
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuIndicator,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+  NavigationMenuViewport,
+} from "@/components/ui/navigation-menu";
 
 import React from "react";
 import {
@@ -18,7 +28,32 @@ export const Menu = () => {
     <div className="w-screen bg-[#13203B] py-4 flex justify-center z-100">
       <div className="w-[1280px] mx-auto px-3 flex justify-between h-10 py-4 items-center gap-4">
         <div className="flex gap-4 relative">
-          <DropdownMenu>
+          <NavigationMenu>
+            <NavigationMenuList>
+              <NavigationMenuItem>
+                <NavigationMenuTrigger>Зарлагдсан ажлууд</NavigationMenuTrigger>
+                <NavigationMenuContent className="flex flex-col gap-2 w-[245px] h-[34px]">
+                  <NavigationMenuLink>Салбараар</NavigationMenuLink>
+                  <NavigationMenuLink>Салбараар</NavigationMenuLink>
+                </NavigationMenuContent>
+              </NavigationMenuItem>
+            </NavigationMenuList>
+          </NavigationMenu>
+          <NavigationMenu>
+            <NavigationMenuList>
+              <NavigationMenuItem>
+                <NavigationMenuTrigger className="hover:text-blue-500 bg-inherit hover:bg-inherit text-white hover:focus:">
+                  Freelancer хайх
+                </NavigationMenuTrigger>
+                <NavigationMenuContent className="flex flex-col gap-2 w-[245px]">
+                  <NavigationMenuLink>Мэргэжилээр</NavigationMenuLink>
+                  <NavigationMenuLink>Нэрээр</NavigationMenuLink>
+                </NavigationMenuContent>
+              </NavigationMenuItem>
+            </NavigationMenuList>
+          </NavigationMenu>
+
+          {/* <DropdownMenu>
             <DropdownMenuTrigger className="text-white flex items-center ">
               <span>Ажил хайх</span>
               <GoChevronDown />
@@ -28,7 +63,7 @@ export const Menu = () => {
               <DropdownMenuItem className="h-8">Захиалагчаар</DropdownMenuItem>
               <DropdownMenuItem className="h-8">Салбараар</DropdownMenuItem>
             </DropdownMenuContent>
-          </DropdownMenu>
+          </DropdownMenu> */}
           <DropdownMenu>
             <DropdownMenuTrigger className="text-white flex items-center">
               <span>Freelancer хайх</span>
