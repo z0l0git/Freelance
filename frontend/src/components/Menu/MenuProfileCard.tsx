@@ -16,6 +16,7 @@ import {
   MdOutlinePostAdd,
 } from "react-icons/md";
 import { AiOutlineSetting, AiOutlineTeam } from "react-icons/ai";
+import { ButtonWithBlueBorder } from "../Button";
 export const MenuProfileCard = (props: any) => {
   const { profilePicture, userName, userMail } = props;
   return (
@@ -26,7 +27,7 @@ export const MenuProfileCard = (props: any) => {
       <DropdownMenuContent className="flex flex-col gap-2 py-3 px-6">
         <DropdownMenuLabel className="flex flex-col justify-center items-center gap-5">
           <MenuProfileUserInfoCard />
-          <div>Button</div>
+          <ButtonWithBlueBorder buttonName="Switch to buying" />
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuLabel>

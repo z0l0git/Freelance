@@ -1,46 +1,64 @@
 "use client";
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuIndicator,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+  NavigationMenuViewport,
+} from "@/components/ui/navigation-menu";
 
 import React from "react";
 import {
   DropdownMenu,
   DropdownMenuContent,
-  DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { MenuMessageCard, MenuNotificationCard } from "./MenuMessageCard";
 import { MdOutlineMessage, MdNotifications } from "react-icons/md";
-
 import { MenuProfileCard } from "./MenuProfileCard";
-import { GoChevronDown } from "react-icons/go";
+import { WhiteButton } from "../Button";
 
 export const Menu = () => {
   return (
     <div className="w-screen bg-[#13203B] py-4 flex justify-center z-100">
       <div className="w-[1280px] mx-auto px-3 flex justify-between h-10 py-4 items-center gap-4">
         <div className="flex gap-4 relative">
-          <DropdownMenu>
-            <DropdownMenuTrigger className="text-white flex items-center ">
-              <span>Ажил хайх</span>
-              <GoChevronDown />
-            </DropdownMenuTrigger>
-            <DropdownMenuContent className="bg-white w-[245px] absolute left-0">
-              <DropdownMenuItem className="h-8">Төслөөр</DropdownMenuItem>
-              <DropdownMenuItem className="h-8">Захиалагчаар</DropdownMenuItem>
-              <DropdownMenuItem className="h-8">Салбараар</DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
-          <DropdownMenu>
-            <DropdownMenuTrigger className="text-white flex items-center">
-              <span>Freelancer хайх</span>
-              <GoChevronDown />
-            </DropdownMenuTrigger>
-            <DropdownMenuContent className="bg-white  w-[245px] ">
-              <DropdownMenuItem>Салбараар</DropdownMenuItem>
-              <DropdownMenuItem>Чадвараар</DropdownMenuItem>
-              <DropdownMenuItem>Үнэлгээрээр</DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
-          <div className="text-white">Холбоо Барих</div>
+          <NavigationMenu>
+            <NavigationMenuList>
+              <NavigationMenuItem>
+                <NavigationMenuTrigger className="hover:text-blue-500 bg-inherit hover:bg-inherit text-white ">
+                  Зарлагдсан ажлууд
+                </NavigationMenuTrigger>
+                <NavigationMenuContent className="flex flex-col gap-2 w-84 h-fit">
+                  <NavigationMenuLink>
+                    <p className="hover:bg-gray-200 hover:ease-in-outtransition ease-in-out delay-150 hover:translate-x-1  duration-300">
+                      Салбараар
+                    </p>
+                  </NavigationMenuLink>
+                  <NavigationMenuLink> Салбараар</NavigationMenuLink>
+                  <NavigationMenuLink>Салбараар</NavigationMenuLink>
+                  <NavigationMenuLink>Салбараар</NavigationMenuLink>
+                </NavigationMenuContent>
+              </NavigationMenuItem>
+            </NavigationMenuList>
+          </NavigationMenu>
+          <NavigationMenu>
+            <NavigationMenuList>
+              <NavigationMenuItem className="hover:bg-transparent">
+                <NavigationMenuTrigger className="hover:text-blue-500 bg-inherit  text-white">
+                  Freelancer хайх
+                </NavigationMenuTrigger>
+                <NavigationMenuContent className="flex flex-col gap-2 w-[245px] hover:bg-transparent ">
+                  <NavigationMenuLink>Мэргэжилээр</NavigationMenuLink>
+                  <NavigationMenuLink>Нэрээр</NavigationMenuLink>
+                </NavigationMenuContent>
+              </NavigationMenuItem>
+            </NavigationMenuList>
+          </NavigationMenu>
+          <WhiteButton buttonName="Холбоо барих" buttonClass="text-white" />
         </div>
         <div className="flex gap-4">
           <DropdownMenu>
