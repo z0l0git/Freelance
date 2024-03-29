@@ -1,7 +1,6 @@
 module.exports = {
   theme: {
     extend: {
-    
       animation: {
         wiggle: "wiggle 2s infinite",
       },
