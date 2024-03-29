@@ -1,21 +1,17 @@
 import {
-  Search,
-  PostProject,
-  Contact,
-  BuyNow,
-  ViewServices,
-  ListService,
+  OrangeButton,
+  BlueButton,
+  WhiteButton,
+  ButtonWithBlueBorder,
 } from "@/components/Button";
 
 const page = () => {
   return (
     <div className="w-screen">
-      <Search />
-      <PostProject />
-      <Contact />
-      <BuyNow />
-      <ViewServices />
-      <ListService />
+      <OrangeButton buttonName="Search" />
+      <BlueButton buttonName="Post A Project" />
+      <WhiteButton buttonClass="bg-black text-white" buttonName="Contact" />
+      <ButtonWithBlueBorder buttonName="View Services" />
     </div>
   );
 };
