@@ -18,14 +18,13 @@ const config = {
       },
     },
     extend: {
-
       backgroundImage: {
         "header-cover-img":
           "url('https://res.cloudinary.com/dxarul6xr/image/upload/v1711450248/a3hyxq2lk36i49zahacj.jpg')",
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
-
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -65,7 +64,6 @@ const config = {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
-
       },
       keyframes: {
         "accordion-down": {
@@ -93,8 +91,8 @@ const config = {
         "accordion-up": "accordion-up 0.2s ease-out",
       },
     },
+    plugins: [require("tailwindcss-animate")],
   },
-  plugins: [require("tailwindcss-animate")],
 } satisfies Config;
 
 export default config;
