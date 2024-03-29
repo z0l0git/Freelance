@@ -9,7 +9,7 @@ export const StickyImageLayout = () => {
     <div>
       <div className="w-[100%] h-fit ">
         <div className="h-[1050px] w-[50%]  absolute  left-[0px] bg-white"></div>
-        <div className="sm:h-[1050px] h-[1200px]  w-[1150px]  fixed z-10 top-0 right-0  ">
+        <div className="sm:h-[1050px] h-[1200px] w-[985px]  fixed z-10 top-0 right-0  ">
           <Image
             alt=""
             src="https://res.cloudinary.com/dxarul6xr/image/upload/v1711522283/a3xj4objgeywljih9bpi.jpg"

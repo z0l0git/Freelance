@@ -8,16 +8,14 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { MenuMessageCard, MenuNotificationCard } from "./MenuMessageCard";
-import {
-  MdOutlineMessage,
-  MdNotifications,
-  MdOutlineKeyboardArrowDown,
-} from "react-icons/md";
+import { MdOutlineMessage, MdNotifications } from "react-icons/md";
+
 import { MenuProfileCard } from "./MenuProfileCard";
 import { GoChevronDown } from "react-icons/go";
+
 export const Menu = () => {
   return (
-    <div className="w-screen bg-[#13203B] py-4 absolute top-[108px] flex justify-center z-50">
+    <div className="w-screen bg-[#13203B] py-4 flex justify-center z-100">
       <div className="w-[1280px] mx-auto px-3 flex justify-between h-10 py-4 items-center gap-4">
         <div className="flex gap-4 relative">
           <DropdownMenu>

@@ -1,18 +1,21 @@
 import Image from "next/image";
 import { StickyImageLayout } from "@/components/StickyImage/LayOut";
-import { Input } from "@/components/Input";
+
+import { Menu } from "@/components/Menu/Menu";
+import { HeaderHero } from "@/components/HeaderHero";
+
 export default function Home() {
   return (
     <div className="">
       <div className="relative z-30 ">
-        <Input />
+        <Menu />
       </div>
-      <div className="w-screen h-[3000px] relative z-30 bg-white"></div>
-      <div>
+      <HeaderHero />
+
+      <div className="">
         <StickyImageLayout />
-        <div className="w-screen h-[1300px]  "></div>
+        <div className="w-screen h-[900px]  "></div>
       </div>
-      <div className="w-screen  h-[3000px] z-30 flex bg-slate-500 relative"></div>
     </div>
   );
 }
