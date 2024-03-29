@@ -8,7 +8,5 @@ export const deleteCategoryQuery = async (req: Request) => {
 
   if (!result) {
     throw new Error("User not found");
-  }
-
-  return "Success";
+  } else return "Success";
 };

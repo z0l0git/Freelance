@@ -4,7 +4,7 @@ export type WorkExpModelType = {
   _id: Schema.Types.ObjectId;
   year: string;
   occupation: string;
-  schoolName: string;
+  companyName: string;
   about: string;
 };
 
@@ -17,7 +17,7 @@ const WorkExpSchema = new Schema<WorkExpModelType>({
     type: String,
     required: true,
   },
-  schoolName: {
+  companyName: {
     type: String,
     required: true,
   },
