@@ -10,12 +10,14 @@ export default function Home() {
       <div className="relative z-30 ">
         <Menu />
       </div>
+
       <HeaderHero />
 
       <div className="">
         <StickyImageLayout />
         <div className="w-screen h-[900px]  "></div>
       </div>
+
     </div>
   );
 }

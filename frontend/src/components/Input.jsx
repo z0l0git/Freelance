@@ -1,19 +1,16 @@
-export const Input = () => {
+"use client";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import React from "react";
+
+export const NameInputComponent = (props) => {
+  const { name, placeholder, type, className = "" } = props;
   return (
-    <>
-      <div className="w-[736px] h-[653px] bg-slate-300 p-20 gap-20 ">
-        <div className="w-[408px] h-[90px] bg-slate-300 p-10 gap-10">
-          <input type="text" name="" id="" placeholder="Name here" />
-          <input type="password" name="" id="" placeholder="Email here" />
-        </div>
-        <div className="w-[full] h-[47px] bg-slate-300 p-10 gap-10">
-          <input type="text" name="" id="" placeholder="Phone Number here" />
-          <input type="text" name="" id="" placeholder="Password here" />
-        </div>
-        <div>
-        <input type="text" name="" id="" placeholder="Message here" />jujgyjyg</div>
-      </div>
-      
-    </>
+    <div className={className}>
+      <Label htmlFor="name">{name}</Label>
+      <Input type={type} id={name} placeholder={placeholder} />
+    </div>
   );
 };
+
+
