@@ -40,7 +40,7 @@ export const Menu = () => {
               <DropdownMenuItem>Үнэлгээрээр</DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
-          <div className="text-white"> Contact button orj ireh </div>
+          <div className="text-white">Холбоо Барих</div>
         </div>
         <div className="flex gap-4">
           <DropdownMenu>
