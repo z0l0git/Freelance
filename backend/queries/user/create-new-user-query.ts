@@ -5,10 +5,13 @@
 // password: string;
 
 import { Request } from "express";
-import {  UserModel } from "../../models";
+import { UserModel } from "../../models";
+import { passwordHash } from "../../utils";
 
 export const createUserQuery = async (req: Request) => {
   const { firstName, lastName, email, phone, password } = req.body;
+
+  const hash = await passwordHash(password);
 
   try {
     const user = await UserModel.create({
@@ -16,7 +19,7 @@ export const createUserQuery = async (req: Request) => {
       lastName,
       email,
       phone,
-      password,
+      password: hash,
     });
 
     return user;
