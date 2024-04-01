@@ -1,5 +1,7 @@
+
 import React from "react";
 import { HeaderHero } from "@/components/HeaderHero";
+
 
 const page = () => {
   return (
@@ -10,3 +12,5 @@ const page = () => {
 };
 
 export default page;
+
+
