@@ -1,6 +1,3 @@
-https://github.com/z0l0git/Freelance/graphs/contributors
-
-
 # Freelance FrontEnd
 Vercel Deployment url: https://freelance-beta-six.vercel.app/
 
