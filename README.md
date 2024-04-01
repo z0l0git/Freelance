@@ -1,3 +1,6 @@
+https://github.com/z0l0git/Freelance/graphs/contributors
+
+
 # Freelance FrontEnd
 Vercel Deployment url: https://freelance-beta-six.vercel.app/
 
@@ -9,7 +12,7 @@ Render BackEnd Deployment url: https://freelance-ykar.onrender.com
 - https://freelance-gmjr.onrender.com/categories : get Request, returns all categories
 - https://freelance-gmjr.onrender.com/createCategory : post Request, body: {"name": ""}
 - https://freelance-gmjr.onrender.com/deleteCategory : delete Request, body: {"id": ""}
-- 
+  
 ### User
 - https://freelance-gmjr.onrender.com/createUser : post Request, body: {"firstName", "lastName", "email", "phone", "password"}
 - https://freelance-gmjr.onrender.com/login : post Request, body: {"email", "password"}
