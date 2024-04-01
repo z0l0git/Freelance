@@ -12,7 +12,7 @@ export const updateEducationQuery = async (req: Request) => {
       throw new Error("blaavgai");
     }
 
-    const updatedEducation = await EducationModel.updateMany(
+    const updatedEducation = await EducationModel.updateOne(
       { _id: id },
       { $set: { year, degree, schoolName, about } }
     );
