@@ -4,6 +4,8 @@ import { InputPassWord } from "./PasswordInput";
 import { FiMail } from "react-icons/fi";
 import { ChangeEvent } from "react";
 import { Button } from "./Button";
+import { AxiosInstance } from "@/utils/axiosInstance";
+import { useRouter } from "next/navigation";
 
 type LoginDataType = {
   email: string;
@@ -15,14 +17,30 @@ type LoginProps = {
 
 export const Login = (props: LoginProps) => {
   const { toReset } = props;
+  const { push } = useRouter();
   const [userdata, setUserData] = useState({
     email: "",
     password: "",
   });
+  console.log(userdata, "userdata");
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setUserData({ ...userdata, [name]: value });
+  };
+
+  const handleClick = async () => {
+    try {
+      const { data } = await AxiosInstance.post("/login", userdata);
+      console.log(data, "token");
+
+      localStorage.setItem("Token", data);
+
+      // window.location.href = "/";
+      push("/");
+    } catch (err: any) {
+      console.log(err.message);
+    }
   };
 
   return (
@@ -49,7 +67,7 @@ export const Login = (props: LoginProps) => {
           </div>
         </div>
 
-        <Button text="Login" />
+        <Button text="Login" onClick={handleClick} />
       </div>
     </div>
   );

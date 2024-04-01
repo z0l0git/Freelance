@@ -23,15 +23,11 @@ export const ForgotPass = (props: ForgotPassProps) => {
     password: "",
     RePassword: "",
   });
-  console.log(newPassword, "sda");
 
   const newPassFunc = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setNewPassword({ ...newPassword, [name]: value });
   };
-
-  //   const [password, setPassword] = useState("");
-  //   const [error, setError] = useState("");
 
   const handleClick = () => {
     setOpen(!open);
@@ -41,6 +37,7 @@ export const ForgotPass = (props: ForgotPassProps) => {
       setStage(stage + 1);
     }
   };
+
   return (
     <div>
       <div>{stage == 0 && <MailSent setEmail={setEmail} />}</div>

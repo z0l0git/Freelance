@@ -47,7 +47,13 @@ export const Sign = () => {
           className={`bbb rounded-[10px] w-[550px] h-fit pt-[40px] pb-[100px] px-[30px]  border border-gray-400 flex flex-col items-center gap-[25px] `}
         >
           {!changer && (
-            <div>{open ? <SignUp /> : <Login toReset={toReset} />}</div>
+            <div>
+              {open ? (
+                <SignUp setOpen={setOpen} />
+              ) : (
+                <Login toReset={toReset} />
+              )}
+            </div>
           )}
 
           {changer && (
