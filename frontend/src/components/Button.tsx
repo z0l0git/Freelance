@@ -19,10 +19,8 @@ export const BlueButton = (props: any) => {
   const { buttonName } = props;
   return (
     <button className="group relative px-[31px] py-[15px] overflow-hidden rounded-[100px] bg-[#0d47a1] text-lg font-bold text-white">
-      {buttonName}
-      <div className="absolute inset-0 h-full w-full scale-0 rounded-2xl transition-all duration-300 group-hover:scale-100 group-hover:bg-[#2196f3] text-white flex items-center justify-center gap-2">
-        {buttonName}
-      </div>
+      <div className="absolute inset-0 h-full z-0 w-full scale-0 rounded-2xl transition-all duration-300 group-hover:scale-100 group-hover:bg-white/40"></div>
+      <p> {buttonName}</p>
     </button>
   );
 };
