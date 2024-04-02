@@ -8,9 +8,12 @@ export const NameInputComponent = (props) => {
   return (
     <div className={className}>
       <Label htmlFor="name">{name}</Label>
-      <Input type={type} id={name} placeholder={placeholder} />
+      <Input
+        type={type}
+        id={name}
+        placeholder={placeholder}
+        style={{ backgroundColor: "white", outline: "none", width: "698px" }}
+      />
     </div>
   );
 };
-
-
