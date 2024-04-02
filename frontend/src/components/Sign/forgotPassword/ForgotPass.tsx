@@ -46,7 +46,7 @@ export const ForgotPass = (props: ForgotPassProps) => {
 
       <button
         onClick={handleClick}
-        className="w-[500px] h-[50px] flex justify-center items-center text-black bg-white rounded-[40px] font-bold text-[25px]"
+        className="sm:w-[500px] w-[100%] h-[50px] flex justify-center items-center text-black bg-white rounded-[40px] font-bold text-[25px]"
       >
         {stage == 0 && "Email send"}
         {stage == 1 && "codo oruulah"}

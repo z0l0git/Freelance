@@ -7,8 +7,9 @@ import { Header } from "@/components/Header/HeaderComp";
 import { HeaderSearch } from "@/components/HeaderSearch/HeaderSearch";
 
 export default async function Home() {
-  const user = await currentUser();
-  console.log(user, "user data");
+  const user: any = await currentUser();
+  console.log(user?.emailAddresses[0].emailAddress, "user data");
+
   return (
     <div className=" bg-cover">
       <HeaderHero />

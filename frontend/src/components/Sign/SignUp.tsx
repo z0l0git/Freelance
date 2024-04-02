@@ -22,6 +22,7 @@ type SignUpType = {
 
 export const SignUp = (props: SignUpType) => {
   const { setOpen } = props;
+  const [error, setError] = useState("");
 
   const [userdata, setUserData] = useState({
     name: "",
@@ -87,6 +88,7 @@ export const SignUp = (props: SignUpType) => {
           name="RePassword"
           onchange={(e: ChangeEvent<HTMLInputElement>) => handleChange(e)}
         />
+        {error && <div className="text-red-500">{error}</div>}
         <div className="mt-[20px]">
           <Button text="Create" onClick={createAccountFunc} />
         </div>
