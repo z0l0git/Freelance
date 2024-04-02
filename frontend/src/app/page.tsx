@@ -6,8 +6,7 @@ import { HeaderHero } from "@/components/HeaderHero";
 import { Header } from "@/components/Header/HeaderComp";
 import { HeaderSearch } from "@/components/HeaderSearch/HeaderSearch";
 
-type Props = { title: string; description: string; image: string };
-export default function Home(props?: Props) {
+export default function Home() {
   return (
     <div className=" bg-cover">
       <HeaderHero />
