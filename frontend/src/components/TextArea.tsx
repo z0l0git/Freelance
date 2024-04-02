@@ -6,8 +6,10 @@ export const TextAreaComponent = (props: any) => {
   const { text } = props;
   return (
     <div>
-      <Label htmlFor="name" className="">{text}</Label>
-      <Textarea className="bg-white" />
+      <Label htmlFor="message" className="Message">
+        Message
+      </Label>
+      <Textarea className=" flex bg-slate-50 rounded-2xl" />
     </div>
   );
 };
