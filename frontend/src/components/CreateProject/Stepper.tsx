@@ -9,8 +9,8 @@ const Stepper = ({ step }: { step: number }) => {
     <div className="flex flex-col items-center gap-5 p-8">
       <ul className="steps flex items-center justify-center border rounded-xl w-[1000px]">
         {stepTexts.map((item, index) => (
-          <div className="flex items-center ">
-            <div key={index} className="flex flex-col items-center gap-y-2">
+          <div key={index} className="flex items-center">
+            <div className="flex flex-col items-center gap-y-2">
               <li
                 className={`w-10 h-10 text-black flex items-center justify-center border border-dashed border-[#0d47a1] rounded-full ${
                   step >= index ? "bg-[#0d47a1]" : "bg-white"

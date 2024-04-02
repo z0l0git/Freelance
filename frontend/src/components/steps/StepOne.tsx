@@ -93,7 +93,7 @@ const StepOne = () => {
       <div className="border rounded-xl h-[380px]">
         <div className="flex flex-col m-4  gap-5">
           <h1 className="font-bold  text-[#212e48] text-[30px]">
-            Let's talk details
+            Let’s talk details
           </h1>
           <p>These suggestions are based on your brief’s title.</p>
           <Image src="/matching.png" width={400} height={400} alt="matching" />

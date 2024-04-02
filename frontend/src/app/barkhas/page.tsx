@@ -2,10 +2,10 @@
 
 import Stepper from "@/components/CreateProject/Stepper";
 
-const page = ({ step }: { step: number }) => {
+const page = () => {
   return (
     <div>
-      <Stepper step={step} />
+      <Stepper step={1} />
     </div>
   );
 };
