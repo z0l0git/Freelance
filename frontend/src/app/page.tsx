@@ -6,15 +6,11 @@ import { HeaderHero } from "@/components/HeaderHero";
 import { Header } from "@/components/Header/HeaderComp";
 import { HeaderSearch } from "@/components/HeaderSearch/HeaderSearch";
 
-export default function Home() {
+type Props = { title: string; description: string; image: string };
+export default function Home(props?: Props) {
   return (
-    <div className="">
-      <div className="relative z-30 bg-[url(https://res.cloudinary.com/dxarul6xr/image/upload/v1711501249/mknv2r8z1g8zp3ig9odn.jpg)] bg-cover"></div>
+    <div className=" bg-cover">
       <HeaderHero />
-      <div className="">
-        <StickyImageLayout />
-        <div className="w-screen h-[900px]  "></div>
-      </div>
     </div>
   );
 }

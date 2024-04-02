@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import { BlueButton } from "../Button";
+import { BlueButton, WhiteButton } from "../Button";
 import { IoSearchOutline } from "react-icons/io5";
 import { SelectBox } from "./SelectBox";
 import { SearchDrawer } from "./SearchDrawer";
@@ -11,8 +11,14 @@ export const HeaderSearch = () => {
       <div className="flex items-center gap-[24px] text-white">
         <Image src="/logo.png" alt="Google" width={186} height={49} />
         <div className="hidden sm:flex gap-[24px]">
-          <p className="cursor-pointer">How It Works</p>
-          <p className="cursor-pointer">Why Freelancely</p>
+          <WhiteButton
+            buttonName="How It Works"
+            buttonClass="text-white hover:text-blue-500 hover:underline"
+          />
+          <WhiteButton
+            buttonName="Why Freelancely"
+            buttonClass="text-white hover:text-blue-500 hover:underline"
+          />
         </div>
       </div>
       <div className="flex items-center gap-[24px] h-full">
