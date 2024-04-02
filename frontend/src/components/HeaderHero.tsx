@@ -1,18 +1,14 @@
 "use client";
 import Image from "next/image";
+import { HeaderSearch } from "./HeaderSearch/HeaderSearch";
+import { Menu } from "./Menu/Menu";
 
 export const HeaderHero = () => {
   return (
-    <div className="w-screen relative z-20">
+    <div className="w-screen relative z-20 bg-[url(https://res.cloudinary.com/dxarul6xr/image/upload/v1711501249/mknv2r8z1g8zp3ig9odn.jpg)] bg-cover no-repeat">
+      <HeaderSearch />
+      <Menu />
       <div className="w-screen lg:h-[784px] h-[870px] relative flex justify-center">
-        <Image
-          alt=""
-          src="https://res.cloudinary.com/dxarul6xr/image/upload/v1711501249/mknv2r8z1g8zp3ig9odn.jpg"
-          width={0}
-          height={0}
-          sizes="100vw"
-          style={{ width: "100%", height: "100%", objectFit: "cover" }}
-        />
         <div className="absolute left-[120px] sm:top-[90px] top-[130px] animate-[wiggle_1s_ease-in-out_infinite]">
           <Image
             alt=""

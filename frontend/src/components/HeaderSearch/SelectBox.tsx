@@ -12,17 +12,13 @@ import {
 export const SelectBox = () => {
   return (
     <Select>
-      <SelectTrigger className="w-[180px]">
-        <SelectValue placeholder="Select a fruit" />
+      <SelectTrigger className="w-[108px] h-full bg-[#0D47A9] rounded-[100px] text-white font-bold items-center justify-center border-none">
+        <SelectValue placeholder="Talent" />
       </SelectTrigger>
       <SelectContent>
         <SelectGroup>
-          <SelectLabel>Fruits</SelectLabel>
-          <SelectItem value="apple">Apple</SelectItem>
-          <SelectItem value="banana">Banana</SelectItem>
-          <SelectItem value="blueberry">Blueberry</SelectItem>
-          <SelectItem value="grapes">Grapes</SelectItem>
-          <SelectItem value="pineapple">Pineapple</SelectItem>
+          <SelectItem value="talent">Talent</SelectItem>
+          <SelectItem value="job">Job</SelectItem>
         </SelectGroup>
       </SelectContent>
     </Select>
