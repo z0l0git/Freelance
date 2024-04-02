@@ -13,7 +13,7 @@ import { WhiteButton } from "../Button";
 
 export const Menu = () => {
   return (
-    <div className="w-screen bg-[#13203B] py-4 flex justify-around z-200">
+    <div className="w-screen bg-[#13203B] py-4 flex justify-around z-50 sticky top-0">
       <div className="w-full mx-auto px-3 flex justify-around h-10 items-center gap-4">
         <div className="flex gap-4 relative w-[35%] md:w-[50%]  sm:w-[70%]">
           <WhiteButton

@@ -10,9 +10,6 @@ const config = {
   ],
   prefix: "",
   theme: {
-    colors: {
-      buttonColor: "#0D47A9",
-    },
     container: {
       center: true,
       padding: "2rem",

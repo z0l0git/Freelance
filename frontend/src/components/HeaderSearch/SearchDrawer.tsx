@@ -9,23 +9,22 @@ import {
   DrawerTitle,
   DrawerTrigger,
 } from "@/components/ui/drawer";
-import { Button } from "@/components/ui/button";
+import { IoMdClose } from "react-icons/io";
 
 export const SearchDrawer = () => {
   return (
     <Drawer direction="top">
       <DrawerTrigger>Open</DrawerTrigger>
       <DrawerContent>
-        <DrawerHeader>
-          <DrawerTitle>Are you absolutely sure?</DrawerTitle>
-          <DrawerDescription>This action cannot be undone.</DrawerDescription>
-        </DrawerHeader>
-        <DrawerFooter>
-          <Button>Submit</Button>
-          <DrawerClose>
-            <Button variant="outline">Cancel</Button>
-          </DrawerClose>
-        </DrawerFooter>
+        <input className="w-full h-[120%] outline-none px-4" />
+        <div
+          className="h-[120%] w-[15%] flex items-center justify-center"
+          style={{
+            background: "linear-gradient(90deg, #1A4DBE 0%, #AE5EBE 100%)",
+          }}
+        >
+          <IoMdClose size={60} color="white" />
+        </div>
       </DrawerContent>
     </Drawer>
   );
