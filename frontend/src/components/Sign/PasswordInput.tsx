@@ -8,7 +8,7 @@ type SS = {
   onchange: any;
 };
 export const InputPassWord = (props: SS) => {
-  const { placHolder, name, onchange } = props;
+  const { placHolder, name, onchange = "" } = props;
 
   const [show, setShow] = useState(true);
 

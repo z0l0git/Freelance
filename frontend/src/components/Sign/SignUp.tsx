@@ -7,6 +7,7 @@ import { InputPassWord } from "./PasswordInput";
 import { useState } from "react";
 import { ChangeEvent } from "react";
 import { Button } from "./Button";
+import { AxiosInstance } from "@/utils/axiosInstance";
 
 type LoginDataType = {
   name: string;
@@ -14,7 +15,14 @@ type LoginDataType = {
   phone: string;
   password: string;
 };
-export const SignUp = () => {
+
+type SignUpType = {
+  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+};
+
+export const SignUp = (props: SignUpType) => {
+  const { setOpen } = props;
+
   const [userdata, setUserData] = useState({
     name: "",
     email: "",
@@ -27,14 +35,34 @@ export const SignUp = () => {
     setUserData({ ...userdata, [name]: value });
   };
 
+  const intoLoginFunc = () => {
+    setOpen(false);
+  };
+
+  const createAccountFunc = async () => {
+    try {
+      const { data } = await AxiosInstance.post("createUser", userdata);
+      console.log(data, "new user");
+      intoLoginFunc();
+    } catch (err: any) {
+      console.log(err);
+    }
+  };
+
   return (
     <div className="flex flex-col  items-center">
       <div className="font-bold text-[35px] text-white mb-[35px]">Create</div>
       <div className="flex flex-col gap-[28px] mb-[30px]">
         <Input
           icon={<BiSolidUser />}
-          placHolder="Username"
-          name="name"
+          placHolder="firstName"
+          name="firstName"
+          onchange={(e: ChangeEvent<HTMLInputElement>) => handleChange(e)}
+        />
+        <Input
+          icon={<BiSolidUser />}
+          placHolder="lastName"
+          name="lastName"
           onchange={(e: ChangeEvent<HTMLInputElement>) => handleChange(e)}
         />
         <Input
@@ -60,7 +88,7 @@ export const SignUp = () => {
           onchange={(e: ChangeEvent<HTMLInputElement>) => handleChange(e)}
         />
         <div className="mt-[20px]">
-          <Button text="Create" />
+          <Button text="Create" onClick={createAccountFunc} />
         </div>
       </div>
     </div>
