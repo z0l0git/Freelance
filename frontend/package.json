@@ -39,7 +39,8 @@
     "tailwind": "^4.0.0",
     "tailwind-merge": "^2.2.2",
     "tailwindcss-animate": "^1.0.7",
-    "three": "^0.162.0"
+    "three": "^0.162.0",
+    "yup": "^1.4.0"
   },
   "devDependencies": {
     "@types/node": "^20",

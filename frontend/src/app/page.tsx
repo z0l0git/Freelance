@@ -5,8 +5,9 @@ import { Menu } from "@/components/Menu/Menu";
 import { HeaderHero } from "@/components/HeaderHero";
 
 export default async function Home() {
-  const user = await currentUser();
-  console.log(user, "user data");
+  const user: any = await currentUser();
+  console.log(user?.emailAddresses[0].emailAddress, "user data");
+
   return (
     <div className="">
       <div className="relative z-30 ">
