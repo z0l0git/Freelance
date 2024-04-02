@@ -18,13 +18,6 @@ const config = {
       },
     },
     extend: {
-      backgroundImage: {
-        "header-cover-img":
-          "url('https://res.cloudinary.com/dxarul6xr/image/upload/v1711450248/a3hyxq2lk36i49zahacj.jpg')",
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
-      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -83,7 +76,6 @@ const config = {
           "50%": { transform: "translateY(-10px)" },
         },
       },
-
       animation: {
         wiggle: "wiggle 3s ease-in-out infinite",
         BigImage: "BigImage 3s ease-in-out infinite",
@@ -91,8 +83,8 @@ const config = {
         "accordion-up": "accordion-up 0.2s ease-out",
       },
     },
-    plugins: [require("tailwindcss-animate")],
   },
+  plugins: [require("tailwindcss-animate")],
 } satisfies Config;
 
 export default config;

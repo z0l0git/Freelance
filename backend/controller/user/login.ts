@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { loginQuery } from "../../queries/user/login-query";
+import { loginQuery } from "../../queries";
 
 export const loginController = async (req: Request, res: Response) => {
   try {

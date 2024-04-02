@@ -16,26 +16,34 @@ export const OrangeButton = (props: any) => {
   );
 };
 export const BlueButton = (props: any) => {
-  const { buttonName } = props;
+  const { buttonName, type = "" } = props;
   return (
-    <button className="group relative px-[31px] py-[15px] overflow-hidden rounded-[100px] bg-[#0d47a1] text-lg font-bold text-white">
-      {buttonName}
-      <div className="absolute inset-0 h-full w-full scale-0 rounded-2xl transition-all duration-300 group-hover:scale-100 group-hover:bg-[#2196f3] text-white flex items-center justify-center gap-2">
-        {buttonName}
-      </div>
+    <button
+      type={type}
+      className="group h-full relative px-[31px] py-[15px] overflow-hidden rounded-[100px] bg-[#0d47a1] text-lg font-bold text-white md:h-auto"
+    >
+      <div className="absolute inset-0 h-full z-0 w-full scale-0 rounded-2xl transition-all duration-300 group-hover:scale-100 group-hover:bg-white/40"></div>
+      <p> {buttonName}</p>
     </button>
   );
 };
 
 export const WhiteButton = (props: any) => {
-  const { buttonName, buttonClass } = props;
-  return <button className={buttonClass}>{buttonName}</button>;
+  const { buttonName, buttonClass, type } = props;
+  return (
+    <button type={type} className={buttonClass}>
+      {buttonName}
+    </button>
+  );
 };
 
 export const ButtonWithBlueBorder = (props: any) => {
-  const { buttonName } = props;
+  const { buttonName, type } = props;
   return (
-    <button className="group relative px-[31px] py-[15px] overflow-hidden rounded-[100px] border-blue-500 border-[1px] text-lg font-bold text-[#0f48a2] flex items-center gap-1">
+    <button
+      type={type}
+      className="group relative px-[31px] py-[15px] overflow-hidden rounded-[100px] border-blue-500 border-[1px] text-lg font-bold text-[#0f48a2] flex items-center gap-1"
+    >
       {buttonName}
       <HiArrowUpRight />
       <div className="absolute inset-0 h-full w-full scale-0 rounded-2xl transition-all duration-300 group-hover:scale-100 group-hover:bg-[#2196f3] text-white flex items-center justify-center">
