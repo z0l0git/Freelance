@@ -1,9 +1,29 @@
 import React from "react";
-import { NameInputComponent } from "@/components/Input";
+
 import { IoCallOutline } from "react-icons/io5";
 import { CiMail } from "react-icons/ci";
 import { CiLocationOn } from "react-icons/ci";
 import { TextAreaComponent } from "@/components/TextArea";
+
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+
+type Props = {
+  name: string;
+  placeholder: string;
+  type: string;
+  className: string;
+};
+
+export const NameInputComponent = (props: Props) => {
+  const { name, placeholder, type, className = "" } = props;
+  return (
+    <div className={className}>
+      <Label htmlFor="name">{name}</Label>
+      <Input type={type} id={name} placeholder={placeholder} />
+    </div>
+  );
+};
 
 export const Contact = () => {
   return (
@@ -57,10 +77,12 @@ export const Contact = () => {
                   name="Name"
                   placeholder="Enter Your Name"
                   type="text"
+                  className=""
                 />
               </div>
               <div className="w-[396px] h-[90px] px-3 mt-6">
                 <NameInputComponent
+                  className=""
                   name="Email"
                   type="email"
                   placeholder="Enter Your Email"
@@ -78,6 +100,7 @@ export const Contact = () => {
               </div>
               <div className="w-[396px] h-[90px] px-3 mt-6">
                 <NameInputComponent
+                  className=""
                   type="password"
                   name="Password"
                   placeholder="Enter Your Password"
