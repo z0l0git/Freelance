@@ -12,9 +12,10 @@ import {
   FaPinterest,
 } from "react-icons/fa";
 import { ButtonWithBlueBorder } from "../Button";
+
 export const MainProfileInfo = () => {
   return (
-    <div className="w-[416px] h-[488px] bg-green-100 flex flex-col items-center gap-4 rounded-2xl">
+    <div className="w-[416px] h-[488px] flex flex-col items-center gap-4 rounded-2xl border">
       <div className="flex justify-center items-center p-4 ">
         <div className="w-30 h-30 relative flex justify-center items-center p-4 rounded-full border ">
           <Image
