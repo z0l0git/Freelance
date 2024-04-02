@@ -1,14 +1,4 @@
 "use client";
-import {
-  NavigationMenu,
-  NavigationMenuContent,
-  NavigationMenuIndicator,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-  NavigationMenuTrigger,
-  NavigationMenuViewport,
-} from "@/components/ui/navigation-menu";
 
 import React from "react";
 import {
@@ -23,42 +13,21 @@ import { WhiteButton } from "../Button";
 
 export const Menu = () => {
   return (
-    <div className="w-screen bg-[#13203B] py-4 flex justify-center z-100">
-      <div className="w-[1280px] mx-auto px-3 flex justify-between h-10 py-4 items-center gap-4">
-        <div className="flex gap-4 relative">
-          <NavigationMenu>
-            <NavigationMenuList>
-              <NavigationMenuItem>
-                <NavigationMenuTrigger className="hover:text-blue-500 bg-inherit hover:bg-inherit text-white ">
-                  Зарлагдсан ажлууд
-                </NavigationMenuTrigger>
-                <NavigationMenuContent className="flex flex-col gap-2 w-84 h-fit">
-                  <NavigationMenuLink>
-                    <p className="hover:bg-gray-200 hover:ease-in-outtransition ease-in-out delay-150 hover:translate-x-1  duration-300">
-                      Салбараар
-                    </p>
-                  </NavigationMenuLink>
-                  <NavigationMenuLink> Салбараар</NavigationMenuLink>
-                  <NavigationMenuLink>Салбараар</NavigationMenuLink>
-                  <NavigationMenuLink>Салбараар</NavigationMenuLink>
-                </NavigationMenuContent>
-              </NavigationMenuItem>
-            </NavigationMenuList>
-          </NavigationMenu>
-          <NavigationMenu>
-            <NavigationMenuList>
-              <NavigationMenuItem className="hover:bg-transparent">
-                <NavigationMenuTrigger className="hover:text-blue-500 bg-inherit  text-white">
-                  Freelancer хайх
-                </NavigationMenuTrigger>
-                <NavigationMenuContent className="flex flex-col gap-2 w-[245px] hover:bg-transparent ">
-                  <NavigationMenuLink>Мэргэжилээр</NavigationMenuLink>
-                  <NavigationMenuLink>Нэрээр</NavigationMenuLink>
-                </NavigationMenuContent>
-              </NavigationMenuItem>
-            </NavigationMenuList>
-          </NavigationMenu>
-          <WhiteButton buttonName="Холбоо барих" buttonClass="text-white" />
+    <div className="w-screen bg-[#13203B] py-4 flex justify-around z-50 sticky top-0">
+      <div className="w-full mx-auto px-3 flex justify-around h-10 items-center gap-4">
+        <div className="flex gap-4 relative w-[35%] md:w-[50%]  sm:w-[70%]">
+          <WhiteButton
+            buttonName="Зарлагдсан ажлууд"
+            buttonClass="text-white hover:text-blue-500 hover:underline"
+          />
+          <WhiteButton
+            buttonName="Freelancer хайх"
+            buttonClass="text-white hover:text-blue-500 hover:underline"
+          />
+          <WhiteButton
+            buttonName="Холбоо барих"
+            buttonClass="text-white hover:text-blue-500 hover:underline"
+          />
         </div>
         <div className="flex gap-4">
           <DropdownMenu>

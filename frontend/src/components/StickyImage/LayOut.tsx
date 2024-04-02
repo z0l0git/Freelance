@@ -8,7 +8,7 @@ export const StickyImageLayout = () => {
   return (
     <div>
       <div className="w-[100%] h-fit ">
-        <div className="h-[1050px] w-[50%]  absolute  left-[0px] bg-white"></div>
+        <div className="h-[1050px] w-[50%] absolute left-[0px] bg-white"></div>
         <div className="sm:h-[1050px] h-[1200px] w-[985px]  fixed z-10 top-0 right-0  ">
           <Image
             alt=""
@@ -20,7 +20,7 @@ export const StickyImageLayout = () => {
           />
         </div>
         <div className="relative">
-          <div className="w-screen sm:h-[700px] h-fit  z-40 absolute sm:top-[100px] top-[40px] flex justify-center ">
+          <div className="w-screen sm:h-[700px] h-fit z-20 absolute sm:top-[100px] top-[40px] flex justify-center ">
             <div className="w-[1280px] h-[100%] flex ">
               <div className="  sm:py-[100px] py-[10px] rounded-[18px] pr-[30px] pl-[10px] flex flex-col gap-[20px] justify-center bg-white mx-[40px]">
                 <div className="sm:text-[30px] text-[19px] font-semibold text-blue-700 sm:mt-[100px] mt-[10px]">

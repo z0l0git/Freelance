@@ -9,13 +9,12 @@ const Drops = [
     {
         place: "Talent"
     }, {
-        place: "HireMe"
+        place: "Hire Me"
     },
     {
         place: "Professional"
     }
 ]
-
 
 
 
@@ -39,34 +38,34 @@ export const HeaderRight = (props) => {
 
     }
 
-    return <div className="relative h-[80px] flex items-center justify-center  md:w-[574px] md:h-[60px] md:flex md:items-center md:justify-between flex items-center justify-between">
-        <div className="flex items-center justify-between  md:block md:w-[362px] md:h-[60px] md:rounded-3xl md:border md:border-[#3f3877] md:flex md:items-center md:justify-around">
-            <button onClick={() => { handleSearchShow() }} className="w-[30px] h-[30px] flex items-center justify-center border border-black rounded-full block  md:hidden">
+    return <div className="relative  h-[80px] flex items-center justify-center  md:w-[574px] md:h-[60px] md:flex md:items-center md:justify-between">
+        <div className="w-[159px] h-[33px] flex items-center justify-between md:w-[400px] md:h-[60px] md:rounded-3xl md:border md:border-[#3f3877] md:flex md:items-center md:justify-around ">
+            <button onClick={() => { handleSearchShow() }} className="w-[30px] h-[30px] flex items-center justify-center border border-black rounded-full  md:hidden">
                 <CiSearch className="w-[20px] h-[20px] text-white" width={16} height={24} />
             </button>
             <div className="md:flex md:items-center">
                 <CiSearch className="hidden md:block md:w-[25px] md:h-[25px] text-white" width={20} height={20} />
                 <input type="text" id="name" name="name" placeholder="Search" className="hidden md:block md:w-[205px] md:h-[30px] md:bg-transparent border-transparent text-white" />
             </div>
-            <div className="hidden md:relative md:w-[382px] md:flex md:flex-col md:items-center">
+            <div className="hidden md:relative md:w-[382px] md:flex md:flex-col md:items-center md:rounded-full">
                 {!open ? (
-                    <div onClick={() => setOpen((prev) => !prev)} className="md:w-[120px] md:h-[42px] md:cursor-pointer md:bg-gradient-to-r from-sky-600 to-indigo-600 md:rounded-lg md:text-white flex justify-around items-center border-4 border-transparent active:border-white duration-300 active:text-white">
+                    <div onClick={() => setOpen((prev) => !prev)} className="md:w-fit md:h-[42px] md:cursor-pointer md:px-4 md:gap-[10px] md:rounded-full md:bg-[#0D47A1] md:text-white flex justify-around items-center  border-transparent duration-300">
                         <h1>{select}</h1>
                         <FaChevronDown />
                     </div>
                 ) : (
-                    <div onClick={() => setOpen((prev) => !prev)} className="md:w-[120px] md:h-[42px] md:cursor-pointer md:bg-gradient-to-r from-sky-600 to-indigo-600 md:rounded-lg md:text-white flex justify-around items-center border-4 border-transparent active:border-white duration-300 active:text-white">
+                    <div onClick={() => setOpen((prev) => !prev)} className="md:w-fit md:h-[42px] md:px-4 md:cursor-pointer md:gap-[10px] md:rounded-full md:bg-[#0D47A1] md:text-white flex justify-center items-center">
                         <h1>{select}</h1>
                         <FaChevronUp />
                     </div>
                 )}
                 {open && (
-                    <div className="absolute top-11 w-[120px] h-fit bg-gradient-to-r from-sky-600 to-indigo-600  active:border-white duration-300 active:text-white text-white rounded-lg">
+                    <div className="absolute top-11 w-[120px] h-fit bg-white  text-black rounded-full">
                         {Drops.map((el, index) => {
                             return (
                                 <div key={index} onClick={() => {
                                     handleSelect(el.place)
-                                }} className="w-[120px] h-[42px] cursor-pointer  bg-gradient-to-r from-sky-600 to-indigo-600 rounded-lg text-white flex flex-row justify-around items-center active:border-white duration-300 active:text-white">
+                                }} className="w-[120px] h-[42px] divide-y divide-solid cursor-pointer bg-white rounded-sm text-black flex flex-row justify-around items-center active:font-semibold ">
                                     {el.place}
                                 </div>
                             )
@@ -79,11 +78,11 @@ export const HeaderRight = (props) => {
                     initial={{ top: -100 }}
                     animate={{ top: 0, onDurationChange: 0.3 }}
                     exit={{ top: -100 }}
-                    className=" border border-black absolute top-[-100%]  right-0  bg-white  w-screen h-[60px] flex items-center justify-between md:hidden ">
+                    className="  absolute bg-white left-[-168%] flex items-center justify-between md:hidden ">
                     <div className="w-[316px] h-[60px] flex items-center justify-center ">
-                        <input className="w-[260px] h-[40px]" type="text" name="name" id="name" placeholder="Search here" />
+                        <input className="w-[260px]" type="text" name="name" id="name" placeholder="Search here" />
                     </div>
-                    <button onClick={() => { handleSearchShow(show) }} className="w-[109px] h-[60px] border border-black bg-[#0D47A1] text-white text-[36px] cursor-pointer">Close</button>
+                    <button onClick={() => { handleSearchShow(show) }} className="w-[109px] h-[60px]  bg-[#0D47A1] text-white text-[36px] cursor-pointer">Close</button>
                 </motion.div>
             }
             {/* button orj irne */}

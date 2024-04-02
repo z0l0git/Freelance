@@ -7,6 +7,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+
 import Image from "next/image";
 import { IoIosCheckmarkCircle, IoMdNotificationsOutline } from "react-icons/io";
 import { LiaUserCheckSolid } from "react-icons/lia";
@@ -17,6 +18,7 @@ import {
 } from "react-icons/md";
 import { AiOutlineSetting, AiOutlineTeam } from "react-icons/ai";
 import { ButtonWithBlueBorder } from "../Button";
+import React from "react";
 export const MenuProfileCard = (props: any) => {
   const { profilePicture, userName, userMail } = props;
   return (

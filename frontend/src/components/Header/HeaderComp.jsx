@@ -1,14 +1,13 @@
-import { HeaderLeft } from "@/components/Header/HeaderLeft";
-import { HeaderRight } from "@/components/Header/HeaderRight";
-import { url } from "inspector";
+import { HeaderLeft } from "@/components/Header/HeaderLeft"
+import { HeaderRight } from "@/components/Header/HeaderRight"
 
 export const Header = () => {
-  return (
-    <div className="md:w-100% md:h-[108px] bg-[url(https://res.cloudinary.com/dxarul6xr/image/upload/v1711450248/a3hyxq2lk36i49zahacj.jpg)]  md:flex md:items-center md:justify-center ">
-      <div className="w-[426px] h-[80px] flex items-center justify-between  md:w-[1296px] md:h-[60px] md:flex md:items-center md:justify-between ">
-        <HeaderLeft />
-        <HeaderRight />
-      </div>
-    </div>
-  );
-};
+    return (
+        <div className="flex justify-between md:w-screen md:h-[108px] md:relative z-40 bg-black  md:flex md:items-center md:justify-center ">
+            <div className=" h-[80px] flex items-center justify-between w-full md:w-[1296px] md:h-[60px] md:flex md:items-center md:justify-between border border-black  ">
+                <HeaderLeft />
+                <HeaderRight />
+            </div>
+        </div>
+    )
+}
