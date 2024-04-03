@@ -4,7 +4,10 @@ import { InputPassWord } from "./PasswordInput";
 import { FiMail } from "react-icons/fi";
 import { ChangeEvent } from "react";
 import { Button } from "./Button";
-import { AxiosInstance } from "@/utils/axiosInstance";
+import React from "react";
+
+import { AxiosInstance } from "../../utils/axiosInstance";
+
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { SignIn } from "@clerk/nextjs";
@@ -29,32 +32,39 @@ export const Login = (props: LoginProps) => {
   });
   const [error, setError] = useState("");
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setUserData({ ...userdata, [name]: value });
+  // const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+  //   const { name, value } = e.target;
+  //   setUserData({ ...userdata, [name]: value });
+  // };
+
+  const initialValues = {
+    email: "",
+    password: "",
   };
 
   const validationSchema = Yup.object().shape({
     email: Yup.string().email("Invalid email").required("Email is required"),
     password: Yup.string()
-      .min(6, "Password must be at least 6 characters")
+      .min(3, "too short password")
+      .max(15, "too long password")
+
       .required("Password is required"),
   });
 
-  const handleClick = async () => {
-    console.log("try");
-
+  const hanldeSubmit = async (values: typeof initialValues) => {
+    console.log(values, "sadffa");
     try {
-      const { data } = await AxiosInstance.post("/login", userdata);
+      const { data } = await AxiosInstance.post("/login", values);
       console.log(data, "token");
-
       localStorage.setItem("Token", data);
-
       // window.location.href = "/";
       push("/");
     } catch (err: any) {
       console.log(err.response.data);
       setError(err.response.data);
+      setTimeout(() => {
+        setError("");
+      }, 2000);
     }
   };
 
@@ -64,47 +74,55 @@ export const Login = (props: LoginProps) => {
 
       <div className="flex flex-col gap-[28px]">
         <Formik
-          initialValues={{
-            email: "",
-            password: "",
-          }}
+          initialValues={initialValues}
           validationSchema={validationSchema}
-          onSubmit={handleClick}
+          onSubmit={hanldeSubmit}
         >
-          <Form className="flex flex-col gap-[28px]">
-            <Input
-              type="email"
-              icon={<FiMail />}
-              placHolder="Email"
-              name="email"
-              onchange={(e: ChangeEvent<HTMLInputElement>) => handleChange(e)}
-            />
-            <ErrorMessage className="error" name="email" component="div" />
+          {({ setFieldValue }) => (
+            <Form className="flex flex-col gap-[28px]">
+              <Input
+                type="email"
+                icon={<FiMail />}
+                placHolder="Email"
+                name="email"
+                onchange={(e) => setFieldValue("email", e.target.value)}
+              />
+              <ErrorMessage
+                className="error text-red-600"
+                name="email"
+                component="div"
+              />
 
-            <InputPassWord
-              name="password"
-              placHolder="Password"
-              onchange={(e: ChangeEvent<HTMLInputElement>) => handleChange(e)}
-            />
-            <ErrorMessage className="error" name="password" component="div" />
+              <InputPassWord
+                name="password"
+                placHolder="Password"
+                onchange={(e) => setFieldValue("password", e.target.value)}
+              />
 
-            <div className="flex justify-end text-white ">
-              <div
-                onClick={toReset}
-                className="cursor-pointer hover:text-blue-600 "
-              >
-                Forgot Password?
+              <ErrorMessage
+                className="error text-red-600"
+                name="password"
+                component="div"
+              />
+
+              <div className="flex justify-end text-white ">
+                <div
+                  onClick={toReset}
+                  className="cursor-pointer hover:text-blue-600 "
+                >
+                  Forgot Password?
+                </div>
               </div>
-            </div>
-            {error && <div className="text-red-500 text-center">{error}</div>}
+              {error && <div className="text-red-500 text-center">{error}</div>}
 
-            <Button text="Login" type="submit" onClick={handleClick} />
-            <div className="flex">
-              <div className=" border-b border-white w-[50%] mb-[10px] mr-[10px]"></div>
-              <div className="text-white">or</div>
-              <div className=" border-b border-white w-[50%] mb-[10px] ml-[10px]"></div>
-            </div>
-          </Form>
+              <Button text="Login" type="submit" />
+              <div className="flex">
+                <div className=" border-b border-white w-[50%] mb-[10px] mr-[10px]"></div>
+                <div className="text-white">or</div>
+                <div className=" border-b border-white w-[50%] mb-[10px] ml-[10px]"></div>
+              </div>
+            </Form>
+          )}
         </Formik>
 
         <Link href="/sign-in">

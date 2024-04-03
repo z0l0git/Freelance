@@ -1,16 +1,16 @@
-import { useState } from "react";
+import { ChangeEvent, useState } from "react";
 import { AiFillEyeInvisible } from "react-icons/ai";
 import { BsEyeFill } from "react-icons/bs";
 
 type SS = {
   placHolder: string;
   name: string;
-  onchange: any;
+  onchange: (event: ChangeEvent<HTMLInputElement>) => void;
   // type: string;
   // id: string;
 };
 export const InputPassWord = (props: SS) => {
-  const { placHolder, name, onchange = "" } = props;
+  const { placHolder, name, onchange } = props;
 
   const [show, setShow] = useState(true);
 
@@ -24,7 +24,7 @@ export const InputPassWord = (props: SS) => {
         name={name}
         onChange={onchange}
         placeholder={placHolder}
-        className="bbb outline-none "
+        className="bbb outline-none w-[100%]"
         type={`${show ? "password" : "text"}`}
       />
 
