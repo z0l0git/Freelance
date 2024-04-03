@@ -3,8 +3,6 @@
 import React from "react";
 import { BlueButton } from "../Button";
 
-
-
 type ProjectCard = {
   title: String;
   price: String;
@@ -28,7 +26,7 @@ export const ProjectCard = (props: ProjectCard) => {
     proporsal,
   } = props;
   return (
-    <div className="flex w-screen h-screen justify-center items-center bg-slate-100">
+    <div className="flex bg-slate-100 rounded-2xl">
       <div className="flex flex-col w-[856px] h-[432px] rounded-xl p-8 bg-slate-50">
         <div className="flex flex-col w-[792px] gap-3 h-[40px] mb-6">
           <div className="flex justify-between ">
@@ -36,13 +34,13 @@ export const ProjectCard = (props: ProjectCard) => {
             <h5 className="text-2xl font-light">{price}</h5>
           </div>
           <div className="flex gap-10 justify-stretch w-full h-[41px] mb-6">
-            {category?.map((el, i) => {
+            {category?.map((element, index) => {
               return (
                 <div
-                  key={i}
+                  key={index}
                   className="flex w-fill h-[41px] py-2 px-4 border-inherit bg-slate-100 border-solid rounded-xl text-base font-bold text-[#0d47a1]"
                 >
-                  {el}
+                  {element}
                 </div>
               );
             })}
