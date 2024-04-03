@@ -1,10 +1,11 @@
+import { ChangeEvent } from "react";
 import { BiSolidUser } from "react-icons/bi";
 
 type SS = {
   icon: any;
   placHolder: string;
   name: string;
-  onchange: any;
+  onchange: (event: ChangeEvent<HTMLInputElement>) => void;
   type?: string;
 };
 export const Input = (props: SS) => {
@@ -17,7 +18,7 @@ export const Input = (props: SS) => {
         name={name}
         onChange={onchange}
         placeholder={placHolder}
-        className="bbb outline-none "
+        className="bbb outline-none w-[100%]"
       />
       {/* <BiSolidUser style={{ color: "white" }} /> */}
       <div className="text-white">{icon}</div>

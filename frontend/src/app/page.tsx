@@ -1,4 +1,5 @@
 import Image from "next/image";
+import React from "react";
 import { StickyImageLayout } from "@/components/StickyImage/LayOut";
 // import { currentUser } from "@clerk/nextjs";
 import { Menu } from "@/components/Menu/Menu";
