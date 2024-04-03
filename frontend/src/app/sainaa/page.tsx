@@ -1,9 +1,10 @@
 import { Sign } from "@/components/Sign/Sign";
+import { UPdateprofile } from "@/components/userProfile/UpdateProFile";
 
 function omse() {
   return (
     <div>
-      <Sign />
+      <UPdateprofile />
     </div>
   );
 }

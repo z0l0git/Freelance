@@ -44,10 +44,16 @@ export const Sign = () => {
       <div className="z-[20] absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
         <div
           style={rotateStyle}
-          className={`bbb rounded-[10px] w-[550px] h-fit pt-[40px] pb-[100px] px-[30px]  border border-gray-400 flex flex-col items-center gap-[25px] `}
+          className={`bbb rounded-[10px] sm:w-[550px] w-fit h-fit pt-[40px] pb-[100px] px-[30px]  border border-gray-400 flex flex-col items-center gap-[25px] `}
         >
           {!changer && (
-            <div>{open ? <SignUp /> : <Login toReset={toReset} />}</div>
+            <div>
+              {open ? (
+                <SignUp setOpen={setOpen} />
+              ) : (
+                <Login toReset={toReset} />
+              )}
+            </div>
           )}
 
           {changer && (

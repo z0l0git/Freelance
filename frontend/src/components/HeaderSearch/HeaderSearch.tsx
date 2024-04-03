@@ -16,7 +16,7 @@ export const HeaderSearch = () => {
             buttonClass="text-white hover:text-blue-500 hover:underline"
           />
           <WhiteButton
-            buttonName="Why Freelancely"
+            buttonName="Why Freelancely!"
             buttonClass="text-white hover:text-blue-500 hover:underline"
           />
         </div>
