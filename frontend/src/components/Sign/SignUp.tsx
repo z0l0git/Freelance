@@ -69,7 +69,7 @@ export const SignUp = (props: SignUpType) => {
       .max(15, "too long password")
       .required("Password is required"),
     repassword: Yup.string()
-      .oneOf([Yup.ref("password"), null], "Passwords must match")
+      .oneOf([Yup.ref("password"), ""], "Passwords must match")
       .required("Please confirm your password"),
   });
 
