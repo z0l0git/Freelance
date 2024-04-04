@@ -59,11 +59,11 @@ const StepThree = () => {
       <div className="border rounded-xl w-[434px] h-[450px]">
         <div className="flex flex-col m-4 gap-5">
           <h1 className="font-bold  text-[#212e48] text-[30px]">
-            Now let's talk budget and timing
+            Now let&apos;s talk budget and timing
           </h1>
           <p>
-            You're not committing to anything final here.This just helps us find
-            you the most relevant
+            You&apos;re not committing to anything final here.This just helps us
+            find you the most relevant
           </p>
           <Image src="/matching.png" width={400} height={400} alt="matching" />
         </div>
