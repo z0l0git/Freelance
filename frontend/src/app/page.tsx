@@ -1,11 +1,12 @@
 import Image from "next/image";
 import React from "react";
 import { StickyImageLayout } from "@/components/StickyImage/LayOut";
-// import { currentUser } from "@clerk/nextjs";
+
 import { Menu } from "@/components/Menu/Menu";
 import { HeaderHero } from "@/components/HeaderHero";
 import { Header } from "@/components/Header/HeaderComp";
 import { HeaderSearch } from "@/components/HeaderSearch/HeaderSearch";
+import { AboutUs } from "@/components/aboutUs/AboutUs";
 
 export default async function Home() {
   // const user: any = await currentUser();
@@ -14,6 +15,7 @@ export default async function Home() {
   return (
     <div className=" bg-cover">
       <HeaderHero />
+      <AboutUs />
     </div>
   );
 }

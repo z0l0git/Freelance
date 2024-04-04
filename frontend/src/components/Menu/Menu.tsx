@@ -7,7 +7,8 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { MenuMessageCard, MenuNotificationCard } from "./MenuMessageCard";
-import { MdOutlineMessage, MdNotifications } from "react-icons/md";
+import { MdNotifications } from "react-icons/md";
+import { BsChatText, BsBell } from "react-icons/bs";
 import { MenuProfileCard } from "./MenuProfileCard";
 import { WhiteButton } from "../Button";
 import { AnimatePresence } from "framer-motion";
@@ -45,9 +46,9 @@ export const Menu = () => {
           </div>
           <div className="flex gap-4 items-center">
             <DropdownMenu>
-              <div className="flex justify-center items-center p-2 rounded-full border bg-[#343e56] w-10 h-10">
+              <div className="flex justify-center items-center p-2 rounded-full  bg-[#343e56] w-10 h-10">
                 <DropdownMenuTrigger>
-                  <MdOutlineMessage className="color-white text-white w-6 h-6" />
+                  <BsChatText className="color-white text-white w-6 h-6" />
                 </DropdownMenuTrigger>
                 <DropdownMenuContent className="w-[306px] h-[354px] p-5 justify-end">
                   <MenuMessageCard
@@ -60,9 +61,9 @@ export const Menu = () => {
               </div>
             </DropdownMenu>
             <DropdownMenu>
-              <div className="flex justify-center items-center p-2 rounded-full border bg-[#343e56] w-10 h-10">
+              <div className="flex justify-center items-center p-2 rounded-full bg-[#343e56] w-10 h-10">
                 <DropdownMenuTrigger>
-                  <MdNotifications className="color-white text-white w-8 h-8" />
+                  <BsBell className="color-white text-white w-6 h-6" />
                 </DropdownMenuTrigger>
                 <DropdownMenuContent className="w-[306px] h-[354px] p-5">
                   <MenuNotificationCard
@@ -74,7 +75,7 @@ export const Menu = () => {
               </div>
             </DropdownMenu>
             <DropdownMenu>
-              <div className="flex justify-center items-center rounded-full border w-10 h-10 ">
+              <div className="flex justify-center items-center rounded-full w-10 h-10 ">
                 <MenuProfileCard profilePicture="/f10.png" />
               </div>
             </DropdownMenu>
