@@ -15,7 +15,8 @@ const projects = [
   {
     title: "Facebook page's developer",
     price: "Negotiate",
-    description: "Манай дэлгүүр өөрийн ФБ хуудсыг хөтөлж явуулах хөгжүүлэгчийг хайж байна, тус хуудас дотор байгаа онцлох барааг бүүст хийх, чатбот ажиллуулах зэрэг ажлуудыг хийж гүйцэтгэх юм.",
+    description:
+      "Манай дэлгүүр өөрийн ФБ хуудсыг хөтөлж явуулах хөгжүүлэгчийг хайж байна, тус хуудас дотор байгаа онцлох барааг бүүст хийх, чатбот ажиллуулах зэрэг ажлуудыг хийж гүйцэтгэх юм.",
     categoryCard: categoryAr,
     expire: "21 days",
     location: "Remote",
@@ -42,14 +43,13 @@ const projects = [
     level: "Level",
     proposal: "Proposal",
   },
-  
 ];
 
 const Chinzorig = () => {
   return (
     <div>
       {/* <Contact /> */}
-      <div className="flex w-screen items-start justify-center bg-slate-200 gap-5 pt-32">
+      {/* <div className="flex w-screen items-start justify-center bg-slate-200 gap-5 pt-32">
         <Filter jobs={"Local Jobs"} counter={"35"} />
         <div className="flex flex-col gap-[30px]">
           {projects.map((el, i) => {
@@ -67,7 +67,7 @@ const Chinzorig = () => {
             );
           })}
         </div>
-      </div>
+      </div> */}
       <HomeCardJobs />
     </div>
   );
