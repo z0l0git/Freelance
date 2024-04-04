@@ -4,14 +4,13 @@ import {
   WhiteButton,
   ButtonWithBlueBorder,
 } from "@/components/Button";
+import React from "react";
+import { Footer } from "../../components/Footer/Footer";
 
 const page = () => {
   return (
     <div className="w-screen">
-      <OrangeButton buttonName="Search" />
-      <BlueButton buttonName="Post A Project" />
-      <WhiteButton buttonClass="bg-black text-white" buttonName="Contact" />
-      <ButtonWithBlueBorder buttonName="View Services" />
+      <Footer />
     </div>
   );
 };
