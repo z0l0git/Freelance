@@ -8,6 +8,7 @@ import ThumbUpOutlinedIcon from "@mui/icons-material/ThumbUpOutlined";
 import MessageOutlinedIcon from "@mui/icons-material/MessageOutlined";
 import Rating from "@mui/material/Rating";
 
+
 export const DetailsMap = (props: any) => {
   const { icon, topic, text, color } = props;
   return (
@@ -29,23 +30,38 @@ export const SkillsMap = (props: any) => {
   const { MySkills } = props;
 
   return (
-    <div className="w-fit h-[41px] flex justify-center items-center rounded-lg px-4 cursor-pointer bg-[#0D47A10D] font-semibold text-[#0D47A1] hover:text-[#2196F3]">
+    <div className="w-fit h-[38px] md:h-[41px] flex justify-center items-center rounded-lg px-4 cursor-pointer bg-[#0D47A10D] font-semibold text-[#0D47A1] hover:text-[#2196F3]">
       {MySkills}
     </div>
   );
 };
 
 export const InfoDetailsMap = (props: any) => {
-  const { year, topic, title, text } = props;
+  const { year, topic, title, text, index } = props;
   return (
-    <div className="w-[676px] h-[245px] bg-[#0D47A10D]  rounded-lg ">
-      <div className=" w-[646px] flex flex-col justify-around gap-[10px] px-5 py-5 ">
-        <div className="w-[128px] h-[40px] text-[#0D47A1] flex text-[16px] bg-white font-semibold  items-center justify-center  rounded-lg">
-          {year}
+    <div className="flex flex-col justify-between w-[362px] items-center h-[399px] md:flex-row md:w-[816px] md:h-[245px]  ">
+      <div className="w-[100px] h-full flex items-center justify-center ">
+        <div className="w-[100px] h-[100px] rounded-full flex items-center justify-center border border-dashed border-[#0D47A1]">
+          <div className="w-[78px] h-[78px] rounded-full flex items-center justify-center text-white bg-[#0D47A1] text-[40px]">
+            {index + 1}
+          </div>
         </div>
-        <strong className="text-[20px] font-sans mb-4">{topic}</strong>
-        <h1 className="text-[16px] text-[#2E7D32] font-sans mb-2">{title}</h1>
-        <p className="text-[14px] font-sans w-[620px] ">{text}</p>
+      </div>
+      <div className="w-[362px] h-fit md:w-[676px]  bg-[#0D47A10D]  rounded-lg ">
+        <div className=" w-full md:w-[646px] flex flex-col justify-around gap-[10px] px-5 py-5 ">
+          <div className="w-[128px] h-[40px] text-[#0D47A1] flex text-[14px] md:text-[16px] bg-white font-semibold  items-center justify-center  rounded-lg">
+            {year}
+          </div>
+          <strong className="text-[18px] md:text-[20px] font-sans mb-4">
+            {topic}
+          </strong>
+          <h1 className="text-[14px] md:text-[16px] text-[#2E7D32] font-sans mb-2">
+            {title}
+          </h1>
+          <p className="text-[14px] font-sans w-[332px] md:w-[620px] ">
+            {text}
+          </p>
+        </div>
       </div>
     </div>
   );
@@ -54,7 +70,7 @@ export const InfoDetailsMap = (props: any) => {
 export const TagsMap = (props: any) => {
   const { tag } = props;
   return (
-    <div className="w-fit px-2 py-4 rounded-full flex items-center justify-center text-[14px] border border-gray-400 text-[#404A60] font-sans">
+    <div className="w-fit px-2 py-2 rounded-full flex items-center justify-center text-[14px] border border-gray-400 text-[#404A60] font-sans">
       {tag}
     </div>
   );
@@ -73,8 +89,8 @@ export const ServiceMap = (props: any) => {
   const { image, type, levelNum, topic, rate, rateNum, orderNum, price } =
     props;
   return (
-    <div className="w-[400px] h-[545px] py-4 flex flex-col items-center justify-between border border-inherit rounded-lg">
-      <div className="w-[380px] h-[283px] cursor-pointer overflow-hidden rounded-2xl ">
+    <div className="w-[362px] h-[450px] md:w-[400px] md:h-[545px] py-4 flex flex-col items-center justify-between border border-inherit rounded-lg">
+      <div className="w-[346px] h-[260px] md:w-[380px] md:h-[283px] cursor-pointer overflow-hidden rounded-2xl ">
         <Image
           alt=""
           src={image}
@@ -133,17 +149,12 @@ export const CheckBoxMap = (props: any) => {
 export const RatingMap = (props: any) => {
   const { starNumber, width, percent } = props;
   return (
-    <div className="w-[800px] h-[24px] flex items-center justify-between">
-      <div className="w-[30px] h-[24px] flex items-center justify-between">
+    <div className="w-[382px] md:w-[800px] h-[24px] flex items-center justify-between">
+      <div className="w-[26px] h-[21px] md:w-[30px] md:h-[24px] flex items-center justify-between">
         <p> {starNumber}</p>
-
-        <StarBorderOutlinedIcon
-          className="rounded-lg`}>
-          
-      />"
-        />
+        <StarBorderOutlinedIcon className="w-[14px] h-[14px] md:-[24px] md:-[24px]" />
       </div>
-      <div className="w-[700px] h-[12px] bg-[#DFE0E4] rounded-lg">
+      <div className="w-[285px] md:w-[700px] h-[12px] bg-[#DFE0E4] rounded-lg">
         <div className={`${width} h-[12px] bg-[#F3A102] rounded-lg`}></div>
       </div>
       <div>{percent}</div>
@@ -160,13 +171,13 @@ export const ReviewMap = (props: any) => {
     setOpen(!open);
   };
   return (
-    <div className="w-[800px]  flex flex-col justify-between py-5 px-5 rounded-lg bg-[#0D47A10D] ">
+    <div className="w-[382px] md:w-[800px]  flex flex-col justify-between py-5 px-5 rounded-lg bg-[#0D47A10D] ">
       <div className="w-[752px] h-[52px] gap-[20px] flex">
         {date}
         <TbPointFilled />
         {time}
       </div>
-      <div className="w-[752px]">
+      <div className="w-[354px] md:w-[752px]">
         <Rating
           name="simple-controlled"
           value={value}
@@ -174,8 +185,8 @@ export const ReviewMap = (props: any) => {
             setValue(newValue);
           }}
         />
-        <p className="">{text}</p>
-        <div className="w-[752px] flex gap-[20px] pt-5 ">
+        <p className="text-[14px]">{text}</p>
+        <div className="w-[354px] md:w-[752px] flex gap-[20px] pt-5 ">
           <Image
             src={image}
             alt=""
@@ -185,7 +196,7 @@ export const ReviewMap = (props: any) => {
           />
           <div className="w-[149px] flex flex-col">
             <strong className="text-[20px] w-[200px]">{name}</strong>
-            <p className="text-[16px]">{jobType}</p>
+            <p className="text-[14px] md:text-[16px]">{jobType}</p>
           </div>
         </div>
         <div className="w-[752px] flex py-6 gap-[20px]">
@@ -205,7 +216,7 @@ export const ReviewMap = (props: any) => {
         </div>
       </div>
       {open && (
-        <div className="w-[752px] flex items-center justify-between ">
+        <div className="w-[354px] md:w-[752px] flex items-center justify-between ">
           <Image
             src={"/profile2.png"}
             alt=""
@@ -213,9 +224,9 @@ export const ReviewMap = (props: any) => {
             height={60}
             className="rounded-full w-[60px] h-[60px]"
           />
-          <div className="w-[678px] h-[62px] rounded-xl flex items-center justify-center bg-white border border-black">
+          <div className="w-[280px] md:w-[678px] h-[62px] rounded-full flex items-center justify-center bg-white border border-black">
             <input
-              className="w-[642px] h-[42px] border-transparent"
+              className="w-[260px] md:w-[642px] h-[42px] border-transparent text-[16px]"
               type="text"
               placeholder="Join the discussion..."
             />
