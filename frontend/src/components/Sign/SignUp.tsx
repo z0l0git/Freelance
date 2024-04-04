@@ -73,10 +73,6 @@ export const SignUp = (props: SignUpType) => {
       .required("Please confirm your password"),
   });
 
-  const intoLoginFunc = () => {
-    // setOpen(false);
-  };
-
   const createAccountFunc = async (values: typeof initialValues) => {
     try {
       const { data } = await AxiosInstance.post("createUser", values);
@@ -91,8 +87,6 @@ export const SignUp = (props: SignUpType) => {
         }, 2000);
       } else {
         setStage(0);
-
-        // setOpen(false);
       }
     } catch (err: any) {
       console.log(err);
