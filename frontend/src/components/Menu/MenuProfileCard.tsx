@@ -48,10 +48,17 @@ export const MenuProfileCard = (props: any) => {
           <IoMdNotificationsOutline />
           <span className="font-bold ">Notifications</span>{" "}
         </DropdownMenuItem>
+
         <DropdownMenuItem className="flex gap-2 w-full h-8">
-          <MdOutlinePostAdd />
-          <span className="font-bold ">Post A Request</span>{" "}
+          <Link
+            href={"/new-gig"}
+            className="flex gap-2 w-full h-8 items-center"
+          >
+            <MdOutlinePostAdd />
+            <span className="font-bold ">Post A Project</span>
+          </Link>
         </DropdownMenuItem>
+
         <DropdownMenuItem className="flex gap-2 w-full h-8">
           <AiOutlineTeam /> <span className="font-bold ">Refer a Friend</span>
         </DropdownMenuItem>

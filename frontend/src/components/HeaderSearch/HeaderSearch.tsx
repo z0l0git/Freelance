@@ -5,6 +5,7 @@ import { BlueButton, WhiteButton } from "../Button";
 import { IoSearchOutline } from "react-icons/io5";
 import { SelectBox } from "./SelectBox";
 import { SearchDrawer } from "./SearchDrawer";
+import Link from "next/link";
 
 export const HeaderSearch = () => {
   return (
@@ -43,7 +44,9 @@ export const HeaderSearch = () => {
           <SearchDrawer />
         </div>
         <div className="py-[10px]">
-          <BlueButton buttonName="Post A Project" />
+          <Link href="/new-gig">
+            <BlueButton buttonName="Post A Project" />
+          </Link>
         </div>
       </div>
     </div>

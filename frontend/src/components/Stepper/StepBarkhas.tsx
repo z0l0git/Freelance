@@ -42,12 +42,12 @@ export const StepperBarkhas = () => {
           <>
             <BlueButton
               height="70px"
-              width="250px"
+              width="30%"
               buttonName="Save & Continue"
               handleSubmit={handleNext}
             />
             <ButtonWithBlueBorder
-              handlePrevious={handlePrevious}
+              handleSubmit={handlePrevious}
               buttonName="Cancel"
             />
           </>

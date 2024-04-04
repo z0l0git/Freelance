@@ -1,9 +1,8 @@
 import { Footer } from "@/components/Footer/Footer";
-import { MainProfileSidebar } from "@/components/FreelancerProfileDetail/MainProfileSidebar";
 import { HeaderSearch } from "@/components/HeaderSearch/HeaderSearch";
 import { Menu } from "@/components/Menu/Menu";
+import { StepperBarkhas } from "@/components/Stepper/StepBarkhas";
 
-import { UPdateprofile } from "@/components/userProfile/UpdateProFile";
 import React from "react";
 
 const page = () => {
@@ -13,11 +12,7 @@ const page = () => {
         <HeaderSearch />
         <Menu />
       </div>
-      <div className="flex justify-center mt-[100px]">
-        <MainProfileSidebar />
-        <UPdateprofile />
-      </div>
-
+      <StepperBarkhas />
       <Footer />
     </div>
   );

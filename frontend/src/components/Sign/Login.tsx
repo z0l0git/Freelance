@@ -54,7 +54,6 @@ export const Login = () => {
       const { data } = await AxiosInstance.post("/login", values);
       console.log(data, "token");
       localStorage.setItem("Token", data);
-      // window.location.href = "/";
       push("/");
     } catch (err: any) {
       console.log(err.response.data);

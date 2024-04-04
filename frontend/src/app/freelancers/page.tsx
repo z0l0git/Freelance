@@ -1,10 +1,6 @@
 import { Footer } from "@/components/Footer/Footer";
-import { MainProfileSidebar } from "@/components/FreelancerProfileDetail/MainProfileSidebar";
 import { HeaderSearch } from "@/components/HeaderSearch/HeaderSearch";
 import { Menu } from "@/components/Menu/Menu";
-
-import { UPdateprofile } from "@/components/userProfile/UpdateProFile";
-import React from "react";
 
 const page = () => {
   return (
@@ -13,11 +9,7 @@ const page = () => {
         <HeaderSearch />
         <Menu />
       </div>
-      <div className="flex justify-center mt-[100px]">
-        <MainProfileSidebar />
-        <UPdateprofile />
-      </div>
-
+      <div className="flex justify-center bg-slate-200 h-[400px]"></div>
       <Footer />
     </div>
   );

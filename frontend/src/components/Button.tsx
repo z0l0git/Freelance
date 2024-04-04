@@ -19,6 +19,8 @@ export const BlueButton = (props: any) => {
   const { buttonName, type = "", height, width, handleSubmit } = props;
   return (
     <button
+      onClick={handleSubmit}
+      style={{ width: width, height: height }}
       type={type}
       className="group w-full h-full relative px-[31px] py-[15px] overflow-hidden rounded-[100px] bg-[#0d47a1] text-lg font-bold text-white md:h-[60%] lg:h-[40%] sm:h-[20%]"
     >
@@ -38,9 +40,10 @@ export const WhiteButton = (props: any) => {
 };
 
 export const ButtonWithBlueBorder = (props: any) => {
-  const { buttonName, type = "" } = props;
+  const { buttonName, type = "", handleSubmit } = props;
   return (
     <button
+      onClick={handleSubmit}
       type={type}
       className="group relative px-[31px] py-[15px] overflow-hidden rounded-[100px] border-blue-500 border-[1px] text-lg font-bold text-[#0f48a2] flex items-center gap-1"
     >

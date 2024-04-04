@@ -4,6 +4,7 @@ import { ProjectCard } from "@/components/ProjectCard/ProjectCard";
 import { Menu } from "@/components/Menu/Menu";
 import React from "react";
 import { Projects } from "@/components/Projects/Projects";
+import { Footer } from "@/components/Footer/Footer";
 
 const categoryAr = ["Python", "Software ", "API Integration", "Open AI"];
 
@@ -17,6 +18,7 @@ const page = () => {
       <div className="flex justify-center bg-slate-200">
         <Projects />
       </div>
+      <Footer />
     </div>
   );
 };

@@ -19,7 +19,7 @@ export const UPdateprofile = () => {
               stage === 0 && "text-blue-700"
             } `}
           >
-            <AiOutlineFileAdd className="text-[20px]" /> New Gig
+            <AiOutlineFileAdd className="text-[20px]" /> New Project
           </div>
           <div
             onClick={() => setStage(1)}
@@ -28,7 +28,7 @@ export const UPdateprofile = () => {
             } `}
           >
             <BsFileEarmarkBarGraph className="text-[20px] " />
-            Active Gig
+            Active Projects
           </div>
           <div
             onClick={() => setStage(2)}
@@ -42,7 +42,7 @@ export const UPdateprofile = () => {
         </div>
         <div>
           {stage === 0 && <NewGig />}
-          {stage === 1 && <div>Active Gig</div>}
+          {stage === 1 && <div>Active Projects</div>}
           {stage === 2 && (
             <div>
               <UpdatePro />
