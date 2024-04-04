@@ -16,11 +16,13 @@ export const OrangeButton = (props: any) => {
   );
 };
 export const BlueButton = (props: any) => {
-  const { buttonName, type = "" } = props;
+  const { buttonName, type = "", height, width, handleSubmit } = props;
   return (
     <button
       type={type}
-      className="group w-full h-[30%] relative px-[31px] py-[15px] overflow-hidden rounded-[100px] bg-[#0d47a1] text-lg font-bold text-white md:h-[60%] lg:h-[40%] sm:h-[20%]"
+      className="group w-full h-full relative px-[31px] py-[15px] overflow-hidden rounded-[100px] bg-[#0d47a1] text-lg font-bold text-white md:h-[60%] lg:h-[40%] sm:h-[20%]"
+      style={{ height: height, width: width }}
+      onClick={handleSubmit}
     >
       <div className="absolute inset-0 h-full z-0 w-full scale-0 rounded-2xl transition-all duration-300 group-hover:scale-100 group-hover:bg-white/40"></div>
       <p> {buttonName}</p>
@@ -37,11 +39,18 @@ export const WhiteButton = (props: any) => {
   );
 };
 
-export const ButtonWithBlueBorder = (props: any) => {
-  const { buttonName, type } = props;
+type ButtonWithBlueBorderProps = {
+  handlePrevious: () => void;
+  buttonName: string;
+  type?: "submit" | "button" | "reset";
+};
+
+export const ButtonWithBlueBorder = (props: ButtonWithBlueBorderProps) => {
+  const { buttonName, type, handlePrevious } = props;
   return (
     <button
       type={type}
+      onClick={handlePrevious}
       className="group relative px-[31px] py-[15px] overflow-hidden rounded-[100px] border-blue-500 border-[1px] text-lg font-bold text-[#0f48a2] flex items-center gap-1"
     >
       {buttonName}

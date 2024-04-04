@@ -1,4 +1,3 @@
-import { BlueButton, ButtonWithBlueBorder } from "@/components/Button";
 import { NameInputComponent } from "@/components/Input";
 import Image from "next/image";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -56,17 +55,16 @@ const StepThree = () => {
             Accept terms and conditions
           </label>
         </div>
-        <div className="flex gap-2">
-          <BlueButton buttonName="Save & Continue" />
-          <ButtonWithBlueBorder buttonName="Save & Continue" />
-        </div>
       </div>
-      <div className="border rounded-xl h-[380px]">
-        <div className="flex flex-col m-4  gap-5">
+      <div className="border rounded-xl w-[434px] h-[450px]">
+        <div className="flex flex-col m-4 gap-5">
           <h1 className="font-bold  text-[#212e48] text-[30px]">
-            Let’s talk details
+            Now let's talk budget and timing
           </h1>
-          <p>These suggestions are based on your brief’s title.</p>
+          <p>
+            You're not committing to anything final here.This just helps us find
+            you the most relevant
+          </p>
           <Image src="/matching.png" width={400} height={400} alt="matching" />
         </div>
       </div>
