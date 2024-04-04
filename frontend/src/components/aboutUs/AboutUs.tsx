@@ -7,16 +7,16 @@ export const AboutUs = () => {
   console.log(stage);
 
   return (
-    <div className="w-screen h-fit flex justify-center items-center py-[120px]">
-      <div className="w-[1280px] h-fit flex justify-between ">
-        <div className="w-[739px] flex flex-col gap-[20px]">
+    <div className="w-screen h-fit flex justify-center items-center py-[120px] sm:px-0 px-[40px]">
+      <div className="xl:w-[1280px] w-[1020px] h-fit flex lg:flex-row flex-col lg:justify-between justify-center lg:items-start  items-center lg:gap-0 gap-[50px]">
+        <div className="xl:w-[739px] lg:w-[530px] md:w-[700px] sm:w-[540px] w-fit flex flex-col gap-[20px]">
           <div className="text-[#0D47A9] text-[20px] font-semibold">
             About us
           </div>
-          <div className="text-[40px] font-semibold">
+          <div className="md:text-[40px] text-[30px] font-semibold">
             Our Comprehensive Services Provide The Power of AI
           </div>
-          <div className="flex  w-[400px] border-b border-slate-500 justify-between  ">
+          <div className="flex  sm:w-[400px] w-fit border-b border-slate-500 justify-between sm:gap-0 gap-[15px] ">
             <div
               onClick={(e) => {
                 setStage(0);
@@ -48,7 +48,7 @@ export const AboutUs = () => {
               How We Work
             </div>
           </div>
-          <div>
+          <div className="sm:h-[120px] h-fit ">
             {stage == 0 && (
               <motion.div
                 initial={{ scale: 0.96 }}
@@ -93,7 +93,7 @@ export const AboutUs = () => {
             )}
           </div>
         </div>
-        <div className="w-[606px] h-[607px] ml-[20px]  relative">
+        <div className="lg:w-[606px] md:w-[700px] sm:w-[540px] w-full  sm:h-[607px] h-[709px] ml-[20px]  relative">
           <div className="w-[335px] h-[135px] bg-[#0d47a1] rounded-2xl absolute z-20 bottom-0 right-0 flex justify-center gap-[20px] items-center px-[30px]">
             <div className="text-yellow-400 text-[70px] font-semibold">30+</div>
             <div className="text-[#fff] text-[20px] font-semibold">
@@ -112,14 +112,14 @@ export const AboutUs = () => {
             src="/r2.jpeg"
             width={300}
             height={364}
-            className="absolute bottom-[40px] left-[0px] rounded-2xl"
+            className="absolute bottom-[40px] xl:left-[0px] lg:left-[80px] md:left-[0px]  rounded-2xl"
           />
           <Image
             alt=""
             src="/r4.png"
             width={80}
             height={80}
-            className="absolute bottom-[370px] left-[130px] rounded-2xl animate-bounce"
+            className="absolute sm:bottom-[370px] bottom-[570px] xl:left-[130px] lg:left-[100px] md:left-[260px] left-[100px] rounded-2xl animate-bounce"
           />
           <Image
             alt=""

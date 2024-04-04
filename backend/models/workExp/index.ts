@@ -27,7 +27,5 @@ const WorkExpSchema = new Schema<WorkExpModelType>({
   },
 });
 
-WorkExpSchema.index({ email: 1 }, { unique: true });
-
 export const WorkExpModel: Model<WorkExpModelType> =
   models["WorkExp"] || model("WorkExp", WorkExpSchema);
