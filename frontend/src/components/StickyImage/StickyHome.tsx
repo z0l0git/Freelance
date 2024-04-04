@@ -3,9 +3,9 @@ import { LuSearchCode } from "react-icons/lu";
 
 export const StickyHome = () => {
   return (
-    <div className="bg-[url(https://res.cloudinary.com/dxarul6xr/image/upload/v1711522283/a3xj4objgeywljih9bpi.jpg)] bg-no-repeat bg-contain bg-right w-screen py-[120px] flex justify-center">
-      <div className="w-[1280px] h-[100%] flex ">
-        <div className="  sm:py-[100px] py-[10px] rounded-[18px] pr-[30px] pl-[10px] flex flex-col gap-[20px] justify-center bg-white mx-[40px]">
+    <div className="bg-[url(https://res.cloudinary.com/dxarul6xr/image/upload/v1711522283/a3xj4objgeywljih9bpi.jpg)] bg-no-repeat bg-cover xl:bg-contain bg-right w-screen py-[110px] h-fit flex justify-center items-center">
+      <div className="w-[70%] h-full flex ">
+        <div className="h-[70%] sm:py-[100px] py-[10px] px-[20px] rounded-[18px] pr-[30px] pl-[10px] flex flex-col gap-[20px] justify-center bg-white mx-[40px]">
           <div className="sm:text-[30px] text-[19px] font-semibold text-blue-700 sm:mt-[100px] mt-[10px]">
             Building High-Performing Teams
           </div>
