@@ -15,7 +15,7 @@ export const UPdateprofile = () => {
         <div className="bg-[#f8f9fc] flex gap-[20px] px-[20px] py-[20px] rounded-[15px] border border-gray-300 font-bold mb-[32px]">
           <div
             onClick={() => setStage(0)}
-            className={`flex items-center gap-[6px] ${
+            className={`flex  cursor-pointer items-center gap-[6px] ${
               stage === 0 && "text-blue-700"
             } `}
           >
@@ -23,20 +23,20 @@ export const UPdateprofile = () => {
           </div>
           <div
             onClick={() => setStage(1)}
-            className={`flex items-center gap-[6px] ${
+            className={`flex cursor-pointer items-center gap-[6px] ${
               stage === 1 && "text-blue-700"
             } `}
           >
-            <BsFileEarmarkBarGraph className="text-[20px]" />
+            <BsFileEarmarkBarGraph className="text-[20px] " />
             Active Gig
           </div>
           <div
             onClick={() => setStage(2)}
-            className={`flex items-center gap-[6px] ${
+            className={`flex cursor-pointer items-center gap-[6px] ${
               stage === 2 && "text-blue-700"
             } `}
           >
-            <RiEditBoxLine className="text-[20px]" />
+            <RiEditBoxLine className="text-[20px] " />
             Update Profile
           </div>
         </div>

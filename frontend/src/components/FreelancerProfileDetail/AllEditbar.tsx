@@ -13,9 +13,9 @@ export const EditBar = () => {
     <div className="w-[416px] h-[1076] rounded-2xl border p-8 gap-4 ">
       <div className="w-full flex flex-col pb-4">
         <div className="flex justify-between items-center mb-4">
-          <h3 className="text-2xl">Description</h3>
+          <h3 className="text-2xl font-semibold">Description</h3>
           <WhiteButton
-            className="font-bold text-[#0D47A9] cursor-pointer"
+            buttonClass="font-bold text-[#0d47a1] cursor-pointer"
             onClick={setShowDescriptionEdit}
             buttonName="Edit"
             visible={showdescriptionEdit}
@@ -34,8 +34,13 @@ export const EditBar = () => {
       <div className="w-full border-dashed border-t-2"></div>
       <div>
         <div className="flex justify-between items-center mb-4">
-          <h3 className="text-2xl">Languages</h3>
-          <span>Add new</span>
+          <h3 className="text-2xl font-semibold">Languages</h3>
+          <WhiteButton
+            buttonClass="font-bold text-[#0d47a1] cursor-pointer"
+            onClick={setShowDescriptionEdit}
+            buttonName="Add New"
+            visible={showdescriptionEdit}
+          />
         </div>
         <div></div>
         <App />

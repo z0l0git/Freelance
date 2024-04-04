@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -16,9 +16,12 @@ import { AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { Example } from "./MenuToggle";
 import { MenuList } from "./MenuList";
+import { DataContext } from "../context/DataContext";
+import Link from "next/link";
 
 export const Menu = () => {
   const [open, setOpen] = useState(false);
+  const { isLoggedIn } = useContext(DataContext);
 
   return (
     <>
@@ -34,18 +37,23 @@ export const Menu = () => {
             className="md:hidden"
           />
           <div className="hidden md:flex flex gap-4 relative w-[35%] md:w-[33%] sm:w-[70%]">
-            <WhiteButton
-              buttonName="Browse Projects"
-              buttonClass="text-white hover:text-blue-500 hover:underline"
-            />
+            <Link href={"/projects"}>
+              <WhiteButton
+                buttonName="Browse Projects"
+                buttonClass="text-white hover:text-blue-500 hover:underline"
+              />
+            </Link>
+
             <WhiteButton
               buttonName="Find Freelancers"
               buttonClass="text-white hover:text-blue-500 hover:underline"
             />
-            <WhiteButton
-              buttonName="Contact"
-              buttonClass="text-white hover:text-blue-500 hover:underline"
-            />
+            <Link href={"/contact"}>
+              <WhiteButton
+                buttonName="Contact"
+                buttonClass="text-white hover:text-blue-500 hover:underline"
+              />
+            </Link>
           </div>
           <div className="flex gap-4 items-center">
             <DropdownMenu>
@@ -79,7 +87,16 @@ export const Menu = () => {
             </DropdownMenu>
             <DropdownMenu>
               <div className="flex justify-center items-center rounded-full w-10 h-10 ">
-                <MenuProfileCard profilePicture="/f10.png" />
+                {isLoggedIn ? (
+                  <MenuProfileCard profilePicture="/f10.png" />
+                ) : (
+                  <Link href="/sign">
+                    <WhiteButton
+                      buttonName="Log In"
+                      buttonClass="text-white hover:text-blue-500 hover:underline"
+                    />
+                  </Link>
+                )}
               </div>
             </DropdownMenu>
             <div className="md:hidden" onClick={() => setOpen(!open)}>

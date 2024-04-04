@@ -18,6 +18,7 @@ import {
 import { AiOutlineSetting, AiOutlineTeam } from "react-icons/ai";
 import { ButtonWithBlueBorder } from "../Button";
 import React from "react";
+import Link from "next/link";
 export const MenuProfileCard = (props: any) => {
   const { profilePicture, userName, userMail } = props;
   return (
@@ -35,16 +36,17 @@ export const MenuProfileCard = (props: any) => {
           <p className="text-sm text-gray-600 font-thin">Account</p>
         </DropdownMenuLabel>
         <DropdownMenuItem className=" flex gap-2 w-full h-8">
-          <LiaUserCheckSolid />
-          <span className="font-bold ">Profile</span>
+          <Link
+            href="/user-profile"
+            className="flex gap-2 w-full h-8 items-center"
+          >
+            <LiaUserCheckSolid />
+            <span className="font-bold ">Profile</span>
+          </Link>
         </DropdownMenuItem>
         <DropdownMenuItem className="flex gap-2 w-full h-8">
           <IoMdNotificationsOutline />
           <span className="font-bold ">Notifications</span>{" "}
-        </DropdownMenuItem>
-        <DropdownMenuItem className="flex gap-2 w-full h-8">
-          <MdChatBubbleOutline />
-          <span className="font-bold ">Post A Request</span>{" "}
         </DropdownMenuItem>
         <DropdownMenuItem className="flex gap-2 w-full h-8">
           <MdOutlinePostAdd />
