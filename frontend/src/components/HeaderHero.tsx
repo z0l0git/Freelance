@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
 import { HeaderSearch } from "./HeaderSearch/HeaderSearch";
+import React from "react";
 import { Menu } from "./Menu/Menu";
 
 export const HeaderHero = () => {

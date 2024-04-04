@@ -1,8 +1,8 @@
-import { on } from "events";
+"use client";
 
 type ButtonType = {
   text: string;
-  onClick: any;
+  onClick?: () => void;
   type?: "submit" | "reset" | "button" | undefined;
 };
 export const Button = (props: ButtonType) => {

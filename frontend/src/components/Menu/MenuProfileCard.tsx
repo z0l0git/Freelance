@@ -1,6 +1,5 @@
 "use client";
 import {
-  DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuLabel,
@@ -22,7 +21,7 @@ import React from "react";
 export const MenuProfileCard = (props: any) => {
   const { profilePicture, userName, userMail } = props;
   return (
-    <div className="flex justify-center items-center rounded-full border bg-white w-10 h-10 ">
+    <div className="flex justify-center items-center rounded-full bg-white w-10 h-10 ">
       <DropdownMenuTrigger>
         <Image alt="user picture" src={profilePicture} width={60} height={60} />
       </DropdownMenuTrigger>

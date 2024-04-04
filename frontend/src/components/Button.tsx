@@ -20,8 +20,9 @@ export const BlueButton = (props: any) => {
   return (
     <button
       type={type}
-      onClick={handleSubmit}
-      className="group h-full relative px-[31px] py-[15px] overflow-hidden rounded-[100px] bg-[#0d47a1] text-lg font-bold text-white md:h-auto"
+
+      className="group w-full h-full relative px-[31px] py-[15px] overflow-hidden rounded-[100px] bg-[#0d47a1] text-lg font-bold text-white md:h-[60%] lg:h-[40%] sm:h-[20%]"
+
     >
       <div className="absolute inset-0 h-full z-0 w-full scale-0 rounded-2xl transition-all duration-300 group-hover:scale-100 group-hover:text-transparent group-hover:bg-white/40"></div>
       <p>{buttonName}</p>

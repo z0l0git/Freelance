@@ -1,13 +1,11 @@
-"use client";
-
-import Stepper from "@/components/CreateProject/Stepper";
+import { StepperBarkhas } from "@/components/Stepper/StepBarkhas";
+import React from "react";
 
 const page = () => {
   return (
     <div>
-      <Stepper step={1} />
+      <StepperBarkhas />
     </div>
   );
 };
-
 export default page;
