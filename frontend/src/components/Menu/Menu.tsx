@@ -23,7 +23,7 @@ export const Menu = () => {
   return (
     <>
       <div
-        className={`w-screen bg-[#13203B] py-4 flex justify-around z-50 sticky top-0`}
+        className={` bg-[#13203B] py-4 flex justify-around z-50 sticky top-0`}
       >
         <div className="w-full mx-auto px-3 flex md:justify-around justify-between h-10 items-center gap-4">
           <Image

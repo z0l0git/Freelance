@@ -3,13 +3,9 @@ import { HeaderSearch } from "@/components/HeaderSearch/HeaderSearch";
 import { ProjectCard } from "@/components/ProjectCard/ProjectCard";
 import { Menu } from "@/components/Menu/Menu";
 import React from "react";
+import { Projects } from "@/components/Projects/Projects";
 
-const categoryAr = [
-  "Python",
-  "Software Architecture",
-  "API Integration",
-  "Open AI",
-];
+const categoryAr = ["Python", "Software ", "API Integration", "Open AI"];
 
 const page = () => {
   return (
@@ -18,18 +14,8 @@ const page = () => {
         <HeaderSearch />
         <Menu />
       </div>
-      <div className=" flex flex-col lg:flex-row w-screen items-start justify-center bg-slate-200 gap-5 pt-32">
-        <Filter jobs={"Local Jobs"} counter={"35"} />
-        <ProjectCard
-          title={"AI-powered Chatbot Development"}
-          price={"$300"}
-          description="Develop a conversational chatbot using natural language processing and machine learning techniques to provide automated customer support and assistance."
-          category={categoryAr}
-          expire={"343 days"}
-          location={"Remote"}
-          level={"Expensive"}
-          proposal={"43 recieved"}
-        />
+      <div className="flex justify-center bg-slate-200">
+        <Projects />
       </div>
     </div>
   );

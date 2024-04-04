@@ -28,7 +28,7 @@ export const ProjectCard = (props: ProjectCard) => {
   } = props;
 
   return (
-    <div className="flex bg-slate-100 rounded-2xl w-[35%]">
+    <div className="flex bg-slate-100 rounded-2xl w-[720px]">
       <div className="flex flex-col h-[432px] rounded-xl p-8 bg-slate-50">
         <div className="flex flex-col gap-3 h-[40px] mb-6">
           <div className="flex justify-between ">
@@ -40,7 +40,7 @@ export const ProjectCard = (props: ProjectCard) => {
               return (
                 <div
                   key={index}
-                  className="flex w-fill h-[41px] py-2 px-4 border-inherit bg-slate-100 border-solid rounded-xl text-base font-bold text-[#0d47a1]"
+                  className="flex w-fill h-[41px] py-2 px-4 border-inherit bg-slate-100 border-solid rounded-xl text-base font-bold text-[#0d47a1] hover:text-blue-500"
                 >
                   {element}
                 </div>

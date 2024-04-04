@@ -12,6 +12,8 @@ export default authMiddleware({
     "/battulga",
     "/barkhas",
     "/contact",
+    "/projects",
+    "/profile",
   ],
 });
 
