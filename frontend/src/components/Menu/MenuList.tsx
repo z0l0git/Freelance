@@ -13,13 +13,13 @@ export const MenuList = () => {
       className="w-[80%] flex md:hidden flex-col gap-3 bg-[#222e48] p-[15px] text-white "
     >
       <div className="w-full border-[0.5px] solid p-[10px] hover:text-blue-500 cursor-pointer">
-        Зарлагдсан ажлууд
+        Browse Projects
       </div>
       <div className="w-full border-[0.5px] solid p-[10px] hover:text-blue-500 cursor-pointer">
-        Freelancer хайх
+        Find Freelancers
       </div>
       <div className="w-full border-[0.5px] solid p-[10px] hover:text-blue-500 cursor-pointer">
-        Холбоо барих
+        Contact
       </div>
     </motion.div>
   );

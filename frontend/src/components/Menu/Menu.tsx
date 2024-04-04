@@ -33,7 +33,7 @@ export const Menu = () => {
             height={30}
             className="md:hidden"
           />
-          <div className="hidden md:flex flex gap-4 relative w-[35%] md:w-[50%] sm:w-[70%]">
+          <div className="hidden md:flex flex gap-4 relative w-[35%] md:w-[33%] sm:w-[70%]">
             <WhiteButton
               buttonName="Browse Projects"
               buttonClass="text-white hover:text-blue-500 hover:underline"

@@ -8,6 +8,7 @@ import { Header } from "@/components/Header/HeaderComp";
 import { HeaderSearch } from "@/components/HeaderSearch/HeaderSearch";
 import { AboutUs } from "@/components/aboutUs/AboutUs";
 import { StickyHome } from "@/components/StickyImage/StickyHome";
+import { Footer } from "@/components/Footer/Footer";
 
 export default async function Home() {
   // const user: any = await currentUser();
@@ -18,6 +19,7 @@ export default async function Home() {
       <HeaderHero />
       <AboutUs />
       <StickyHome />
+      <Footer />
     </div>
   );
 }

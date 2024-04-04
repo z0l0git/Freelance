@@ -11,6 +11,7 @@ export default authMiddleware({
     "/Chinzorig",
     "/battulga",
     "/barkhas",
+    "/contact",
   ],
 });
 
