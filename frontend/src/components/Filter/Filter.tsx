@@ -2,8 +2,8 @@
 
 import React from "react";
 // import { ButtonWithBlueBorder } from "../Button";
-import { Input } from "@/components/ui/input";
-import { CheckCircle } from "@/components/ui/checkcircle";
+import { Input } from "../../components/ui/input";
+import { CheckCircle } from "../../components/ui/checkcircle";
 
 type Filter = {
   jobs: string;
@@ -18,15 +18,15 @@ const jobCategory = [
 ];
 
 const typeCategory = [
-  { category: "Вэб хөгжүүлэгч", count: 45 },
-  { category: "Сошиал хөгжүүлэгч", count: 30 },
-  { category: "Төсөвчин", count: 23 },
-  { category: "Нягтлан бодогч", count: 15 },
-  { category: "Орчуулагч", count: 22 },
-  { category: "Сэтгэл зүйч", count: 22 },
-  { category: "Онлайн багш", count: 22 },
-  { category: "Төсөл хэрэгжүүлэгч", count: 22 },
-  { category: "Тендерийн мэргэжилтэн", count: 22 },
+  { category: "NPL specialists", count: 45 },
+  { category: "Social developers", count: 30 },
+  { category: "Badjet specialists", count: 23 },
+  { category: "Accounters", count: 15 },
+  { category: "Translators", count: 22 },
+  { category: "Web developers", count: 22 },
+  { category: "Tender specialists", count: 22 },
+  { category: "Project managers", count: 22 },
+  { category: "English teacher", count: 22 },
 ];
 
 const experienceCategory = [
@@ -38,11 +38,22 @@ const experienceCategory = [
 ];
 
 const skillsCategory = [
-  { category: "Өндөр ур чадвартай", count: 5 },
-  { category: "Мэргэшсэн", count: 4 },
-  { category: "Мэргэжилтэн", count: 3 },
-  { category: "Дадлагажигч", count: 2 },
-  { category: "Оюутан", count: 1 },
+  { category: "Open AI" },
+  { category: ".NET 5.0/6" },
+  { category: ".NET" },
+  { category: "PHP" },
+  { category: "HTML" },
+  { category: "Java" },
+  { category: "Python" },
+];
+const languageCategory = [
+  { category: "English" },
+  { category: "Germany" },
+  { category: "Chinese" },
+  { category: "Hindy" },
+  { category: "French" },
+  { category: "Spanish" },
+  { category: "Portuguases" },
 ];
 
 export const Filter = (props: Filter) => {
@@ -62,7 +73,7 @@ export const Filter = (props: Filter) => {
         />
 
         <div className="w-[352px] h-[56px] pt-6 mb-1">
-          <h2 className="text-2xl font-semibold">Ажиллах хэлбэр</h2>
+          <h2 className="text-2xl font-semibold">Types of Jobs</h2>
         </div>
         <div className="flex flex-col gap-2">
           {jobCategory.map((el, i) => {
@@ -82,7 +93,7 @@ export const Filter = (props: Filter) => {
         </div>
 
         <div className="w-[352px] h-[56px] pt-6 mb-1">
-          <h2 className="text-2xl font-semibold">Мэргэжил</h2>
+          <h2 className="text-2xl font-semibold">Types of Categories</h2>
         </div>
         <div className="flex flex-col gap-2">
           {typeCategory.map((el, i) => {
@@ -101,7 +112,7 @@ export const Filter = (props: Filter) => {
           })}
         </div>
         <div className="w-[352px] h-[56px] pt-6 mb-1">
-          <h2 className="text-2xl font-semibold">Төсөв</h2>
+          <h2 className="text-2xl font-semibold">Budget</h2>
         </div>
         <div className="flex gap-8">
           <div className="flex items-center justify-center p-4 w-36 h-12 border-solid border-slate-500 bg-slate-200 rounded-3xl">
@@ -113,7 +124,7 @@ export const Filter = (props: Filter) => {
           </div>
         </div>
         <div className="w-[352px] h-[56px] pt-6 mb-1">
-          <h2 className="text-2xl font-semibold">Ажлын дадлага туршлага</h2>
+          <h2 className="text-2xl font-semibold">Experiences</h2>
         </div>
         <div className="flex flex-col gap-2">
           {experienceCategory.map((el, i) => {
@@ -132,7 +143,7 @@ export const Filter = (props: Filter) => {
           })}
         </div>
         <div className="w-[352px] h-[56px] pt-6 mb-1">
-          <h2 className="text-2xl font-semibold">Ажлын ур чадвар</h2>
+          <h2 className="text-2xl font-semibold">Skills</h2>
         </div>
         <div className="flex flex-col gap-2">
           {skillsCategory.map((el, i) => {
@@ -145,14 +156,34 @@ export const Filter = (props: Filter) => {
                   <CheckCircle className="" />
                   <h3 className="text-base font-medium">{el.category}</h3>
                 </div>
-                <span>{el.count}</span>
+                
+              </div>
+            );
+          })}
+        </div>
+        <div className="w-[352px] h-[56px] pt-6 mb-1">
+          <h2 className="text-2xl font-semibold">Languages</h2>
+        </div>
+        <div className="flex flex-col gap-2">
+          {languageCategory.map((el, i) => {
+            return (
+              <div
+                key={i}
+                className="flex items-center justify-between w-352px h-[32px"
+              >
+                <div className="flex gap-2 items-center">
+                  <CheckCircle className="" />
+                  <h3 className="text-base font-medium">{el.category}</h3>
+                </div>
+                
               </div>
             );
           })}
         </div>
         <div>
-          {/* <ButtonWithBlueBorder buttonName="Send proporsal" /> */}
-          <button className="flex items-center justify-center p-4 w-full h-12 border-solid border-[#0D47A1] bg-slate-200 rounded-3xl mt-8 text-base font-semibold text-[#0D47A1] ">Reset Filter</button>
+          <button className="flex items-center justify-center p-4 w-full h-12 border-solid border-[#0D47A1] border-2 bg-slate-50 rounded-3xl mt-8 text-base font-semibold text-[#0D47A1] ">
+            Reset Filter
+          </button>
         </div>
       </div>
     </div>

@@ -2,6 +2,7 @@
 
 import React from "react";
 import { BlueButton } from "../Button";
+import { CheckCircle } from "../../components/ui/checkcircle";
 
 type ProjectCard = {
   title: String;
@@ -11,7 +12,7 @@ type ProjectCard = {
   expire: String;
   location: String;
   level: String;
-  proporsal: String;
+  proposal: String;
 };
 
 export const ProjectCard = (props: ProjectCard) => {
@@ -23,8 +24,9 @@ export const ProjectCard = (props: ProjectCard) => {
     expire,
     location,
     level,
-    proporsal,
+    proposal,
   } = props;
+
   return (
     <div className="flex bg-slate-100 rounded-2xl">
       <div className="flex flex-col w-[856px] h-[432px] rounded-xl p-8 bg-slate-50">
@@ -50,25 +52,25 @@ export const ProjectCard = (props: ProjectCard) => {
           </div>
           <div className="flex w-full h-[49px] pb-6">
             <div className="flex w-full h-full text-base ">
-              <h5>{expire}</h5>
-              <h4 className="text-base font-bold">27 days</h4>
+              <h5>Expire:</h5>
+              <h4 className="text-base font-bold">{expire}</h4>
             </div>
             <div className="flex w-full h-full text-base ">
-              <h5>{location}</h5>
-              <h4 className="text-base font-bold">Remote</h4>
+              <h5>Location:</h5>
+              <h4 className="text-base font-bold">{location}</h4>
             </div>
             <div className="flex w-full h-full text-base ">
-              <h5>{level}</h5>
-              <h4 className="text-base font-bold">Senior</h4>
+              <h5>Level:</h5>
+              <h4 className="text-base font-bold">{level}</h4>
             </div>
             <div className="flex w-full h-full text-base ">
-              <h5>{proporsal}</h5>
-              <h4 className="text-base font-bold">76 received</h4>
+              <h5>Proporsal:</h5>
+              <h4 className="text-base font-bold">{proposal}</h4>
             </div>
           </div>
           <div className="flex w-full h-[70px] justify-between pt-6">
             <div>
-              <span>Abstergo LLC verified</span>
+              <span>Anzog LLC verified</span>
             </div>
             <div>
               <BlueButton buttonName="Send proporsal" />
@@ -77,5 +79,6 @@ export const ProjectCard = (props: ProjectCard) => {
         </div>
       </div>
     </div>
+    
   );
 };
