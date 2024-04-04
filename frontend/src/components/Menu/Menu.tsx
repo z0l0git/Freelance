@@ -1,13 +1,13 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { MenuMessageCard, MenuNotificationCard } from "./MenuMessageCard";
-import { MdNotifications } from "react-icons/md";
+
 import { BsChatText, BsBell } from "react-icons/bs";
 import { MenuProfileCard } from "./MenuProfileCard";
 import { WhiteButton } from "../Button";
@@ -17,26 +17,13 @@ import Image from "next/image";
 import { Example } from "./MenuToggle";
 import { MenuList } from "./MenuList";
 
-export const Menu = ({ triggerPoint = 400 }) => {
+export const Menu = () => {
   const [open, setOpen] = useState(false);
-  const [isVisible, setIsVisible] = useState(false);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollPosition = window.scrollY;
-      setIsVisible(scrollPosition >= triggerPoint);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [triggerPoint]);
   return (
     <>
       <div
-        className={`w-screen bg-[#13203B] py-4 flex justify-around z-50 sticky top-0 ${
-          isVisible ? "fixed top-0" : ""
-        }`}
+        className={`w-screen bg-[#13203B] py-4 flex justify-around z-50 sticky top-0`}
       >
         <div className="w-full mx-auto px-3 flex md:justify-around justify-between h-10 items-center gap-4">
           <Image

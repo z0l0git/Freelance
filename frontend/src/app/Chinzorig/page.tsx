@@ -55,6 +55,7 @@ const Chinzorig = () => {
           {projects.map((el, i) => {
             return (
               <ProjectCard
+                key={i}
                 title={el.title}
                 price={el.price}
                 description={el.description}

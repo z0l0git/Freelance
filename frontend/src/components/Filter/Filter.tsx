@@ -60,13 +60,13 @@ export const Filter = (props: Filter) => {
   const { jobs, counter } = props;
   return (
     <div className="flex bg-slate-100 rounded-2xl">
-      <div className="flex flex-col w-[416px] h-fill rounded-xl p-8 bg-slate-50">
+      <div className="flex flex-col w-[352px] xl:w-[416px] h-fill rounded-xl p-8 bg-slate-50">
         <div className="w-[352px] h-[56px] pb-6 mb-6">
           <h3 className="text-2xl font-semibold">Filter</h3>
         </div>
 
         <Input
-          className="w-[352px] h-[56px] pb-6 mb-6 rounded-3xl bg-slate-200 p-3"
+          className="w-full h-[56px] pb-6 mb-6 rounded-3xl bg-slate-200 p-3"
           type={"text"}
           id={"search"}
           placeholder={"search"}
@@ -156,7 +156,6 @@ export const Filter = (props: Filter) => {
                   <CheckCircle className="" />
                   <h3 className="text-base font-medium">{el.category}</h3>
                 </div>
-                
               </div>
             );
           })}
@@ -175,7 +174,6 @@ export const Filter = (props: Filter) => {
                   <CheckCircle className="" />
                   <h3 className="text-base font-medium">{el.category}</h3>
                 </div>
-                
               </div>
             );
           })}
