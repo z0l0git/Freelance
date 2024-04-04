@@ -1,6 +1,6 @@
 export const Description = () => {
   return (
-    <div className="w-full  md:w-[816px] md:h-fit  py-5 px-5 ">
+    <div className="w-full  md:w-[816px] md:h-fit  py-5 ">
       <strong className="test-[26px] md:text-[36px] font-sans pb-5">
         Description
       </strong>

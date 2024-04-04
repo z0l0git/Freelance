@@ -7,7 +7,7 @@ import { TbPointFilled } from "react-icons/tb";
 import ThumbUpOutlinedIcon from "@mui/icons-material/ThumbUpOutlined";
 import MessageOutlinedIcon from "@mui/icons-material/MessageOutlined";
 import Rating from "@mui/material/Rating";
-
+import { CheckCircle } from "../ui/checkcircle";
 
 export const DetailsMap = (props: any) => {
   const { icon, topic, text, color } = props;
@@ -99,36 +99,38 @@ export const ServiceMap = (props: any) => {
           className="transition ease-in-out delay-150 hover:-translate-1 hover:scale-125  duration-300 "
         />
       </div>
-      <div className="w-[360px] h-[246px] flex flex-col justify-around  ">
+      <div className="w-[360px] h-[246px] flex flex-col justify-center gap-[10px]  ">
         <div className="w-full h-[41px] flex items-center justify-between ">
-          <div className="w-fit h-[41px] flex justify-center items-center rounded-lg px-4 cursor-pointer bg-[#0D47A10D] font-sans  font-semibold text-[#0D47A1] hover:text-[#2196F3]">
+          <div className="w-fit h-[41px] flex justify-center items-center rounded-lg px-4 cursor-pointer bg-[#0D47A10D] font-bold text-[#0D47A1] hover:text-[#2196F3]">
             {type}
           </div>
-          <div className="w-[54px] h-[24px] text-[#2E7D32]">
-            level{levelNum}
+          <div className="w-[54px] h-[24px] text-[#2E7D32] font-bold">
+            Level {levelNum}
           </div>
         </div>
-        <strong className="text-5 text-[#222E48] font-serif font-semibold">
+        <strong className="text-[20px] text-[#222E48] font-bold">
           {topic}
         </strong>
         <div className="w-full h-[46px] flex items-center justify-between  ">
           <div className="w-[89px] flex justify-between items-center">
             <StarIcon className="text-[#febf58] " />
-            <p>{rate}</p>
+            <p className="font-bold">{rate}</p>
             <p>({rateNum})</p>
           </div>
           <div className="w-fit h-[25px] text-[#404A60]">
-            <p className="text-[#0D47A1]">Active Order:{orderNum}</p>
+            <p className="text-[#0D47A1]">
+              Active Order:<span className="font-bold"> {orderNum}</span>
+            </p>
           </div>
         </div>
         <div className="w-full flex items-center justify-between">
           <div className="w-fit h-[33px] flex items-center justify-between gap-[10px] ">
             <p>UserPic</p>
-            <p>Username</p>
+            <p className="font-bold">Username</p>
           </div>
           <div className="w-fit h-[25px] flex justify-between items-center">
             <p className="text-[#404A60] text-4">Starting:</p>
-            <p className="text-[#0D47A1]">${price}</p>
+            <p className="text-[#0D47A1] font-bold">${price}</p>
           </div>
         </div>
       </div>
@@ -140,7 +142,7 @@ export const CheckBoxMap = (props: any) => {
   const { text } = props;
   return (
     <div className="w-full h-[32px] flex items-center gap-[10px]">
-      <input type="checkbox" className="checkbox rounded-lg" />
+      <CheckCircle className="checkbox rounded-lg" />
       <p>{text}</p>
     </div>
   );
@@ -171,7 +173,7 @@ export const ReviewMap = (props: any) => {
     setOpen(!open);
   };
   return (
-    <div className="w-[382px] md:w-[800px]  flex flex-col justify-between py-5 px-5 rounded-lg bg-[#0D47A10D] ">
+    <div className="w-[382px] md:w-[800px]  flex flex-col justify-between py-5 px-5 rounded-lg bg-[#0D47A10D] border-top">
       <div className="w-[752px] h-[52px] gap-[20px] flex">
         {date}
         <TbPointFilled />
@@ -200,18 +202,9 @@ export const ReviewMap = (props: any) => {
           </div>
         </div>
         <div className="w-[752px] flex py-6 gap-[20px]">
-          <div className="flex items-center text-[#0D47A1]">
+          <div className="flex items-center text-[#0D47A1] gap-[10px]">
             <ThumbUpOutlinedIcon className="w-[20px] h-[20px]" />
             {likeNum}
-          </div>
-          <div
-            className="flex items-center text-[#0D47A1] cursor-pointer"
-            onClick={() => {
-              handleComment();
-            }}
-          >
-            <MessageOutlinedIcon className="w-[20px] h-[20px]" />
-            <p className="text-[18px] ">Replay</p>
           </div>
         </div>
       </div>

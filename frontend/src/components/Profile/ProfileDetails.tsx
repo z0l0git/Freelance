@@ -29,14 +29,16 @@ export const ProfileDetails = () => {
             </p>
           </div>
           <ul className="w-full h-[24px] flex flex-col md:flex-row justify-between ">
-            <li className="flex  items-center">
-              <CiLocationOn width={18} height={18} />
+            <li className="flex gap-[10px] items-center">
+              <CiLocationOn size={24} color="#0d47a1" />
               <p className="text-[16px] text-[#404A60] font-sans ">Japan</p>
             </li>
             <li className="w-fit h-[24px] flex justify-around items-center gap-[10px] ">
               <TbPointFilled />
               <StarIcon className="text-[#febf58] " />
-              <p>4.8(114)</p>
+              <p>
+                <span className="font-bold">4.8</span> (114){" "}
+              </p>
             </li>
             <li className="w-fit h-[24px] flex justify-around items-center gap-[10px] ">
               <TbPointFilled />
