@@ -12,7 +12,7 @@ export const Button = (props: ButtonType) => {
       <button
         onClick={onClick}
         style={{ cursor: "pointer" }}
-        className="w-[100%] h-[50px] flex justify-center items-center text-black bg-white rounded-[40px] font-bold text-[25px]"
+        className="w-[100%] px-[20px] h-[50px] flex justify-center items-center text-black bg-white rounded-[40px] font-bold text-[25px]"
         type={type}
       >
         {text}
