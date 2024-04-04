@@ -81,16 +81,16 @@ export const SignUp = (props: SignUpType) => {
     try {
       const { data } = await AxiosInstance.post("createUser", values);
 
-      const Asd = data?.split(" ")[0];
+      console.log(data);
 
-      if (Asd == "E11000") {
-        console.log("user already exist");
-        setError("User already exist");
+      if (typeof data === "string") {
+        console.log("User already exists");
+        setError("User already exists");
         setTimeout(() => {
           setError("");
         }, 2000);
       } else {
-        intoLoginFunc();
+        setOpen(false);
       }
     } catch (err: any) {
       console.log(err);
