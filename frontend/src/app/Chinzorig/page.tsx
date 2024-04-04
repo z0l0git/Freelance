@@ -1,7 +1,8 @@
 import React from "react";
-import { Contact } from "@/components/Contact/Contact";
-import { ProjectCard } from "@/components/ProjectCard/ProjectCard";
-import { Filter } from "@/components/Filter/Filter";
+
+import { Filter } from "../../components/Filter/Filter";
+import { ProjectCard } from "../../components/ProjectCard/ProjectCard";
+import { HomeCardJobs } from "@/components/HomeCard/HomeCardJobs";
 
 const categoryAr = [
   "Python",
@@ -10,28 +11,64 @@ const categoryAr = [
   "Open AI",
 ];
 
+const projects = [
+  {
+    title: "Facebook page's developer",
+    price: "Negotiate",
+    description: "Манай дэлгүүр өөрийн ФБ хуудсыг хөтөлж явуулах хөгжүүлэгчийг хайж байна, тус хуудас дотор байгаа онцлох барааг бүүст хийх, чатбот ажиллуулах зэрэг ажлуудыг хийж гүйцэтгэх юм.",
+    categoryCard: categoryAr,
+    expire: "21 days",
+    location: "Remote",
+    level: "Junior",
+    proposal: "5 received",
+  },
+  {
+    title: "Chinese translator",
+    price: "$100",
+    description: "Full 20 pages",
+    categoryCard: categoryAr,
+    expire: "Week",
+    location: "Remote",
+    level: "Mid",
+    proposal: "Proposal",
+  },
+  {
+    title: "Accounter",
+    price: "$250",
+    description: "Company's annual finalcial report",
+    categoryCard: categoryAr,
+    expire: "Week",
+    location: "Location",
+    level: "Level",
+    proposal: "Proposal",
+  },
+  
+];
+
 const Chinzorig = () => {
   return (
-    <div >
+    <div>
       {/* <Contact /> */}
       <div className="flex w-screen items-start justify-center bg-slate-200 gap-5 pt-32">
         <Filter jobs={"Local Jobs"} counter={"35"} />
-        <ProjectCard
-          title={"Та минь ээ надад нэг ийм ажил байна"}
-          price={"тохиролцоно"}
-          description="I am looking for a Python developer гэжийнэ, энэ ажлыг ч**чих хоншоортой аавын хүү
-        байвал хүрээд ир за. Хөлс мөнгөн дээрээ нэг их татганаад байхгүй
-        гол нь гарууд юмаа аятайхан хийнэ шүү. За тэгээд энэ ажлыг
-        хийчихвэл дараа нь өч төчнөөөн байгаа шүү. Өөр юу ч бичдгийм билээ
-        яая дээ байз за за өөрсдөө болгооно биз. Би одоо юу вэ энд хөгшин
-        чавганц шиг напь напь гээд юүхэв заа"
-          category={categoryAr}
-          expire={"Expire:"}
-          location={"Location:"}
-          level={"Level:"}
-          proporsal={"Proporsal:"}
-        />
+        <div className="flex flex-col gap-[30px]">
+          {projects.map((el, i) => {
+            return (
+              <ProjectCard
+                title={el.title}
+                price={el.price}
+                description={el.description}
+                category={el.categoryCard}
+                expire={el.expire}
+                location={el.location}
+                level={el.level}
+                proposal={el.proposal}
+              />
+            );
+          })}
+        </div>
       </div>
+      <HomeCardJobs />
     </div>
   );
 };

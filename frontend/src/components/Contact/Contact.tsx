@@ -1,12 +1,11 @@
 import React from "react";
-
 import { IoCallOutline } from "react-icons/io5";
 import { CiMail } from "react-icons/ci";
 import { CiLocationOn } from "react-icons/ci";
-import { TextAreaComponent } from "@/components/TextArea";
+import { TextAreaComponent } from "../../components/TextArea";
 
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
+import { Input } from "../../components/ui/input";
+import { Label } from "../../components/ui/label";
 
 type Props = {
   name: string;
