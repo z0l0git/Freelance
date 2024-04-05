@@ -10,6 +10,7 @@ import { passwordHash } from "../../utils";
 
 export const createUserQuery = async (req: Request) => {
   const { firstName, lastName, email, phone, password } = req.body;
+  console.log(firstName);
 
   const hash = await passwordHash(password);
 
