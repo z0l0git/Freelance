@@ -7,6 +7,7 @@ export type UserModelType = {
   email: string;
   phone: string;
   password: string;
+  auth: string;
   createdAt: Date;
   jobTitle: string;
   location: string;
@@ -17,11 +18,12 @@ export type UserModelType = {
 };
 
 const UserSchema = new Schema<UserModelType>({
-  firstName: { type: String, required: true },
-  lastName: { type: String, required: true },
-  email: { type: String, required: true },
+  firstName: { type: String, required: false },
+  lastName: { type: String, required: false },
+  email: { type: String, required: false },
   phone: { type: String, required: false },
-  password: { type: String, required: true },
+  password: { type: String, required: false },
+  auth: { type: String, required: false, enum: ["local", "google"] },
   createdAt: { type: Date, default: Date.now },
   jobTitle: { type: String, required: false },
   location: { type: String, required: false },
