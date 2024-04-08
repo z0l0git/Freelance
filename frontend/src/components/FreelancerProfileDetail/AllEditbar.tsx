@@ -1,7 +1,6 @@
 "user client";
 import React, { useState } from "react";
 import { Textarea } from "@/components/ui/textarea";
-import { App } from "@/components/FreelancerProfileDetail/TestComp";
 import { FiEdit } from "react-icons/fi";
 import { BlueButton, ButtonWithBlueBorder, WhiteButton } from "../Button";
 import { DescriptionEditComp } from "./DescriptionEditComp";
@@ -27,7 +26,6 @@ export const EditBar = () => {
           /> */}
         </div>
         <div></div>
-        <App />
         {/* <FormComponent /> */}
       </div>
     </div>

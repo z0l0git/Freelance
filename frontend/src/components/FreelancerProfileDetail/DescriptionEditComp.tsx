@@ -1,33 +1,18 @@
-import { Formik, Form, ErrorMessage } from "formik";
-import { useFormik } from "formik";
+"use client";
+import { Formik, Form, ErrorMessage, Field, useFormik } from "formik";
 import { BlueButton, ButtonWithBlueBorder, WhiteButton } from "../Button";
-import { useState } from "react";
-import { Input } from "../Sign/Input";
-import * as Yup from "yup";
-import axios from "axios";
-type DescriptionType={discription: string}
-export const DescriptionEditComp = () => {
+import React, { useState } from "react";
+import { Basic, MyApp } from "./TestComp";
+interface MyBioValues {
+  discription: string;
+}
+export const DescriptionEditComp: React.FC<{}> = () => {
   const [showdescriptionEdit, setShowDescriptionEdit] = useState(false);
   const clickButton = () => {
     setShowDescriptionEdit(!showdescriptionEdit);
   };
-  const initialValues = {
-    discription: "",
-  };
-  const validationSchema = Yup.object().shape({
-    discription: Yup.string().required("Bio is required").min(10, "too short bio").max(50, "too long bio"),
-  });
-  const DiscriptionForm = () => {
-    // Pass the useFormik() hook initial form values and a submit function that will
-    // be called when the form is submitted
-    const formik = useFormik({
-      initialValues: {
-        discription: '',
-      },
-      onSubmit: values => {
-        alert(JSON.stringify(values, null, 2));
-      },
-    });
+  const initialValues: MyBioValues = { discription: "" };
+
   return (
     <div>
       <div className="flex justify-between items-center mb-4">
@@ -42,47 +27,55 @@ export const DescriptionEditComp = () => {
           ""
         )}
       </div>
-      <div className="w-full rounded-xl p-5 overflow-hidden">
-        {/* <Formik
+      <div
+        className={
+          !showdescriptionEdit
+            ? "w-full rounded-xl p-5 overflow-hidden"
+            : "bg-gray-100 rounded-xl p-4 "
+        }
+      >
+        <Formik
           initialValues={initialValues}
-          onSubmit={}
-          validationSchema={validationSchema}
+          onSubmit={(values, actions) => {
+            console.log({ values, actions });
+            alert(JSON.stringify(values, null, 2));
+            actions.setSubmitting(false);
+          }}
         >
-          {({ setFieldValue }) =>(
-            <Form> 
-              <div className="">
-                <Input /> </div>
-            </Form>
-        {showdescriptionEdit ? (
-          <div className="flex justify-between gap-4">
-            <ButtonWithBlueBorder
-              buttonName="Cancel"
-              buttonClass="w-3/12 text-sm"
+          <Form>
+            <Field
+              id="discription"
+              name="discription"
+              placeholder="Tell me about yourself"
+              disabled={!showdescriptionEdit ? true : false}
+              className={
+                !showdescriptionEdit
+                  ? "w-full h-fit p-1 bg-transparent text-justify text-gray-700 "
+                  : "w-full bg-transparent text-black mb-8 pb-8 border-b-2  "
+              }
             />
-            <BlueButton
-              buttonName="Update"
-              type="submit"
-              handleSubmit={clickButton}
-            />
-          </div>
-        ) : (
-          ""
-        )}
-          )}
-        </Formik> */}
-         <form onSubmit={formik.handleSubmit}>
-       <label htmlFor="discription">Discription</label>
-       <input
-         id="discription"
-         name="discription"
-         type="text"
-         onChange={formik.handleChange}
-         value={formik.values.discription}
-       />
- 
-       <button type="submit">Submit</button>
-     </form>
+            {showdescriptionEdit ? (
+              <div className="flex justify-between gap-4">
+                <ButtonWithBlueBorder
+                  buttonName="Cancel"
+                  type="cancel"
+                  buttonClass="w-6/12 text-sm px-[31px] py-[15px] border rounded-[100px]"
+                  onClick={!showdescriptionEdit}
+                />
+                <BlueButton
+                  buttonName="Update"
+                  type="submit"
+                  buttonClass="w-6/12 text-white bg-[#0d47a1] rounded-[100px]"
+                  onclick={clickButton}
+                />
+              </div>
+            ) : (
+              ""
+            )}
+          </Form>
+        </Formik>
       </div>
+      {/* <Basic /> */}
     </div>
   );
 };
