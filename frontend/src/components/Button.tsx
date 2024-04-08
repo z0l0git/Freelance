@@ -31,9 +31,9 @@ export const BlueButton = (props: any) => {
 };
 
 export const WhiteButton = (props: any) => {
-  const { buttonName, buttonClass, type } = props;
+  const { buttonName, buttonClass, type, onClick } = props;
   return (
-    <button type={type} className={buttonClass}>
+    <button type={type} className={buttonClass} onClick={onClick}>
       {buttonName}
     </button>
   );

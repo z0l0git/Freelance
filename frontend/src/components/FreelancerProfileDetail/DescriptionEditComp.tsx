@@ -1,70 +1,88 @@
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import { z } from "zod";
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormMessage,
-} from "@/components/ui/form";
-import { Textarea } from "@/components/ui/textarea";
-import { toast } from "@/components/ui/use-toast";
+import { Formik, Form, ErrorMessage } from "formik";
+import { useFormik } from "formik";
 import { BlueButton, ButtonWithBlueBorder, WhiteButton } from "../Button";
-const FormSchema = z.object({
-  bio: z
-    .string()
-    .min(10, {
-      message: "Bio must be at least 10 characters.",
-    })
-    .max(160, {
-      message: "Bio must not be longer than 30 characters.",
-    }),
-});
+import { useState } from "react";
+import { Input } from "../Sign/Input";
+import * as Yup from "yup";
+import axios from "axios";
+type DescriptionType={discription: string}
 export const DescriptionEditComp = () => {
-  const form = useForm<z.infer<typeof FormSchema>>({
-    resolver: zodResolver(FormSchema),
+  const [showdescriptionEdit, setShowDescriptionEdit] = useState(false);
+  const clickButton = () => {
+    setShowDescriptionEdit(!showdescriptionEdit);
+  };
+  const initialValues = {
+    discription: "",
+  };
+  const validationSchema = Yup.object().shape({
+    discription: Yup.string().required("Bio is required").min(10, "too short bio").max(50, "too long bio"),
   });
-
-  function onSubmit(data: z.infer<typeof FormSchema>) {
-    toast({
-      title: "You submitted the following values:",
-      description: (
-        <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-          <code className="text-white">{JSON.stringify(data, null, 2)}</code>
-        </pre>
-      ),
+  const DiscriptionForm = () => {
+    // Pass the useFormik() hook initial form values and a submit function that will
+    // be called when the form is submitted
+    const formik = useFormik({
+      initialValues: {
+        discription: '',
+      },
+      onSubmit: values => {
+        alert(JSON.stringify(values, null, 2));
+      },
     });
-  }
   return (
-    <div className="w-full bg-gray-100 rounded-xl p-5 overflow-hidden  ">
-      <Form {...form}>
-        <form
-          onSubmit={form.handleSubmit(onSubmit)}
-          className="w-full space-y-6 "
-        >
-          <FormField
-            control={form.control}
-            name="bio"
-            render={({ field }) => (
-              <FormItem>
-                <FormControl>
-                  <Textarea
-                    placeholder="Tell us a little bit about yourself"
-                    className="resize-none w-full"
-                    {...field}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
+    <div>
+      <div className="flex justify-between items-center mb-4">
+        <h3 className="text-2xl font-semibold">Description</h3>
+        {!showdescriptionEdit ? (
+          <WhiteButton
+            buttonClass="font-bold text-[#0d47a1] cursor-pointer"
+            onClick={clickButton}
+            buttonName="Edit"
           />
-          <div className="flex justify-between">
-            <ButtonWithBlueBorder buttonName="Cancel" />
-            <BlueButton buttonName="Update" />
+        ) : (
+          ""
+        )}
+      </div>
+      <div className="w-full rounded-xl p-5 overflow-hidden">
+        {/* <Formik
+          initialValues={initialValues}
+          onSubmit={}
+          validationSchema={validationSchema}
+        >
+          {({ setFieldValue }) =>(
+            <Form> 
+              <div className="">
+                <Input /> </div>
+            </Form>
+        {showdescriptionEdit ? (
+          <div className="flex justify-between gap-4">
+            <ButtonWithBlueBorder
+              buttonName="Cancel"
+              buttonClass="w-3/12 text-sm"
+            />
+            <BlueButton
+              buttonName="Update"
+              type="submit"
+              handleSubmit={clickButton}
+            />
           </div>
-        </form>
-      </Form>
+        ) : (
+          ""
+        )}
+          )}
+        </Formik> */}
+         <form onSubmit={formik.handleSubmit}>
+       <label htmlFor="discription">Discription</label>
+       <input
+         id="discription"
+         name="discription"
+         type="text"
+         onChange={formik.handleChange}
+         value={formik.values.discription}
+       />
+ 
+       <button type="submit">Submit</button>
+     </form>
+      </div>
     </div>
   );
 };
