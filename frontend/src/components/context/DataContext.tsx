@@ -15,7 +15,7 @@ export const DataProvider = ({ children }: any) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const accessToken =
-    typeof window !== "undefined" && localStorage.getItem("Token");
+    typeof window !== "undefined" && localStorage.getItem("token");
 
   useEffect(() => {
     if (accessToken) {
