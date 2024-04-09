@@ -3,6 +3,7 @@ import {
   createUserByClerkController,
   createUserController,
   deleteUserController,
+  getAllUserController,
   loginController,
 } from "../../controller";
 import { updateUserController } from "../../controller/user/update-user";
@@ -21,3 +22,5 @@ UserRouter.delete("/deleteUser", deleteUserController);
 UserRouter.get("/users/refresh", getRefreshTokenService);
 
 UserRouter.get("/uploadImage", UploadImage);
+
+UserRouter.get("/allUser", getAllUserController);

@@ -8,13 +8,13 @@ const StepThree = () => {
     <div className="flex gap-5 h-fit">
       <div className="flex flex-col border rounded-xl p-4 gap-4 w-[750px]">
         <div className="flex flex-col gap-6">
-          <h1 className="font-bold  text-[#212e48] text-[30px]">
+          <h1 className="font-bold  text-[#212e48] text-[22px]">
             Add Timeline and Budget
           </h1>
           <div className="border-b border-dashed w-full"></div>
         </div>
         <div className="flex flex-col gap-6">
-          <p className="font-bold text-[22px] text-[#212e48]">
+          <p className="font-bold text-[18px] text-[#212e48]">
             Give your project brief a title
           </p>
         </div>
@@ -39,7 +39,7 @@ const StepThree = () => {
           <div className="border-b border-dashed w-full"></div>
         </div>
         <div className="flex flex-col gap-6">
-          <p className="font-bold text-[22px] text-[#212e48]">
+          <p className="font-bold text-[18px] text-[#212e48]">
             Give your project brief a title
           </p>
         </div>
@@ -47,9 +47,9 @@ const StepThree = () => {
           <NameInputComponent />
         </div>
         <div className="flex items-center space-x-2">
-          <Checkbox id="terms" />
+          <Checkbox id="terms1" />
           <label
-            htmlFor="terms"
+            htmlFor="terms1"
             className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
           >
             Accept terms and conditions
@@ -58,8 +58,10 @@ const StepThree = () => {
       </div>
       <div className="border rounded-xl w-[434px] h-[450px]">
         <div className="flex flex-col m-4 gap-5">
-          <h1 className="font-bold  text-[#212e48] text-[30px]">
-            Now let&apos;s talk budget and timing
+
+          <h1 className="font-bold  text-[#212e48] text-[22px]">
+            Now let's talk budget and timing
+
           </h1>
           <p>
             You&apos;re not committing to anything final here.This just helps us

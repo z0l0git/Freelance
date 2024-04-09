@@ -15,7 +15,7 @@ const StepFour = ({ handlePrevious, handleSubmit }: StepFourProps) => {
           <Image src="/art-take.png" width={200} height={200} alt="art-take" />
         </div>
         <div className="flex flex-col items-center justify-center gap-5">
-          <h1 className="font-bold  text-[#212e48] text-[30px] ">
+          <h1 className="font-bold  text-[#212e48] text-[22px] ">
             Your part is done, we’ll take it from here
           </h1>
           <p className="text-[#212e48]">
@@ -24,12 +24,14 @@ const StepFour = ({ handlePrevious, handleSubmit }: StepFourProps) => {
         </div>
         <div className="flex gap-2 my-5 items-center justify-center ">
           <BlueButton
-            height="70px"
-            width="250px"
+            height="60px"
+            width="190px"
             buttonName="Back to home"
             handleSubmit={handleSubmit}
           />
           <ButtonWithBlueBorder
+            height="60px"
+            width="fit"
             buttonName="Cancel"
             handlePrevious={handlePrevious}
           />

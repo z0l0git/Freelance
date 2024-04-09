@@ -8,7 +8,7 @@ const Stepper = ({ step }: { step: number }) => {
   ];
   return (
     <div className="flex flex-col items-center gap-5 p-8">
-      <ul className="steps flex items-center justify-center border rounded-xl w-[1000px]">
+      <ul className="steps flex flex-wrap md:flex items-center justify-center border rounded-xl w-[1205px]">
         {stepTexts.map((item, index) => (
           <div key={index} className="flex items-center p-2">
             <div className="flex flex-col items-center gap-y-2">
@@ -25,7 +25,7 @@ const Stepper = ({ step }: { step: number }) => {
             </div>
             {index < stepTexts.length - 1 && (
               <span
-                className={`border border-dashed bg-[#0d47a1] w-60 mb-6 rounded-lg`}
+                className={`flex border border-dashed bg-[#0d47a1] w-[300px] mb-6 rounded-lg`}
               ></span>
             )}
           </div>
