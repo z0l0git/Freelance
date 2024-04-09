@@ -100,14 +100,15 @@ const StepOne = () => {
             Attach Files (up to 1)
           </p>
         </div>
-        <div className="flex flex-col w-[300px] h-[200px] rounded-3xl bg-[#f8f9fc] items-center justify-center">
-          <AiOutlinePicture className="w-[100px]" />
-          <p>Drag and drop </p>
-          <input type="file" id="file-input" />
-        </div>
-
-        <div id="file-input"></div>
-
+        <label
+          className="flex flex-col w-[300px] h-[200px] rounded-3xl bg-[#f8f9fc] items-center justify-center cursor-pointer"
+          htmlFor="file-upload"
+        >
+          <AiOutlinePicture className="w-[60px] h-[70px]" />
+          <p>Click box to upload </p>
+          <p className="custom-file-upload">Browse</p>
+          <input id="file-upload" type="file" />
+        </label>
         <div className="flex items-center ">
           <div className="border-b border-dashed w-full"></div>
           <div className="flex items-center justify-center w-[400px]">
