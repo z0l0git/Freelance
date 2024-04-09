@@ -31,18 +31,19 @@ export const BlueButton = (props: any) => {
 };
 
 export const WhiteButton = (props: any) => {
-  const { buttonName, buttonClass, type, onClick } = props;
+  const { buttonName, buttonClass, type, onClick, key = "" } = props;
   return (
-    <button type={type} className={buttonClass} onClick={onClick}>
+    <button key={key} type={type} className={buttonClass} onClick={onClick}>
       {buttonName}
     </button>
   );
 };
 
 export const ButtonWithBlueBorder = (props: any) => {
-  const { buttonName, type = "", handleSubmit } = props;
+  const { buttonName, type = "", handleSubmit, key = "" } = props;
   return (
     <button
+      key={key}
       onClick={handleSubmit}
       type={type}
       className="group relative px-[31px] py-[15px] overflow-hidden rounded-[100px] border-blue-500 border-[1px] text-lg font-bold text-[#0f48a2] flex items-center gap-1"

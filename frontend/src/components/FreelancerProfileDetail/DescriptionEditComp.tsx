@@ -1,21 +1,42 @@
 "use client";
 import { Formik, Form, ErrorMessage, Field, useFormik } from "formik";
 import { BlueButton, ButtonWithBlueBorder, WhiteButton } from "../Button";
-import React, { useState } from "react";
-import { Basic, MyApp } from "./TestComp";
+import React, { useEffect, useState } from "react";
+import { useContext } from "react";
+import { DataContext } from "../context/DataContext";
+import axios from "axios";
+type descriptionType = {
+  discription: string;
+};
+type DispType = {
+  setStage: React.Dispatch<React.SetStateAction<string>>;
+};
 interface MyBioValues {
   discription: string;
 }
+type Response = {
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone: string;
+  password: string;
+};
+
 export const DescriptionEditComp: React.FC<{}> = () => {
+  const { data } = useContext(DataContext);
+  console.log(data, "data");
+
   const [showdescriptionEdit, setShowDescriptionEdit] = useState(false);
+  const [discription, setDiscription] = useState("");
   const clickButton = () => {
     setShowDescriptionEdit(!showdescriptionEdit);
   };
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const initialValues: MyBioValues = { discription: "" };
 
   return (
     <div>
-      <div className="flex justify-between items-center mb-4">
+      <div className="flex justify-between items-center mb-2">
         <h3 className="text-2xl font-semibold">Description</h3>
         {!showdescriptionEdit ? (
           <WhiteButton
@@ -30,7 +51,7 @@ export const DescriptionEditComp: React.FC<{}> = () => {
       <div
         className={
           !showdescriptionEdit
-            ? "w-full rounded-xl p-5 overflow-hidden"
+            ? "w-full rounded-xl p-2 overflow-hidden"
             : "bg-gray-100 rounded-xl p-4 "
         }
       >
@@ -38,8 +59,9 @@ export const DescriptionEditComp: React.FC<{}> = () => {
           initialValues={initialValues}
           onSubmit={(values, actions) => {
             console.log({ values, actions });
-            alert(JSON.stringify(values, null, 2));
+            // alert(JSON.stringify(values, null, 2));
             actions.setSubmitting(false);
+            clickButton();
           }}
         >
           <Form>
@@ -58,7 +80,6 @@ export const DescriptionEditComp: React.FC<{}> = () => {
               <div className="flex justify-between gap-4">
                 <ButtonWithBlueBorder
                   buttonName="Cancel"
-                  type="cancel"
                   buttonClass="w-6/12 text-sm px-[31px] py-[15px] border rounded-[100px]"
                   onClick={!showdescriptionEdit}
                 />
