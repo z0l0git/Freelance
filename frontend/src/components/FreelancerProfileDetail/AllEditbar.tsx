@@ -44,7 +44,6 @@ export const EditBar = () => {
         </div>
         <div></div>
         <App />
-        {/* <FormComponent /> */}
       </div>
     </div>
   );

@@ -13,6 +13,7 @@ export type UserModelType = {
   location: string;
   rating: string;
   socials: [string];
+  skills: [Schema.Types.ObjectId];
   education: [Schema.Types.ObjectId];
   workExp: [Schema.Types.ObjectId];
 };
@@ -29,6 +30,11 @@ const UserSchema = new Schema<UserModelType>({
   location: { type: String, required: false },
   rating: { type: String, required: false },
   socials: { type: [String], required: false },
+  skills: {
+    type: [Schema.Types.ObjectId],
+    ref: "Categories",
+    required: false,
+  },
   education: {
     type: [Schema.Types.ObjectId],
     ref: "Education",
