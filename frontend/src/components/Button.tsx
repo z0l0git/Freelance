@@ -43,15 +43,18 @@ type ButtonWithBlueBorderProps = {
   handlePrevious: () => void;
   buttonName: string;
   type?: "submit" | "button" | "reset";
+  height: string;
+  width: string;
 };
 
 export const ButtonWithBlueBorder = (props: ButtonWithBlueBorderProps) => {
-  const { buttonName, type, handlePrevious } = props;
+  const { buttonName, type, height, width, handlePrevious } = props;
   return (
     <button
       type={type}
       onClick={handlePrevious}
       className="group relative px-[31px] py-[15px] overflow-hidden rounded-[100px] border-blue-500 border-[1px] text-lg font-bold text-[#0f48a2] flex items-center gap-1"
+      style={{ height: height, width: width }}
     >
       {buttonName}
       <HiArrowUpRight />
