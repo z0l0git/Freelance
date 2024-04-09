@@ -39,7 +39,6 @@ export const WhiteButton = (props: any) => {
   );
 };
 
-
 type ButtonWithBlueBorderProps = {
   handlePrevious: () => void;
   buttonName: string;
@@ -53,7 +52,7 @@ export const ButtonWithBlueBorder = (props: ButtonWithBlueBorderProps) => {
 
   return (
     <button
-      onClick={handleSubmit}
+      onClick={handlePrevious}
       type={type}
       className="group relative px-[31px] py-[15px] overflow-hidden rounded-[100px] border-blue-500 border-[1px] text-lg font-bold text-[#0f48a2] flex items-center gap-1"
       style={{ height: height, width: width }}

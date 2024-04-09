@@ -73,19 +73,16 @@ const StepTwo = () => {
                 className="flex flex-col gap-12 m-4 "
                 defaultValue="comfortable"
               >
-                <div className="flex flex-col gap-5">
+                <label className="flex flex-col gap-5 " htmlFor={el.name}>
                   <div className="flex items-center justify-start space-x-2 gap-4">
                     <Checkbox id={el.name} />
-                    <label
-                      htmlFor={el.name}
-                      className="flex flex-col gap-4 peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                    >
+                    <div className="flex flex-col gap-4 peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
                       <p className="font-bold  text-[#404a60]">{el.name}</p>
                       <p>{el.text}</p>
-                    </label>
+                    </div>
                   </div>
                   <div className="border-b border-dashed w-full"></div>
-                </div>
+                </label>
               </RadioGroup>
             ))}
           </div>
@@ -93,10 +90,8 @@ const StepTwo = () => {
       </div>
       <div className="border rounded-xl w-[434px] h-[380px]">
         <div className="flex flex-col m-4  gap-5">
-
           <h1 className="font-bold  text-[#212e48] text-[22px]">
             Let’s talk details
-
           </h1>
           <p>Tell us a bit more about what you&apos;re looking for.</p>
           <Image src="/matching.png" width={400} height={400} alt="matching" />
