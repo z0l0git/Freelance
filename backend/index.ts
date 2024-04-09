@@ -7,6 +7,7 @@ import {
   EducationRouter,
   UserRouter,
   WorkExperienceRouter,
+  ProjectRouter,
 } from "./routes";
 
 const app = express();
@@ -19,6 +20,7 @@ app.use(CategoryRouter);
 app.use(UserRouter);
 app.use(EducationRouter);
 app.use(WorkExperienceRouter);
+app.use(ProjectRouter);
 
 connectDb();
 
