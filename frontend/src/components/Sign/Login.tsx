@@ -53,7 +53,7 @@ export const Login = () => {
     try {
       const { data } = await AxiosInstance.post("/login", values);
       console.log(data, "token");
-      localStorage.setItem("Token", data);
+      localStorage.setItem("token", data);
       push("/");
     } catch (err: any) {
       console.log(err.response.data);
