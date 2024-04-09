@@ -11,7 +11,7 @@ type SS = {
 export const Input = (props: SS) => {
   const { icon, placHolder, name, onchange, type } = props;
   return (
-    <div className="sm:w-[500px] w-[100%] h-[50px] flex items-center justify-between  px-[25px]  border border-slate-300 rounded-[40px] text-[20px] text-[white]">
+    <div className="w-full h-[50px] flex items-center justify-between  px-[25px]  border border-slate-300 rounded-[40px] text-[20px] text-[white]">
       <input
         type={type}
         required

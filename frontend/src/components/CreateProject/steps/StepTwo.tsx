@@ -65,7 +65,7 @@ const StepTwo = () => {
               <div className="border-b border-dashed w-full"></div>
             </div>
           </div>
-          <p>These suggestions are based on your brief’s title.</p>
+          <p>These suggestions are based on your brief&apos;s title.</p>
           <div className=" bg-[#f8f9fc] rounded-xl">
             {items.map((el, index) => (
               <RadioGroup
@@ -93,10 +93,12 @@ const StepTwo = () => {
       </div>
       <div className="border rounded-xl w-[434px] h-[380px]">
         <div className="flex flex-col m-4  gap-5">
+
           <h1 className="font-bold  text-[#212e48] text-[22px]">
             Let’s talk details
+
           </h1>
-          <p>Tell us a bit more about what you're looking for.</p>
+          <p>Tell us a bit more about what you&apos;re looking for.</p>
           <Image src="/matching.png" width={400} height={400} alt="matching" />
         </div>
       </div>

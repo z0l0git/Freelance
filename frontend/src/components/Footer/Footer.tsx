@@ -17,7 +17,7 @@ export const Footer = () => {
         <div className="px-6">
           <div>
             <div className="pb-6">
-              <Image alt="logo" src="/AI.png " width={186} height={49} />
+              <Image alt="logo" src="/logo.png " width={186} height={49} />
             </div>
 
             <div className="text-white pb-[30px]">

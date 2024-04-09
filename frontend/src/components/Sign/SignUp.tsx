@@ -21,11 +21,11 @@ type LoginDataType = {
 };
 
 type SignUpType = {
-  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  setStage: React.Dispatch<React.SetStateAction<number>>;
 };
 
 export const SignUp = (props: SignUpType) => {
-  const { setOpen } = props;
+  const { setStage } = props;
   const [error, setError] = useState("");
 
   // const [userdata, setUserData] = useState({
@@ -73,10 +73,6 @@ export const SignUp = (props: SignUpType) => {
       .required("Please confirm your password"),
   });
 
-  const intoLoginFunc = () => {
-    setOpen(false);
-  };
-
   const createAccountFunc = async (values: typeof initialValues) => {
     try {
       const { data } = await AxiosInstance.post("createUser", values);
@@ -90,7 +86,7 @@ export const SignUp = (props: SignUpType) => {
           setError("");
         }, 2000);
       } else {
-        setOpen(false);
+        setStage(0);
       }
     } catch (err: any) {
       console.log(err);
@@ -98,8 +94,15 @@ export const SignUp = (props: SignUpType) => {
   };
 
   return (
-    <div className="flex flex-col  items-center">
-      <div className="font-bold text-[35px] text-white mb-[35px]">Create</div>
+    <div className="flex flex-col  sm:w-[550px] w-fit px-[30px]  ">
+      <div className="mb-[35px]">
+        <div className="font-bold text-[35px] text-white ">
+          Let’s Get Started!
+        </div>
+        <div className="text-slate-400">
+          Please enter your email address to join us
+        </div>
+      </div>
       <Formik
         initialValues={initialValues}
         onSubmit={createAccountFunc}
@@ -108,72 +111,104 @@ export const SignUp = (props: SignUpType) => {
         {({ setFieldValue }) => (
           <Form>
             <div className="flex flex-col gap-[28px] mb-[30px]">
-              <Input
-                icon={<BiSolidUser />}
-                placHolder="firstName"
-                name="firstName"
-                onchange={(e) => setFieldValue("firstName", e.target.value)}
-              />
-              <ErrorMessage
-                className="error text-red-600"
-                name="firstName"
-                component="div"
-              />
-              <Input
-                icon={<BiSolidUser />}
-                placHolder="lastName"
-                name="lastName"
-                onchange={(e) => setFieldValue("lastName", e.target.value)}
-              />
-              <ErrorMessage
-                className="error text-red-600"
-                name="lastName"
-                component="div"
-              />
-              <Input
-                type="email"
-                icon={<FiMail />}
-                placHolder="Email"
-                name="email"
-                onchange={(e) => setFieldValue("email", e.target.value)}
-              />
-              <ErrorMessage
-                className="error text-red-600"
-                name="email"
-                component="div"
-              />
-              <Input
-                type="number"
-                icon={<AiTwotonePhone />}
-                placHolder="Phone"
-                name="phone"
-                onchange={(e) => setFieldValue("phone", e.target.value)}
-              />
-              <ErrorMessage
-                className="error text-red-600"
-                name="phone"
-                component="div"
-              />
-              <InputPassWord
-                placHolder="Password"
-                name="password"
-                onchange={(e) => setFieldValue("password", e.target.value)}
-              />
-              <ErrorMessage
-                className="error text-red-600"
-                name="password"
-                component="div"
-              />
-              <InputPassWord
-                placHolder="RePassword"
-                name="repassword"
-                onchange={(e) => setFieldValue("repassword", e.target.value)}
-              />
-              <ErrorMessage
-                className="error text-red-600"
-                name="repassword"
-                component="div"
-              />
+              <div className="flex gap-[10px]">
+                <div>
+                  <div className="font-semibold text-white text-[20px] mb-3">
+                    First Name
+                  </div>
+                  <Input
+                    icon={<BiSolidUser />}
+                    placHolder="firstName"
+                    name="firstName"
+                    onchange={(e) => setFieldValue("firstName", e.target.value)}
+                  />
+                  <ErrorMessage
+                    className="error text-red-600"
+                    name="firstName"
+                    component="div"
+                  />
+                </div>
+                <div>
+                  <div className="font-semibold text-white text-[20px] mb-3">
+                    Last Name
+                  </div>
+                  <Input
+                    icon={<BiSolidUser />}
+                    placHolder="lastName"
+                    name="lastName"
+                    onchange={(e) => setFieldValue("lastName", e.target.value)}
+                  />
+                  <ErrorMessage
+                    className="error text-red-600"
+                    name="lastName"
+                    component="div"
+                  />
+                </div>
+              </div>
+              <div>
+                <div className="font-semibold text-white text-[20px] mb-3">
+                  Enter your email
+                </div>
+                <Input
+                  type="email"
+                  icon={<FiMail />}
+                  placHolder="Email"
+                  name="email"
+                  onchange={(e) => setFieldValue("email", e.target.value)}
+                />
+                <ErrorMessage
+                  className="error text-red-600"
+                  name="email"
+                  component="div"
+                />
+              </div>
+              <div>
+                <div className="font-semibold text-white text-[20px] mb-3">
+                  Enter your phone number
+                </div>
+                <Input
+                  type="number"
+                  icon={<AiTwotonePhone />}
+                  placHolder="Phone"
+                  name="phone"
+                  onchange={(e) => setFieldValue("phone", e.target.value)}
+                />
+                <ErrorMessage
+                  className="error text-red-600"
+                  name="phone"
+                  component="div"
+                />
+              </div>
+              <div>
+                <div className="font-semibold text-white text-[20px] mb-3">
+                  enter your password
+                </div>
+                <InputPassWord
+                  placHolder="Password"
+                  name="password"
+                  onchange={(e) => setFieldValue("password", e.target.value)}
+                />
+                <ErrorMessage
+                  className="error text-red-600"
+                  name="password"
+                  component="div"
+                />
+              </div>
+              <div>
+                <div className="font-semibold text-white text-[20px] mb-3">
+                  re-Passowrd
+                </div>
+                <InputPassWord
+                  placHolder="RePassword"
+                  name="repassword"
+                  onchange={(e) => setFieldValue("repassword", e.target.value)}
+                />
+                <ErrorMessage
+                  className="error text-red-600"
+                  name="repassword"
+                  component="div"
+                />
+              </div>
               {error && <div className="text-red-500 text-center">{error}</div>}
               <div className="mt-[20px]">
                 <Button text="Create" type="submit" />

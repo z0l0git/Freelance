@@ -1,16 +1,8 @@
-"use client";
-import Stepper from "@/components/CreateProject/Stepper";
-import StepOne from "@/components/CreateProject/steps/StepOne";
-import StepTwo from "@/components/CreateProject/steps/StepTwo";
-import StepThree from "@/components/CreateProject/steps/StepThree";
-import { BlueButton, ButtonWithBlueBorder } from "@/components/Button";
-import { useRouter } from "next/navigation";
-import { useState } from "react";
-import StepFour from "@/components/CreateProject/steps/StepFour";
-
-const steps = [StepOne, StepTwo, StepThree, StepFour];
+import { StepperBarkhas } from "@/components/Stepper/StepBarkhas";
+import React from "react";
 
 const page = () => {
+
   const [step, setStep] = useState(0);
   const { push } = useRouter();
 

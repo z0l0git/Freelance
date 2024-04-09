@@ -18,7 +18,7 @@ export const NameInputComponent = (props: Props) => {
   const { name, placeholder, type, className = "" } = props;
   return (
     <div className={className}>
-      <Label htmlFor="name">{name}</Label>
+      <Label htmlFor="name"> {name}</Label>
       <Input type={type} id={name} placeholder={placeholder} />
     </div>
   );
@@ -28,14 +28,17 @@ export const Contact = () => {
   return (
     <div className="flex w-screen justify-center items-center py-10">
       <div className="flex w-[1280px] justify-start items-center gap-5">
-        <div className="flex flex-col w-[416px] h-fill bg-slate-200 p-8 rounded-2xl">
+        <div className="flex flex-col w-[416px] h-fill p-8 rounded-2xl">
           <div className="flex flex-col  gap-4">
-            <div className="flex flex-col mb-8 pb-8 w-full">
+            <div className="flex flex-col mb-8 w-full">
               <h3 className="text-2xl font-semibold">Need more help?</h3>
             </div>
-            <div className="flex items-center justify-center gap-5 py-6 px-5 border border-black rounded-lg">
-              <div className=" bg-slate-200">
-                <IoCallOutline className=" bg-white w-[80px] h-[80px] p-3 flex items-center justify-center border border-black rounded-full" />
+            <div className="flex items-center justify-center gap-5 py-6 px-5 border border-[#dfe0e4] rounded-lg">
+              <div className="">
+                <IoCallOutline
+                  color="#0d47a1"
+                  className=" bg-white w-[80px] h-[80px] p-3 flex items-center justify-center border border-[#dfe0e4] rounded-full"
+                />
               </div>
               <div className="flex flex-col justify-center border-solid  w-[119px] ">
                 <h2 className="text-xl font-semibold mb-4">Call Now</h2>
@@ -43,9 +46,12 @@ export const Contact = () => {
                 <h6>99998888</h6>
               </div>
             </div>
-            <div className="flex items-center justify-center gap-5 py-6 px-5 border border-black rounded-lg">
-              <div className=" bg-slate-200">
-                <CiMail className=" bg-white w-[80px] h-[80px] p-3 flex items-center justify-center border border-black rounded-full" />
+            <div className="flex items-center justify-center gap-5 py-6 px-5 border border-[#dfe0e4] rounded-lg">
+              <div className="">
+                <CiMail
+                  color="#0d47a1"
+                  className=" bg-white w-[80px] h-[80px] p-3 flex items-center justify-center border border-[#dfe0e4] rounded-full"
+                />
               </div>
               <div className="flex flex-col justify-center border-solid  w-[119px] ">
                 <h2 className="text-xl font-semibold mb-5">Email</h2>
@@ -53,9 +59,12 @@ export const Contact = () => {
                 <h6>info@example.com</h6>
               </div>
             </div>
-            <div className="flex items-center justify-center gap-5 py-6 px-5 border border-black rounded-lg">
-              <div className=" bg-slate-200">
-                <CiLocationOn className=" bg-white w-[80px] h-[80px] p-3 flex items-center justify-center border border-black rounded-full" />
+            <div className="flex items-center justify-center gap-5 py-6 px-5 border border-[#dfe0e4] rounded-lg">
+              <div className="">
+                <CiLocationOn
+                  color="#0d47a1"
+                  className=" bg-white w-[80px] h-[80px] p-3 flex items-center justify-center border border-[#dfe0e4] rounded-full"
+                />
               </div>
               <div className="flex flex-col justify-center border-solid  w-[119px] ">
                 <h2 className="text-xl font-semibold mb-5">Location</h2>
@@ -64,9 +73,11 @@ export const Contact = () => {
             </div>
           </div>
         </div>
-        <div className="flex flex-col w-[856px] h-[653px] bg-slate-200 p-8 rounded-2xl">
-          <div className="flex flex-col mb-8 pb-8 w-full">
-            <h3 className="text-2xl font-semibold">Get in touch with us.</h3>
+        <div className="flex flex-col w-[856px] h-[653px] p-8 rounded-2xl">
+          <div className="flex flex-col mb-8 pb-8 w-full pb-4">
+            <h3 className="text-2xl font-semibold mt-[10px]">
+              Get in touch with us.
+            </h3>
           </div>
 
           <div className="flex flex-col  justify-between items-center w-full h-full">

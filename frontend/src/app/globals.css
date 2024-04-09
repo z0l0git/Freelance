@@ -75,3 +75,8 @@
     @apply bg-background text-foreground;
   }
 }
+
+.bbb {
+  background: transparent;
+  backdrop-filter: blur(20px);
+}
