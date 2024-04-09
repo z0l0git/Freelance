@@ -1,12 +1,14 @@
 "use client";
+
 import React, { ChangeEvent, useEffect } from "react";
+
 import Stepper from "@/components/CreateProject/Stepper";
 import StepOne from "@/components/CreateProject/steps/StepOne";
 import StepTwo from "@/components/CreateProject/steps/StepTwo";
 import StepThree from "@/components/CreateProject/steps/StepThree";
 import { BlueButton, ButtonWithBlueBorder } from "@/components/Button";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import React, { useState } from "react";
 import StepFour from "@/components/CreateProject/steps/StepFour";
 import { useContext } from "react";
 import { DataContext } from "../context/DataContext";
@@ -80,6 +82,7 @@ export const StepperBarkhas = (props: CateType) => {
   }, [userdata]);
 
   return (
+
     <>
       <div className="flex flex-col items-center ">
         <Stepper step={step} />
@@ -100,15 +103,30 @@ export const StepperBarkhas = (props: CateType) => {
               height="70px"
               width="30%"
               buttonName="Save & Continue"
+
               handleSubmit={handleNext}
             />
-            <ButtonWithBlueBorder
-              handleSubmit={handlePrevious}
-              buttonName="Cancel"
-            />
-          </>
-        )}
+          )}
+        </div>
+        <div className="flex flex-col md:flex-row w-full my-5 items-start justify-start">
+          {step < 3 && (
+            <div className="w-full flex gap-4 items-center mx-[40px]">
+              <BlueButton
+                height="60px"
+                width="210px"
+                buttonName="Save & Continue"
+                handleSubmit={handleNext}
+              />
+              <ButtonWithBlueBorder
+                height="60px"
+                width="fit"
+                handlePrevious={handlePrevious}
+                buttonName="Cancel"
+              />
+            </div>
+          )}
+        </div>
       </div>
-    </>
+    </div>
   );
 };

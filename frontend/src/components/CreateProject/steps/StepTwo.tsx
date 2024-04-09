@@ -1,5 +1,7 @@
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { Checkbox } from "@/components/ui/checkbox";
 import Image from "next/image";
+import CheckCategory from "./CheckCategory";
 
 type DataType = {
   name: string;
@@ -24,7 +26,7 @@ const StepTwo = (props: CateType) => {
       <div className="flex flex-col justify-center gap-5">
         <div className="flex flex-col border rounded-xl p-4 gap-4 w-[750px]">
           <div className="flex flex-col gap-6">
-            <h1 className="font-bold  text-[#212e48] text-[30px]">
+            <h1 className="font-bold  text-[#212e48] text-[22px]">
               Your Preferences
             </h1>
             <div className="border-b border-dashed w-full"></div>
@@ -67,6 +69,7 @@ const StepTwo = (props: CateType) => {
           </div>
           <p>These suggestions are based on your brief&apos;s title.</p>
           <div className=" bg-[#f8f9fc] rounded-xl">
+
             {dataProjectCategory?.map((el, index) => (
               <RadioGroup
                 key={index}
@@ -82,14 +85,15 @@ const StepTwo = (props: CateType) => {
                   </div>
                 </div>
               </RadioGroup>
+
             ))}
           </div>
         </div>
       </div>
       <div className="border rounded-xl w-[434px] h-[380px]">
         <div className="flex flex-col m-4  gap-5">
-          <h1 className="font-bold  text-[#212e48] text-[30px]">
-            Let&apos;s talk details
+          <h1 className="font-bold  text-[#212e48] text-[22px]">
+            Let’s talk details
           </h1>
           <p>Tell us a bit more about what you&apos;re looking for.</p>
           <Image src="/matching.png" width={400} height={400} alt="matching" />
