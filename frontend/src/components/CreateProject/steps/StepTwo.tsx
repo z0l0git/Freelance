@@ -1,6 +1,7 @@
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Checkbox } from "@/components/ui/checkbox";
 import Image from "next/image";
+import CheckCategory from "./CheckCategory";
 
 const StepTwo = () => {
   const items = [
@@ -68,22 +69,7 @@ const StepTwo = () => {
           <p>These suggestions are based on your brief&apos;s title.</p>
           <div className=" bg-[#f8f9fc] rounded-xl">
             {items.map((el, index) => (
-              <RadioGroup
-                key={index}
-                className="flex flex-col gap-12 m-4 "
-                defaultValue="comfortable"
-              >
-                <label className="flex flex-col gap-5 " htmlFor={el.name}>
-                  <div className="flex items-center justify-start space-x-2 gap-4">
-                    <Checkbox id={el.name} />
-                    <div className="flex flex-col gap-4 peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
-                      <p className="font-bold  text-[#404a60]">{el.name}</p>
-                      <p>{el.text}</p>
-                    </div>
-                  </div>
-                  <div className="border-b border-dashed w-full"></div>
-                </label>
-              </RadioGroup>
+              <CheckCategory name={el.name} text={el.text} key={index} />
             ))}
           </div>
         </div>
