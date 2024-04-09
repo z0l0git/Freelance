@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import { ChangeEvent } from "react";
 import { NameInputComponent } from "@/components/Input";
 import {
   FontBoldIcon,
@@ -16,7 +17,13 @@ import {
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { Textarea } from "@/components/ui/textarea";
 
-const StepOne = () => {
+type StepOneProps = {
+  handleChange: (
+    el: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLTextAreaElement>
+  ) => void;
+};
+const StepOne = (props: StepOneProps) => {
+  const { handleChange } = props;
   return (
     <div className="flex gap-5 h-fit">
       <div className="flex flex-col border rounded-xl p-4 gap-4 w-[750px]">
@@ -39,7 +46,10 @@ const StepOne = () => {
         <NameInputComponent
           className=" text-black "
           placeholder="Inter Title"
+          handleChange={handleChange}
+          name1="title"
         />
+
         <div className="flex flex-col gap-6">
           <p className="font-bold text-[22px] text-[#212e48]">
             Give your project brief a title
@@ -87,7 +97,14 @@ const StepOne = () => {
                 </ToggleGroup>
               </div>
               <div>
-                <Textarea style={{ outline: "none" }} />
+                <Textarea
+                  name="description"
+                  style={{ outline: "none" }}
+                  placeholder="Write your text here..."
+                  onChange={(el: ChangeEvent<HTMLTextAreaElement>) =>
+                    handleChange(el)
+                  }
+                />
               </div>
             </div>
           </div>
