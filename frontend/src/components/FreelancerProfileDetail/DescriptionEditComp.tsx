@@ -77,16 +77,16 @@ export const DescriptionEditComp: React.FC<{}> = () => {
               }
             />
             {showdescriptionEdit ? (
-              <div className="flex justify-between gap-4">
-                <ButtonWithBlueBorder
+              <div className="w-full flex justify-around p-4">
+                <WhiteButton
                   buttonName="Cancel"
-                  buttonClass="w-6/12 text-sm px-[31px] py-[15px] border rounded-[100px]"
-                  onClick={!showdescriptionEdit}
+                  buttonClass="blueBorderButton"
+                  // onClick={handleReset}
                 />
-                <BlueButton
+                <WhiteButton
                   buttonName="Update"
                   type="submit"
-                  buttonClass="w-6/12 text-white bg-[#0d47a1] rounded-[100px]"
+                  buttonClass="blueButton"
                   onclick={clickButton}
                 />
               </div>

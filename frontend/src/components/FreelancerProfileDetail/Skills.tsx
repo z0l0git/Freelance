@@ -1,6 +1,7 @@
 "use client ";
 import React, { useState } from "react";
 import { ButtonWithBlueBorder, WhiteButton } from "../Button";
+import { FormComp } from "./FormComp";
 export const Skills = () => {
   const [addSkills, setAddSkilss] = useState(false);
   const clickButton = () => {
@@ -32,15 +33,19 @@ export const Skills = () => {
           ""
         )}
       </div>
-      <div className="flex flex-wrap gap-2">
-        {SkillArray.map((el, index) => (
-          <WhiteButton
-            key={index}
-            buttonName={el.name}
-            buttonClass="px-4 py-3 overflow-hidden rounded-[100px] border-[#DFE0E4] border text-sm  text-[#404A60] flex items-center gap-1 hover:text-[#2196F3]"
-          />
-        ))}
-      </div>
+      {!addSkills ? (
+        <div className="flex flex-wrap gap-2">
+          {SkillArray.map((el, index) => (
+            <WhiteButton
+              key={index}
+              buttonName={el.name}
+              buttonClass="px-4 py-3 overflow-hidden rounded-[100px] border-[#DFE0E4] border text-sm  text-[#404A60] flex items-center gap-1 hover:text-[#2196F3]"
+            />
+          ))}
+        </div>
+      ) : (
+        <FormComp clickButton={clickButton} />
+      )}
     </div>
   );
 };
