@@ -1,21 +1,18 @@
 "use client";
 
-import React, { ChangeEvent, useEffect } from "react";
-
 import Stepper from "@/components/CreateProject/Stepper";
 import StepOne from "@/components/CreateProject/steps/StepOne";
 import StepTwo from "@/components/CreateProject/steps/StepTwo";
 import StepThree from "@/components/CreateProject/steps/StepThree";
 import { BlueButton, ButtonWithBlueBorder } from "@/components/Button";
 import { useRouter } from "next/navigation";
-import React, { useState } from "react";
+import React, { useState, ChangeEvent, useEffect } from "react";
 import StepFour from "@/components/CreateProject/steps/StepFour";
 import { useContext } from "react";
 import { DataContext } from "../context/DataContext";
 
 type PosdtDataType = {
   createdBy: string;
-
   title: string;
   description: string;
   budget: number;
@@ -82,8 +79,7 @@ export const StepperBarkhas = (props: CateType) => {
   }, [userdata]);
 
   return (
-
-    <>
+    <div>
       <div className="flex flex-col items-center ">
         <Stepper step={step} />
         {step < steps.length && (
@@ -98,34 +94,31 @@ export const StepperBarkhas = (props: CateType) => {
       </div>
       <div className="flex gap-2 mx-[120px] my-5">
         {step < 3 && (
-          <>
+          <BlueButton
+            height="70px"
+            width="30%"
+            buttonName="Save & Continue"
+            handleSubmit={handleNext}
+          />
+        )}
+      </div>
+      <div className="flex flex-col md:flex-row w-full my-5 items-start justify-start">
+        {step < 3 && (
+          <div className="w-full flex gap-4 items-center mx-[40px]">
             <BlueButton
-              height="70px"
-              width="30%"
+              height="60px"
+              width="210px"
               buttonName="Save & Continue"
-
               handleSubmit={handleNext}
             />
-          )}
-        </div>
-        <div className="flex flex-col md:flex-row w-full my-5 items-start justify-start">
-          {step < 3 && (
-            <div className="w-full flex gap-4 items-center mx-[40px]">
-              <BlueButton
-                height="60px"
-                width="210px"
-                buttonName="Save & Continue"
-                handleSubmit={handleNext}
-              />
-              <ButtonWithBlueBorder
-                height="60px"
-                width="fit"
-                handlePrevious={handlePrevious}
-                buttonName="Cancel"
-              />
-            </div>
-          )}
-        </div>
+            <ButtonWithBlueBorder
+              height="60px"
+              width="fit"
+              handlePrevious={handlePrevious}
+              buttonName="Cancel"
+            />
+          </div>
+        )}
       </div>
     </div>
   );

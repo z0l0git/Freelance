@@ -58,10 +58,8 @@ const StepThree = () => {
       </div>
       <div className="border rounded-xl w-[434px] h-[450px]">
         <div className="flex flex-col m-4 gap-5">
-
           <h1 className="font-bold  text-[#212e48] text-[22px]">
-            Now let's talk budget and timing
-
+            Now let&apos;s talk budget and timing
           </h1>
           <p>
             You&apos;re not committing to anything final here.This just helps us

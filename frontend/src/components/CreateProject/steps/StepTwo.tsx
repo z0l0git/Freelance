@@ -47,7 +47,10 @@ const StepTwo = (props: CateType) => {
             </div>
             <div className="w-[100%] flex flex-wrap gap-5 my-[30px]">
               {skillCategory?.map((el, index) => (
-                <div className="bg-[#f8f9fc] px-[10px] py-[5px] w-fit rounded-xl font-bold  text-[#404a60] text-[18px]">
+                <div
+                  key={index}
+                  className="bg-[#f8f9fc] px-[10px] py-[5px] w-fit rounded-xl font-bold  text-[#404a60] text-[18px]"
+                >
                   {el.name}
                 </div>
               ))}
@@ -69,7 +72,6 @@ const StepTwo = (props: CateType) => {
           </div>
           <p>These suggestions are based on your brief&apos;s title.</p>
           <div className=" bg-[#f8f9fc] rounded-xl">
-
             {dataProjectCategory?.map((el, index) => (
               <RadioGroup
                 key={index}
@@ -85,7 +87,6 @@ const StepTwo = (props: CateType) => {
                   </div>
                 </div>
               </RadioGroup>
-
             ))}
           </div>
         </div>
@@ -93,7 +94,7 @@ const StepTwo = (props: CateType) => {
       <div className="border rounded-xl w-[434px] h-[380px]">
         <div className="flex flex-col m-4  gap-5">
           <h1 className="font-bold  text-[#212e48] text-[22px]">
-            Let’s talk details
+            Let&apos;s talk details
           </h1>
           <p>Tell us a bit more about what you&apos;re looking for.</p>
           <Image src="/matching.png" width={400} height={400} alt="matching" />

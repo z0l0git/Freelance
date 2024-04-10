@@ -40,15 +40,21 @@ export const WhiteButton = (props: any) => {
 };
 
 type ButtonWithBlueBorderProps = {
-  handlePrevious: () => void;
-  buttonName: string;
+  handlePrevious?: () => void;
+  buttonName?: string;
   type?: "submit" | "button" | "reset";
-  height: string;
-  width: string;
+  height?: string;
+  width?: string;
 };
 
 export const ButtonWithBlueBorder = (props: ButtonWithBlueBorderProps) => {
-  const { buttonName, type, height, width, handlePrevious } = props;
+  const {
+    buttonName = "",
+    type = "submit",
+    height = "",
+    width = "",
+    handlePrevious = () => {},
+  } = props;
 
   return (
     <button

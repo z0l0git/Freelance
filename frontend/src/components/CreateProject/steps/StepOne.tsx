@@ -18,11 +18,8 @@ import {
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { Textarea } from "@/components/ui/textarea";
 
-
 type StepOneProps = {
-  handleChange: (
-    el: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLTextAreaElement>
-  ) => void;
+  handleChange: (el: ChangeEvent<HTMLInputElement>) => void;
 };
 const StepOne = (props: StepOneProps) => {
   const { handleChange } = props;
@@ -100,11 +97,11 @@ const StepOne = (props: StepOneProps) => {
                 </ToggleGroup>
               </div>
               <div>
-                <Textarea
+                <input
                   name="description"
                   style={{ outline: "none" }}
                   placeholder="Write your text here..."
-                  onChange={(el: ChangeEvent<HTMLTextAreaElement>) =>
+                  onChange={(el: ChangeEvent<HTMLInputElement>) =>
                     handleChange(el)
                   }
                 />
