@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { DescriptionEditComp } from "./DescriptionEditComp";
 import { Languages } from "./Languages";
 import { Skills } from "./Skills";
-import { Certification, Education } from "./Education";
+import { WorkExperience, Education } from "./Education";
 import { SocialAccounts } from "./SocialAccounts";
 
 export const EditBar = () => {
@@ -30,7 +30,7 @@ export const EditBar = () => {
       </div>
       <div className="w-full border-dashed border-t-2 "></div>
       <div className="w-full my-8">
-        <Certification />
+        <WorkExperience />
       </div>
     </div>
   );

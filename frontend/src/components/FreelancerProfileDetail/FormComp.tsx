@@ -31,12 +31,6 @@ export const FormComp: React.FC<Props> = (props) => {
             {props.errors.name && <div id="feedback">{props.errors.name}</div>}
             <div className="w-full flex justify-around p-4">
               <WhiteButton
-                buttonName="Cancel"
-                type="button"
-                buttonClass="blueBorderButton"
-                onclick={clickButton}
-              />
-              <WhiteButton
                 buttonName="Update"
                 buttonClass="blueButton"
                 type="submit"

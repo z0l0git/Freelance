@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import { ButtonWithBlueBorder, WhiteButton } from "../Button";
 import { FormComp } from "./FormComp";
+import { IoCloseCircleSharp } from "react-icons/io5";
 export const Skills = () => {
   const [addSkills, setAddSkilss] = useState(false);
   const clickButton = () => {
@@ -30,7 +31,7 @@ export const Skills = () => {
             buttonName="Add New"
           />
         ) : (
-          ""
+          <IoCloseCircleSharp onClick={clickButton} className="w-6 h-6" />
         )}
       </div>
       {!addSkills ? (

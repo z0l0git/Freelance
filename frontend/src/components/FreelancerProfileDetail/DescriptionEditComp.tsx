@@ -5,6 +5,7 @@ import React, { useEffect, useState } from "react";
 import { useContext } from "react";
 import { DataContext } from "../context/DataContext";
 import axios from "axios";
+import { IoCloseCircleSharp } from "react-icons/io5";
 type descriptionType = {
   discription: string;
 };
@@ -45,7 +46,7 @@ export const DescriptionEditComp: React.FC<{}> = () => {
             buttonName="Edit"
           />
         ) : (
-          ""
+          <IoCloseCircleSharp onClick={clickButton} className="w-6 h-6" />
         )}
       </div>
       <div
@@ -78,11 +79,6 @@ export const DescriptionEditComp: React.FC<{}> = () => {
             />
             {showdescriptionEdit ? (
               <div className="w-full flex justify-around p-4">
-                <WhiteButton
-                  buttonName="Cancel"
-                  buttonClass="blueBorderButton"
-                  // onClick={handleReset}
-                />
                 <WhiteButton
                   buttonName="Update"
                   type="submit"

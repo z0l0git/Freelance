@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { WhiteButton } from "../Button";
 import { LanguagesDetail } from "./LanguageDetail";
 import { FormComp } from "./FormComp";
+import { IoCloseCircleSharp } from "react-icons/io5";
 
 export const Languages: React.FC<{}> = (props) => {
   const [add, setAdd] = useState(false);
@@ -21,7 +22,7 @@ export const Languages: React.FC<{}> = (props) => {
             buttonName="Add New"
           />
         ) : (
-          ""
+          <IoCloseCircleSharp onClick={clickButton} className="w-6 h-6" />
         )}
       </div>
       <div>

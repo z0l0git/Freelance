@@ -2,7 +2,8 @@
 import React, { useState } from "react";
 import { WhiteButton } from "../Button";
 import { EducationAddComp } from "./EducationAddComp";
-
+import { WorkExperienceComp } from "./WorkExperience";
+import { IoCloseCircleSharp } from "react-icons/io5";
 export const Education = () => {
   const [addEducation, setAddEducation] = useState(false);
   const clickButton = () => {
@@ -19,7 +20,7 @@ export const Education = () => {
             buttonName="Add New"
           />
         ) : (
-          ""
+          <IoCloseCircleSharp onClick={clickButton} className="w-6 h-6" />
         )}
       </div>
       <div>
@@ -40,15 +41,15 @@ export const WorkExperience = () => {
   return (
     <div className="w-full">
       <div className="w-full flex justify-between items-center mb-4">
-        <h3 className="text-2xl font-semibold">Certification</h3>
-        {!addCertification ? (
+        <h3 className="text-2xl font-semibold">Work Experience</h3>
+        {addCertification ? (
           <WhiteButton
             buttonClass="font-bold text-[#0d47a1] "
             onClick={clickButton}
             buttonName="Add New"
           />
         ) : (
-          ""
+          <IoCloseCircleSharp onClick={clickButton} className="w-6 h-6" />
         )}
       </div>
       <div>
@@ -59,7 +60,7 @@ export const WorkExperience = () => {
             className="w-full h-fit text-[#979CA8]"
           />
         ) : (
-          <EducationAddComp clickButton={clickButton} />
+          <WorkExperienceComp clickButton={clickButton} />
         )}
       </div>
     </div>

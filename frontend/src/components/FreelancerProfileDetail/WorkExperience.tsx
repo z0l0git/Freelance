@@ -5,15 +5,15 @@ import { string } from "yup";
 type Props = {
   clickButton: () => void;
 };
-export const EducationAddComp = (props: Props) => {
+export const WorkExperienceComp = (props: Props) => {
   const { clickButton } = props;
   return (
     <div className="flex rounded-3xl bg-gray-100 w-full h-fit">
       <Formik
         initialValues={{
           year: Date,
-          degree: "",
-          schoolName: "",
+          occupation: "",
+          companyName: "",
           about: "",
         }}
         onSubmit={(values, actions) => {
@@ -31,7 +31,7 @@ export const EducationAddComp = (props: Props) => {
             <input
               type="date"
               className="bg-white border rounded-2xl p-3"
-              placeholder="date of graduate"
+              placeholder="date of start"
               onChange={props.handleChange}
               onBlur={props.handleBlur}
               value={props.values.year}
@@ -41,11 +41,11 @@ export const EducationAddComp = (props: Props) => {
             <input
               type="text"
               className="bg-white border rounded-2xl p-3"
-              placeholder="Enter your degree"
+              placeholder="Enter your occupation"
               onChange={props.handleChange}
               onBlur={props.handleBlur}
-              value={props.values.degree}
-              name="degree"
+              value={props.values.occupation}
+              name="occupation"
             />
             {/* {props.errors.degree && (
               <div id="feedback">{props.errors.degree}</div>
@@ -53,11 +53,11 @@ export const EducationAddComp = (props: Props) => {
             <input
               type="text"
               className="bg-white border rounded-2xl p-3"
-              placeholder="Enter your school name"
+              placeholder="Enter your company name"
               onChange={props.handleChange}
               onBlur={props.handleBlur}
-              value={props.values.schoolName}
-              name="schoolName"
+              value={props.values.companyName}
+              name="companyName"
             />
             {/* {props.errors.schoolName && (
               <div id="feedback">{props.errors.schoolName}</div>
@@ -65,7 +65,7 @@ export const EducationAddComp = (props: Props) => {
             <input
               type="text"
               className="bg-white border rounded-2xl p-3"
-              placeholder="Tell me about your school"
+              placeholder="Tell me about your company"
               onChange={props.handleChange}
               onBlur={props.handleBlur}
               value={props.values.about}
