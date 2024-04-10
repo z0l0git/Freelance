@@ -40,7 +40,7 @@ const projects = [
 
 export const Projects = () => {
   return (
-    <div className="flex items-start gap-5 justify-center pt-32">
+    <div className="flex items-start  flex-col gap-5 justify-center pt-32">
       <Filter jobs={"Local Jobs"} counter={"35"} />
       <div className="flex flex-col gap-[30px]">
         {projects.map((el, i) => {
@@ -62,3 +62,26 @@ export const Projects = () => {
     </div>
   );
 };
+
+// export const Projects = () => {
+//   return (
+//     <div className="flex flex-col md:flex-row items-start gap-5 justify-center pt-32 px-4">
+//       <Filter jobs={"Local Jobs"} counter={"35"} />
+//       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 w-full max-w-screen-xl mx-auto">
+//         {projects.map((el, i) => (
+//           <ProjectCard
+//             key={i}
+//             title={el.title}
+//             price={el.price}
+//             description={el.description}
+//             category={el.categoryCard}
+//             expire={el.expire}
+//             location={el.location}
+//             level={el.level}
+//             proposal={el.proposal}
+//           />
+//         ))}
+//       </div>
+//     </div>
+//   );
+// };

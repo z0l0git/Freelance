@@ -13,8 +13,8 @@ import { FaLocationDot } from "react-icons/fa6";
 export const Footer = () => {
   return (
     <div className="bg-[url(https://pixner.net/aihire/aihire/assets/img/footer/footerbg1.jpg)] ">
-      <div className="h-fit w-screen py-[120px] flex justify-center flex-wrap">
-        <div className="px-6">
+      <div className="h-fit w-screen md:py-[80px] lg:py-[120px] flex justify-center flex-wrap ">
+        <div className="px-3 w-[336px] mt-[24px]">
           <div>
             <div className="pb-6">
               <Image alt="logo" src="/logo.png " width={186} height={49} />
@@ -46,7 +46,7 @@ export const Footer = () => {
           </div>
           <div></div>
         </div>
-        <div className="px-6 text-white">
+        <div className="px-3 text-white w-[336px] l:w-[220px] mt-[24px] x:w-[190px] m:w-[160px]">
           <div className="font-semibold text-white text-[24px] pb-[24px]">
             Quick Link
           </div>
@@ -58,7 +58,7 @@ export const Footer = () => {
             <div>Blog</div>
           </div>
         </div>
-        <div className="text-white px-6">
+        <div className="text-white px-3 w-[336px] mt-[24px]">
           <div className="font-semibold text-white text-[24px] pb-[24px]">
             Contact
           </div>
@@ -81,7 +81,7 @@ export const Footer = () => {
             31 Brandy Way, Sutton, SM2 6SE
           </div>
         </div>
-        <div className="px-6">
+        {/* <div className="px-3 w-[336px] mt-[24px]">
           <div className="font-semibold text-white text-[24px] pb-[24px]">
             Newsletter
           </div>
@@ -89,13 +89,16 @@ export const Footer = () => {
             Subscribe our newsletter to get our <br />
             latest update news
           </div>
-          <div className="border border-blue-700 w- items-center flex rounded-full p-[8px] w-[277px]">
-            <div className="text-white pl-[10px] w-[211px]">Email address</div>
+          <div className="border border-blue-700 w- items-center flex rounded-full p-[8px] w-[306px]">
+            <input
+              className="border-none items-center flex p-[8px] w-[201px] h-[52px] bg-transparent pl-[10px] text-white outline-none"
+              placeholder="Email address"
+            />
             <div className="bg-blue-700 px-[31px] py-[15px] rounded-3xl ">
               <BsCursor className="text-white w-5 h-5" />
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
       <hr className="" />
       <div className="flex flex-col md:flex-row items-center text-white py-[32px] justify-around w-full gap-[20px] ">
