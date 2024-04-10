@@ -18,13 +18,14 @@ type PosdtDataType = {
   budget: number;
   deliveryTime: string;
   flexible: boolean;
-  categorys: string[];
+  categorys: DataType[];
   skillss: string[];
 };
 
 type DataType = {
   name: string;
   description: string;
+  _id: string;
 };
 type SkillType = {
   name: string;
@@ -89,6 +90,8 @@ export const StepperBarkhas = (props: CateType) => {
             dataProjectCategory={dataProjectCategory}
             skillCategory={skillCategory}
             handleChange={handleChange}
+            setPostData={setPostData}
+            postData={postData}
           />
         )}
       </div>
