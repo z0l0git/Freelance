@@ -14,15 +14,15 @@ export const AboutUs = () => {
             About us
           </div>
           <div className="md:text-[40px] text-[30px] font-semibold">
-            Our Comprehensive Services Provide The Power of AI
+            Our Service Provides Connections for Everyone
           </div>
           <div className="flex  sm:w-[400px] w-fit border-b border-slate-500 justify-between sm:gap-0 gap-[15px] ">
             <div
               onClick={(e) => {
                 setStage(0);
               }}
-              className={`pb-[10px] text-[17px] font-semibold  border-slate-500 ${
-                stage === 0 ? "text-[#0D47A9] border-[#0D47A9]" : "]"
+              className={`pb-[10px] text-[17px] cursor-pointer font-semibold border-b  ${
+                stage === 0 ? "text-[#0D47A9] border-[#0D47A9]" : ""
               }`}
             >
               Our Mission
@@ -31,7 +31,7 @@ export const AboutUs = () => {
               onClick={(e) => {
                 setStage(1);
               }}
-              className={`pb-[10px] text-[17px] font-semibold  border-slate-500 ${
+              className={`pb-[10px] text-[17px]  cursor-pointer font-semibold border-b  ${
                 stage === 1 ? "text-[#0D47A9] border-[#0D47A9]" : "]"
               }`}
             >
@@ -41,7 +41,7 @@ export const AboutUs = () => {
               onClick={(e) => {
                 setStage(2);
               }}
-              className={`pb-[10px] text-[17px] font-semibold  border-slate-500 ${
+              className={`pb-[10px] text-[17px]  cursor-pointer font-semibold border-b  ${
                 stage === 2 ? "text-[#0D47A9] border-[#0D47A9]" : "]"
               }`}
             >

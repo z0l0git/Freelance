@@ -8,7 +8,7 @@ export type ProjectModelType = {
   files: [string];
   category: [Schema.Types.ObjectId];
   skills: [Schema.Types.ObjectId];
-  budget: string;
+  budget: number;
   deliveryTime: string;
   flexible: boolean;
   createdAt: Date;
@@ -41,7 +41,8 @@ const ProjectSchema = new Schema<ProjectModelType>({
     ref: "Categories",
   },
   budget: {
-    type: String,
+    type: Number,
+    min: 0,
     required: true,
   },
   deliveryTime: {

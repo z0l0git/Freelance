@@ -23,8 +23,7 @@ export const Footer = () => {
             <div className="text-white pb-[30px]">
               Join our community of businesses,
               <br />
-              entrepreneurs, and freelancers who are <br /> passionate about AI
-              and its potential
+              entrepreneurs, and freelancers
             </div>
             <div className="flex gap-[12px]">
               <div className="border rounded-[50px] w-[36px] h-[36px] border-blue-700 flex justify-center items-center">
@@ -51,11 +50,11 @@ export const Footer = () => {
             Quick Link
           </div>
           <div className="flex flex-col gap-[6px]">
-            <div>About us</div>
-            <div>Browse Job</div>
-            <div>Find Talent</div>
-            <div>FAQs</div>
-            <div>Blog</div>
+            <div className="cursor-pointer font-semibold">About us</div>
+            <div className="cursor-pointer font-semibold">Browse Job</div>
+            <div className="cursor-pointer font-semibold">Find Talent</div>
+            <div className="cursor-pointer font-semibold">FAQs</div>
+            <div className="cursor-pointer font-semibold">Blog</div>
           </div>
         </div>
         <div className="text-white px-3 w-[336px] mt-[24px]">
@@ -66,19 +65,19 @@ export const Footer = () => {
             <div className="border rounded-[50px] w-[36px] h-[36px] border-blue-700 flex justify-center items-center">
               <BsFillTelephonePlusFill className="w-4 h-4 text-white" />
             </div>
-            (316) 555-0116
+            (976) 8811-1188
           </div>
           <div className="flex items-center gap-3 pb-[16px]">
             <div className="border rounded-[50px] w-[36px] h-[36px] border-blue-700 flex justify-center items-center">
               <FaEnvelopeOpen className="w-4 h-4 text-white" />
             </div>
-            info@example.com
+            freelancer01.devs@gmail.com
           </div>
           <div className="flex items-center gap-3 pb-[16px]">
             <div className="border rounded-[50px] w-[36px] h-[36px] border-blue-700 flex justify-center items-center">
               <FaLocationDot className="w-4 h-4 text-white" />
             </div>
-            31 Brandy Way, Sutton, SM2 6SE
+            Mongolia, Ulaanbaatar, 12345
           </div>
         </div>
         {/* <div className="px-3 w-[336px] mt-[24px]">
@@ -103,15 +102,15 @@ export const Footer = () => {
       <hr className="" />
       <div className="flex flex-col md:flex-row items-center text-white py-[32px] justify-around w-full gap-[20px] ">
         <div className="flex ">
-          <div>Copyright © 2023 </div>
-          <div className="text-[#2196F3]">AIHire.</div>
-          <div> Designed By </div>
-          <div className="text-[#FFBE57]">Pixelaxis</div>
+          <div>Copyright © 2024</div>
+          <div className="text-[#2196F3]"></div>
+
+          <div className="text-[#FFBE57]"></div>
         </div>
         <div className="flex gap-[20px] items-center justify-center">
-          <div>Help & Support</div>
-          <div>Privacy policy</div>
-          <div>Terms & Conditions</div>
+          <div className="cursor-pointer">Help & Support</div>
+          <div className="cursor-pointer">Privacy policy</div>
+          <div className="cursor-pointer">Terms & Conditions</div>
         </div>
       </div>
     </div>

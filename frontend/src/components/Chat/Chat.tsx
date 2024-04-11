@@ -2,12 +2,12 @@ import React from "react";
 import { SentChat } from "./SentChat";
 import { RecievedChat } from "./RecievedChat";
 import Image from "next/image";
-
+import { socket } from "../../socket";
 export const Chat = () => {
   return (
-    <div className="w-full flex items-start justify-center h-screen">
-      <div className="w-[30%] flex flex-col items-start gap-2 bg-slate-400 p-3 rounded-xl h-[92%] mt-[20px]">
-        <div className="flex items-center gap-5 bg-gray-200 rounded-xl w-full p-[10px] cursor-pointer">
+    <div className="w-full flex items-start justify-center h-fit">
+      <div className="w-[30%] flex flex-col items-start gap-2 bg-[#402e58] p-3 rounded-xl h-[650px] mt-[20px]">
+        <div className="flex items-center gap-5 bg-gray-200 rounded-xl w-full p-[10px] cursor-pointer transition duration-300 ease-in-out hover:bg-blue-200 hover:text-white transition duration-300 ease-in-out hover:scale-105">
           <Image
             src={"/profiles.png"}
             width={50}
@@ -17,7 +17,7 @@ export const Chat = () => {
           />
           <p className="text-[20px] font-bold text-slate-800 ">John Doe</p>
         </div>
-        <div className="flex items-center gap-5 bg-gray-200 rounded-xl w-full p-[10px] cursor-pointer">
+        <div className="flex items-center gap-5 bg-gray-200 rounded-xl w-full p-[10px] cursor-pointer transition duration-300 ease-in-out hover:bg-blue-200 hover:text-white transition duration-300 ease-in-out hover:scale-105">
           <Image
             src={"/profiles.png"}
             width={50}
@@ -38,17 +38,17 @@ export const Chat = () => {
           />
           <p className="text-[20px] font-bold text-white ">John Doe</p>
         </div>
-        <div className="w-full flex flex-col rounded-xl rounded-t-none bg-slate-400 p-[20px]">
-          <ul className="w-full flex flex-col-reverse h-[500px] overflow-y-scroll scrollbar-hide gap-2">
-            <RecievedChat message={"Hello"} time="10:35" />
+        <div className="w-full flex flex-col rounded-xl rounded-t-none bg-slate-300 p-[20px]">
+          <ul className="w-full flex flex-col-reverse h-[450px] overflow-y-scroll scrollbar-hide gap-2">
+            <RecievedChat message={"Hello"} time="10:37" />
+            <SentChat message={"Helloo"} time="10:36" />
+            <RecievedChat message={"Hello"} time="10:36" />
             <SentChat message={"Helloo"} time="10:36" />
             <RecievedChat message={"Hello"} time="10:35" />
-            <SentChat message={"Helloo"} time="10:36" />
-            <RecievedChat message={"Hello"} time="10:35" />
-            <SentChat message={"Helloo"} time="10:36" />
-            <SentChat message={"Helloo"} time="10:36" />
-            <SentChat message={"Helloo"} time="10:36" />
-            <RecievedChat message={"Hello"} time="10:35" />
+            <SentChat message={"Helloo"} time="10:35" />
+            <SentChat message={"Helloo"} time="10:35" />
+            <SentChat message={"Helloo"} time="10:34" />
+            <RecievedChat message={"Hello"} time="10:34" />
           </ul>
           <div className="w-full  flex gap-[20px]  items-center">
             <input

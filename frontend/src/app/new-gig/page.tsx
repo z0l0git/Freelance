@@ -4,10 +4,11 @@ import { Menu } from "@/components/Menu/Menu";
 import { StepperBarkhas } from "@/components/Stepper/StepBarkhas";
 import { AxiosInstance } from "@/utils/axiosInstance";
 import axios from "axios";
+import { log } from "console";
 
 import React from "react";
 
-const GetProjectCategory = async () => {
+export const GetProjectCategory = async () => {
   try {
     const { data } = await axios.get(
       "http://localhost:8000/getProjectCategory"
@@ -18,10 +19,9 @@ const GetProjectCategory = async () => {
     console.log(err.message);
   }
 };
-const GetSkillCategory = async () => {
+export const GetSkillCategory = async () => {
   try {
-    const skill = await axios.get("http://localhost:8000/categories");
-
+    const { data: skill } = await axios.get("http://localhost:8000/categories");
     return skill;
   } catch (err: any) {
     console.log(err.message);

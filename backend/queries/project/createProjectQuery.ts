@@ -1,5 +1,6 @@
 import { Request } from "express";
 import { ProjectModel } from "../../models/project";
+import { UserModel } from "../../models";
 
 export const createProjectQuery = async (req: Request) => {
   const {
@@ -12,6 +13,7 @@ export const createProjectQuery = async (req: Request) => {
     categorys,
     skillss,
   } = req.body;
+
   try {
     const project = await ProjectModel.create({
       title,
@@ -19,7 +21,6 @@ export const createProjectQuery = async (req: Request) => {
       budget,
       deliveryTime,
       createdBy,
-
       category: [...categorys],
       skills: [...skillss],
       flexible,

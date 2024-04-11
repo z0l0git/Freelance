@@ -9,10 +9,13 @@ type SkillType = {
   id: string;
 };
 type PosdtDataType = {
-  createdBy: string;
+  createdBy: {
+    firstName: string;
+    lastName: string;
+  };
   title: string;
   description: string;
-  budget: string;
+  budget: number;
   deliveryTime: string;
   flexible: boolean;
   categorys: string[];
@@ -25,30 +28,22 @@ type ProjectsProps = {
 
 export const Projects = (props: ProjectsProps) => {
   const { AllPost } = props;
-  // console.log(
-  //   AllPost[5].skills.map((el2, index2) => {
-  //     return el2.name;
-  //   }),
-  //   "as"
-  // );
 
   return (
-
     <div className="flex items-start  justify-center  ">
-     
-
-      <div className="flex flex-col gap-[30px]">
+      <div className="flex flex-col-reverse gap-[30px]">
         {AllPost?.map((el, index) => {
           return (
             <ProjectCard
               key={index}
               title={el.title}
-              price={el.budget}
+              price={el.budget.toLocaleString()}
               description={el.description}
+              flexible={el.flexible}
+              createdby={el.createdBy.firstName + " " + el.createdBy.lastName}
               category={el.skills?.map((el2, index2) => {
                 return el2.name;
               })}
-              // category={el.title}
             />
           );
         })}

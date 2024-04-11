@@ -10,7 +10,6 @@ const page = () => {
   return (
     <div>
       <div className="bg-[url(https://pixner.net/aihire/aihire/assets/img/bn/breadcumndbg.jpg)]">
-        <HeaderSearch />
         <Menu />
       </div>
       <div className="flex justify-center mt-[100px]">

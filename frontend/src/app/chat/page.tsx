@@ -9,7 +9,7 @@ const page = () => {
   return (
     <div>
       <Menu />
-      <div className=" bg-slate-600">
+      <div className="">
         <Chat />
       </div>
     </div>

@@ -19,16 +19,14 @@ const GetAllPosts = async () => {
 
 const page = async () => {
   const AllPost = await GetAllPosts();
-  console.log(AllPost, "asd");
 
   return (
     <div>
-      <div className="bg-[url(https://pixner.net/aihire/aihire/assets/img/bn/breadcumndbg.jpg)]  ">
-        <HeaderSearch />
+      <div className="bg-[url(https://pixner.net/aihire/aihire/assets/img/bn/breadcumndbg.jpg)]">
         <Menu />
       </div>
-      <div className="flex justify-center bg-slate-200 h-[880px] overflow-scroll  gap-5">
-        <div className="sticky top-0 h-[100%] overflow-scroll my-[100px] ">
+      <div className="flex justify-center bg-slate-200 h-fit gap-5">
+        <div className="sticky top-0 h-[100%] my-[100px] ">
           <Filter />
         </div>
         <div className="my-[100px] pb-[100px]">
