@@ -20,25 +20,17 @@ type PosdtDataType = {
 };
 
 type ProjectsProps = {
-  AllPost: PosdtDataType[];
+  post: PosdtDataType[];
 };
 
 export const Projects = (props: ProjectsProps) => {
-  const { AllPost } = props;
-  // console.log(
-  //   AllPost[5].skills.map((el2, index2) => {
-  //     return el2.name;
-  //   }),
-  //   "as"
-  // );
+  const { post } = props;
+  console.log(post, "map");
 
   return (
-
     <div className="flex items-start  justify-center  ">
-     
-
       <div className="flex flex-col gap-[30px]">
-        {AllPost?.map((el, index) => {
+        {post?.map((el, index) => {
           return (
             <ProjectCard
               key={index}

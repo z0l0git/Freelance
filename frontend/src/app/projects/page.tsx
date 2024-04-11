@@ -6,7 +6,12 @@ import React from "react";
 import { Projects } from "@/components/Projects/Projects";
 import { Footer } from "@/components/Footer/Footer";
 import axios from "axios";
+import { ProjectContainer } from "@/components/Projects/projectContainer";
 
+type SkillType = {
+  name: string;
+  id: string;
+};
 const GetAllPosts = async () => {
   try {
     const { data } = await axios.get("http://localhost:8000/getAllProject");
@@ -17,8 +22,19 @@ const GetAllPosts = async () => {
   }
 };
 
+const GetSkillCategory = async () => {
+  try {
+    const { data } = await axios.get("http://localhost:8000/categories");
+
+    return data;
+  } catch (err: any) {
+    console.log(err.message);
+  }
+};
+
 const page = async () => {
   const AllPost = await GetAllPosts();
+  const Skill = await GetSkillCategory();
   console.log(AllPost, "asd");
 
   return (
@@ -27,14 +43,7 @@ const page = async () => {
         <HeaderSearch />
         <Menu />
       </div>
-      <div className="flex justify-center bg-slate-200 h-[880px] overflow-scroll  gap-5">
-        <div className="sticky top-0 h-[100%] overflow-scroll my-[100px] ">
-          <Filter />
-        </div>
-        <div className="my-[100px] pb-[100px]">
-          <Projects AllPost={AllPost} />
-        </div>
-      </div>
+      <ProjectContainer AllPost={AllPost} Skill={Skill} />
 
       <Footer />
     </div>

@@ -7,13 +7,13 @@ type DataContextType = {
   isLoggedIn: boolean;
 
   data: Response;
-
 };
 
 export const DataContext = createContext<DataContextType>(
   {} as DataContextType
 );
 type Response = {
+  _id: string;
   firstName: string;
   lastName: string;
   email: string;
@@ -26,6 +26,7 @@ export const DataProvider = ({ children }: any) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const [data, setdata] = useState<Response>({
+    _id: "",
     firstName: "",
     lastName: "",
     email: "",
@@ -33,7 +34,7 @@ export const DataProvider = ({ children }: any) => {
     password: "",
     discription: "",
   });
-
+  console.log(data, "dataa");
 
   const accessToken =
     typeof window !== "undefined" && localStorage.getItem("token");
@@ -73,7 +74,6 @@ export const DataProvider = ({ children }: any) => {
         isLoggedIn,
 
         data,
-
       }}
     >
       {children}
