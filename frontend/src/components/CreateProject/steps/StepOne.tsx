@@ -109,9 +109,7 @@ const StepOne = (props: StepOneProps) => {
             </div>
           </div>
         </div>
-        <div>
-          <NameInputComponent />
-        </div>
+
         <div className="flex flex-col gap-6">
           <p className="font-bold text-[18px] text-[#212e48]">
             Attach Files (up to 1)

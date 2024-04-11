@@ -1,25 +1,101 @@
+"use client";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Checkbox } from "@/components/ui/checkbox";
 import Image from "next/image";
+import { MouseEvent } from "react";
 import CheckCategory from "./CheckCategory";
+import { useState } from "react";
+import { ChangeEvent } from "react";
+import { Skills } from "@/components/Profile/Skils";
 
 type DataType = {
   name: string;
   description: string;
+  _id: string;
 };
 type SkillType = {
   name: string;
   id: string;
 };
+type PosdtDataType = {
+  createdBy: string;
+  title: string;
+  description: string;
+  budget: number;
+  deliveryTime: string;
+  flexible: boolean;
+  categorys: DataType[];
+  skillss: string[];
+};
 
 type CateType = {
   dataProjectCategory: DataType[];
   skillCategory: SkillType[];
+  setPostData: React.Dispatch<React.SetStateAction<PosdtDataType>>;
+  postData: PosdtDataType;
 };
 
 const StepTwo = (props: CateType) => {
-  const { dataProjectCategory, skillCategory } = props;
-  console.log(dataProjectCategory, "ddd");
+  const { dataProjectCategory, skillCategory, setPostData, postData } = props;
+
+  const handleSkillClick = (event: MouseEvent<HTMLDivElement>) => {
+    const categoryId = event.currentTarget.id;
+
+    const filteredSkillCategpry = skillCategory?.find(
+      ({ id }) => id === categoryId
+    );
+    console.log(filteredSkillCategpry, "filteredSkillCategpry");
+
+    const filtered = postData?.skillss.find(
+      (el) => el === filteredSkillCategpry?.name
+    );
+
+    if (filtered) {
+      console.log("you have already picked up ");
+
+      setPostData((prev) => ({
+        ...prev,
+        skillss: prev.skillss.filter(
+          (el) => el !== filteredSkillCategpry?.name
+        ),
+      }));
+    } else {
+      filteredSkillCategpry &&
+        setPostData((prev) => ({
+          ...prev,
+          skillss: [...prev.skillss, filteredSkillCategpry.name],
+        }));
+    }
+  };
+
+  const handleClickCategories = (event: MouseEvent<HTMLDivElement>) => {
+    const skillId = event.currentTarget.id;
+
+    const filteredCategpry = dataProjectCategory?.find(
+      ({ _id }) => _id === skillId
+    );
+    console.log(filteredCategpry, "clicked one");
+
+    const filteredCa = postData?.categorys.find(
+      (el) => el._id === filteredCategpry?._id
+    );
+
+    if (filteredCa) {
+      console.log("you have already picked up");
+    } else {
+      filteredCategpry &&
+        setPostData((prev) => ({
+          ...prev,
+          categorys: [...prev.categorys, filteredCategpry],
+        }));
+    }
+  };
+  // setPostData((prev) => ({
+  //   ...prev,
+  //   categorys: prev.categorys.filter(
+  //     (el: DataType) => el._id !== filteredCa?._id
+  //   ),
+  // }));
 
   return (
     <div className="flex gap-5">
@@ -49,6 +125,8 @@ const StepTwo = (props: CateType) => {
               {skillCategory?.map((el, index) => (
                 <div
                   key={index}
+                  id={el.id}
+                  onClick={handleSkillClick}
                   className="bg-[#f8f9fc] px-[10px] py-[5px] w-fit rounded-xl font-bold  text-[#404a60] text-[18px]"
                 >
                   {el.name}
@@ -73,20 +151,9 @@ const StepTwo = (props: CateType) => {
           <p>These suggestions are based on your brief&apos;s title.</p>
           <div className=" bg-[#f8f9fc] rounded-xl">
             {dataProjectCategory?.map((el, index) => (
-              <RadioGroup
-                key={index}
-                className="flex flex-col gap-12 m-4 "
-                defaultValue="comfortable"
-              >
-                <div className="flex items-center space-x-2">
-                  <RadioGroupItem value="default" />
-                  <div className="flex flex-col gap-4">
-                    <p className="font-bold  text-[#404a60]">{el.name}</p>
-                    <p>{el.description}</p>
-                    <div className="border-b border-dashed w-full"></div>
-                  </div>
-                </div>
-              </RadioGroup>
+              <div key={index} onClick={handleClickCategories} id={el._id}>
+                <CheckCategory name={el.name} text={el.description} />
+              </div>
             ))}
           </div>
         </div>
