@@ -12,6 +12,7 @@ export const EditBar = () => {
       <div className="w-full flex flex-col pb-4 ">
         <DescriptionEditComp />
       </div>
+
       <div className="w-full border-dashed border-t-2 "></div>
       <div className="w-full my-8 ">
         <Languages />
@@ -31,6 +32,7 @@ export const EditBar = () => {
       <div className="w-full border-dashed border-t-2 "></div>
       <div className="w-full my-8">
         <WorkExperience />
+
       </div>
     </div>
   );

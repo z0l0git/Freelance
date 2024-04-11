@@ -1,3 +1,4 @@
+"use client";
 import Image from "next/image";
 import React from "react";
 import { useEffect } from "react";
@@ -14,35 +15,33 @@ import { HomePagePart } from "@/components/HomePagePart";
 import { currentUser, auth } from "@clerk/nextjs";
 import axios from "axios";
 
-export default async function Home() {
-  const { userId } = auth();
-  const user: any = await currentUser();
+export default function Home() {
+  useEffect(() => {
+    const getAllCategories = async () => {
+      try {
+        const result = await axios.get("http://localhost:3000/api");
 
-  const getAllCategories = async () => {
-    try {
-      const { data } = await axios.post("http://localhost:8000/createByClerk", {
-        firstName: user.firstName,
-        lastName: user.lastName,
-        email: user?.emailAddresses[0].emailAddress,
-      });
+        console.log(result.data?.user.emailAddresses[0].emailAddress, "result");
 
-      // console.log(user);
-      // console.log(data);
+        const { data } = await axios.post(
+          "http://localhost:8000/createByClerk",
+          {
+            firstName: result.data?.user.firstName,
+            lastName: result.data?.user.lastName,
+            email: result.data?.user.emailAddresses[0].emailAddress,
+          }
+        );
 
-      // const userId = data.existingUser._id;
-      // console.log(userId, " user idded");
-      // console.log(data, "token");
-      // localStorage.setItem("Token", data);
-      // typeof window !== "undefined" && sessionStorage.setItem("Token", data);
-      // console.log("Token set successfully");
-
-      return data;
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
-  const data = await getAllCategories();
+        console.log(data, "tokenpage");
+        if (typeof window !== "undefined") {
+          localStorage.setItem("token", data);
+        }
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    getAllCategories();
+  }, []);
 
   return (
     <div className="flex flex-col gap-[40px]">

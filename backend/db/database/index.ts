@@ -2,10 +2,6 @@ import { connect, set } from "mongoose";
 
 type CONNECTION_STRING = string;
 
-/**
- * Connect to the database
- */
-
 export const connectDb = async () => {
   set("strictQuery", false);
   try {

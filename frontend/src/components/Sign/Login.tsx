@@ -49,11 +49,11 @@ export const Login = () => {
   });
 
   const hanldeSubmit = async (values: typeof initialValues) => {
-    console.log(values, "sadffa");
+    
     try {
       const { data } = await AxiosInstance.post("/login", values);
       console.log(data, "token");
-      localStorage.setItem("Token", data);
+      localStorage.setItem("token", data);
       push("/");
     } catch (err: any) {
       console.log(err.response.data);

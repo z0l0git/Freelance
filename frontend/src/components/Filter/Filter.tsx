@@ -56,8 +56,7 @@ const languageCategory = [
   { category: "Portuguases" },
 ];
 
-export const Filter = (props: Filter) => {
-  const { jobs, counter } = props;
+export const Filter = () => {
   return (
     <div className="flex bg-slate-100 rounded-2xl">
       <div className="flex flex-col w-[352px] xl:w-[416px] h-fill rounded-xl p-8 bg-slate-50">

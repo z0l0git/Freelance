@@ -86,3 +86,13 @@
   background: transparent;
   backdrop-filter: blur(20px);
 }
+
+input[type="file"] {
+  display: none;
+}
+.custom-file-upload {
+  color: #0d47a1;
+  display: inline-block;
+  padding: 6px 12px;
+  cursor: pointer;
+}

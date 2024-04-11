@@ -66,10 +66,7 @@ export const MainProfileInfo = () => {
           </div>
         </div>
         <div onClick={handlePush}>
-          <ButtonWithBlueBorder
-            buttonName="View Profile"
-            buttonClass="bg-white"
-          />
+          <ButtonWithBlueBorder buttonName="View Profile" />
         </div>
       </div>
     </div>

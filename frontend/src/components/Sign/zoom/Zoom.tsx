@@ -84,13 +84,13 @@ export const Zoom = () => {
   };
 
   return (
-    <div className="">
+    <div className="relative">
       <Canvas
         camera={{
           position: [10, -7.5, -5],
         }}
         style={{ height: "100vh" }}
-        className="bg-slate-900 h-full"
+        className="bg-slate-900"
       >
         <OrbitControls maxDistance={20} minDistance={10} />
         <directionalLight />
@@ -100,7 +100,7 @@ export const Zoom = () => {
 
       <div
         // style={rotateStyle}
-        className={`bbb  rounded-[10px] sm:w-550px] w-fit h-fit pt-[40px] pb-[100px]   border border-gray-400 flex flex-col items-center gap-[25px] absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2`}
+        className={`bbb rounded-[10px] sm:w-550px] w-fit h-fit pt-[40px] pb-[100px]   border border-gray-400 flex flex-col items-center gap-[25px] absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2`}
       >
         <div className="">
           {stage === 0 && <Login />}
