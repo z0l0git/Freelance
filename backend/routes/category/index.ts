@@ -14,3 +14,4 @@ CategoryRouter.get("/categories", getCategoryController);
 CategoryRouter.delete("/deleteCategory", deleteCategoryController);
 CategoryRouter.post("/createProjectCategory", createProjectCategoryController);
 CategoryRouter.get("/getProjectCategory", getProjectControlller);
+ 

@@ -1,60 +1,52 @@
+"use client";
 import React from "react";
 import { Filter } from "../Filter/Filter";
 import { ProjectCard } from "../ProjectCard/ProjectCard";
+import { AiFillPropertySafety } from "react-icons/ai";
 
-const categoryAr = ["Python", "Software ", "API Integration", "Open AI"];
+type SkillType = {
+  name: string;
+  id: string;
+};
+type PosdtDataType = {
+  createdBy: string;
+  title: string;
+  description: string;
+  budget: string;
+  deliveryTime: string;
+  flexible: boolean;
+  categorys: string[];
+  skills: SkillType[];
+};
 
-const projects = [
-  {
-    title: "Facebook page's developer",
-    price: "Negotiate",
-    description:
-      "Манай дэлгүүр өөрийн ФБ хуудсыг хөийг хайж байна, тус хуудас дотор байгаа онцлох барааг бүүст хийх, чатбот ажиллуулах зэрэг ажлуудыг хийж гүйцэтгэх юм.",
-    categoryCard: categoryAr,
-    expire: "21 days",
-    location: "Remote",
-    level: "Junior",
-    proposal: "5 received",
-  },
-  {
-    title: "Chinese translator",
-    price: "$100",
-    description: "Full 20 pages",
-    categoryCard: categoryAr,
-    expire: "Week",
-    location: "Remote",
-    level: "Mid",
-    proposal: "Proposal",
-  },
-  {
-    title: "Accounter",
-    price: "$250",
-    description: "Company's annual finalcial report",
-    categoryCard: categoryAr,
-    expire: "Week",
-    location: "Location",
-    level: "Level",
-    proposal: "Proposal",
-  },
-];
+type ProjectsProps = {
+  AllPost: PosdtDataType[];
+};
 
-export const Projects = () => {
+export const Projects = (props: ProjectsProps) => {
+  const { AllPost } = props;
+  // console.log(
+  //   AllPost[5].skills.map((el2, index2) => {
+  //     return el2.name;
+  //   }),
+  //   "as"
+  // );
+
   return (
-    <div className="flex items-start gap-5 justify-center pt-32">
-      <Filter jobs={"Local Jobs"} counter={"35"} />
+    <div className="flex items-start  justify-center  ">
+     
       <div className="flex flex-col gap-[30px]">
-        {projects.map((el, i) => {
+        {AllPost?.map((el, index) => {
           return (
             <ProjectCard
-              key={i}
+              key={index}
               title={el.title}
-              price={el.price}
+              price={el.budget}
               description={el.description}
-              category={el.categoryCard}
-              expire={el.expire}
-              location={el.location}
-              level={el.level}
-              proposal={el.proposal}
+              category={el.skills?.map((el2, index2) => {
+                return el2.name;
+              })}
+              // category={el.title}
             />
           );
         })}
