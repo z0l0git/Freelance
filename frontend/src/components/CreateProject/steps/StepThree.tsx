@@ -14,7 +14,7 @@ type PosdtDataType = {
   createdBy: string;
   title: string;
   description: string;
-  budget: string; 
+  budget: string;
   deliveryTime: string;
   flexible: boolean;
   categorys: string[];
@@ -36,7 +36,7 @@ const StepThree = (props: StepThreeProps) => {
 
   useEffect(() => {
     setPostData({ ...postData, flexible: flexible });
-  }, [flexible]);
+  }, [flexible, postData, setPostData]);
 
   return (
     <div className="flex gap-5 h-fit">

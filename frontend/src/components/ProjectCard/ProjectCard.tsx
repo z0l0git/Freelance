@@ -5,10 +5,10 @@ import { BlueButton } from "../Button";
 import { CheckCircle } from "../../components/ui/checkcircle";
 
 type ProjectCard = {
-  title: String;
-  price: String;
-  description: String;
-  category: string[];
+  title?: String;
+  price?: String;
+  description?: String;
+  category?: string[];
 };
 
 export const ProjectCard = (props: ProjectCard) => {
@@ -23,7 +23,6 @@ export const ProjectCard = (props: ProjectCard) => {
             <h5 className="text-2xl font-light">{price}</h5>
           </div>
           <div className="flex gap-10 justify-stretch w-full h-[41px] mb-6">
-       
             {category?.map((element, index) => {
               return (
                 <div

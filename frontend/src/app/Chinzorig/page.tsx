@@ -60,10 +60,6 @@ const Chinzorig = () => {
                 price={el.price}
                 description={el.description}
                 category={el.categoryCard}
-                expire={el.expire}
-                location={el.location}
-                level={el.level}
-                proposal={el.proposal}
               />
             );
           })}
