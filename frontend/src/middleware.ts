@@ -16,6 +16,7 @@ export default authMiddleware({
     "/profile",
     "/user-profile",
     "/profile",
+    "/new-gig",
   ],
 });
 

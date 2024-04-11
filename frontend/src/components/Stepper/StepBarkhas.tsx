@@ -10,15 +10,16 @@ import React, { useState, ChangeEvent, useEffect } from "react";
 import StepFour from "@/components/CreateProject/steps/StepFour";
 import { useContext } from "react";
 import { DataContext } from "../context/DataContext";
+import axios from "axios";
 
 type PosdtDataType = {
   createdBy: string;
   title: string;
   description: string;
-  budget: number;
+  budget: string;
   deliveryTime: string;
   flexible: boolean;
-  categorys: DataType[];
+  categorys: string[];
   skillss: string[];
 };
 
@@ -45,12 +46,13 @@ export const StepperBarkhas = (props: CateType) => {
   const { userdata } = useContext(DataContext);
 
   const [step, setStep] = useState(0);
+  const [error, setError] = useState<string>("");
 
   const [postData, setPostData] = useState<PosdtDataType>({
     createdBy: "",
     title: "",
     description: "",
-    budget: 0,
+    budget: "",
     deliveryTime: "",
     flexible: false,
     categorys: [],
@@ -62,10 +64,49 @@ export const StepperBarkhas = (props: CateType) => {
 
   const CurrentStep = steps[step];
 
-  const handleNext = () => {
-    if (step === steps.length - 1) return push("/");
-    setStep(step + 1);
+  const handleNext = async () => {
+    if (step === 0) {
+      if (postData.title === "" || postData.description === "") {
+        setError("Title and description are required");
+      } else {
+        setError("");
+        setStep(step + 1);
+      }
+    }
+
+    if (step === 1) {
+      if (postData.categorys.length === 0 || postData.skillss.length === 0) {
+        setError("Category and skill are required");
+      } else {
+        setError("");
+        setStep(step + 1);
+      }
+    }
+
+    if (step === steps.length - 2) {
+      if (postData.budget === "" || postData.deliveryTime === "") {
+        setError("Budget and delivery time are required");
+      } else {
+        try {
+          const { data } = await axios.post(
+            "http://localhost:8000/postProject",
+            postData
+          );
+          setError("");
+          setStep(step + 1);
+          console.log(data, "new post");
+          console.log("amjilttai uuslee");
+        } catch (err: any) {
+          console.log(err.message, "err");
+        }
+      }
+    }
+
+    if (step === steps.length - 1) {
+      window.location.href = "/";
+    }
   };
+
   const handlePrevious = () => {
     setStep(step - 1);
   };
@@ -94,35 +135,28 @@ export const StepperBarkhas = (props: CateType) => {
             postData={postData}
           />
         )}
+        <div className="flex gap-2  m-[40px] w-[1280px]">
+          {step < 3 && (
+            <div className="w-full flex gap-4 items-center mx-[40px]">
+              <BlueButton
+                height="60px"
+                width="210px"
+                buttonName="Save & Continue"
+                handleSubmit={handleNext}
+              />
+              <ButtonWithBlueBorder
+                height="60px"
+                width="fit"
+                handlePrevious={handlePrevious}
+                buttonName="Cancel"
+              />
+              {error && <div className="text-red-500">{error}</div>}
+            </div>
+          )}
+        </div>
       </div>
-      <div className="flex gap-2 mx-[120px] my-5">
-        {step < 3 && (
-          <BlueButton
-            height="70px"
-            width="30%"
-            buttonName="Save & Continue"
-            handleSubmit={handleNext}
-          />
-        )}
-      </div>
-      <div className="flex flex-col md:flex-row w-full my-5 items-start justify-start">
-        {step < 3 && (
-          <div className="w-full flex gap-4 items-center mx-[40px]">
-            <BlueButton
-              height="60px"
-              width="210px"
-              buttonName="Save & Continue"
-              handleSubmit={handleNext}
-            />
-            <ButtonWithBlueBorder
-              height="60px"
-              width="fit"
-              handlePrevious={handlePrevious}
-              buttonName="Cancel"
-            />
-          </div>
-        )}
-      </div>
+
+      {/* <div className="flex flex-col md:flex-row w-full my-5 items-start justify-start"></div> */}
     </div>
   );
 };

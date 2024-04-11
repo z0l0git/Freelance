@@ -21,10 +21,10 @@ type PosdtDataType = {
   createdBy: string;
   title: string;
   description: string;
-  budget: number;
+  budget: string;
   deliveryTime: string;
   flexible: boolean;
-  categorys: DataType[];
+  categorys: string[];
   skillss: string[];
 };
 
@@ -37,17 +37,44 @@ type CateType = {
 
 const StepTwo = (props: CateType) => {
   const { dataProjectCategory, skillCategory, setPostData, postData } = props;
+  const [checked, setChecked] = useState(false);
+  const [testId, setTestId] = useState("");
+
+  const handleClickCategories =
+    (skillId: string) => (event: MouseEvent<HTMLButtonElement>) => {
+      const categories = postData?.categorys;
+
+      setPostData((prev) => {
+        const filteredCa = categories.find((el) => el === skillId);
+
+        const filteredCategory = categories.filter((el) => el !== skillId);
+
+        if (filteredCa) {
+          console.log(filteredCa);
+          return {
+            ...prev,
+            categorys: filteredCategory,
+          };
+        } else {
+          console.log(filteredCa);
+          return {
+            ...prev,
+            categorys: [...prev.categorys, skillId],
+          };
+        }
+      });
+    };
 
   const handleSkillClick = (event: MouseEvent<HTMLDivElement>) => {
     const categoryId = event.currentTarget.id;
-
+    setTestId(categoryId);
     const filteredSkillCategpry = skillCategory?.find(
       ({ id }) => id === categoryId
     );
     console.log(filteredSkillCategpry, "filteredSkillCategpry");
 
     const filtered = postData?.skillss.find(
-      (el) => el === filteredSkillCategpry?.name
+      (el) => el === filteredSkillCategpry?.id
     );
 
     if (filtered) {
@@ -55,47 +82,16 @@ const StepTwo = (props: CateType) => {
 
       setPostData((prev) => ({
         ...prev,
-        skillss: prev.skillss.filter(
-          (el) => el !== filteredSkillCategpry?.name
-        ),
+        skillss: prev.skillss.filter((el) => el !== filteredSkillCategpry?.id),
       }));
     } else {
       filteredSkillCategpry &&
         setPostData((prev) => ({
           ...prev,
-          skillss: [...prev.skillss, filteredSkillCategpry.name],
+          skillss: [...prev.skillss, filteredSkillCategpry.id],
         }));
     }
   };
-
-  const handleClickCategories = (event: MouseEvent<HTMLDivElement>) => {
-    const skillId = event.currentTarget.id;
-
-    const filteredCategpry = dataProjectCategory?.find(
-      ({ _id }) => _id === skillId
-    );
-    console.log(filteredCategpry, "clicked one");
-
-    const filteredCa = postData?.categorys.find(
-      (el) => el._id === filteredCategpry?._id
-    );
-
-    if (filteredCa) {
-      console.log("you have already picked up");
-    } else {
-      filteredCategpry &&
-        setPostData((prev) => ({
-          ...prev,
-          categorys: [...prev.categorys, filteredCategpry],
-        }));
-    }
-  };
-  // setPostData((prev) => ({
-  //   ...prev,
-  //   categorys: prev.categorys.filter(
-  //     (el: DataType) => el._id !== filteredCa?._id
-  //   ),
-  // }));
 
   return (
     <div className="flex gap-5">
@@ -127,7 +123,11 @@ const StepTwo = (props: CateType) => {
                   key={index}
                   id={el.id}
                   onClick={handleSkillClick}
-                  className="bg-[#f8f9fc] px-[10px] py-[5px] w-fit rounded-xl font-bold  text-[#404a60] text-[18px]"
+                  className={`${
+                    postData?.skillss.includes(el.id)
+                      ? "bg-[#0D47A9] text-white"
+                      : "bg-[#f8f9fc] text-black"
+                  }  px-[10px] py-[5px] w-fit rounded-xl font-bold  text-[#404a60] text-[18px]`}
                 >
                   {el.name}
                 </div>
@@ -151,9 +151,12 @@ const StepTwo = (props: CateType) => {
           <p>These suggestions are based on your brief&apos;s title.</p>
           <div className=" bg-[#f8f9fc] rounded-xl">
             {dataProjectCategory?.map((el, index) => (
-              <div key={index} onClick={handleClickCategories} id={el._id}>
-                <CheckCategory name={el.name} text={el.description} />
-              </div>
+              <CheckCategory
+                name={el.name}
+                text={el.description}
+                onClick={handleClickCategories(el._id)}
+                key={index}
+              />
             ))}
           </div>
         </div>
