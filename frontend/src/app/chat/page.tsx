@@ -8,12 +8,10 @@ import React from "react";
 const page = () => {
   return (
     <div>
-      <div className="bg-[url(https://pixner.net/aihire/aihire/assets/img/bn/breadcumndbg.jpg)]">
-        <HeaderSearch />
-        <Menu />
+      <Menu />
+      <div className=" bg-slate-600">
+        <Chat />
       </div>
-      <Chat />
-      <Footer />
     </div>
   );
 };

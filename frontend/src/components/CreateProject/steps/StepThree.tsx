@@ -36,7 +36,7 @@ const StepThree = (props: StepThreeProps) => {
 
   useEffect(() => {
     setPostData({ ...postData, flexible: flexible });
-  }, [flexible, postData, setPostData]);
+  }, [flexible]);
 
   return (
     <div className="flex gap-5 h-fit">

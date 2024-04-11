@@ -70,7 +70,6 @@ export const DataProvider = ({ children }: any) => {
     <DataContext.Provider
       value={{
         isLoggedIn,
-
         data,
       }}
     >

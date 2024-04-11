@@ -41,7 +41,6 @@ const steps = [StepOne, StepTwo, StepThree, StepFour];
 
 export const StepperBarkhas = (props: CateType) => {
   const { dataProjectCategory, skillCategory } = props;
-  // console.log(dataProjectCategory, "dataProjectCategory");
 
   const { data } = useContext(DataContext);
 
@@ -118,7 +117,7 @@ export const StepperBarkhas = (props: CateType) => {
 
   useEffect(() => {
     setPostData({ ...postData, createdBy: data?._id });
-  }, [data, postData]);
+  }, [data]);
 
   return (
     <div>
