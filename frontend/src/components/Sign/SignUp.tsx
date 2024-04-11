@@ -76,9 +76,7 @@ export const SignUp = (props: SignUpType) => {
   const createAccountFunc = async (values: typeof initialValues) => {
     try {
       const { data } = await AxiosInstance.post("createUser", values);
-
       console.log(data);
-
       if (typeof data === "string") {
         console.log("User already exists");
         setError("User already exists");

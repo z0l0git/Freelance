@@ -1,70 +1,98 @@
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import { z } from "zod";
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormMessage,
-} from "@/components/ui/form";
-import { Textarea } from "@/components/ui/textarea";
-import { toast } from "@/components/ui/use-toast";
+"use client";
+import { Formik, Form, ErrorMessage, Field, useFormik } from "formik";
 import { BlueButton, ButtonWithBlueBorder, WhiteButton } from "../Button";
-const FormSchema = z.object({
-  bio: z
-    .string()
-    .min(10, {
-      message: "Bio must be at least 10 characters.",
-    })
-    .max(160, {
-      message: "Bio must not be longer than 30 characters.",
-    }),
-});
-export const DescriptionEditComp = () => {
-  const form = useForm<z.infer<typeof FormSchema>>({
-    resolver: zodResolver(FormSchema),
-  });
+import React, { useEffect, useState } from "react";
+import { useContext } from "react";
+import { DataContext } from "../context/DataContext";
+import axios from "axios";
+import { IoCloseCircleSharp } from "react-icons/io5";
+type descriptionType = {
+  discription: string;
+};
+type DispType = {
+  setStage: React.Dispatch<React.SetStateAction<string>>;
+};
+interface MyBioValues {
+  discription: string;
+}
+type Response = {
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone: string;
+  password: string;
+};
 
-  function onSubmit(data: z.infer<typeof FormSchema>) {
-    toast({
-      title: "You submitted the following values:",
-      description: (
-        <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-          <code className="text-white">{JSON.stringify(data, null, 2)}</code>
-        </pre>
-      ),
-    });
-  }
+export const DescriptionEditComp: React.FC<{}> = () => {
+  const { data } = useContext(DataContext);
+  console.log(data, "data");
+
+  const [showdescriptionEdit, setShowDescriptionEdit] = useState(false);
+  const [discription, setDiscription] = useState("");
+  const clickButton = () => {
+    setShowDescriptionEdit(!showdescriptionEdit);
+  };
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const initialValues: MyBioValues = { discription: "" };
+
   return (
-    <div className="w-full bg-gray-100 rounded-xl p-5 overflow-hidden  ">
-      <Form {...form}>
-        <form
-          onSubmit={form.handleSubmit(onSubmit)}
-          className="w-full space-y-6 "
-        >
-          <FormField
-            control={form.control}
-            name="bio"
-            render={({ field }) => (
-              <FormItem>
-                <FormControl>
-                  <Textarea
-                    placeholder="Tell us a little bit about yourself"
-                    className="resize-none w-full"
-                    {...field}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
+    <div>
+      <div className="flex justify-between items-center mb-2">
+        <h3 className="text-2xl font-semibold">Description</h3>
+        {!showdescriptionEdit ? (
+          <WhiteButton
+            buttonClass="font-bold text-[#0d47a1] cursor-pointer"
+            onClick={clickButton}
+            buttonName="Edit"
           />
-          <div className="flex justify-between">
-            <ButtonWithBlueBorder buttonName="Cancel" />
-            <BlueButton buttonName="Update" />
-          </div>
-        </form>
-      </Form>
+        ) : (
+          <IoCloseCircleSharp onClick={clickButton} className="w-6 h-6" />
+        )}
+      </div>
+      <div
+        className={
+          !showdescriptionEdit
+            ? "w-full rounded-xl p-2 overflow-hidden"
+            : "bg-gray-100 rounded-xl p-4 "
+        }
+      >
+        <Formik
+          initialValues={initialValues}
+          onSubmit={(values, actions) => {
+            console.log({ values, actions });
+            // alert(JSON.stringify(values, null, 2));
+            actions.setSubmitting(false);
+            clickButton();
+          }}
+        >
+          <Form>
+            <Field
+              id="discription"
+              name="discription"
+              placeholder="Tell me about yourself"
+              disabled={!showdescriptionEdit ? true : false}
+              className={
+                !showdescriptionEdit
+                  ? "w-full h-fit p-1 bg-transparent text-justify text-gray-700 "
+                  : "w-full bg-transparent text-black mb-8 pb-8 border-b-2  "
+              }
+            />
+            {showdescriptionEdit ? (
+              <div className="w-full flex justify-around p-4">
+                <WhiteButton
+                  buttonName="Update"
+                  type="submit"
+                  buttonClass="blueButton"
+                  onclick={clickButton}
+                />
+              </div>
+            ) : (
+              ""
+            )}
+          </Form>
+        </Formik>
+      </div>
+      {/* <Basic /> */}
     </div>
   );
 };

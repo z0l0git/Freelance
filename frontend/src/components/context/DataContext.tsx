@@ -5,16 +5,35 @@ import { useState } from "react";
 
 type DataContextType = {
   isLoggedIn: boolean;
-  userdata: any;
+
+  data: Response;
+
 };
 
 export const DataContext = createContext<DataContextType>(
   {} as DataContextType
 );
+type Response = {
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone: string;
+  password: string;
+  discription: string;
+};
 
 export const DataProvider = ({ children }: any) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [userdata, setUserData] = useState<any>({});
+
+  const [data, setdata] = useState<Response>({
+    firstName: "",
+    lastName: "",
+    email: "",
+    phone: "",
+    password: "",
+    discription: "",
+  });
+
 
   const accessToken =
     typeof window !== "undefined" && localStorage.getItem("token");
@@ -31,7 +50,9 @@ export const DataProvider = ({ children }: any) => {
               },
             }
           );
-          setUserData(data);
+
+          setdata(data);
+
           setIsLoggedIn(true);
           console.log("yes");
         } catch (error) {
@@ -50,7 +71,9 @@ export const DataProvider = ({ children }: any) => {
     <DataContext.Provider
       value={{
         isLoggedIn,
-        userdata,
+
+        data,
+
       }}
     >
       {children}
