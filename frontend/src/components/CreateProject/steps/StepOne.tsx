@@ -33,104 +33,62 @@ const StepOne = (props: StepOneProps) => {
           </h1>
           <div className="border-b border-dashed w-full"></div>
         </div>
-        <div className="flex flex-col gap-6">
+        <div className="flex flex-col gap-4">
           <p className="font-bold text-[18px] text-[#212e48]">
             Give your project brief a title
           </p>
+          <p>
+            Keep it short and simple - this will help us match you to the right
+            category.
+          </p>
+          <NameInputComponent
+            className="text-black flex flex-col-reverse"
+            placeholder="Inter Title"
+            handleChange={handleChange}
+            name1="title"
+          />
         </div>
-        <p>
-          Keep it short and simple - this will help us match you to the right
-          category.
-        </p>
-        <div className=" bg-[#f8f9fc] rounded-xl"></div>
-        <NameInputComponent
-          className=" text-black "
-          placeholder="Inter Title"
-          handleChange={handleChange}
-          name1="title"
-        />
 
         <div className="flex flex-col gap-6">
           <p className="font-bold text-[18px] text-[#212e48]">
-            Give your project brief a title
+            Detailed information about your project
           </p>
         </div>
-        <p>
-          Keep it short and simple - this will help us match you to the right
-          category.
-        </p>
-        <div className="border rounded-2xl">
-          <div className="flex flex-col m-4">
-            <div className="flex flex-col gap-4">
-              <div className="flex">
-                <ToggleGroup type="multiple" variant="outline">
-                  <ToggleGroupItem value="bold" aria-label="Toggle bold">
-                    <FontBoldIcon className="h-4 w-4" />
-                  </ToggleGroupItem>
-                  <ToggleGroupItem value="italic" aria-label="Toggle italic">
-                    <FontItalicIcon className="h-4 w-4" />
-                  </ToggleGroupItem>
-                  <ToggleGroupItem
-                    value="strikethrough"
-                    aria-label="Toggle strikethrough"
-                  >
-                    <UnderlineIcon className="h-4 w-4" />
-                  </ToggleGroupItem>
-                  <ToggleGroupItem value="bold" aria-label="Toggle bold">
-                    <FaListOl className="h-4 w-4" />
-                  </ToggleGroupItem>
-                  <ToggleGroupItem value="list" aria-label="Toggle list">
-                    <FaListUl className="h-4 w-4" />
-                  </ToggleGroupItem>
-                  <ToggleGroupItem value="undo" aria-label="Toggle undo">
-                    <MdOutlineUndo className="h-4 w-4" />
-                  </ToggleGroupItem>
-                  <ToggleGroupItem value="redo" aria-label="Toggle redo">
-                    <MdOutlineRedo className="h-4 w-4" />
-                  </ToggleGroupItem>
-                  <ToggleGroupItem
-                    value="attachment"
-                    aria-label="Toggle attachment"
-                  >
-                    <MdOutlineAttachment className="h-4 w-4" />
-                  </ToggleGroupItem>
-                </ToggleGroup>
-              </div>
-              <div>
-                <input
-                  name="description"
-                  style={{ outline: "none" }}
-                  placeholder="Write your text here..."
-                  onChange={(el: ChangeEvent<HTMLInputElement>) =>
-                    handleChange(el)
-                  }
-                />
-              </div>
-            </div>
+        <p>Give in depth information about what you need.</p>
+        <div className="border rounded-[25px] h-fit w-full">
+          <input
+            name="description"
+            style={{ outline: "none" }}
+            className="h-fit w-full p-3 rounded-[25px] overflow-scroll"
+            type="text"
+            placeholder="Write your text here..."
+            onChange={(el: ChangeEvent<HTMLInputElement>) => handleChange(el)}
+          />
+        </div>
+        {/* <div>
+          <div className="flex flex-col gap-6">
+            <p className="font-bold text-[18px] text-[#212e48]">
+              Attach Files (up to 1)
+            </p>
           </div>
-        </div>
-
-        <div className="flex flex-col gap-6">
-          <p className="font-bold text-[18px] text-[#212e48]">
-            Attach Files (up to 1)
-          </p>
-        </div>
-        <label
-          className="flex flex-col w-[300px] h-[200px] rounded-3xl bg-[#f8f9fc] items-center justify-center cursor-pointer"
-          htmlFor="file-upload"
-        >
-          <AiOutlinePicture className="w-[60px] h-[70px]" />
-          <p>Click box to upload </p>
-          <p className="custom-file-upload">Browse</p>
-          <input id="file-upload" type="file" />
-        </label>
+          <label
+            className="flex flex-col w-[300px] h-[200px] rounded-3xl bg-[#f8f9fc] items-center justify-center cursor-pointer"
+            htmlFor="file-upload"
+          >
+            <AiOutlinePicture className="w-[60px] h-[70px]" />
+            <p>Click box to upload </p>
+            <p className="custom-file-upload">Browse</p>
+            <input id="file-upload" type="file" />
+          </label>
+        </div> */}
+        {/* 
         <div className="flex items-center ">
           <div className="border-b border-dashed w-full"></div>
           <div className="flex items-center justify-center w-[400px]">
             <p className="text-[10px]">ABOUT THE PROJECT</p>
           </div>
           <div className="border-b border-dashed w-full"></div>
-        </div>
+        </div> */}
       </div>
       <div className="border rounded-xl w-[fit] md:w-[434px] h-[380px]">
         <div className="flex flex-col m-4  gap-5">

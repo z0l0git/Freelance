@@ -37,10 +37,9 @@ const page = async () => {
   return (
     <div>
       <div className="bg-[url(https://pixner.net/aihire/aihire/assets/img/bn/breadcumndbg.jpg)]">
-        <HeaderSearch />
         <Menu />
       </div>
-      <StepperBarkhas dataProjectCategory={data} skillCategory={skill?.data} />
+      <StepperBarkhas dataProjectCategory={data} skillCategory={skill} />
       <Footer />
     </div>
   );

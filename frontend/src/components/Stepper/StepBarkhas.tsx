@@ -88,7 +88,7 @@ export const StepperBarkhas = (props: CateType) => {
       } else {
         try {
           const { data } = await axios.post(
-            "http://localhost:8000/postProject",
+            "https://freelance-gmjr.onrender.com/postProject",
             postData
           );
           setError("");

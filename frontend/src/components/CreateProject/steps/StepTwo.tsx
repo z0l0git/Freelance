@@ -97,12 +97,6 @@ const StepTwo = (props: CateType) => {
     <div className="flex gap-5">
       <div className="flex flex-col justify-center gap-5">
         <div className="flex flex-col border rounded-xl p-4 gap-4 w-[750px]">
-          <div className="flex flex-col gap-6">
-            <h1 className="font-bold  text-[#212e48] text-[22px]">
-              Your Preferences
-            </h1>
-            <div className="border-b border-dashed w-full"></div>
-          </div>
           <div>
             <div className="flex flex-col gap-6">
               <p className="font-bold  text-[#212e48] text-[22px]">

@@ -39,51 +39,38 @@ const StepThree = (props: StepThreeProps) => {
   }, [flexible]);
 
   return (
-    <div className="flex gap-5 h-fit">
+    <div className="flex gap-5">
       <div className="flex flex-col border rounded-xl p-4 gap-4 w-[750px]">
         <div className="flex flex-col gap-6">
-          <h1 className="font-bold  text-[#212e48] text-[22px]">
-            Add Timeline and Budget
-          </h1>
-          <div className="border-b border-dashed w-full"></div>
-        </div>
-        <div className="flex flex-col gap-6">
           <p className="font-bold text-[18px] text-[#212e48]">
-            Give your project brief a title
+            Enter your budget
           </p>
+          <NameInputComponent
+            type="number"
+            handleChange={handleChange}
+            name1="budget"
+            placeholder="Enter Budget (MNT)"
+            className="text-black flex"
+          />
         </div>
-        <NameInputComponent
-          type="number"
-          handleChange={handleChange}
-          name1="budget"
-          className=" text-black "
-          placeholder="Inter Title"
-        />
-        <div className="flex items-center space-x-2">
+        <div className="flex items-center gap-2 mt-4">
           <Checkbox id="terms" onClick={HandleFlexible} />
           <label
             htmlFor="terms"
             className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
           >
-            Accept terms and conditions
+            Flexible
           </label>
         </div>
-        <div className="flex items-center">
-          <div className="border-b border-dashed w-full"></div>
-          <div className="flex items-center justify-center w-[400px]">
-            <p className="text-[10px]">ABOUT THE PROJECT</p>
-          </div>
-          <div className="border-b border-dashed w-full"></div>
-        </div>
-        <div className="flex flex-col gap-6">
+        <div className="flex flex-col gap-6 mt-8">
           <p className="font-bold text-[18px] text-[#212e48]">
-            Give your project brief a title
+            When does your project expire
           </p>
-        </div>
-        <div>
           <NameInputComponent
             handleChange={handleChange}
+            placeholder="Enter Expiration Date (DD day(s))"
             name1="deliveryTime"
+            className="text-black flex"
           />
         </div>
       </div>

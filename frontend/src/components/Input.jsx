@@ -21,6 +21,7 @@ export const NameInputComponent = (props) => {
         name={name1}
         placeholder={placeholder}
         onChange={(el) => handleChange(el)}
+        className="w-full"
       />
     </div>
   );
