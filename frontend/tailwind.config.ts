@@ -83,8 +83,26 @@ const config = {
         "accordion-up": "accordion-up 0.2s ease-out",
       },
     },
+    screens: {
+      sm: "375px",
+      // => @media (min-width: 640px) { ... }
+
+      md: "1000px",
+      // => @media (min-width: 768px) { ... }
+
+      lg: "1024px",
+      // => @media (min-width: 1024px) { ... }
+
+      xl: "1280px",
+      // => @media (min-width: 1280px) { ... }
+
+      l: "1399px",
+      // => @media (min-width: 1536px) { ... }
+      x: "1199px",
+      m: "992px",
+    },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [require("tailwindcss-animate"), require("tailwind-scrollbar-hide")],
 } satisfies Config;
 
 export default config;

@@ -14,6 +14,10 @@ import {
 import { ButtonWithBlueBorder } from "../Button";
 
 export const MainProfileInfo = () => {
+  const handlePush = () => {
+    window.location.href = "/profile";
+    console.log("he");
+  };
   return (
     <div className="w-[416px] h-[488px] flex flex-col items-center gap-4 rounded-2xl border">
       <div className="flex justify-center items-center p-4 ">
@@ -61,10 +65,9 @@ export const MainProfileInfo = () => {
             <FaPinterest />
           </div>
         </div>
-        <ButtonWithBlueBorder
-          buttonName="View Profile"
-          buttonClass="bg-white"
-        />
+        <div onClick={handlePush}>
+          <ButtonWithBlueBorder buttonName="View Profile" />
+        </div>
       </div>
     </div>
   );

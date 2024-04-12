@@ -11,6 +11,12 @@ export default authMiddleware({
     "/Chinzorig",
     "/battulga",
     "/barkhas",
+    "/contact",
+    "/projects",
+    "/profile",
+    "/user-profile",
+    "/profile",
+    "/new-gig",
   ],
 });
 

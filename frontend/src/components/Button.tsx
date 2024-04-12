@@ -16,33 +16,54 @@ export const OrangeButton = (props: any) => {
   );
 };
 export const BlueButton = (props: any) => {
-  const { buttonName, type = "" } = props;
+  const { buttonName, type = "", height, width, handleSubmit } = props;
   return (
     <button
+      onClick={handleSubmit}
+      style={{ width: width, height: height }}
       type={type}
-      className="group w-full h-[30%] relative px-[31px] py-[15px] overflow-hidden rounded-[100px] bg-[#0d47a1] text-lg font-bold text-white md:h-[60%] lg:h-[40%] sm:h-[20%]"
+      className="group w-full h-full relative px-[31px] py-[15px] overflow-hidden rounded-[100px] bg-[#0d47a1] text-lg font-bold text-white md:h-[60%] lg:h-[40%] sm:h-[20%]"
     >
-      <div className="absolute inset-0 h-full z-0 w-full scale-0 rounded-2xl transition-all duration-300 group-hover:scale-100 group-hover:bg-white/40"></div>
-      <p> {buttonName}</p>
+      <div className="absolute inset-0 h-full z-0 w-full scale-0 rounded-2xl transition-all duration-300 group-hover:scale-100 group-hover:text-transparent group-hover:bg-white/40"></div>
+      <p>{buttonName}</p>
     </button>
   );
 };
 
 export const WhiteButton = (props: any) => {
-  const { buttonName, buttonClass, type } = props;
+  const { buttonName, buttonClass, type, onClick, key = "" } = props;
   return (
-    <button type={type} className={buttonClass}>
+    <button key={key} type={type} className={buttonClass} onClick={onClick}>
       {buttonName}
     </button>
   );
 };
 
-export const ButtonWithBlueBorder = (props: any) => {
-  const { buttonName, type } = props;
+
+type ButtonWithBlueBorderProps = {
+  handlePrevious?: () => void;
+  buttonName?: string;
+  type?: "submit" | "button" | "reset";
+  height?: string;
+  width?: string;
+};
+
+export const ButtonWithBlueBorder = (props: ButtonWithBlueBorderProps) => {
+  const {
+    buttonName = "",
+    type = "submit",
+    height = "",
+    width = "",
+    handlePrevious = () => {},
+  } = props;
+
   return (
     <button
+      onClick={handlePrevious}
+
       type={type}
       className="group relative px-[31px] py-[15px] overflow-hidden rounded-[100px] border-blue-500 border-[1px] text-lg font-bold text-[#0f48a2] flex items-center gap-1"
+      style={{ height: height, width: width }}
     >
       {buttonName}
       <HiArrowUpRight />

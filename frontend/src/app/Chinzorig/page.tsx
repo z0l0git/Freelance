@@ -204,24 +204,22 @@ const Chinzorig = () => {
   return (
     <div>
       {/* <Contact /> */}
-      {/* <div className="flex w-screen items-start justify-center bg-slate-200 gap-5 pt-32">
-        <Filter jobs={"Local Jobs"} counter={"35"} />
+      <div className="flex w-screen items-start justify-center bg-slate-200 gap-5 pt-32">
+        <Filter />
         <div className="flex flex-col gap-[30px]">
           {projects.map((el, i) => {
             return (
               <ProjectCard
+                key={i}
                 title={el.title}
                 price={el.price}
                 description={el.description}
                 category={el.categoryCard}
-                expire={el.expire}
-                location={el.location}
-                level={el.level}
-                proposal={el.proposal}
               />
             );
           })}
         </div>
+
       </div> */}
       {/* <HomeCardJobs /> */}
       {/* <ProjectCard /> */}
@@ -247,6 +245,7 @@ const Chinzorig = () => {
           })}
         </div>
       </div>
+
     </div>
   );
 };

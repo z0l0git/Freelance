@@ -1,124 +1,166 @@
-import React from "react";
+"use client";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { Checkbox } from "@/components/ui/checkbox";
 import Image from "next/image";
-import { BlueButton, ButtonWithBlueBorder } from "@/components/Button";
-import { NameInputComponent } from "@/components/Input";
-import {
-  FontBoldIcon,
-  FontItalicIcon,
-  UnderlineIcon,
-} from "@radix-ui/react-icons";
-import { FaListOl, FaListUl } from "react-icons/fa";
-import {
-  MdOutlineUndo,
-  MdOutlineRedo,
-  MdOutlineAttachment,
-} from "react-icons/md";
+import { MouseEvent } from "react";
+import CheckCategory from "./CheckCategory";
+import { useState } from "react";
+import { ChangeEvent } from "react";
+import { Skills } from "@/components/Profile/Skils";
 
-import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
-import { Textarea } from "@/components/ui/textarea";
+type DataType = {
+  name: string;
+  description: string;
+  _id: string;
+};
+type SkillType = {
+  name: string;
+  id: string;
+};
+type PosdtDataType = {
+  createdBy: string;
+  title: string;
+  description: string;
+  budget: string;
+  deliveryTime: string;
+  flexible: boolean;
+  categorys: string[];
+  skillss: string[];
+};
 
-const StepTwo = () => {
+type CateType = {
+  dataProjectCategory: DataType[];
+  skillCategory: SkillType[];
+  setPostData: React.Dispatch<React.SetStateAction<PosdtDataType>>;
+  postData: PosdtDataType;
+};
+
+const StepTwo = (props: CateType) => {
+  const { dataProjectCategory, skillCategory, setPostData, postData } = props;
+  const [checked, setChecked] = useState(false);
+  const [testId, setTestId] = useState("");
+
+  const handleClickCategories =
+    (skillId: string) => (event: MouseEvent<HTMLButtonElement>) => {
+      const categories = postData?.categorys;
+
+      setPostData((prev) => {
+        const filteredCa = categories.find((el) => el === skillId);
+
+        const filteredCategory = categories.filter((el) => el !== skillId);
+
+        if (filteredCa) {
+          console.log(filteredCa);
+          return {
+            ...prev,
+            categorys: filteredCategory,
+          };
+        } else {
+          console.log(filteredCa);
+          return {
+            ...prev,
+            categorys: [...prev.categorys, skillId],
+          };
+        }
+      });
+    };
+
+  const handleSkillClick = (event: MouseEvent<HTMLDivElement>) => {
+    const categoryId = event.currentTarget.id;
+    setTestId(categoryId);
+    const filteredSkillCategpry = skillCategory?.find(
+      ({ id }) => id === categoryId
+    );
+    console.log(filteredSkillCategpry, "filteredSkillCategpry");
+
+    const filtered = postData?.skillss.find(
+      (el) => el === filteredSkillCategpry?.id
+    );
+
+    if (filtered) {
+      console.log("you have already picked up ");
+
+      setPostData((prev) => ({
+        ...prev,
+        skillss: prev.skillss.filter((el) => el !== filteredSkillCategpry?.id),
+      }));
+    } else {
+      filteredSkillCategpry &&
+        setPostData((prev) => ({
+          ...prev,
+          skillss: [...prev.skillss, filteredSkillCategpry.id],
+        }));
+    }
+  };
+
   return (
-    <div className="flex gap-5 h-fit">
-      <div className="flex flex-col border rounded-xl p-4 gap-4 w-[750px]">
-        <div className="flex flex-col gap-6">
-          <h1 className="font-bold  text-[#212e48] text-[30px]">
-            About the project
-          </h1>
-          <div className="border-b border-dashed w-full"></div>
-        </div>
-        <div className="flex flex-col gap-6">
-          <p className="font-bold text-[22px] text-[#212e48]">
-            Give your project brief a title
-          </p>
-        </div>
-        <p>
-          Keep it short and simple - this will help us match you to the right
-          category.
-        </p>
-        <div className=" bg-[#f8f9fc] rounded-xl"></div>
-        <div className="flex gap-2">
-          <BlueButton buttonName="Save & Continue" />
-          <ButtonWithBlueBorder buttonName="Save & Continue" />
-        </div>
-        <NameInputComponent
-          className=" text-black "
-          placeholder="Inter Title"
-        />
-        <div className="flex flex-col gap-6">
-          <p className="font-bold text-[22px] text-[#212e48]">
-            Give your project brief a title
-          </p>
-        </div>
-        <p>
-          Keep it short and simple - this will help us match you to the right
-          category.
-        </p>
-        <div className="border rounded-2xl">
-          <div className="flex flex-col m-4">
-            <div className="flex flex-col gap-4">
-              <div className="flex">
-                <ToggleGroup type="multiple" variant="outline">
-                  <ToggleGroupItem value="bold" aria-label="Toggle bold">
-                    <FontBoldIcon className="h-4 w-4" />
-                  </ToggleGroupItem>
-                  <ToggleGroupItem value="italic" aria-label="Toggle italic">
-                    <FontItalicIcon className="h-4 w-4" />
-                  </ToggleGroupItem>
-                  <ToggleGroupItem
-                    value="strikethrough"
-                    aria-label="Toggle strikethrough"
-                  >
-                    <UnderlineIcon className="h-4 w-4" />
-                  </ToggleGroupItem>
-                  <ToggleGroupItem value="bold" aria-label="Toggle bold">
-                    <FaListOl className="h-4 w-4" />
-                  </ToggleGroupItem>
-                  <ToggleGroupItem value="bold" aria-label="Toggle bold">
-                    <FaListUl className="h-4 w-4" />
-                  </ToggleGroupItem>
-                  <ToggleGroupItem value="bold" aria-label="Toggle bold">
-                    <MdOutlineUndo className="h-4 w-4" />
-                  </ToggleGroupItem>
-                  <ToggleGroupItem value="bold" aria-label="Toggle bold">
-                    <MdOutlineRedo className="h-4 w-4" />
-                  </ToggleGroupItem>
-                  <ToggleGroupItem value="bold" aria-label="Toggle bold">
-                    <MdOutlineAttachment className="h-4 w-4" />
-                  </ToggleGroupItem>
-                </ToggleGroup>
-              </div>
-              <div>
-                <Textarea style={{ outline: "none" }} />
+    <div className="flex gap-5">
+      <div className="flex flex-col justify-center gap-5">
+        <div className="flex flex-col border rounded-xl p-4 gap-4 w-[750px]">
+          <div>
+            <div className="flex flex-col gap-6">
+              <p className="font-bold  text-[#212e48] text-[22px]">
+                Which skill best fits your project?
+              </p>
+              <div className="flex items-center">
+                <div className="border-b border-dashed w-full"></div>
+                <div className="flex items-center justify-center w-[400px]">
+                  <p className="text-[10px]">CHOOSE ANY SKILLS</p>
+                </div>
+
+                <div className="border-b border-dashed w-full"></div>
               </div>
             </div>
-          </div>
-        </div>
-        <div>
-          <NameInputComponent />
-        </div>
-        <div className="flex flex-col gap-6">
-          <p className="font-bold text-[22px] text-[#212e48]">
-            Attach Files (up to 1)
-          </p>
-        </div>
-        <p>· Attach up to 5 files totaling a max of 5 GB</p>
-        <p>input picture</p>
-        <div className="flex items-center">
-          <div className="border-b border-dashed w-full"></div>
-          <div className="flex items-center justify-center w-[400px]">
-            <p className="text-[10px]">ABOUT THE PROJECT</p>
+            <div className="w-[100%] flex flex-wrap gap-5 my-[30px]">
+              {skillCategory?.map((el, index) => (
+                <div
+                  key={index}
+                  id={el.id}
+                  onClick={handleSkillClick}
+                  className={`${
+                    postData?.skillss.includes(el.id)
+                      ? "bg-[#0D47A9] text-white"
+                      : "bg-[#f8f9fc] text-black"
+                  }  px-[10px] py-[5px] w-fit rounded-xl font-bold  text-[#404a60] text-[18px]`}
+                >
+                  {el.name}
+                </div>
+              ))}
+            </div>
           </div>
 
-          <div className="border-b border-dashed w-full"></div>
+          <div className="flex flex-col gap-6">
+            <p className="font-bold  text-[#212e48] text-[22px]">
+              Which category best fits your project?
+            </p>
+            <div className="flex items-center">
+              <div className="border-b border-dashed w-full"></div>
+              <div className="flex items-center justify-center w-[400px]">
+                <p className="text-[10px]">CHOOSE ANY CATEGORIES</p>
+              </div>
+
+              <div className="border-b border-dashed w-full"></div>
+            </div>
+          </div>
+          <p>These suggestions are based on your brief&apos;s title.</p>
+          <div className=" bg-[#f8f9fc] rounded-xl">
+            {dataProjectCategory?.map((el, index) => (
+              <CheckCategory
+                name={el.name}
+                text={el.description}
+                onClick={handleClickCategories(el._id)}
+                key={index}
+              />
+            ))}
+          </div>
         </div>
       </div>
-      <div className="border rounded-xl h-[380px]">
+      <div className="border rounded-xl w-[434px] h-[380px]">
         <div className="flex flex-col m-4  gap-5">
-          <h1 className="font-bold  text-[#212e48] text-[30px]">
-            Let`&apos;`s talk details
+          <h1 className="font-bold  text-[#212e48] text-[22px]">
+            Let&apos;s talk details
           </h1>
-          <p>These suggestions are based on your brief’s title.</p>
+          <p>Tell us a bit more about what you&apos;re looking for.</p>
           <Image src="/matching.png" width={400} height={400} alt="matching" />
         </div>
       </div>
@@ -127,26 +169,3 @@ const StepTwo = () => {
 };
 
 export default StepTwo;
-{
-  /* <Select>
-  <SelectTrigger className="w-full outline-none border rounded-2xl p-3 flex items-end justify-end">
-    <SelectValue placeholder="Text size" />
-  </SelectTrigger>
-  <SelectContent>
-    <SelectGroup className="flex flex-col items-end justify-end">
-      <SelectItem className="flex outline-none " value="14px">
-        14px
-      </SelectItem>
-      <SelectItem className="flex outline-none " value="12px">
-        12px
-      </SelectItem>
-      <SelectItem className="flex outline-none " value="10px">
-        10px
-      </SelectItem>
-      <SelectItem className="flex outline-none" value="8px">
-        8px
-      </SelectItem>
-    </SelectGroup>
-  </SelectContent>
-</Select>; */
-}

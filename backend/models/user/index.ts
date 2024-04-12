@@ -7,26 +7,34 @@ export type UserModelType = {
   email: string;
   phone: string;
   password: string;
+  auth: string;
   createdAt: Date;
   jobTitle: string;
   location: string;
   rating: string;
   socials: [string];
+  skills: [Schema.Types.ObjectId];
   education: [Schema.Types.ObjectId];
   workExp: [Schema.Types.ObjectId];
 };
 
 const UserSchema = new Schema<UserModelType>({
-  firstName: { type: String, required: true },
-  lastName: { type: String, required: true },
-  email: { type: String, required: true },
+  firstName: { type: String, required: false },
+  lastName: { type: String, required: false },
+  email: { type: String, required: false },
   phone: { type: String, required: false },
-  password: { type: String, required: true },
+  password: { type: String, required: false },
+  auth: { type: String, required: false, enum: ["local", "google"] },
   createdAt: { type: Date, default: Date.now },
   jobTitle: { type: String, required: false },
   location: { type: String, required: false },
   rating: { type: String, required: false },
   socials: { type: [String], required: false },
+  skills: {
+    type: [Schema.Types.ObjectId],
+    ref: "Categories",
+    required: false,
+  },
   education: {
     type: [Schema.Types.ObjectId],
     ref: "Education",
