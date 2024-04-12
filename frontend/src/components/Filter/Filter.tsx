@@ -2,7 +2,7 @@ import React from "react";
 // import { ButtonWithBlueBorder } from "../Button";
 import { Input } from "../../components/ui/input";
 import { CheckCircle } from "../../components/ui/checkcircle";
-import { GetProjectCategory, GetSkillCategory } from "@/app/new-gig/page";
+import { GetProjectCategory, GetSkillCategory } from "@/utils/axiosInstance";
 
 type Filter = {
   jobs: string;
