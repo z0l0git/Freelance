@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import { Filter } from "../Filter/Filter";
 import { ProjectCard } from "../ProjectCard/ProjectCard";
 import { AiFillPropertySafety } from "react-icons/ai";
@@ -23,16 +23,17 @@ type PosdtDataType = {
 };
 
 type ProjectsProps = {
-  AllPost: PosdtDataType[];
+  setFiltered: React.Dispatch<React.SetStateAction<PosdtDataType[]>>;
+  filtered: PosdtDataType[];
 };
 
 export const Projects = (props: ProjectsProps) => {
-  const { AllPost } = props;
+  const { setFiltered, filtered } = props;
 
   return (
     <div className="flex items-start  justify-center  ">
       <div className="flex flex-col-reverse gap-[30px]">
-        {AllPost?.map((el, index) => {
+        {filtered?.map((el, index) => {
           return (
             <ProjectCard
               key={index}

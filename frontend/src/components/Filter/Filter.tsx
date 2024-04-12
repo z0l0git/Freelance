@@ -3,7 +3,7 @@ import React from "react";
 import { Input } from "../../components/ui/input";
 import { CheckCircle } from "../../components/ui/checkcircle";
 import { GetProjectCategory, GetSkillCategory } from "@/app/new-gig/page";
-
+import { MouseEvent } from "react";
 type Filter = {
   jobs: string;
   counter: string;
@@ -14,15 +14,43 @@ type SkillType = {
   id: string;
 };
 
+type PosdtDataType = {
+  createdBy: {
+    firstName: string;
+    lastName: string;
+  };
+  title: string;
+  description: string;
+  budget: number;
+  deliveryTime: string;
+  flexible: boolean;
+  categorys: string[];
+  skills: SkillType[];
+};
+
 type DataType = {
   name: string;
   description: string;
   _id: string;
 };
 
-export const Filter = async () => {
-  const data: DataType[] = await GetProjectCategory();
-  const skills: SkillType[] = await GetSkillCategory();
+type Props = {
+  skills: SkillType[];
+  data: DataType[];
+  setFiltered: React.Dispatch<React.SetStateAction<PosdtDataType[]>>;
+};
+
+export const Filter = (props: Props) => {
+  const { skills, data, setFiltered } = props;
+  // const data: DataType[] = await GetProjectCategory();
+  // const skills: SkillType[] = await GetSkillCategory()
+
+  const HandlerclickOnSkill = (event: MouseEvent<HTMLDivElement>) => {
+    const skillId = event.currentTarget.id;
+
+    // setFiltered((prev) => prev.filter((el) => el.skills.id === skillId));
+  };
+
   return (
     <div className="flex bg-slate-100 rounded-xl scrollbar-hidden scrollbar-hide px-[10px] py-[20px] max-h-screen overflow-y-auto overflow-x-hidden justify-center">
       <div className="flex flex-col w-[352px] xl:w-[416px] h-fit rounded-xl p-8 bg-slate-50">
@@ -77,6 +105,8 @@ export const Filter = async () => {
               <div
                 key={i}
                 className="flex items-center justify-between w-352px h-[32px"
+                onClick={HandlerclickOnSkill}
+                id={el.id}
               >
                 <div className="flex gap-2 items-center">
                   <CheckCircle className="" />

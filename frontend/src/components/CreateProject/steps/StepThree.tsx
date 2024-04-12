@@ -28,7 +28,7 @@ type StepThreeProps = {
 const StepThree = (props: StepThreeProps) => {
   const { handleChange, setPostData, postData } = props;
   const [flexible, setFlexible] = useState(false);
-  console.log(flexible);
+  console.log(flexible, "dfdf");
 
   const HandleFlexible = () => {
     setFlexible(!flexible);

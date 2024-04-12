@@ -6,6 +6,19 @@ import React from "react";
 import { Projects } from "@/components/Projects/Projects";
 import { Footer } from "@/components/Footer/Footer";
 import axios from "axios";
+import { PostProjectContainer } from "@/components/Projects/PostProjectContainer";
+import { GetProjectCategory, GetSkillCategory } from "../new-gig/page";
+
+type SkillType = {
+  name: string;
+  id: string;
+};
+
+type DataType = {
+  name: string;
+  description: string;
+  _id: string;
+};
 
 const GetAllPosts = async () => {
   try {
@@ -20,20 +33,22 @@ const GetAllPosts = async () => {
 };
 
 const page = async () => {
-  const AllPost = await GetAllPosts();
+  const AllProject = await GetAllPosts();
+
+  const data: DataType[] = await GetProjectCategory();
+  const skills: SkillType[] = await GetSkillCategory();
 
   return (
     <div>
       <div className="bg-[url(https://pixner.net/aihire/aihire/assets/img/bn/breadcumndbg.jpg)]">
         <Menu />
       </div>
-      <div className="flex justify-center bg-slate-200 h-fit gap-5">
-        <div className="sticky top-0 h-[100%] my-[100px] ">
-          <Filter />
-        </div>
-        <div className="my-[100px] pb-[100px]">
-          <Projects AllPost={AllPost} />
-        </div>
+      <div>
+        <PostProjectContainer
+          AllProject={AllProject}
+          skills={skills}
+          data={data}
+        />
       </div>
 
       <Footer />
