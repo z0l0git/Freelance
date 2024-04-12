@@ -5,14 +5,14 @@ import { BlueButton } from "../Button";
 import { CheckCircle } from "../../components/ui/checkcircle";
 
 type ProjectCard = {
-  title: String;
-  price: String;
-  description: String;
+  title: string;
+  price: string;
+  description: string;
   category: string[];
-  expire: String;
-  location: String;
-  level: String;
-  proposal: String;
+  expire: string;
+  location: string;
+  level: string;
+  proposal: string;
 };
 
 export const ProjectCard = (props: ProjectCard) => {

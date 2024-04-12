@@ -4,18 +4,12 @@ import React from "react";
 // import { ButtonWithBlueBorder } from "../Button";
 import { Input } from "../../components/ui/input";
 import { CheckCircle } from "../../components/ui/checkcircle";
+import { FaStar } from "react-icons/fa6";
 
-type Filter = {
-  jobs: string;
+type freelance = {
+  mark: string;
   counter: string;
 };
-const jobCategory = [
-  { category: "Local Jobs", count: 45 },
-  { category: "Featured Jobs", count: 30 },
-  { category: "Recruiter Jobs", count: 23 },
-  { category: "Full time", count: 15 },
-  { category: "Half time", count: 22 },
-];
 
 const typeCategory = [
   { category: "NPL specialists", count: 45 },
@@ -29,68 +23,61 @@ const typeCategory = [
   { category: "English teacher", count: 22 },
 ];
 
-const experienceCategory = [
-  { category: "30 Years more...", count: 35 },
-  { category: "20-30 Years", count: 20 },
-  { category: "5-20 Years", count: 10 },
-  { category: "2-5 Years", count: 2 },
-  { category: "0-2 Years", count: 0 },
+const deliveryCategory = [
+  { category: "1-3 Days", count: 35 },
+  { category: "Week", count: 20 },
+  { category: "1-3 Weeks", count: 10 },
+  { category: "Month", count: 22 },
+  { category: "1-3 Months", count: 15 },
+  { category: "1-3 Months", count: 16 },
+  { category: "6-Months", count: 6 },
+  { category: "Less then Year", count: 9 },
 ];
 
-const skillsCategory = [
-  { category: "Open AI" },
-  { category: ".NET 5.0/6" },
-  { category: ".NET" },
-  { category: "PHP" },
-  { category: "HTML" },
-  { category: "Java" },
-  { category: "Python" },
+const responseCategory = [
+  { category: "1 Hour ", count: 11 },
+  { category: "2 Hours", count: 22 },
+  { category: "1 Day", count: 16 },
+  { category: "2 Days", count: 9 },
+  { category: "3 Days", count: 8 },
+  { category: "Week", count: 10 },
+  { category: "Month", count: 5 },
 ];
-const languageCategory = [
-  { category: "English" },
-  { category: "Germany" },
-  { category: "Chinese" },
-  { category: "Hindy" },
-  { category: "French" },
-  { category: "Spanish" },
-  { category: "Portuguases" },
+const starCategory = [
+  { category: "5 star" },
+  { category: "4 star" },
+  { category: "3 star" },
+  { category: "2 star" },
+  { category: "1 star" },
+];
+const locationCategory = [
+  { category: "Mongolia" },
+  { category: "Australia" },
+  { category: "United States of America" },
+  { category: "Great Britania" },
+  { category: "France" },
+  { category: "Spain" },
+  { category: "India" },
 ];
 
-export const Filter = (props: Filter) => {
-  const { jobs, counter } = props;
+export const FreelancerFilter = (props: freelance) => {
+  const { mark, counter } = props;
   return (
-    <div className="flex bg-slate-100 rounded-2xl">
-      <div className="flex flex-col w-[416px] h-fill rounded-xl p-8 bg-slate-50">
+    <div className="flex  bg-slate-100 w-[440px] h-[2231px] rounded-2xl">
+      <div
+        style={{ boxShadow: "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;" }}
+        className="flex flex-col w-[416px] h-[1925px] rounded-xl p-8 bg-slate-50"
+      >
         <div className="w-[352px] h-[56px] pb-6 mb-6">
           <h3 className="text-2xl font-semibold">Filter</h3>
         </div>
 
         <Input
-          className="w-[352px] h-[56px] pb-6 mb-6 rounded-3xl bg-slate-200 p-3"
+          className="w-[352px] h-[56px] items-start justify-center p-3 mb-6 rounded-3xl bg-slate-200 "
           type={"text"}
           id={"search"}
           placeholder={"search"}
         />
-
-        <div className="w-[352px] h-[56px] pt-6 mb-1">
-          <h2 className="text-2xl font-semibold">Types of Jobs</h2>
-        </div>
-        <div className="flex flex-col gap-2">
-          {jobCategory.map((el, i) => {
-            return (
-              <div
-                key={i}
-                className="flex items-center justify-between w-352px h-[32px"
-              >
-                <div className="flex gap-2 items-center">
-                  <CheckCircle className="" />
-                  <h3 className="text-base font-medium">{el.category}</h3>
-                </div>
-                <span>{el.count}</span>
-              </div>
-            );
-          })}
-        </div>
 
         <div className="w-[352px] h-[56px] pt-6 mb-1">
           <h2 className="text-2xl font-semibold">Types of Categories</h2>
@@ -124,10 +111,10 @@ export const Filter = (props: Filter) => {
           </div>
         </div>
         <div className="w-[352px] h-[56px] pt-6 mb-1">
-          <h2 className="text-2xl font-semibold">Experiences</h2>
+          <h2 className="text-2xl font-semibold">Delivery time</h2>
         </div>
         <div className="flex flex-col gap-2">
-          {experienceCategory.map((el, i) => {
+          {deliveryCategory.map((el, i) => {
             return (
               <div
                 key={i}
@@ -143,10 +130,10 @@ export const Filter = (props: Filter) => {
           })}
         </div>
         <div className="w-[352px] h-[56px] pt-6 mb-1">
-          <h2 className="text-2xl font-semibold">Skills</h2>
+          <h2 className="text-2xl font-semibold">Response Time</h2>
         </div>
         <div className="flex flex-col gap-2">
-          {skillsCategory.map((el, i) => {
+          {responseCategory.map((el, i) => {
             return (
               <div
                 key={i}
@@ -156,16 +143,16 @@ export const Filter = (props: Filter) => {
                   <CheckCircle className="" />
                   <h3 className="text-base font-medium">{el.category}</h3>
                 </div>
-                
+                <span>{el.count}</span>
               </div>
             );
           })}
         </div>
         <div className="w-[352px] h-[56px] pt-6 mb-1">
-          <h2 className="text-2xl font-semibold">Languages</h2>
+          <h2 className="text-2xl font-semibold">Star Category</h2>
         </div>
         <div className="flex flex-col gap-2">
-          {languageCategory.map((el, i) => {
+          {starCategory.map((el, i) => {
             return (
               <div
                 key={i}
@@ -173,17 +160,40 @@ export const Filter = (props: Filter) => {
               >
                 <div className="flex gap-2 items-center">
                   <CheckCircle className="" />
+                  <FaStar
+                    className="flex w-5 h-5 justify-center items-center "
+                    color="#ffbe57"
+                  />
                   <h3 className="text-base font-medium">{el.category}</h3>
                 </div>
-                
               </div>
             );
           })}
         </div>
         <div>
-          <button className="flex items-center justify-center p-4 w-full h-12 border-solid border-[#0D47A1] border-2 bg-slate-50 rounded-3xl mt-8 text-base font-semibold text-[#0D47A1] ">
-            Reset Filter
-          </button>
+          <div className="w-[352px] h-[56px] pt-6 mb-1">
+            <h2 className="text-2xl font-semibold">Location</h2>
+          </div>
+          <div className="flex flex-col gap-2">
+            {locationCategory.map((el, i) => {
+              return (
+                <div
+                  key={i}
+                  className="flex items-center justify-between w-352px h-[32px"
+                >
+                  <div className="flex gap-2 items-center">
+                    <CheckCircle className="" />
+                    <h3 className="text-base font-medium">{el.category}</h3>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+          <div>
+            <button className="flex items-center justify-center p-4 w-full h-12 border-solid border-[#0D47A1] border-2 bg-slate-50 rounded-3xl mt-8 text-base font-semibold text-[#0D47A1] ">
+              Reset Filter
+            </button>
+          </div>
         </div>
       </div>
     </div>
