@@ -15,13 +15,14 @@ import { HomePagePart } from "@/components/HomePagePart";
 import { currentUser, auth } from "@clerk/nextjs";
 import axios from "axios";
 
+let url: string = process.env.NEXT_PUBLIC_PRODUCTION!;
+console.log(url);
+
 export default function Home() {
   useEffect(() => {
     const getAllCategories = async () => {
       try {
-        const result = await axios.get(
-          "https://freelance-beta-six.vercel.app/api"
-        );
+        const result = await axios.get(url);
 
         console.log(result.data?.user.emailAddresses[0].emailAddress, "result");
 
