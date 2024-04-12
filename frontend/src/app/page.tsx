@@ -19,12 +19,14 @@ export default function Home() {
   useEffect(() => {
     const getAllCategories = async () => {
       try {
-        const result = await axios.get("http://localhost:3000/api");
+        const result = await axios.get(
+          "https://freelance-beta-six.vercel.app/api"
+        );
 
         console.log(result.data?.user.emailAddresses[0].emailAddress, "result");
 
         const { data } = await axios.post(
-          "http://localhost:8000/createByClerk",
+          "https://freelance-gmjr.onrender.com/createByClerk",
           {
             firstName: result.data?.user.firstName,
             lastName: result.data?.user.lastName,
