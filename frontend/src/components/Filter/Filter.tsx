@@ -9,10 +9,12 @@ type Filter = {
   counter: string;
 };
 
+
 type SkillType = {
   name: string;
   id: string;
 };
+
 
 type DataType = {
   name: string;
