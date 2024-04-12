@@ -14,9 +14,6 @@ export default authMiddleware({
     "/contact",
     "/projects",
     "/profile",
-    "/user-profile",
-    "/profile",
-    "/new-gig",
   ],
 });
 

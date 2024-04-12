@@ -52,11 +52,13 @@ export const Menu = () => {
                   buttonClass="text-white hover:text-blue-500 hover:underline"
                 />
               </Link>
+              <Link href={"/freelancers"}>
+                <WhiteButton
+                  buttonName="Find Freelancers"
+                  buttonClass="text-white hover:text-blue-500 hover:underline"
+                />
+              </Link>
 
-              <WhiteButton
-                buttonName="Find Freelancers"
-                buttonClass="text-white hover:text-blue-500 hover:underline"
-              />
               <Link href={"/contact"}>
                 <WhiteButton
                   buttonName="Contact"
