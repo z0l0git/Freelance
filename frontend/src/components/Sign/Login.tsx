@@ -15,6 +15,7 @@ import { SignIn } from "@clerk/nextjs";
 import Image from "next/image";
 import { Formik, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
+import axios from "axios";
 
 type LoginDataType = {
   email: string;
@@ -49,9 +50,11 @@ export const Login = () => {
   });
 
   const hanldeSubmit = async (values: typeof initialValues) => {
-    
     try {
-      const { data } = await AxiosInstance.post("/login", values);
+      const { data } = await axios.post(
+        "https://freelance-gmjr.onrender.com/login",
+        values
+      );
       console.log(data, "token");
       localStorage.setItem("token", data);
       push("/");

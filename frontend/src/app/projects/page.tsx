@@ -9,7 +9,9 @@ import axios from "axios";
 
 const GetAllPosts = async () => {
   try {
-    const { data } = await axios.get("http://localhost:8000/getAllProject");
+    const { data } = await axios.get(
+      "https://freelance-gmjr.onrender.com/getAllProject"
+    );
 
     return data;
   } catch (err: any) {

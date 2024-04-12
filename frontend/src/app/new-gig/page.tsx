@@ -11,7 +11,7 @@ import React from "react";
 export const GetProjectCategory = async () => {
   try {
     const { data } = await axios.get(
-      "http://localhost:8000/getProjectCategory"
+      "https://freelance-gmjr.onrender.com/getProjectCategory"
     );
 
     return data;
@@ -21,7 +21,9 @@ export const GetProjectCategory = async () => {
 };
 export const GetSkillCategory = async () => {
   try {
-    const { data: skill } = await axios.get("http://localhost:8000/categories");
+    const { data: skill } = await axios.get(
+      "https://freelance-gmjr.onrender.com/categories"
+    );
     return skill;
   } catch (err: any) {
     console.log(err.message);
