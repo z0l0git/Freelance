@@ -14,6 +14,7 @@ export default authMiddleware({
     "/contact",
     "/projects",
     "/profile",
+    "/projectDetail",
   ],
 });
 
