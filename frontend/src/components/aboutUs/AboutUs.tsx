@@ -1,13 +1,38 @@
 "use client";
 import { useState } from "react";
-import { motion } from "framer-motion";
 import Image from "next/image";
+import React, { useEffect } from "react";
+import { FiArrowRight } from "react-icons/fi";
+import {
+  useMotionTemplate,
+  useMotionValue,
+  motion,
+  animate,
+} from "framer-motion";
+
+const COLORS_TOP = ["#13FFAA", "#1E67C6", "#CE84CF", "#DD335C"];
 export const AboutUs = () => {
   const [stage, setStage] = useState(0);
-  console.log(stage);
 
+  const color = useMotionValue(COLORS_TOP[0]);
+
+  useEffect(() => {
+    animate(color, COLORS_TOP, {
+      ease: "easeInOut",
+      duration: 10,
+      repeat: Infinity,
+      repeatType: "mirror",
+    });
+  }, []);
+
+  const backgroundImage = useMotionTemplate`linear-gradient(125% 125% at 50% 0%, #020617 50%, ${color})`;
+  const border = useMotionTemplate`1px solid ${color}`;
+  const boxShadow = useMotionTemplate`0px 4px 24px ${color}`;
   return (
-    <div className="w-screen h-fit flex justify-center items-center py-[120px] sm:px-0 px-[40px]">
+    <motion.section
+      className="w-screen h-fit flex justify-center items-center py-[120px] sm:px-0 px-[40px] rounded-2xl"
+      style={{ backgroundImage }}
+    >
       <div className="xl:w-[1280px] w-[1020px] h-fit flex lg:flex-row flex-col lg:justify-between justify-center lg:items-start  items-center lg:gap-0 gap-[50px]">
         <div className="xl:w-[739px] lg:w-[530px] md:w-[700px] sm:w-[540px] w-fit flex flex-col gap-[20px]">
           <div className="text-[#0D47A9] text-[20px] font-semibold">
@@ -130,6 +155,6 @@ export const AboutUs = () => {
           />
         </div>
       </div>
-    </div>
+    </motion.section>
   );
 };

@@ -14,6 +14,7 @@ import { Footer } from "@/components/Footer/Footer";
 import { HomePagePart } from "@/components/HomePagePart";
 import { currentUser, auth } from "@clerk/nextjs";
 import axios from "axios";
+import { AuroraHero } from "@/components/Header/StarsHeader";
 
 let url: string = process.env.NEXT_PUBLIC_PRODUCTION!;
 console.log(url);
@@ -46,13 +47,5 @@ export default function Home() {
     getAllCategories();
   }, []);
 
-  return (
-    <div className="flex flex-col gap-[40px]">
-      <HeaderHero />
-      <AboutUs />
-
-      <HomePagePart />
-      <Footer />
-    </div>
-  );
+  return <AuroraHero />;
 }
