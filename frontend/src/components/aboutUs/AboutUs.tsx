@@ -30,7 +30,7 @@ export const AboutUs = () => {
   const boxShadow = useMotionTemplate`0px 4px 24px ${color}`;
   return (
     <motion.section
-      className="w-screen h-fit flex justify-center items-center py-[120px] sm:px-0 px-[40px] rounded-2xl"
+      className="w-screen flex justify-center items-center py-[120px] sm:px-0 px-[40px] rounded-2xl"
       style={{ backgroundImage }}
     >
       <div className="xl:w-[1280px] w-[1020px] h-fit flex lg:flex-row flex-col lg:justify-between justify-center lg:items-start  items-center lg:gap-0 gap-[50px]">

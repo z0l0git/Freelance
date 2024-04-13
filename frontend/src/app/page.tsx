@@ -47,5 +47,9 @@ export default function Home() {
     getAllCategories();
   }, []);
 
-  return <AuroraHero />;
+  return (
+    <div className="scrollbar-hide snap-y">
+      <AuroraHero />
+    </div>
+  );
 }
