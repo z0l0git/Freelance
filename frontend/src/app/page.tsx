@@ -17,7 +17,7 @@ import axios from "axios";
 import { AuroraHero } from "@/components/Header/StarsHeader";
 
 let url: string = process.env.NEXT_PUBLIC_PRODUCTION!;
-console.log(url);
+console.log(url, "jiiiii");
 
 export default function Home() {
   useEffect(() => {
