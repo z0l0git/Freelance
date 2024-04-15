@@ -6,7 +6,6 @@ type RequestBody = {
   id: string;
 };
 
-
 const GetPostsById = async (id: string) => {
   try {
     const { data } = await axios.post<RequestBody>(
@@ -15,6 +14,8 @@ const GetPostsById = async (id: string) => {
         id: id,
       }
     );
+    console.log(data, "hiii");
+    console.log("lsdkfsjksdlkdkkkkkkkkkkkkkkkkkkk");
 
     return data;
   } catch (err: any) {
@@ -28,11 +29,10 @@ export default async function ProjectDetailPage({
   searchParams: { id: string };
 }) {
   const data = await GetPostsById(searchParams.id);
-  console.log(data, "data in");
+  console.log(data, "data ijskdfhn");
 
   return (
     <div>
-      this is page
       <ProjectDetail />
     </div>
   );
