@@ -2,19 +2,16 @@ import React from "react";
 // import { ButtonWithBlueBorder } from "../Button";
 import { Input } from "../../components/ui/input";
 import { CheckCircle } from "../../components/ui/checkcircle";
-import { GetProjectCategory, GetSkillCategory } from "@/utils/axiosInstance";
 
 type Filter = {
   jobs: string;
   counter: string;
 };
 
-
 type SkillType = {
   name: string;
   id: string;
 };
-
 
 type DataType = {
   name: string;
@@ -22,9 +19,16 @@ type DataType = {
   _id: string;
 };
 
-export const Filter = async () => {
-  const data: DataType[] = await GetProjectCategory();
-  const skills: SkillType[] = await GetSkillCategory();
+type PropsType = {
+  setSkill: React.Dispatch<React.SetStateAction<string>>;
+  setCategory: React.Dispatch<React.SetStateAction<string>>;
+  data: DataType[];
+  skills: SkillType[];
+};
+
+export const Filter = (props: PropsType) => {
+  const { setSkill, setCategory, data, skills } = props;
+
   return (
     <div className="flex bg-slate-100 rounded-xl scrollbar-hidden scrollbar-hide px-[10px] py-[20px] max-h-screen overflow-y-auto overflow-x-hidden justify-center">
       <div className="flex flex-col w-[352px] xl:w-[416px] h-fit rounded-xl p-8 bg-slate-50">
@@ -43,7 +47,7 @@ export const Filter = async () => {
           <h2 className="text-2xl font-semibold">Types of Categories</h2>
         </div>
         <div className="flex flex-col gap-2">
-          {data.map((el, i) => {
+          {data?.map((el, i) => {
             return (
               <div
                 key={i}
@@ -74,9 +78,12 @@ export const Filter = async () => {
           <h2 className="text-2xl font-semibold">Skills</h2>
         </div>
         <div className="flex flex-col gap-2">
-          {skills.map((el, i) => {
+          {skills?.map((el, i) => {
             return (
               <div
+                onClick={() => {
+                  setSkill(el.id);
+                }}
                 key={i}
                 className="flex items-center justify-between w-352px h-[32px"
               >
