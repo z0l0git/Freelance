@@ -6,6 +6,26 @@ type RequestBody = {
   id: string;
 };
 
+type SkillType = {
+  name: string;
+  id: string;
+};
+
+type PosdtDataType = {
+  _id: string;
+  createdBy: {
+    firstName: string;
+    lastName: string;
+  };
+  title: string;
+  description: string;
+  budget: number;
+  deliveryTime: string;
+  flexible: boolean;
+  categorys: string[];
+  skills: SkillType[];
+};
+
 const GetPostsById = async (id: string) => {
   try {
     const { data } = await axios.post<RequestBody>(
@@ -14,8 +34,6 @@ const GetPostsById = async (id: string) => {
         id: id,
       }
     );
-    console.log(data, "hiii");
-    console.log("lsdkfsjksdlkdkkkkkkkkkkkkkkkkkkk");
 
     return data;
   } catch (err: any) {
@@ -29,11 +47,10 @@ export default async function ProjectDetailPage({
   searchParams: { id: string };
 }) {
   const data = await GetPostsById(searchParams.id);
-  console.log(data, "data ijskdfhn");
 
   return (
     <div>
-      <ProjectDetail />
+      <ProjectDetail data={data as PosdtDataType[] | undefined} />
     </div>
   );
 }
