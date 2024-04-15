@@ -35,7 +35,7 @@ export const Menu = () => {
   return (
     <>
       <div
-        className={`py-4 flex justify-around z-50 sticky top-0 border-b-2 border-solid border-white w-screen`}
+        className={`py-4 flex justify-around z-50 sticky top-0 bg-[#13203B] w-screen`}
       >
         <div className=" w-full mx-auto px-3 flex md:justify-around justify-between items-center gap-4">
           <Image

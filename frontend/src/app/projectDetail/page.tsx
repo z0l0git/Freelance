@@ -50,7 +50,7 @@ export default async function ProjectDetailPage({
 
   return (
     <div>
-      <ProjectDetail data={data as PosdtDataType[] | undefined} />
+      <ProjectDetail data={(data as PosdtDataType[]) | undefined} />
     </div>
   );
 }
