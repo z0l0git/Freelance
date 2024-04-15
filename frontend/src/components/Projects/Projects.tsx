@@ -27,10 +27,12 @@ type PosdtDataType = {
 
 type ProjectsProps = {
   AllPost: PosdtDataType[];
+  postData: PosdtDataType[];
+  stage: boolean;
 };
 
 export const Projects = (props: ProjectsProps) => {
-  const { AllPost } = props;
+  const { AllPost, postData, stage } = props;
 
   const { push } = useRouter();
 
@@ -43,22 +45,56 @@ export const Projects = (props: ProjectsProps) => {
   return (
     <div className="flex items-start  justify-center  ">
       <div className="flex flex-col-reverse gap-[30px]">
-        {AllPost?.map((el, index) => {
-          return (
-            <div key={index} id={el._id} onClick={handlerClick}>
-              <ProjectCard
-                title={el.title}
-                price={el.budget.toLocaleString()}
-                description={el.description}
-                flexible={el.flexible}
-                createdby={el.createdBy.firstName + " " + el.createdBy.lastName}
-                category={el.skills?.map((el2, index2) => {
-                  return el2.name;
-                })}
-              />
+        {stage ? (
+          <>
+            {AllPost?.map((el, index) => {
+              return (
+                <div key={index} id={el._id} onClick={handlerClick}>
+                  <ProjectCard
+                    title={el.title}
+                    price={el.budget.toLocaleString()}
+                    description={el.description}
+                    flexible={el.flexible}
+                    createdby={
+                      el.createdBy.firstName + " " + el.createdBy.lastName
+                    }
+                    category={el.skills?.map((el2, index2) => {
+                      return el2.name;
+                    })}
+                  />
+                </div>
+              );
+            })}
+          </>
+        ) : (
+          <>
+            <div>
+              {postData?.length === 0 && (
+                <div className="rounded-xl p-8 pb-0 bg-slate-50 w-[720px] h-[400px]">
+                  tiim ym bhguu pisda min
+                </div>
+              )}
             </div>
-          );
-        })}
+            {postData?.map((el, index) => {
+              return (
+                <div key={index} id={el._id} onClick={handlerClick}>
+                  <ProjectCard
+                    title={el.title}
+                    price={el.budget.toLocaleString()}
+                    description={el.description}
+                    flexible={el.flexible}
+                    createdby={
+                      el.createdBy.firstName + " " + el.createdBy.lastName
+                    }
+                    category={el.skills?.map((el2, index2) => {
+                      return el2.name;
+                    })}
+                  />
+                </div>
+              );
+            })}
+          </>
+        )}
       </div>
     </div>
   );

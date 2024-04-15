@@ -4,39 +4,117 @@ import { MdOutlineDeveloperMode } from "react-icons/md";
 import { GiTakeMyMoney } from "react-icons/gi";
 import Image from "next/image";
 import { AiFillWechat } from "react-icons/ai";
+import { PiClockCountdownLight } from "react-icons/pi";
 import { BsCheck2Circle } from "react-icons/bs";
 import { CaretDownIcon } from "@radix-ui/react-icons";
-const Skill = () => {
+import { DataArrayTexture } from "three";
+
+type SkillPropType = {
+  skil: string;
+};
+const Skill = (porps: SkillPropType) => {
+  const { skil } = porps;
+
   return (
     <div className="bg-blue-200 px-[10px] w-fit text-blue-900 rounded-3xl font-semibold text-[18px]">
-      developer
+      {skil}
     </div>
   );
 };
 
-const Category = () => {
+type CateTypess = {
+  text1: string;
+  text2: string;
+};
+
+const Category = (props: CateTypess) => {
+  const { text1, text2 } = props;
   return (
     <div>
-      <span className="font-semibold text-[18px]">
-        Natural Language Processing (NLP)
-      </span>
-      :
-      <span>
-        The chatbot should be equipped with NLP capabilities to understand and
-        interpret user input.
-      </span>
+      <span className="font-semibold text-[18px]">{text1}</span>:
+      <span className="ml-[5px]">{text2}</span>
     </div>
   );
 };
 
-export default function ProjectDetail() {
+type SkillType = {
+  name: string;
+  id: string;
+};
+type CtType = {
+  _id: string;
+  name: string;
+  description: string;
+};
+
+type PosdtDataType = {
+  _id: string;
+  createdBy: {
+    firstName: string;
+    lastName: string;
+  };
+  title: string;
+  description: string;
+  budget: number;
+  deliveryTime: string;
+  flexible: boolean;
+  category: CtType[];
+  skills: SkillType[];
+  createdAt: string;
+};
+type PropsType = {
+  data: PosdtDataType;
+};
+
+export default function ProjectDetail(props: PropsType) {
+  const { data } = props;
+  console.log(data, "data");
+
+  function formatDate(originalDate: string): string {
+    const [yearStr, monthStr, dayStr] = originalDate.split("-");
+    const year = parseInt(yearStr);
+    const month = parseInt(monthStr);
+    const day = parseInt(dayStr);
+    const date = new Date(year, month - 1, day);
+
+    const months: string[] = [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December",
+    ];
+    const monthName: string = months[date.getMonth()];
+    const formattedDate: string = `${monthName} ${day}, ${year}`;
+    return formattedDate;
+  }
+
+  const FormatedDate = formatDate(data?.createdAt.split("T")[0]);
+  const UserName = `${data?.createdBy.firstName} ${data?.createdBy.lastName}`;
+  const Budget = `${data?.budget}`;
+  const title = `${data?.title}`;
+  const deliveryTime = `${data?.deliveryTime}`;
+  const Flexible = `${data?.flexible}`;
+  const Categorys = `${data?.category}`;
+
+  const CreatedAt = `${data?.createdAt}`;
+  const Description = `${data?.description}`;
+  console.log(data?.category, "scategorieslls");
+
   return (
     <div className="w-screen h-screen flex justify-center bg-slate-200">
       <div className="w-[1280px] mt-[100px] flex gap-[20px]">
         <div className="w-[850px] rounded-xl h-fit  bg-white p-[30px]">
-          <div className="w-[100%] h-[200px] border border-slate-200 rounded-xl p-[20px]">
+          <div className="w-[100%] h-fit border border-slate-200 rounded-xl p-[20px]">
             <div className="text-[38px] mt-[10px] font-semibold border-b border-dashed border-slate-300 pb-[20px]">
-              AI-powered Chatbot Development
+              {title}
             </div>
             <div className="mt-[20px] flex gap-[20px]">
               <div className="flex gap-[18px] border-r border-slate-400 w-fit pr-[18px] ">
@@ -45,11 +123,11 @@ export default function ProjectDetail() {
                 </div>
                 <div>
                   <div>Delivery time</div>
-                  <div>1-3 day</div>
+                  <div>{deliveryTime}</div>
                 </div>
               </div>
 
-              <div className="flex gap-[18px]  w-fit pr-[18px] ">
+              <div className="flex gap-[18px]  border-r border-slate-400 w-fit pr-[18px] ">
                 <div className="bg-yellow-500 rounded-full w-fit h-fit p-[7px]">
                   <MdOutlineDeveloperMode className="text-[29px] text-white" />
                 </div>
@@ -58,25 +136,34 @@ export default function ProjectDetail() {
                   <div></div>
                 </div>
               </div>
+
+              <div className="flex gap-[18px]  w-fit pr-[18px] ">
+                <div className="bg-blue-800 rounded-full w-fit h-fit p-[7px]">
+                  <PiClockCountdownLight className="text-[29px] text-white" />
+                </div>
+                <div>
+                  <div>Created at</div>
+                  <div>{FormatedDate}</div>
+                </div>
+              </div>
             </div>
           </div>
           <div className="mt-[20px] border-b border-dashed border-slate-300 pb-[20px]">
             <div className="text-[35px] font-semibold">Description</div>
-            <div className="mt-[17px]">
-              The "AI-powered Chatbot Development" project focuses on building
-              an intelligent chatbot that leverages artificial intelligence and
-              natural language processing techniques to provide automated
-              customer support and assistance.
-            </div>
+            <div className="mt-[17px]">{Description}</div>
           </div>
           <div className="mt-[20px] border-b border-dashed border-slate-300 pb-[20px]">
             <div className="text-[35px] font-semibold">Skill requared</div>
-            <div className="mt-[17px] flex flex-wrap">
-              <Skill />
+            <div className="mt-[17px] flex flex-wrap gap-4">
+              {data?.skills?.map((el, index) => (
+                <Skill skil={el.name} key={index} />
+              ))}
             </div>
           </div>
           <div className="mt-[20px]">
-            <Category />
+            {data?.category?.map((el, index) => (
+              <Category key={index} text1={el.name} text2={el.description} />
+            ))}
           </div>
         </div>
         <div className="w-[420px] h-fit  rounded-xl p-[20px] bg-white sticky top-0">
@@ -87,7 +174,7 @@ export default function ProjectDetail() {
               <div className="flex items-center">
                 from{" "}
                 <span className="text-[40px] ml-[14px] font-semibold">
-                  $333
+                  {Budget}₮
                 </span>
               </div>
             </div>
@@ -106,8 +193,13 @@ export default function ProjectDetail() {
               </div>
             </div>
             <div className="flex flex-col items-center gap-[15px] w-[100%] border-b border-dashed border-slate-300 pb-[20px]">
-              <div className="text-[27px] font-semibold">Binford Ltd</div>
-              <div>Member since December 31, 2020</div>
+              <div className="text-[27px] font-semibold">{UserName}</div>
+              {/* <div>
+                Member since{" "}
+                <span className="text-[20px] font-semibold">
+                  {FormatedDate}
+                </span>
+              </div> */}
               {/* <div className="p-[10px] w-[100%]"></div> */}
             </div>
             <div className="cursor-pointer w-[100%] ">

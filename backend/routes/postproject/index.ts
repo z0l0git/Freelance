@@ -9,5 +9,5 @@ import {
 export const ProjectRouter = Router();
 
 ProjectRouter.post("/postProject", postProjectController);
-ProjectRouter.get("/getAllProject", getProjectController);
+ProjectRouter.post("/getAllProject", getProjectController);
 ProjectRouter.post("/getProjectById", getProjectByidController);

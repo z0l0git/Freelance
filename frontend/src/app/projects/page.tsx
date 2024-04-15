@@ -16,11 +16,10 @@ type DataType = {
   description: string;
   _id: string;
 };
-///urldaaa utgaa ogood filter hiih arga bn
-//
+
 const GetAllPosts = async () => {
   try {
-    const { data } = await axios.get("http://localhost:8000/getAllProject");
+    const { data } = await axios.post("http://localhost:8000/getAllProject");
 
     return data;
   } catch (err: any) {
@@ -30,6 +29,7 @@ const GetAllPosts = async () => {
 
 const page = async () => {
   const AllPost = await GetAllPosts();
+  console.log(AllPost, "Allpost");
 
   const data: DataType[] = await GetProjectCategory();
   const skills: SkillType[] = await GetSkillCategory();
