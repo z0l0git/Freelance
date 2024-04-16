@@ -72,7 +72,7 @@ export const Login = () => {
   return (
     <div className="flex flex-col   sm:w-[550px] w-fit px-[30px] ">
       <div className="mb-[45px]">
-        <div className="font-semibold text-[35px] text-white ">
+        <div className="font-semibold text-[25px] text-white ">
           Welcome back!
         </div>
         <div className="text-slate-400">
@@ -89,7 +89,7 @@ export const Login = () => {
           {({ setFieldValue }) => (
             <Form className="flex flex-col gap-[28px]   ">
               <div>
-                <div className="font-semibold text-white text-[20px] mb-3">
+                <div className="font-semibold text-white text-[15px] mb-3">
                   Enter Your Email ID
                 </div>
                 <Input
@@ -106,7 +106,7 @@ export const Login = () => {
                 />
               </div>
               <div>
-                <div className="font-semibold text-white text-[20px] mb-3">
+                <div className="font-semibold text-white text-[15px] mb-3">
                   Enter Your Password
                 </div>
                 <InputPassWord
@@ -147,9 +147,9 @@ export const Login = () => {
                       cursor: "pointer",
                       boxShadow: "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px",
                     }}
-                    className="w-full px-[5px] h-[50px] flex justify-center items-center text-black bg-white rounded-[40px] font-semibold sm:text-[25px] gap-[20px] text-[14px]"
+                    className="w-full px-[5px] h-[45px] flex justify-center items-center text-black bg-white rounded-[40px] font-semibold sm:text-[20px] gap-[20px] text-[14px]"
                   >
-                    <Image alt="" src="/google.jpeg" width={30} height={30} />
+                    <Image alt="" src="/google.jpeg" width={25} height={25} />
                     Continue with google
                   </button>
                 </Link>

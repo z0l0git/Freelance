@@ -9,19 +9,24 @@ const getByEmail = async (email: string) => {
 
 export const loginQuery = async (req: Request) => {
   const { email, password } = req.body;
-  const user = await getByEmail(email);
+  try {
+    const user = await getByEmail(email);
 
-  if (!user) {
-    throw new Error("User or Password not match");
+    if (!user) {
+      throw new Error("User or Password not match");
+    }
+
+    const isPasswordRight = await compareHash(user.password, password);
+    console.log(isPasswordRight);
+
+    if (!isPasswordRight) {
+      throw new Error("User or Password not match");
+    } else {
+      const token = await tokenGenerate(user._id.toString());
+
+      return token;
+    }
+  } catch (err: any) {
+    throw new Error(err.message);
   }
-
-  const isPasswordRight = await compareHash(user.password, password);
-  console.log(isPasswordRight);
-
-  if (!isPasswordRight) {
-    throw new Error("User or Password not match");
-  }
-
-  const token = await tokenGenerate(user._id.toString());
-  return token;
 };
