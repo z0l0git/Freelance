@@ -27,3 +27,15 @@ export const GetSkillCategory = async () => {
     console.log(err.message);
   }
 };
+
+export const GetAllPosts = async () => {
+  try {
+    const { data } = await axios.get(
+      "https://freelance-gmjr.onrender.com/getAllProject"
+    );
+
+    return data;
+  } catch (err: any) {
+    console.log(err.message);
+  }
+};

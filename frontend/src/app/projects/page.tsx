@@ -1,17 +1,25 @@
-import { Filter } from "@/components/Filter/Filter";
-import { HeaderSearch } from "@/components/HeaderSearch/HeaderSearch";
-import { ProjectCard } from "@/components/ProjectCard/ProjectCard";
 import { Menu } from "@/components/Menu/Menu";
 import React from "react";
-import { Projects } from "@/components/Projects/Projects";
+
 import { Footer } from "@/components/Footer/Footer";
 import axios from "axios";
+import { GetProjectCategory, GetSkillCategory } from "@/utils/axiosInstance";
+import ProjectPageMidd from "@/components/Projects/ProjectPageMidd";
+
+type SkillType = {
+  name: string;
+  id: string;
+};
+
+type DataType = {
+  name: string;
+  description: string;
+  _id: string;
+};
 
 const GetAllPosts = async () => {
   try {
-    const { data } = await axios.get(
-      "https://freelance-gmjr.onrender.com/getAllProject"
-    );
+    const { data } = await axios.post("http://localhost:8000/getAllProject");
 
     return data;
   } catch (err: any) {
@@ -21,20 +29,17 @@ const GetAllPosts = async () => {
 
 const page = async () => {
   const AllPost = await GetAllPosts();
+  console.log(AllPost, "Allpost");
+
+  const data: DataType[] = await GetProjectCategory();
+  const skills: SkillType[] = await GetSkillCategory();
 
   return (
     <div>
       <div className="bg-[url(https://pixner.net/aihire/aihire/assets/img/bn/breadcumndbg.jpg)]">
         <Menu />
       </div>
-      <div className="flex justify-center bg-slate-200 h-fit gap-5">
-        <div className="sticky top-0 h-[100%] my-[100px] ">
-          <Filter />
-        </div>
-        <div className="my-[100px] pb-[100px]">
-          <Projects AllPost={AllPost} />
-        </div>
-      </div>
+      <ProjectPageMidd data={data} AllPost={AllPost} skills={skills} />
 
       <Footer />
     </div>

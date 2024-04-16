@@ -205,9 +205,11 @@ const Chinzorig = () => {
   return (
     <div>
       {/* <Contact /> */}
+
       {/* <Filter /> */}
       {/* <div className="flex w-screen items-start justify-center bg-slate-200 gap-5 pt-32">
         <Filter jobs={"Local Jobs"} counter={"35"} />
+
         <div className="flex flex-col gap-[30px]">
           {projects.map((el, i) => {
             return (
