@@ -8,6 +8,8 @@ import { Filter } from "@/components/Filter/Filter";
 import { Contact } from "@/components/Contact/Contact";
 import axios from "axios";
 import FreelancersMidd from "@/components/FreelancerCardComponent/FreelancersMidd";
+import { Menu } from "@/components/Menu/Menu";
+import { Footer } from "@/components/Footer/Footer";
 
 type Response = {
   _id: string;
@@ -33,8 +35,13 @@ const Chinzorig = async () => {
   console.log(AllUserData, "datasgdee broda");
 
   return (
-    <div>
+    <div
+      className="flex flex-col gap-[20px] 
+    bg-slate-200"
+    >
+      <Menu />
       <FreelancersMidd AllUserData={AllUserData} />
+      <Footer />
     </div>
   );
 };

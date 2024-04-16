@@ -21,7 +21,7 @@ type FreelancerCard = {
 export const FreelancerCard = (props: FreelancerCard) => {
   const { star, level, levelrank, name, worktype, experience, wages } = props;
   return (
-    <div className="flex items-center justify-center w-[362px] md:w-[336px] sm:w-[336px] xl:w-[270px]  ">
+    <div className="flex items-center justify-center w-[362px] md:w-[336px] sm:w-[336px] xl:w-[270px] cursor-pointer">
       <div
         style={{
           boxShadow:

@@ -1,8 +1,8 @@
 "use client";
 import React from "react";
-import { Filter } from "../Filter/Filter";
+
 import { ProjectCard } from "../ProjectCard/ProjectCard";
-import { AiFillPropertySafety } from "react-icons/ai";
+
 import { MouseEvent } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
@@ -19,7 +19,7 @@ type DataType = {
 };
 type PosdtDataType = {
   _id: string;
-  createdBy: {
+  createdBy?: {
     firstName: string;
     lastName: string;
   };
@@ -40,12 +40,11 @@ type ProjectsProps = {
 
 export const Projects = (props: ProjectsProps) => {
   const { AllPost, postData, stage } = props;
-
   const { push } = useRouter();
 
   const handlerClick = (event: MouseEvent<HTMLDivElement>) => {
     const projectId = event.currentTarget.id;
-    console.log(projectId, "projectid");
+
     push(`/projectDetail?id=${projectId}`);
   };
 
@@ -63,7 +62,7 @@ export const Projects = (props: ProjectsProps) => {
                     description={el.description}
                     flexible={el.flexible}
                     createdby={
-                      el.createdBy.firstName + " " + el.createdBy.lastName
+                      el.createdBy?.firstName + " " + el.createdBy?.lastName
                     }
                     category={el.skills?.map((el2, index2) => {
                       return el2.name;
@@ -91,7 +90,7 @@ export const Projects = (props: ProjectsProps) => {
                     description={el.description}
                     flexible={el.flexible}
                     createdby={
-                      el.createdBy.firstName + " " + el.createdBy.lastName
+                      el.createdBy?.firstName + " " + el.createdBy?.lastName
                     }
                     category={el.skills?.map((el2, index2) => {
                       return el2.name;

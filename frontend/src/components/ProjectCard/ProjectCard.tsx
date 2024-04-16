@@ -1,26 +1,21 @@
 "use client";
 
 import React from "react";
-import { BlueButton } from "../Button";
-import { CheckCircle } from "../../components/ui/checkcircle";
 
 type ProjectCard = {
-
   title?: String;
   price?: String;
   description?: String;
   category?: string[];
   createdby?: String;
   flexible?: Boolean;
-
 };
 
 export const ProjectCard = (props: ProjectCard) => {
   const { title, price, description, category, createdby, flexible } = props;
-  console.log(flexible);
 
   return (
-    <div className="flex bg-slate-100 rounded-2xl h-fit ">
+    <div className="flex bg-slate-100 rounded-2xl h-fit cursor-pointer">
       <div className="flex flex-col rounded-xl p-8 pb-0 bg-slate-50 w-[720px]">
         <div className="flex flex-col gap-3 h-fit mb-6">
           <div className="flex justify-between ">

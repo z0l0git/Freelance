@@ -1,6 +1,8 @@
 import React from "react";
 import ProjectDetail from "@/components/projectDetail/ProjectDetail";
 import axios from "axios";
+import { Menu } from "@/components/Menu/Menu";
+import { Footer } from "@/components/Footer/Footer";
 
 type RequestBody = {
   id: string;
@@ -58,10 +60,10 @@ export default async function ProjectDetailPage({
   console.log(data.createdBy, "by zolooo");
 
   return (
-    <div>
-
+    <div className="">
+      <Menu />
       <ProjectDetail data={data as any} />
-
+      <Footer />
     </div>
   );
 }
