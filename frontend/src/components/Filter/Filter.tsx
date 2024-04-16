@@ -5,7 +5,8 @@ import { useState } from "react";
 import { CheckCircle } from "../../components/ui/checkcircle";
 import { MouseEvent } from "react";
 import { useRouter } from "next/navigation";
-
+import { ChangeEvent } from "react";
+import { BiSearch } from "react-icons/bi";
 type Filter = {
   jobs: string;
   counter: string;
@@ -33,9 +34,14 @@ type PosdtDataType = {
   budget: number;
   deliveryTime: string;
   flexible: boolean;
-  categorys: string[];
+  category: DataType[];
   skills: SkillType[];
 };
+type BudgetType = {
+  min: number;
+  max: number;
+};
+
 type PropsType = {
   setSkill: React.Dispatch<React.SetStateAction<string>>;
   setCategory: React.Dispatch<React.SetStateAction<string>>;
@@ -43,46 +49,74 @@ type PropsType = {
   skills: SkillType[];
   skill: string;
   setStage: React.Dispatch<React.SetStateAction<boolean>>;
-  handleClickOnFilter: (e: SkillType) => void;
+  handleSkillFilter: (e: SkillType) => void;
+  hnadlecategoryFilter: (e: DataType) => void;
   stage?: boolean;
   setPostData: React.Dispatch<React.SetStateAction<PosdtDataType[]>>;
+  category: string;
+  handleChange: (event: ChangeEvent<HTMLInputElement>) => void;
+  setSearch: React.Dispatch<React.SetStateAction<string>>;
+  HnadleSearch: () => Promise<void>;
+  search?: string;
+  budget: BudgetType;
+  handlerClick: () => void;
 };
 
 export const Filter = (props: PropsType) => {
-  const { data, skills, setStage, handleClickOnFilter, stage, setPostData } =
-    props;
+  const {
+    handlerClick,
+
+    data,
+    skills,
+    skill,
+    setStage,
+    handleSkillFilter,
+    stage,
+    hnadlecategoryFilter,
+    category,
+    handleChange,
+    setSearch,
+    HnadleSearch,
+    search,
+    budget,
+  } = props;
 
   // const { push } = useRouter();
 
-  const handlerClick = () => {
-    setStage(true);
-  };
   return (
-    <div className="flex bg-slate-100 rounded-xl scrollbar-hidden scrollbar-hide px-[10px] py-[20px] max-h-screen overflow-y-auto overflow-x-hidden justify-center">
-      <div className="flex flex-col w-[352px] xl:w-[416px] h-fit rounded-xl p-8 bg-slate-50">
-        <div className="w-[352px] h-[56px] pb-6 mb-6">
-          <h3 className="text-2xl font-semibold">Filter</h3>
+    <div className="flex bg-slate-50 rounded-xl scrollbar-hidden scrollbar-hide px-[10px] py-[20px] max-h-screen f-fit justify-center">
+      <div className="flex flex-col w-[352px] xl:w-[416px] h-fit rounded-xl p-8 ">
+        <div className="w-[352px] h-[56px] ">
+          <h3 className="text-2xl font-semibold ml-[-14px]">Filter</h3>
         </div>
 
-        <Input
-          className="w-full h-[56px] pb-6 mb-6 rounded-3xl bg-slate-200 p-3"
-          type={"text"}
-          id={"search"}
-          placeholder={"search"}
-        />
+        <div className="w-full h-[46px] px-[10px] flex items-center justify-between rounded-3xl bg-slate-200">
+          <input
+            className="w-[90%] text-[20px] bg-slate-200  outline-none"
+            type={"text"}
+            placeholder={"search by title"}
+            value={search}
+            onChange={(el) => setSearch(el.target.value)}
+          />
+          <BiSearch className="text-[30px]" onClick={HnadleSearch} />
+        </div>
 
         <div className="w-[352px] h-[56px] pt-6 mb-5">
-          <h2 className="text-2xl font-semibold">Types of Categories</h2>
+          <h2 className="text-2xl font-semibold ml-[-14px]">
+            Types of Categories
+          </h2>
         </div>
         <div className="flex flex-col gap-2">
           {data?.map((el, i) => {
             return (
               <div
+                onClick={() => hnadlecategoryFilter(el)}
+                id={el._id}
                 key={i}
                 className="flex items-center justify-between w-352px h-[32px"
               >
                 <div className="flex gap-2 items-center">
-                  <CheckCircle className="" />
+                  <CheckCircle className="" checked={category === el._id} />
                   <h3 className="text-base font-medium">{el.name}</h3>
                 </div>
               </div>
@@ -90,41 +124,44 @@ export const Filter = (props: PropsType) => {
           })}
         </div>
         <div className="w-[352px] h-[56px] pt-6 mb-5">
-          <h2 className="text-2xl font-semibold">Budget</h2>
+          <h2 className="text-2xl font-semibold ml-[-14px]">Budget</h2>
         </div>
         <div className="flex gap-8">
           <div className="flex items-center justify-center p-4 w-36 h-12 border-solid border-slate-500 bg-slate-200 rounded-3xl">
-            Min
+            <input
+              className="w-[97px] bg-slate-200 outline-none"
+              placeholder="Min"
+              name="min"
+              type="number"
+              onChange={(event) => handleChange(event)}
+            />
           </div>
           <span className="flex items-center justify-center">to</span>
           <div className="flex items-center justify-center p-4 w-36 h-12 border-solid border-slate-500 bg-slate-200 rounded-3xl">
-            Max
+            <input
+              className="w-[97px] bg-slate-200 outline-none"
+              placeholder="Max"
+              name="max"
+              type="number"
+              onChange={(event) => handleChange(event)}
+            />
           </div>
         </div>
 
         <div className="w-[352px] h-[56px] pt-6 mb-5">
-          <h2 className="text-2xl font-semibold">Skills</h2>
+          <h2 className="text-2xl font-semibold ml-[-14px]">Skills</h2>
         </div>
         <div className="flex flex-col gap-2">
-          <div
-            onClick={handlerClick}
-            className="flex items-center justify-between w-352px h-[32px"
-          >
-            <div className="flex gap-2 items-center">
-              <CheckCircle className="" checked={stage} />
-              <h3 className="text-base font-medium">All project</h3>
-            </div>
-          </div>
           {skills?.map((el, i) => {
             return (
               <div
-                onClick={() => handleClickOnFilter(el)}
+                onClick={() => handleSkillFilter(el)}
                 id={el.id}
                 key={i}
                 className="flex items-center justify-between w-352px h-[32px"
               >
                 <div className="flex gap-2 items-center">
-                  <CheckCircle />
+                  <CheckCircle checked={skill === el.id} />
                   <h3 className="text-base font-medium">{el.name}</h3>
                 </div>
               </div>
@@ -133,7 +170,10 @@ export const Filter = (props: PropsType) => {
         </div>
 
         <div>
-          <button className="flex items-center justify-center p-4 w-full h-12 border-solid border-[#0D47A1] border-2 bg-slate-50 rounded-3xl mt-8 text-base font-semibold text-[#0D47A1] ">
+          <button
+            onClick={handlerClick}
+            className="flex items-center  justify-center p-4 w-full h-12 border-solid border-[#0D47A1] border-2 bg-slate-50 rounded-3xl mt-8 text-base font-semibold text-[#0D47A1] "
+          >
             Reset Filter
           </button>
         </div>

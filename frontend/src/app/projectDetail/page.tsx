@@ -11,18 +11,25 @@ type SkillType = {
   id: string;
 };
 
+type CtType = {
+  _id: string;
+  name: string;
+  description: string;
+};
+
 type PosdtDataType = {
   _id: string;
   createdBy: {
     firstName: string;
     lastName: string;
+    createdAt: string;
   };
   title: string;
   description: string;
   budget: number;
   deliveryTime: string;
   flexible: boolean;
-  categorys: string[];
+  categorys: CtType[];
   skills: SkillType[];
   createdAt: string;
 };
@@ -47,11 +54,14 @@ export default async function ProjectDetailPage({
 }: {
   searchParams: { id: string };
 }) {
-  const data = await GetPostsById(searchParams.id);
+  const data: any = await GetPostsById(searchParams.id);
+  console.log(data.createdBy, "by zolooo");
 
   return (
     <div>
-      <ProjectDetail data={data as PosdtDataType[]} />
+
+      <ProjectDetail data={data as any} />
+
     </div>
   );
 }

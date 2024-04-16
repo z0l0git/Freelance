@@ -5,10 +5,17 @@ import { ProjectCard } from "../ProjectCard/ProjectCard";
 import { AiFillPropertySafety } from "react-icons/ai";
 import { MouseEvent } from "react";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 type SkillType = {
   name: string;
   id: string;
+};
+
+type DataType = {
+  name: string;
+  description: string;
+  _id: string;
 };
 type PosdtDataType = {
   _id: string;
@@ -21,7 +28,7 @@ type PosdtDataType = {
   budget: number;
   deliveryTime: string;
   flexible: boolean;
-  categorys: string[];
+  category: DataType[];
   skills: SkillType[];
 };
 
@@ -70,8 +77,8 @@ export const Projects = (props: ProjectsProps) => {
           <>
             <div>
               {postData?.length === 0 && (
-                <div className="rounded-xl p-8 pb-0 bg-slate-50 w-[720px] h-[400px]">
-                  tiim ym bhguu pisda min
+                <div className="rounded-xl p-8 pb-0 bg-slate-50 w-[720px] h-[340px]">
+                  <Image alt="" src="/error.png" width={600} height={300} />
                 </div>
               )}
             </div>
