@@ -6,7 +6,7 @@ import { BlueButton } from "../Button";
 
 export const MainProfileSidebar = () => {
   const handleLogout = () => {
-    localStorage.removeItem("Token");
+    localStorage.removeItem("token");
     window.location.pathname = "/";
   };
 

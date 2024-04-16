@@ -1,12 +1,13 @@
 "use client";
-import React, { useEffect } from "react";
-
+import React, { ChangeEvent, useEffect } from "react";
+import axios from "axios";
 import { Filter } from "../Filter/Filter";
 
 import { Projects } from "./Projects";
 import { useState } from "react";
-import ProjectsGet from "./ProjectsGet";
+
 import { useRouter } from "next/navigation";
+import { PiSkullFill } from "react-icons/pi";
 type DataType = {
   name: string;
   description: string;
@@ -28,7 +29,7 @@ type PosdtDataType = {
   budget: number;
   deliveryTime: string;
   flexible: boolean;
-  categorys: string[];
+  category: DataType[];
   skills: SkillType[];
 };
 
@@ -37,61 +38,105 @@ type PropsType = {
   skills: SkillType[];
   AllPost: PosdtDataType[];
 };
+type BudgetType = {
+  min: number;
+  max: number;
+};
 export default function ProjectPageMidd(props: PropsType) {
   const { data, skills, AllPost } = props;
 
   const [skill, setSkill] = useState("");
-  console.log(skill);
   const [category, setCategory] = useState("");
+  console.log(skill, "category");
+
+  const [budget, setBudget] = useState<BudgetType>({ min: 0, max: 0 });
+  const [search, setSearch] = useState("");
+  const [tempStage, settempStage] = useState<boolean>();
+  const [postData, setPostData] = useState<PosdtDataType[]>([]);
+  console.log(postData, "postData");
+
   const [stage, setStage] = useState(true);
 
-  const [postData, setPostData] = useState<PosdtDataType[]>([]);
-  console.log(postData, "postdataa");
+  const handlerClick = () => {
+    setStage(true);
+    setSearch("");
+    setCategory("");
+    setSkill("");
+  };
 
-  const handleClickOnFilter = (e: SkillType) => {
-    setSkill(e.name);
+  const handleSkillFilter = (e: SkillType) => {
+    setSkill(e.id);
+    setStage(false);
+    setSearch("");
+    setCategory("");
+
+    const dataSkill: PosdtDataType[] = AllPost.filter((post) => {
+      return post?.skills?.some((skill) => skill.name === e.name);
+    });
+    setPostData(dataSkill);
+  };
+
+  const hnadlecategoryFilter = (e: DataType) => {
+    setCategory(e._id);
+
+    setSearch("");
+    setSkill("");
     setStage(false);
 
-    setPostData((prev) => {
-      const Founded = postData.filter((el) =>
-        el.skills.some((skill) => skill.name === e.name)
-      );
-      console.log(Founded, "founded");
-
-      const filtered = postData?.filter((el) => {
-        return el.skills.some((skill) => skill.name !== e.name);
-      });
-      console.log(filtered, "filterdd");
-
-      // if (Founded) {
-      //   return filtered;
-      // }else{
-
-      // }
-
-      return [
-        ...prev,
-        ...AllPost.filter((post) => {
-          return post.skills.some((skill) => skill.name === e.name);
-        }),
-      ];
-
-      // if (Founded) {
-      //   return {
-      //     ...prev,
-      //     filtered,
-      //   };
-      // } else {
-      //   // return [
-      //   //   ...prev,
-      //   //   ...AllPost.filter((post) => {
-      //   //     return post.skills.some((skill) => skill.name === e.name);
-      //   //   }),
-      //   // ];
-      // }
+    const datacategory: PosdtDataType[] = AllPost.filter((post) => {
+      return post?.category?.some((category) => category._id === e._id);
     });
+    console.log(datacategory, "datacategory");
 
-    // nohtsol shalgaj prev hiine÷]
+    setPostData(datacategory);
+  };
+
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = event.target;
+    setBudget({ ...budget, [name]: value });
+    setStage(false);
+    setCategory("");
+  };
+
+  useEffect(() => {
+    setPostData(
+      AllPost.filter((post) => {
+        return post.budget >= budget.min && post.budget <= budget.max;
+      })
+    );
+    // setStage(false);
+  }, [budget]);
+
+  const HnadleSearch = async () => {
+    setCategory("");
+    setSkill("");
+
+    setStage(false);
+
+    const body = {
+      filter: {
+        $or: [
+          {
+            title: {
+              $regex: search,
+              $options: "i",
+            },
+          },
+        ],
+      },
+    };
+
+    try {
+      const { data } = await axios.post<PosdtDataType[]>(
+        "http://localhost:8000/getAllProject",
+        body
+      );
+      setPostData(data);
+
+      console.log(data, "data");
+    } catch (err: any) {
+      console.log(err.message);
+    }
   };
 
   return (
@@ -99,11 +144,19 @@ export default function ProjectPageMidd(props: PropsType) {
       <div className="flex justify-center bg-slate-200 h-fit gap-5">
         <div className="sticky top-0 h-[100%] my-[100px] ">
           <Filter
-            handleClickOnFilter={handleClickOnFilter}
+            handlerClick={handlerClick}
+            budget={budget}
+            search={search}
+            HnadleSearch={HnadleSearch}
+            setSearch={setSearch}
+            handleChange={handleChange}
+            handleSkillFilter={handleSkillFilter}
+            hnadlecategoryFilter={hnadlecategoryFilter}
             setStage={setStage}
             setSkill={setSkill}
             skill={skill}
             setCategory={setCategory}
+            category={category}
             data={data}
             skills={skills}
             stage={stage}
