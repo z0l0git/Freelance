@@ -48,13 +48,11 @@ type CtType = {
 };
 
 type PosdtDataType = {
-
   _id: string;
   createdBy: {
     firstName: string;
     lastName: string;
     createdAt: string;
-
   };
   title?: string;
   description?: string;
@@ -63,7 +61,7 @@ type PosdtDataType = {
   flexible?: boolean;
   category?: CtType[];
   skills?: SkillType[];
-  createdAt?: string;
+  createdAt: string;
 };
 type PropsType = {
   data: PosdtDataType;
@@ -99,7 +97,6 @@ export default function ProjectDetail(props: PropsType) {
     return formattedDate;
   }
 
-  const FormatedDate = formatDate(data?.createdAt.split("T")[0]);
   const UserName = `${data?.createdBy.firstName} ${data?.createdBy.lastName}`;
   const Budget = `${data?.budget}`;
   const title = `${data?.title}`;
@@ -107,6 +104,7 @@ export default function ProjectDetail(props: PropsType) {
   const Flexible = `${data?.flexible}`;
   const Categorys = `${data?.category}`;
   const CreatedAt = formatDate(data?.createdBy.createdAt.split("T")[0]);
+  const FormatedDate = formatDate(data?.createdAt.split("T")[0]);
 
   const Description = `${data?.description}`;
   console.log(data?.category, "scategorieslls");
