@@ -52,6 +52,7 @@ type PosdtDataType = {
   createdBy: {
     firstName: string;
     lastName: string;
+    createdAt: string;
   };
   title: string;
   description: string;
@@ -103,8 +104,8 @@ export default function ProjectDetail(props: PropsType) {
   const deliveryTime = `${data?.deliveryTime}`;
   const Flexible = `${data?.flexible}`;
   const Categorys = `${data?.category}`;
+  const CreatedAt = formatDate(data?.createdBy.createdAt.split("T")[0]);
 
-  const CreatedAt = `${data?.createdAt}`;
   const Description = `${data?.description}`;
   console.log(data?.category, "scategorieslls");
 
@@ -194,12 +195,10 @@ export default function ProjectDetail(props: PropsType) {
             </div>
             <div className="flex flex-col items-center gap-[15px] w-[100%] border-b border-dashed border-slate-300 pb-[20px]">
               <div className="text-[27px] font-semibold">{UserName}</div>
-              {/* <div>
+              <div>
                 Member since{" "}
-                <span className="text-[20px] font-semibold">
-                  {FormatedDate}
-                </span>
-              </div> */}
+                <span className="text-[20px] font-semibold">{CreatedAt}</span>
+              </div>
               {/* <div className="p-[10px] w-[100%]"></div> */}
             </div>
             <div className="cursor-pointer w-[100%] ">
