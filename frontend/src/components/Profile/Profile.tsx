@@ -1,3 +1,4 @@
+"use client";
 import { ProfileDetails } from "./ProfileDetails";
 import { Description } from "./Description";
 import { Skills } from "./Skils";
@@ -8,14 +9,37 @@ import { FeatureServive } from "./FeautureService";
 import { BadgetAndLinks } from "./Budget&Links";
 import { RatingAndReview } from "./RatingAndReviews";
 import { RevieComment } from "./ReviewComment";
+import { useState } from "react";
 
-export const Profile = () => {
+type Response = {
+  _id: string;
+  firstName: string;
+  lastName: string;
+  email: string;
+  auth: string;
+  socials: [];
+  skills: [];
+  education: [];
+  workExp: [];
+  createdAt: string;
+};
+
+type PropsType = {
+  data: Response;
+};
+
+export const Profile = (props: PropsType) => {
+  const { data } = props;
+
+  console.log(data, "profile data");
+
+  const [profile, setProfile] = useState<Response>();
   return (
     <div className="py-6 flex flex-col md:flex-row items-center md:items-start md:justify-center gap-[20px] bg-[#F3F6FA] ">
       <div className="flex flex-col gap-[50px] ">
         <div className="[426px] md:w-[860px] flex items-center justify-center  bg-white border  rounded-lg">
           <div className="w-[406px] md:w[816px] flex flex-col items-center justify-around gap-[30px]">
-            <ProfileDetails />
+            <ProfileDetails data={data} />
             <Description />
             <Skills />
             <Education />

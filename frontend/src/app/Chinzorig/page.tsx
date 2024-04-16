@@ -14,39 +14,6 @@ const categoryAr = [
   "Open AI",
 ];
 
-// const projects = [
-//   {
-//     title: "Facebook page's developer",
-//     price: "Negotiate",
-//     description:
-//       "Манай дэлгүүр өөрийн ФБ хуудсыг хөтөлж явуулах хөгжүүлэгчийг хайж байна, тус хуудас дотор байгаа онцлох барааг бүүст хийх, чатбот ажиллуулах зэрэг ажлуудыг хийж гүйцэтгэх юм.",
-//     categoryCard: categoryAr,
-//     expire: "21 days",
-//     location: "Remote",
-//     level: "Junior",
-//     proposal: "5 received",
-//   },
-//   {
-//     title: "Chinese translator",
-//     price: "$100",
-//     description: "Full text for 20 pages",
-//     categoryCard: categoryAr,
-//     expire: "Week",
-//     location: "Remote",
-//     level: "Mid",
-//     proposal: "Proposal",
-//   },
-//   {
-//     title: "Accounter",
-//     price: "$250",
-//     description: "Company's annual finalcial report",
-//     categoryCard: categoryAr,
-//     expire: "Week",
-//     location: "Location",
-//     level: "Level",
-//     proposal: "Proposal",
-//   },
-// ];
 const freelancer = [
   {
     star: "5.0",
