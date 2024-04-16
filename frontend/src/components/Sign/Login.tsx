@@ -50,6 +50,8 @@ export const Login = () => {
   });
 
   const hanldeSubmit = async (values: typeof initialValues) => {
+    console.log(values, "values");
+
     try {
       const { data } = await axios.post(
         "https://freelance-gmjr.onrender.com/login",

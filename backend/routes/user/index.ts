@@ -5,6 +5,7 @@ import {
   deleteUserController,
   getAllUserController,
   loginController,
+  getUserByIdController,
 } from "../../controller";
 import { updateUserController } from "../../controller/user/update-user";
 import { getRefreshTokenService } from "../../controller/user/refresh";
@@ -24,3 +25,4 @@ UserRouter.get("/users/refresh", getRefreshTokenService);
 UserRouter.get("/uploadImage", UploadImage);
 
 UserRouter.get("/allUser", getAllUserController);
+UserRouter.post("/getUserById", getUserByIdController);
