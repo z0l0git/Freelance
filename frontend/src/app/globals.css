@@ -97,4 +97,6 @@ input[type="file"] {
   cursor: pointer;
 }
 
-
+.anchor {
+  overflow-anchor: auto;
+}

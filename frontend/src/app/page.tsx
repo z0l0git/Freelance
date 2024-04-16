@@ -48,8 +48,11 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="scrollbar-hide snap-y">
-      <AuroraHero />
+    <div className="scrollbar-hide">
+      <HeaderHero />
+      <AboutUs />
+      <HomePagePart />
+      <Footer />
     </div>
   );
 }

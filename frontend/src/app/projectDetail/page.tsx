@@ -59,7 +59,9 @@ export default async function ProjectDetailPage({
 
   return (
     <div>
+
       <ProjectDetail data={data as any} />
+
     </div>
   );
 }
