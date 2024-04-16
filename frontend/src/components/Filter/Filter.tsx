@@ -123,6 +123,7 @@ export const Filter = (props: PropsType) => {
             );
           })}
         </div>
+
         <div className="w-[352px] h-[56px] pt-6 mb-5">
           <h2 className="text-2xl font-semibold ml-[-14px]">Budget</h2>
         </div>
@@ -146,6 +147,7 @@ export const Filter = (props: PropsType) => {
               onChange={(event) => handleChange(event)}
             />
           </div>
+
         </div>
 
         <div className="w-[352px] h-[56px] pt-6 mb-5">
