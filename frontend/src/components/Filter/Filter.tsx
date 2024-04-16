@@ -57,17 +57,23 @@ export const Filter = async () => {
             );
           })}
         </div>
-        <div className="w-[352px] h-[56px] pt-6 mb-5">
+        <div className="w-[352px] h-[56px] pt-6 mb-1">
           <h2 className="text-2xl font-semibold">Budget</h2>
         </div>
-        <div className="flex gap-8">
-          <div className="flex items-center justify-center p-4 w-36 h-12 border-solid border-slate-500 bg-slate-200 rounded-3xl">
-            Min
-          </div>
+        <div className="flex tems-center justify-center gap-8">
+          <Input
+            className="flex items-center justify-center p-4 w-28 h-10 border-solid border-slate-500 bg-slate-200 rounded-3xl"
+            type={"number"}
+            id={"min"}
+            placeholder={"min"}
+          />
           <span className="flex items-center justify-center">to</span>
-          <div className="flex items-center justify-center p-4 w-36 h-12 border-solid border-slate-500 bg-slate-200 rounded-3xl">
-            Max
-          </div>
+          <Input
+            className="flex items-center justify-center p-4 w-28 h-10 border-solid border-slate-500 bg-slate-200 rounded-3xl"
+            type={"number"}
+            id={"max"}
+            placeholder={"max"}
+          />
         </div>
 
         <div className="w-[352px] h-[56px] pt-6 mb-5">

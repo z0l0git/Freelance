@@ -21,16 +21,16 @@ type FreelancerCard = {
 export const FreelancerCard = (props: FreelancerCard) => {
   const { star, level, levelrank, name, worktype, experience, wages } = props;
   return (
-    <div className="flex items-center justify-center max-w-md mx-auto md:max-w-2xl  ">
+    <div className="flex items-center justify-center w-[362px] md:w-[336px] sm:w-[336px] xl:w-[270px]  ">
       <div
         style={{
           boxShadow:
-            "rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;",
+            "rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;",
         }}
-        className="flex flex-col sm:w-[510px] sm:h-[422px] sm:items-center xl:w-[270px] xl:h-[411px] xl:items-center justify-center lg:w-[362px] lg:h-[413px] lg:items-center rounded-2xl px-6 py-7 border-2 border-solid  bg-slate-50 "
+        className="flex flex-col sm:w-full items-center justify-center md:w-full md:h-[413px] xl:w-full xl:h-[411px] rounded-2xl px-6 py-7 border-2 border-solid  bg-slate-50 "
       >
-        <div className="flex w-full h-6 justify-between mb-6 ">
-          <div className="flex w-[88px] h-6 gap-2 ">
+        <div className="flex w-full h-6 justify-between mb-6">
+          <div className="flex w-[88px] h-6 gap-2">
             <FaStar
               className="flex w-5 h-5 justify-center items-center "
               color="#ffbe57"

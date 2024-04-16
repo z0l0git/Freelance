@@ -5,6 +5,7 @@ import { HomeCardJobs } from "@/components/HomeCard/HomeCardJobs";
 import { FreelancerCard } from "@/components/FreelancerCardComponent/FreelancerCard";
 import { FreelancerFilter } from "@/components/FreelancerFilter/FreelancerFilter";
 import { Filter } from "@/components/Filter/Filter";
+import { Contact } from "@/components/Contact/Contact";
 
 const categoryAr = [
   "Python",
@@ -52,7 +53,7 @@ const freelancer = [
     level: "Level1",
     levelrank: "(34)",
     image: "",
-    name: "Sogtuu Master",
+    name: "Жигжидийн Билэгт",
     worktype: "Full-time",
     experience: "6-9 Years",
     wages: "$50/h",
@@ -62,7 +63,7 @@ const freelancer = [
     level: "Level1",
     levelrank: "(34)",
     image: "",
-    name: "Bardam Tuulai",
+    name: "Бархас",
     worktype: "Full-time",
     experience: "6-9 Years",
     wages: "$50/h",
@@ -72,7 +73,7 @@ const freelancer = [
     level: "Level1",
     levelrank: "(34)",
     image: "",
-    name: "Gostuu Amaraa",
+    name: "Төгөлдөр",
     worktype: "Full-time",
     experience: "6-9 Years",
     wages: "$50/h",
@@ -82,7 +83,7 @@ const freelancer = [
     level: "Level1",
     levelrank: "(34)",
     image: "",
-    name: "Anzog Agaa",
+    name: "Соривт",
     worktype: "Full-time",
     experience: "6-9 Years",
     wages: "$50/h",
@@ -92,7 +93,7 @@ const freelancer = [
     level: "Level1",
     levelrank: "(34)",
     image: "",
-    name: "Hariugui gar",
+    name: "Унага",
     worktype: "Full-time",
     experience: "6-9 Years",
     wages: "$50/h",
@@ -102,7 +103,7 @@ const freelancer = [
     level: "Level1",
     levelrank: "(34)",
     image: "",
-    name: "Targan Galaa",
+    name: "Цэлмэг",
     worktype: "Full-time",
     experience: "6-9 Years",
     wages: "$50/h",
@@ -132,7 +133,7 @@ const freelancer = [
     level: "Level1",
     levelrank: "(34)",
     image: "",
-    name: "Har Baagii",
+    name: "Мөнхжин",
     worktype: "Full-time",
     experience: "6-9 Years",
     wages: "$50/h",
@@ -143,7 +144,7 @@ const freelancer = [
     level: "Level1",
     levelrank: "(34)",
     image: "",
-    name: "Nayantai",
+    name: "Тулгаа",
     worktype: "Full-time",
     experience: "6-9 Years",
     wages: "$50/h",
@@ -153,7 +154,7 @@ const freelancer = [
     level: "Level1",
     levelrank: "(34)",
     image: "",
-    name: "Sogtuu Master",
+    name: "Ганг Сайнаа",
     worktype: "Full-time",
     experience: "6-9 Years",
     wages: "$50/h",
@@ -163,7 +164,7 @@ const freelancer = [
     level: "Level1",
     levelrank: "(34)",
     image: "",
-    name: "Sogtuu Master",
+    name: "Золоо",
     worktype: "Full-time",
     experience: "6-9 Years",
     wages: "$50/h",
@@ -173,7 +174,7 @@ const freelancer = [
     level: "Level1",
     levelrank: "(34)",
     image: "",
-    name: "Sogtuu Master",
+    name: "Ангийн дарга",
     worktype: "Full-time",
     experience: "6-9 Years",
     wages: "$50/h",
@@ -183,7 +184,7 @@ const freelancer = [
     level: "Level1",
     levelrank: "(34)",
     image: "",
-    name: "Sogtuu Master",
+    name: "",
     worktype: "Full-time",
     experience: "6-9 Years",
     wages: "$50/h",
@@ -204,31 +205,33 @@ const Chinzorig = () => {
   return (
     <div>
       {/* <Contact /> */}
-      <div className="flex w-screen items-start justify-center bg-slate-200 gap-5 pt-32">
-        <Filter />
+      {/* <Filter /> */}
+      {/* <div className="flex w-screen items-start justify-center bg-slate-200 gap-5 pt-32">
+        <Filter jobs={"Local Jobs"} counter={"35"} />
         <div className="flex flex-col gap-[30px]">
           {projects.map((el, i) => {
             return (
               <ProjectCard
-                key={i}
                 title={el.title}
                 price={el.price}
                 description={el.description}
                 category={el.categoryCard}
+                expire={el.expire}
+                location={el.location}
+                level={el.level}
+                proposal={el.proposal}
               />
             );
           })}
         </div>
-
       </div> */}
       {/* <HomeCardJobs /> */}
       {/* <ProjectCard /> */}
       {/* <FreelancerCard /> */}
       {/* <FreelancerFilter /> */}
-      <div className="flex flex-wrap md:flex-row flex-col w-screen items-start justify-center bg-slate-200 gap-5 pt-32">
-        <div></div>
+      <div className="flex md:flex-row flex-col w-screen items-start justify-center bg-slate-200 gap-5 pt-32">
         <FreelancerFilter mark={"NPL specialists"} counter={"45"} />
-        <div className="flex max-w-full w-[880px] flex-wrap gap-[20px]">
+        <div className="flex w-fit md:w-[880px] sm:w-[800px]  h-fit  flex-wrap justify-center items-center gap-[30px] ">
           {freelancer.map((el, i) => {
             return (
               <FreelancerCard
@@ -245,7 +248,6 @@ const Chinzorig = () => {
           })}
         </div>
       </div>
-
     </div>
   );
 };

@@ -63,10 +63,10 @@ const locationCategory = [
 export const FreelancerFilter = (props: freelance) => {
   const { mark, counter } = props;
   return (
-    <div className="flex  bg-slate-100 w-[440px] h-[2231px] rounded-2xl">
+    <div className="flex bg-slate-100 w-fit h-fit rounded-2xl">
       <div
         style={{ boxShadow: "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;" }}
-        className="flex flex-col w-[416px] h-[1925px] rounded-xl p-8 bg-slate-50"
+        className="flex flex-col w-fit h-[1925px] md:w-fit md:h-fit sm:w-[696px] sm:h-[1747px] rounded-xl p-8 bg-slate-50"
       >
         <div className="w-[352px] h-[56px] pb-6 mb-6">
           <h3 className="text-2xl font-semibold">Filter</h3>
@@ -101,14 +101,20 @@ export const FreelancerFilter = (props: freelance) => {
         <div className="w-[352px] h-[56px] pt-6 mb-1">
           <h2 className="text-2xl font-semibold">Budget</h2>
         </div>
-        <div className="flex gap-8">
-          <div className="flex items-center justify-center p-4 w-36 h-12 border-solid border-slate-500 bg-slate-200 rounded-3xl">
-            Min
-          </div>
+        <div className="flex tems-center justify-center gap-8">
+          <Input
+            className="flex items-center justify-center p-4 w-28 h-10 border-solid border-slate-500 bg-slate-200 rounded-3xl"
+            type={"number"}
+            id={"min"}
+            placeholder={"min"}
+          />
           <span className="flex items-center justify-center">to</span>
-          <div className="flex items-center justify-center p-4 w-36 h-12 border-solid border-slate-500 bg-slate-200 rounded-3xl">
-            Max
-          </div>
+          <Input
+            className="flex items-center justify-center p-4 w-28 h-10 border-solid border-slate-500 bg-slate-200 rounded-3xl"
+            type={"number"}
+            id={"max"}
+            placeholder={"max"}
+          />
         </div>
         <div className="w-[352px] h-[56px] pt-6 mb-1">
           <h2 className="text-2xl font-semibold">Delivery time</h2>

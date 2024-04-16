@@ -108,14 +108,6 @@ export const Contact = () => {
                   placeholder="Enter Phone Number"
                 />
               </div>
-              <div className="w-[396px] h-[90px] px-3 mt-6">
-                <NameInputComponent
-                  className=""
-                  type="password"
-                  name="Password"
-                  placeholder="Enter Your Password"
-                />
-              </div>
             </div>
             <div>
               <div className="w-[792px] h-[180px]">
