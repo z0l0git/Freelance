@@ -2,6 +2,7 @@ import { model, Schema, Model, models } from "mongoose";
 
 export type ReviewsModelType = {
   _id: Schema.Types.ObjectId;
+  createdFor: Schema.Types.ObjectId;
   stars: number;
   createdAt: Date;
   description: string;
@@ -14,6 +15,11 @@ const ReviewsSchema = new Schema<ReviewsModelType>({
     type: Number,
     min: 0,
     max: 5,
+    required: true,
+  },
+  createdFor: {
+    type: Schema.Types.ObjectId,
+    ref: "Users",
     required: true,
   },
   createdAt: {
@@ -29,6 +35,7 @@ const ReviewsSchema = new Schema<ReviewsModelType>({
     ref: "Users",
     required: true,
   },
+
   likes: {
     type: Number,
     required: false,
