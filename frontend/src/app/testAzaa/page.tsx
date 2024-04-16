@@ -5,14 +5,7 @@ import { Error } from "@/components/Error/Error";
 import { HomePagePart } from "../../components/HomePagePart";
 
 const Test = () => {
-  return (
-    <div>
-      {/* <Header /> */}
-      <Profile />
-      <Error />
-      {/* <HomePagePart /> */}
-    </div>
-  );
+  return <div></div>;
 };
 
 export default Test;
