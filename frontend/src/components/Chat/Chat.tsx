@@ -1,34 +1,48 @@
-import React from "react";
+"use client";
+import React, { useEffect, useState } from "react";
 import { SentChat } from "./SentChat";
 import { RecievedChat } from "./RecievedChat";
 import Image from "next/image";
-import { socket } from "../../socket";
-export const Chat = () => {
+
+interface IMsgDataTypes {
+  roomId: string | number;
+  user: string;
+  msg: string;
+  time: string;
+}
+
+export const Chat = ({ socket, username, roomId }: any) => {
+  const [currentMsg, setCurrentMsg] = useState("");
+  const [chat, setChat] = useState<IMsgDataTypes[]>([]);
+
+  const sendData = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (currentMsg !== "") {
+      const msgData: IMsgDataTypes = {
+        roomId,
+        user: username,
+        msg: currentMsg,
+        time:
+          new Date(Date.now()).getHours() +
+          ":" +
+          new Date(Date.now()).getMinutes(),
+      };
+      await socket.emit("send_msg", msgData);
+      setCurrentMsg("");
+    }
+  };
+
+  useEffect(() => {
+    socket.on("receive_msg", (data: IMsgDataTypes) => {
+      setChat((pre) => {
+        return [...pre, data];
+      });
+    });
+  }, [socket]);
+
   return (
-    <div className="w-full flex items-start justify-center h-fit">
-      <div className="w-[30%] flex flex-col items-start gap-2 bg-[#402e58] p-3 rounded-xl h-[650px] mt-[20px]">
-        <div className="flex items-center gap-5 bg-gray-200 rounded-xl w-full p-[10px] cursor-pointer transition duration-300 ease-in-out hover:bg-blue-200 hover:text-white transition duration-300 ease-in-out hover:scale-105">
-          <Image
-            src={"/profiles.png"}
-            width={50}
-            height={50}
-            alt={"profile pic"}
-            className="rounded-full object-cover border-2 border-solid border-blue-300"
-          />
-          <p className="text-[20px] font-bold text-slate-800 ">John Doe</p>
-        </div>
-        <div className="flex items-center gap-5 bg-gray-200 rounded-xl w-full p-[10px] cursor-pointer transition duration-300 ease-in-out hover:bg-blue-200 hover:text-white transition duration-300 ease-in-out hover:scale-105">
-          <Image
-            src={"/profiles.png"}
-            width={50}
-            height={50}
-            alt={"profile pic"}
-            className="rounded-full object-cover border-2 border-solid border-blue-300"
-          />
-          <p className="text-[20px] font-bold text-slate-800 ">John Doe</p>
-        </div>
-      </div>
-      <div className="w-[50%] flex flex-col items-start m-[20px]">
+    <div className="w-[40%] flex items-start justify-center h-fit">
+      <div className="w-full flex flex-col items-start m-[20px]">
         <div className="w-full flex items-center gap-[2%] justify-start p-[30px] bg-[#13203B] rounded-t-xl">
           <Image
             src={"/profiles.png"}
@@ -36,28 +50,40 @@ export const Chat = () => {
             height={50}
             alt={"profile pic"}
           />
-          <p className="text-[20px] font-bold text-white ">John Doe</p>
+          <p className="text-[20px] font-bold text-white ">{username}</p>
         </div>
         <div className="w-full flex flex-col rounded-xl rounded-t-none bg-slate-300 p-[20px]">
-          <ul className="w-full flex flex-col-reverse h-[450px] overflow-y-scroll scrollbar-hide gap-2">
-            <RecievedChat message={"Hello"} time="10:37" />
-            <SentChat message={"Helloo"} time="10:36" />
-            <RecievedChat message={"Hello"} time="10:36" />
-            <SentChat message={"Helloo"} time="10:36" />
-            <RecievedChat message={"Hello"} time="10:35" />
-            <SentChat message={"Helloo"} time="10:35" />
-            <SentChat message={"Helloo"} time="10:35" />
-            <SentChat message={"Helloo"} time="10:34" />
-            <RecievedChat message={"Hello"} time="10:34" />
-          </ul>
-          <div className="w-full  flex gap-[20px]  items-center">
-            <input
-              type="text"
-              className="w-[90%] border-[2px] border-solid border-blue-200 h-[50px] rounded-md outline-none p-[10px]"
-            />
-            <button className="w-[10%] bg-[#24a0ed] rounded-md h-[50px] text-white hover:bg-[#0e75b4]">
-              Send
-            </button>
+          <div className="w-full flex h-[440px] flex-col  overflow-y-scroll scrollbar-hide ">
+            {chat.map(({ roomId, user, msg, time }, key) => (
+              <ul
+                key={key}
+                className="w-full flex flex-col-reverse anchor scrollbar-hide"
+              >
+                {roomId === roomId && user === username ? (
+                  <SentChat message={msg} time={time} />
+                ) : (
+                  <RecievedChat message={msg} time={time} />
+                )}
+              </ul>
+            ))}
+          </div>
+
+          <div className="w-full anchor flex gap-[20px]  items-center">
+            <form
+              onSubmit={(e) => sendData(e)}
+              className="w-full flex items-center justify-center"
+            >
+              <input
+                type="text"
+                value={currentMsg}
+                className="w-[90%] border-[2px] border-solid border-blue-200 h-[50px] rounded-md outline-none p-[10px]"
+                placeholder="Type your message.."
+                onChange={(e) => setCurrentMsg(e.target.value)}
+              />
+              <button className="w-[10%] bg-[#24a0ed] rounded-md h-[50px] text-white hover:bg-[#0e75b4]">
+                Send
+              </button>
+            </form>
           </div>
         </div>
       </div>

@@ -48,19 +48,19 @@ type CtType = {
 };
 
 type PosdtDataType = {
-  _id: string;
-  createdBy: {
-    firstName: string;
-    lastName: string;
+  _id?: string;
+  createdBy?: {
+    firstName?: string;
+    lastName?: string;
   };
-  title: string;
-  description: string;
-  budget: number;
-  deliveryTime: string;
-  flexible: boolean;
-  category: CtType[];
-  skills: SkillType[];
-  createdAt: string;
+  title?: string;
+  description?: string;
+  budget?: number;
+  deliveryTime?: string;
+  flexible?: boolean;
+  category?: CtType[];
+  skills?: SkillType[];
+  createdAt?: string;
 };
 type PropsType = {
   data: PosdtDataType;

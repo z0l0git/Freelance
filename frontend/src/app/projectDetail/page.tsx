@@ -24,6 +24,7 @@ type PosdtDataType = {
   flexible: boolean;
   categorys: string[];
   skills: SkillType[];
+  createdAt: string;
 };
 
 const GetPostsById = async (id: string) => {
@@ -50,7 +51,7 @@ export default async function ProjectDetailPage({
 
   return (
     <div>
-      <ProjectDetail data={(data as PosdtDataType[]) | undefined} />
+      <ProjectDetail data={data as PosdtDataType[]} />
     </div>
   );
 }

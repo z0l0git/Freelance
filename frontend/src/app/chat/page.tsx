@@ -1,17 +1,14 @@
-import { Chat } from "@/components/Chat/Chat";
-import { Footer } from "@/components/Footer/Footer";
-import { HeaderSearch } from "@/components/HeaderSearch/HeaderSearch";
 import { Menu } from "@/components/Menu/Menu";
 
 import React from "react";
+
+import { ChatPage } from "@/components/Chat/ChatPage";
 
 const page = () => {
   return (
     <div>
       <Menu />
-      <div className="">
-        <Chat />
-      </div>
+      <ChatPage />
     </div>
   );
 };
