@@ -55,6 +55,7 @@ const io = require("socket.io")(server, {
     methods: ["GET", "POST"],
     allowedHeaders: ["my-custom-header"],
   },
+  transports: ["websocket", "polling", "flashsocket"],
 });
 
 io.on("connection", (socket: any) => {
