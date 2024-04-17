@@ -5,6 +5,9 @@ import React, { useContext, useState } from "react";
 import { DataContext } from "@/components/context/DataContext";
 import { UserList } from "@/components/Chat/UserList";
 
+const URL = process.env.NEXT_PUBLIC_BACKEND;
+console.log(URL);
+
 export const ChatPage = () => {
   const [showChat, setShowChat] = useState(false);
   const [roomId, setroomId] = useState("");
@@ -12,7 +15,7 @@ export const ChatPage = () => {
   const [userName, setUserName] = useState("");
 
   var socket: any;
-  socket = io("http://localhost:8000");
+  socket = io(URL || "http://localhost:8000");
 
   const handleJoin = (roomId: string) => {
     console.log("handleJoin", roomId);
