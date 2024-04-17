@@ -1,12 +1,13 @@
 "use client ";
 import React, { useState } from "react";
-import { ButtonWithBlueBorder, WhiteButton } from "../Button";
+import { WhiteButton } from "../Button";
 import { FormComp } from "./FormComp";
 import { IoCloseCircleSharp } from "react-icons/io5";
+
 export const Skills = () => {
-  const [addSkills, setAddSkilss] = useState(false);
+  const [addSkills, setAddSkills] = useState(false);
   const clickButton = () => {
-    setAddSkilss(!addSkills);
+    setAddSkills(!addSkills);
   };
   const SkillArray = [
     { name: "Machine Learning" },
@@ -36,13 +37,15 @@ export const Skills = () => {
       </div>
       {!addSkills ? (
         <div className="flex flex-wrap gap-2">
-          {SkillArray.map((el, index) => (
-            <WhiteButton
-              key={index}
-              buttonName={el.name}
-              buttonClass="px-4 py-3 overflow-hidden rounded-[100px] border-[#DFE0E4] border text-sm  text-[#404A60] flex items-center gap-1 hover:text-[#2196F3]"
-            />
-          ))}
+          {SkillArray?.map((el, index) => {
+            return (
+              <WhiteButton
+                key={index}
+                buttonName={el.name}
+                buttonClass="px-4 py-3 overflow-hidden rounded-[100px] border-[#DFE0E4] border text-sm  text-[#404A60] flex items-center gap-1 hover:text-[#2196F3]"
+              />
+            );
+          })}
         </div>
       ) : (
         <FormComp clickButton={clickButton} />

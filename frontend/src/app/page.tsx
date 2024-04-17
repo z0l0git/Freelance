@@ -50,7 +50,6 @@ export default function Home() {
     <div className="flex flex-col gap-[40px]">
       <HeaderHero />
       <AboutUs />
-
       <HomePagePart />
       <Footer />
     </div>

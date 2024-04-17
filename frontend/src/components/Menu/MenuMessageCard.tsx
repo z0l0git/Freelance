@@ -18,16 +18,23 @@ export const MenuMessageCard = (props: any) => {
   );
 };
 export const MenuNotificationCard = (props: any) => {
-  const { userName, createdDate, profilePicture } = props;
+  const { userName, createdDate, profilePicture, className } = props;
   return (
-    <div className="w-full h-16 flex hover:bg-slate-300 gap-4">
-      <div className="w-16 h-16 rounded-full bg-gray-600">
-        <Image alt="user picture" src={profilePicture} width={60} height={60} />
-      </div>
-      <div className="w-">
-        <h1 className="bold">{userName}</h1>
-        <p className="text-gray-500">Шинэ мэдэгдэл</p>
-        <div className="text-xs">{createdDate}</div>
+    <div className={className}>
+      <div className="w-full h-16 flex hover:bg-slate-300 gap-4">
+        <div className="w-16 h-16 rounded-full bg-gray-600">
+          <Image
+            alt="user picture"
+            src={profilePicture}
+            width={60}
+            height={60}
+          />
+        </div>
+        <div className="w-">
+          <h1 className="bold">{userName}</h1>
+          <p className="text-gray-500">Шинэ мэдэгдэл</p>
+          <div className="text-xs">{createdDate}</div>
+        </div>
       </div>
     </div>
   );
