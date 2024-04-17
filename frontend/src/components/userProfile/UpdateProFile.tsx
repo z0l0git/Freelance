@@ -10,8 +10,8 @@ export const UPdateprofile = () => {
   const [stage, setStage] = useState(0);
 
   return (
-    <div>
-      <div className="w-[856px] p-[32px] bg-white border border-gray-300 rounded-[15px]">
+    <>
+      <div className="w-[856px] p-[32px] bg-white border border-gray-300 rounded-[15px] max-md:w-[416px] max-md:items-center justify-center">
         <div className="bg-[#f8f9fc] flex gap-[20px] px-[20px] py-[20px] rounded-[15px] border border-gray-300 font-bold mb-[32px]">
           <div
             onClick={() => setStage(0)}
@@ -50,6 +50,6 @@ export const UPdateprofile = () => {
           )}
         </div>
       </div>
-    </div>
+    </>
   );
 };
