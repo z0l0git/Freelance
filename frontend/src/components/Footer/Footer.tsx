@@ -13,8 +13,8 @@ import { FaLocationDot } from "react-icons/fa6";
 
 export const Footer = () => {
   return (
-    <div className="bg-[url(https://pixner.net/aihire/aihire/assets/img/footer/footerbg1.jpg)] ">
-      <div className="h-fit w-screen md:py-[80px] lg:py-[120px] flex justify-center flex-wrap ">
+    <div className="bg-[url(https://pixner.net/aihire/aihire/assets/img/footer/footerbg1.jpg)] mt-[30px]">
+      <div className="w-screen  flex justify-center flex-wrap ">
         <div className="px-3 w-[336px] mt-[24px]">
           <div>
             <div className="pb-6">
@@ -101,7 +101,7 @@ export const Footer = () => {
         </div> */}
       </div>
       <hr className="" />
-      <div className="flex flex-col md:flex-row items-center text-white py-[32px] justify-around w-full gap-[20px] ">
+      <div className="flex flex-col md:flex-row items-center text-white py-[20px] justify-around w-full gap-[20px] ">
         <div className="flex ">
           <div>Copyright © 2024</div>
           <div className="text-[#2196F3]"></div>

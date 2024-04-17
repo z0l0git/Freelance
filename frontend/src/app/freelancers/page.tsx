@@ -1,191 +1,49 @@
-import { Footer } from "@/components/Footer/Footer";
+import React from "react";
+
+import { ProjectCard } from "../../components/ProjectCard/ProjectCard";
+import { HomeCardJobs } from "@/components/HomeCard/HomeCardJobs";
 import { FreelancerCard } from "@/components/FreelancerCardComponent/FreelancerCard";
 import { FreelancerFilter } from "@/components/FreelancerFilter/FreelancerFilter";
-import { HeaderSearch } from "@/components/HeaderSearch/HeaderSearch";
+import { Filter } from "@/components/Filter/Filter";
+import { Contact } from "@/components/Contact/Contact";
+import axios from "axios";
+import FreelancersMidd from "@/components/FreelancerCardComponent/FreelancersMidd";
 import { Menu } from "@/components/Menu/Menu";
+import { Footer } from "@/components/Footer/Footer";
 
-const freelancer = [
-  {
-    star: "5.0",
-    level: "Level1",
-    levelrank: "(34)",
-    image: "",
-    name: "Sogtuu Master",
-    worktype: "Full-time",
-    experience: "6-9 Years",
-    wages: "$50/h",
-  },
-  {
-    star: "5.0",
-    level: "Level1",
-    levelrank: "(34)",
-    image: "",
-    name: "Bardam Tuulai",
-    worktype: "Full-time",
-    experience: "6-9 Years",
-    wages: "$50/h",
-  },
-  {
-    star: "5.0",
-    level: "Level1",
-    levelrank: "(34)",
-    image: "",
-    name: "Gostuu Amaraa",
-    worktype: "Full-time",
-    experience: "6-9 Years",
-    wages: "$50/h",
-  },
-  {
-    star: "5.0",
-    level: "Level1",
-    levelrank: "(34)",
-    image: "",
-    name: "Anzog Agaa",
-    worktype: "Full-time",
-    experience: "6-9 Years",
-    wages: "$50/h",
-  },
-  {
-    star: "5.0",
-    level: "Level1",
-    levelrank: "(34)",
-    image: "",
-    name: "Hariugui gar",
-    worktype: "Full-time",
-    experience: "6-9 Years",
-    wages: "$50/h",
-  },
-  {
-    star: "5.0",
-    level: "Level1",
-    levelrank: "(34)",
-    image: "",
-    name: "Targan Galaa",
-    worktype: "Full-time",
-    experience: "6-9 Years",
-    wages: "$50/h",
-  },
-  {
-    star: "5.0",
-    level: "Level1",
-    levelrank: "(34)",
-    image: "",
-    name: "Blaavgai",
-    worktype: "Full-time",
-    experience: "6-9 Years",
-    wages: "$50/h",
-  },
-  {
-    star: "5.0",
-    level: "Level1",
-    levelrank: "(34)",
-    image: "",
-    name: "bas neg Blaavgai",
-    worktype: "Full-time",
-    experience: "6-9 Years",
-    wages: "$50/h",
-  },
-  {
-    star: "5.0",
-    level: "Level1",
-    levelrank: "(34)",
-    image: "",
-    name: "Har Baagii",
-    worktype: "Full-time",
-    experience: "6-9 Years",
-    wages: "$50/h",
-  },
+type Response = {
+  _id: string;
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone: string;
+  password: string;
+  discription: string;
+};
 
-  {
-    star: "5.0",
-    level: "Level1",
-    levelrank: "(34)",
-    image: "",
-    name: "Nayantai",
-    worktype: "Full-time",
-    experience: "6-9 Years",
-    wages: "$50/h",
-  },
-  {
-    star: "5.0",
-    level: "Level1",
-    levelrank: "(34)",
-    image: "",
-    name: "Sogtuu Master",
-    worktype: "Full-time",
-    experience: "6-9 Years",
-    wages: "$50/h",
-  },
-  {
-    star: "5.0",
-    level: "Level1",
-    levelrank: "(34)",
-    image: "",
-    name: "Sogtuu Master",
-    worktype: "Full-time",
-    experience: "6-9 Years",
-    wages: "$50/h",
-  },
-  {
-    star: "5.0",
-    level: "Level1",
-    levelrank: "(34)",
-    image: "",
-    name: "Sogtuu Master",
-    worktype: "Full-time",
-    experience: "6-9 Years",
-    wages: "$50/h",
-  },
-  {
-    star: "5.0",
-    level: "Level1",
-    levelrank: "(34)",
-    image: "",
-    name: "Sogtuu Master",
-    worktype: "Full-time",
-    experience: "6-9 Years",
-    wages: "$50/h",
-  },
-  {
-    star: "5.0",
-    level: "Level1",
-    levelrank: "(34)",
-    image: "",
-    name: "Sogtuu Master",
-    worktype: "Full-time",
-    experience: "6-9 Years",
-    wages: "$50/h",
-  },
-];
+const GetAllUser = async () => {
+  try {
+    const { data } = await axios.get("http://localhost:8000/allUser");
+    return data;
+  } catch (err: any) {
+    console.log(err.message);
+  }
+};
 
-const page = () => {
+const Chinzorig = async () => {
+  const AllUserData = await GetAllUser();
+  console.log(AllUserData, "datasgdee broda");
+
   return (
-    <div>
-      <div className="bg-[url(https://pixner.net/aihire/aihire/assets/img/bn/breadcumndbg.jpg)]">
-        <Menu />
-      </div>
-      <div className="flex flex-wrap md:flex-row flex-col w-screen items-start justify-center bg-slate-200 gap-5 pt-32">
-        <FreelancerFilter mark={"NPL specialists"} counter={"45"} />
-        <div className="flex max-w-full w-[880px] flex-wrap gap-[20px]">
-          {freelancer.map((el, i) => {
-            return (
-              <FreelancerCard
-                key={i}
-                star={el.star}
-                level={el.level}
-                levelrank={el.levelrank}
-                name={el.name}
-                worktype={el.worktype}
-                experience={el.experience}
-                wages={el.wages}
-              />
-            );
-          })}
-        </div>
-      </div>
+    <div
+      className="flex flex-col gap-[20px] 
+    bg-slate-200"
+    >
+      <Menu />
+      <FreelancersMidd AllUserData={AllUserData} />
       <Footer />
     </div>
   );
 };
 
-export default page;
+export default Chinzorig;

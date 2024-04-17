@@ -29,12 +29,6 @@ const StepFour = ({ handlePrevious, handleSubmit }: StepFourProps) => {
             buttonName="Back to home"
             handleSubmit={handleSubmit}
           />
-          <ButtonWithBlueBorder
-            height="60px"
-            width="fit"
-            buttonName="Cancel"
-            handlePrevious={handlePrevious}
-          />
         </div>
       </div>
     </div>

@@ -1,15 +1,25 @@
 "use client";
 import React from "react";
-import { Filter } from "../Filter/Filter";
+
 import { ProjectCard } from "../ProjectCard/ProjectCard";
-import { AiFillPropertySafety } from "react-icons/ai";
+
+import { MouseEvent } from "react";
+import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 type SkillType = {
   name: string;
   id: string;
 };
+
+type DataType = {
+  name: string;
+  description: string;
+  _id: string;
+};
 type PosdtDataType = {
-  createdBy: {
+  _id: string;
+  createdBy?: {
     firstName: string;
     lastName: string;
   };
@@ -18,35 +28,79 @@ type PosdtDataType = {
   budget: number;
   deliveryTime: string;
   flexible: boolean;
-  categorys: string[];
+  category: DataType[];
   skills: SkillType[];
 };
 
 type ProjectsProps = {
   AllPost: PosdtDataType[];
+  postData: PosdtDataType[];
+  stage: boolean;
 };
 
 export const Projects = (props: ProjectsProps) => {
-  const { AllPost } = props;
+  const { AllPost, postData, stage } = props;
+  const { push } = useRouter();
+
+  const handlerClick = (event: MouseEvent<HTMLDivElement>) => {
+    const projectId = event.currentTarget.id;
+
+    push(`/projectDetail?id=${projectId}`);
+  };
 
   return (
     <div className="flex items-start  justify-center  ">
       <div className="flex flex-col-reverse gap-[30px]">
-        {AllPost?.map((el, index) => {
-          return (
-            <ProjectCard
-              key={index}
-              title={el.title}
-              price={el.budget.toLocaleString()}
-              description={el.description}
-              flexible={el.flexible}
-              createdby={el.createdBy.firstName + " " + el.createdBy.lastName}
-              category={el.skills?.map((el2, index2) => {
-                return el2.name;
-              })}
-            />
-          );
-        })}
+        {stage ? (
+          <>
+            {AllPost?.map((el, index) => {
+              return (
+                <div key={index} id={el._id} onClick={handlerClick}>
+                  <ProjectCard
+                    title={el.title}
+                    price={el.budget.toLocaleString()}
+                    description={el.description}
+                    flexible={el.flexible}
+                    createdby={
+                      el.createdBy?.firstName + " " + el.createdBy?.lastName
+                    }
+                    category={el.skills?.map((el2, index2) => {
+                      return el2.name;
+                    })}
+                  />
+                </div>
+              );
+            })}
+          </>
+        ) : (
+          <>
+            <div>
+              {postData?.length === 0 && (
+                <div className="rounded-xl p-8 pb-0 bg-slate-50 w-[720px] h-[340px]">
+                  <Image alt="" src="/error.png" width={600} height={300} />
+                </div>
+              )}
+            </div>
+            {postData?.map((el, index) => {
+              return (
+                <div key={index} id={el._id} onClick={handlerClick}>
+                  <ProjectCard
+                    title={el.title}
+                    price={el.budget.toLocaleString()}
+                    description={el.description}
+                    flexible={el.flexible}
+                    createdby={
+                      el.createdBy?.firstName + " " + el.createdBy?.lastName
+                    }
+                    category={el.skills?.map((el2, index2) => {
+                      return el2.name;
+                    })}
+                  />
+                </div>
+              );
+            })}
+          </>
+        )}
       </div>
     </div>
   );

@@ -52,13 +52,14 @@ export const DataProvider = ({ children }: any) => {
           );
 
           setdata(data);
+          console.log(data, "userdata");
+
           setIsLoggedIn(true);
           console.log("yes");
         } catch (error) {
           console.log("eror from get logged in user");
         }
       };
-
       getloggedUser();
     } else {
       setIsLoggedIn(false);

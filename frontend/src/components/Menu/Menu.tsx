@@ -34,9 +34,9 @@ export const Menu = () => {
   return (
     <div>
       <div
-        className={` bg-[#13203B] py-4 flex justify-around z-50 sticky top-0`}
+        className={`py-4 flex justify-around z-50 sticky top-0 bg-[#13203B] w-screen`}
       >
-        <div className="w-full mx-auto px-3 flex md:justify-around justify-between items-center gap-4">
+        <div className=" w-full mx-auto px-3 flex md:justify-around justify-between items-center gap-4">
           <Image
             src={"/logoSquare.png"}
             alt="logo"
@@ -53,7 +53,7 @@ export const Menu = () => {
               className="cursor-pointer"
               onClick={() => window.location.replace("/")}
             />
-            <div className="flex items-center gap-[6%] w-[400px]">
+            <div className="flex items-center gap-[6%] w-full">
               <Link href={"/projects"}>
                 <WhiteButton
                   buttonName="Browse Projects"

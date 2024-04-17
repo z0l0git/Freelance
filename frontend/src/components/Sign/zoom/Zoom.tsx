@@ -13,15 +13,6 @@ export const Zoom = () => {
   const [stage, setStage] = useState(0);
   const [col, setColor] = useState("#053ef3");
 
-  // useEffect(() => {
-  //   if (stage === 1) {
-  //     setSpeed(0.05);
-  //     setTimeout(() => {
-  //       setSpeed(0.65);
-  //     }, 5000);
-  //   }
-  // }, [stage]);
-
   useEffect(() => {
     if (stage == 1) {
       setColor("#05f33a");

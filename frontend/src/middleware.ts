@@ -13,7 +13,9 @@ export default authMiddleware({
     "/barkhas",
     "/contact",
     "/projects",
+    "/freelancers",
     "/profile",
+    "/projectDetail",
   ],
 });
 

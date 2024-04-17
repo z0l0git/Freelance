@@ -3,3 +3,4 @@ export * from "./user";
 export * from "./education";
 export * from "./workExperience";
 export * from "./postproject";
+export * from "./review";
