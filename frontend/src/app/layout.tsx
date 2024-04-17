@@ -24,6 +24,7 @@ export default function RootLayout({
           <DataProvider>{children}</DataProvider>
         </ClerkProvider>
       </body>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.5.0/socket.io.js"></script>
     </html>
   );
 }

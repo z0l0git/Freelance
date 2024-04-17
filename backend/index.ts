@@ -28,8 +28,6 @@ app.use(ProjectRouter);
 
 connectDb();
 
-const httpServer = http.createServer();
-
 // const io = new Server(httpServer, {
 //   cors: {
 //     origin: "http://localhost:3000", // Replace with your frontend URL
@@ -53,6 +51,7 @@ const io = require("socket.io")(server, {
     origin: URL,
     credentials: true,
     methods: ["GET", "POST"],
+    optionsSuccessStatus: 200,
     allowedHeaders: ["my-custom-header"],
   },
   transports: ["websocket", "polling", "flashsocket"],
