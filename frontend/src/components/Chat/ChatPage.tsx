@@ -12,7 +12,7 @@ export const ChatPage = () => {
   const [userName, setUserName] = useState("");
 
   var socket: any;
-  socket = io("http://localhost:8001");
+  socket = io("http://localhost:8000");
 
   const handleJoin = (roomId: string) => {
     console.log("handleJoin", roomId);

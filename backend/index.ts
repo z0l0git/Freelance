@@ -28,29 +28,40 @@ app.use(ProjectRouter);
 
 connectDb();
 
-app.listen(8000, () => {
-  console.log("http://localhost:8000");
-});
-
 const httpServer = http.createServer();
 
-const io = new Server(httpServer, {
+// const io = new Server(httpServer, {
+//   cors: {
+//     origin: "http://localhost:3000", // Replace with your frontend URL
+//     methods: ["GET", "POST"],
+//     allowedHeaders: ["my-custom-header"],
+//     credentials: true,
+//   },
+// });
+
+const server = app.listen(8000, () => {
+  console.log("Server Running on:", "http://localhost:8000");
+});
+
+const URL = process.env.FRONT_URL;
+
+console.log(URL);
+
+const io = require("socket.io")(server, {
+  pingTimeout: 60000,
   cors: {
-    origin: "http://localhost:3000", // Replace with your frontend URL
-    methods: ["GET", "POST"],
-    allowedHeaders: ["my-custom-header"],
-    credentials: true,
+    origin: "http://localhost:3000",
   },
 });
 
-io.on("connection", (socket) => {
-  console.log("A user connected:", socket.id);
-  socket.on("join_room", (roomId) => {
+io.on("connection", (socket: any) => {
+  // console.log("A user connected:", socket.id);
+  socket.on("join_room", (roomId: any) => {
     socket.join(roomId);
     console.log(`user with id-${socket.id} joined room - ${roomId}`);
   });
 
-  socket.on("send_msg", (data) => {
+  socket.on("send_msg", (data: any) => {
     console.log(data, "DATA");
     //This will send a message to a specific room ID
     socket.to(data.roomId).emit("receive_msg", data);
@@ -61,10 +72,10 @@ io.on("connection", (socket) => {
   });
 });
 
-const PORT = process.env.PORT || 3001;
-httpServer.listen(PORT, () => {
-  console.log(`Socket.io server is running on port ${PORT}`);
-});
+// const PORT = process.env.PORT || 3001;
+// httpServer.listen(PORT, () => {
+//   console.log(`Socket.io server is running on port ${PORT}`);
+// });
 
 // Create a socket.io server
 
