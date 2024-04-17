@@ -57,7 +57,6 @@ export const RevieComment = () => {
           <strong className="text-[20px] md:text-[24px] ">Review</strong>
           <FaStarOfLife width={10} height={24} className="text-[#0D47A1]" />
         </div>
-
         <div className=" rounded-xl flex items-center justify-center bg-white border border-black">
           <textarea className="textarea textarea-bordered w-[330px] md:w-[780px]  h-[110px]"></textarea>
         </div>
