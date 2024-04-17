@@ -24,7 +24,7 @@ const ReviewsSchema = new Schema<ReviewsModelType>({
   },
   createdAt: {
     type: Date,
-    required: true,
+    default: Date.now,
   },
   description: {
     type: String,
