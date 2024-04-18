@@ -80,12 +80,12 @@ export const MainProfileInfo = (props: PropsType) => {
   console.log(data.image, "imagee56");
 
   return (
-    <div className="w-[416px] h-[488px] flex flex-col items-center gap-4 rounded-2xl border bg-white  max-sm:w-full max-sm:px-2 sm:w-full sm:px-2">
+    <div className="w-[30%] h-[488px] flex flex-col items-center gap-4 rounded-2xl border bg-white  max-sm:w-full max-sm:px-2 sm:w-full sm:px-2">
       <div className="flex justify-center items-center p-4 ">
         <div className=" w-[200px] h-[200px] relative flex justify-center items-center p-4 rounded-full border ">
           <Image
             alt="user profile picture"
-            src={`${profile?.image}`}
+            src={`${profile.image ? profile?.image : "/pro.png"}`}
             width={0}
             height={0}
             sizes="100vw"
@@ -99,7 +99,6 @@ export const MainProfileInfo = (props: PropsType) => {
         </div>
       </div>
       <div className="w-full h-fit flex flex-col items-center justify-center gap-4">
-
         <div className="text-2xl font-bold ">{UserName}</div>
         <div className="text-base font-medium">job tittle </div>
 
@@ -117,7 +116,6 @@ export const MainProfileInfo = (props: PropsType) => {
           <div className="w-1 h-1 rounded-full bg-blue-800"></div>
 
           <div className="flex items-center">Member : {FormatedDate}</div>
-
         </div>
 
         <div className="flex items-center gap-4">

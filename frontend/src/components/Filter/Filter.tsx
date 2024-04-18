@@ -84,7 +84,7 @@ export const Filter = (props: PropsType) => {
   // const { push } = useRouter();
 
   return (
-    <div className="flex bg-slate-50 rounded-xl scrollbar-hidden scrollbar-hide px-[10px] py-[20px] max-h-screen f-fit justify-center">
+    <div className="flex bg-slate-50 rounded-xl overflow-y-auto scrollbar-hide px-[10px] py-[20px] max-h-screen h-fit justify-center">
       <div className="flex flex-col w-[352px] xl:w-[416px] h-fit rounded-xl p-8 ">
         <div className="w-[352px] h-[56px] ">
           <h3 className="text-2xl font-semibold ml-[-14px]">Filter</h3>
@@ -147,7 +147,6 @@ export const Filter = (props: PropsType) => {
               onChange={(event) => handleChange(event)}
             />
           </div>
-
         </div>
 
         <div className="w-[352px] h-[56px] pt-6 mb-5">
