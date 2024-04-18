@@ -7,7 +7,7 @@ const Stepper = ({ step }: { step: number }) => {
     "Add Timeline and Budget",
   ];
   return (
-    <div className="flex flex-col items-center gap-5 p-8">
+    <div className="flex flex-col items-center gap-5 p-8 bg-white rounded-xl border mt-[-100px]">
       <ul className="steps flex flex-wrap md:flex items-center justify-center border rounded-xl w-[1205px]">
         {stepTexts.map((item, index) => (
           <div key={index} className="flex items-center p-2">

@@ -4,6 +4,7 @@ import { Footer } from "@/components/Footer/Footer";
 import axios from "axios";
 import { GetProjectCategory, GetSkillCategory } from "@/utils/axiosInstance";
 import ProjectPageMidd from "@/components/Projects/ProjectPageMidd";
+import { PageHeroes } from "@/components/Profilepath";
 
 type SkillType = {
   name: string;
@@ -37,6 +38,20 @@ const page = async () => {
     <div>
       <div className="bg-[url(https://pixner.net/aihire/aihire/assets/img/bn/breadcumndbg.jpg)]">
         <Menu />
+      </div>
+      <div>
+        <PageHeroes
+          PageBigName="Projects"
+          Home="Home"
+          PageLink="/projects"
+          PageLinkName="Projects"
+          ButtonClass="hidden"
+          LandingPage="projects"
+          ButtonName="Log Out"
+          PictureOfPage={""}
+          pictureofalt={""}
+          ImageClass={""}
+        />
       </div>
       <ProjectPageMidd data={data} AllPost={AllPost} skills={skills} />
       <Footer />

@@ -17,8 +17,8 @@ export const MenuProfileCard = (props: any) => {
     openProfile,
     setOpenProfile,
     profilePicture,
-    userName,
-    userMail,
+    userName = "",
+    userMail = "",
   } = props;
 
   console.log(openProfile, "openProfileopenProfileopenProfileopenProfile");
@@ -29,7 +29,7 @@ export const MenuProfileCard = (props: any) => {
   };
 
   return (
-    <div className="flex justify-center items-center rounded-full">
+    <div className="flex justify-center items-center rounded-full ">
       <button onClick={handleClick}>
         <Image alt="user picture" src={profilePicture} width={60} height={60} />
       </button>
@@ -44,7 +44,7 @@ export const MenuProfileCard = (props: any) => {
           </div>
           <div className=" flex gap-2 w-full h-8">
             <Link
-              href="/user-profile"
+              href={"/user-profile"}
               className="flex gap-2 w-full h-8 items-center"
             >
               <LiaUserCheckSolid />
@@ -53,9 +53,7 @@ export const MenuProfileCard = (props: any) => {
           </div>
           <div className="flex gap-2 w-full h-8 items-center">
             <IoMdNotificationsOutline />
-            <span className="font-semibold text-gray-800 ">
-              Notifications
-            </span>{" "}
+            <span className="font-semibold text-gray-800 ">Notifications</span>
           </div>
 
           <div className="flex gap-2 w-full h-8">

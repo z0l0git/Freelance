@@ -30,7 +30,7 @@ export default function FreelancersMidd(props: MiddType) {
   };
 
   return (
-    <div className="flex md:flex-row flex-col w-screen items-start justify-center bg-slate-200 gap-5 pt-32">
+    <div className="flex md:flex-row flex-col w-screen items-start justify-center gap-5 pt-32">
       <FreelancerFilter mark={"NPL specialists"} counter={"45"} />
       <div className="flex w-fit md:w-[880px] sm:w-[800px]  h-fit  flex-wrap justify-center items-center gap-[30px] ">
         {AllUserData?.map((el: Response, i: number) => {
