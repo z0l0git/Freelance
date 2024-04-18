@@ -10,8 +10,7 @@ import {
   ProjectRouter,
   PostReview,
 } from "./routes";
-import { Server } from "socket.io";
-import http from "http";
+
 import { Message } from "./routes/message";
 import { Conversation } from "./routes/conversation";
 

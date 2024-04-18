@@ -134,7 +134,6 @@ export const UpdatePro = (props: TypePropsstate) => {
   return (
     <div>
       <div className="flex flex-col  justify-start p-[32px] bg-[#f8f9fc] rounded-[15px] border border-gray-300  gap-[30px]">
-
         <div className="flex items-center gap-[60px] w-100%  font-semibold text-[22px] mt-[30px]">
           <div>Profile Photo</div>
           <div className="flex  items-center justify-center  gap-[50px] ">
@@ -144,7 +143,9 @@ export const UpdatePro = (props: TypePropsstate) => {
             >
               <Image
                 alt=""
+
                 src={`${profile?.image ? profile?.image : "/proq.webp"}`}
+
                 width={0}
                 height={0}
                 sizes="100vw"
