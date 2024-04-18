@@ -18,6 +18,7 @@ type Datatype = {
 
 type IdType = {
   searchParams: any;
+  name: string;
 };
 
 type Comment = {
@@ -26,7 +27,7 @@ type Comment = {
 };
 
 export const RevieComment = (props: IdType) => {
-  const { searchParams } = props;
+  const { searchParams, name } = props;
   const { data: userData } = useContext(DataContext);
 
   console.log(userData, "dorjosda");
@@ -56,9 +57,11 @@ export const RevieComment = (props: IdType) => {
     }
   };
   return (
-    <div className="w-[382px] md:w-[816px] h-[718px] flex flex-col  justify-around">
-      <strong className=" text-[24px] pb-6">Write Review</strong>
-      <div className="w-[382px] md:w-[816px] pb-6">
+    <div className="w-[382px] md:w-[816px] h-[718px] flex flex-col justify-center">
+      <strong className="w-full text-center text-[24px] pb-6">
+        Write A Review for <span className="text-[#0D47A1]">{name}</span>
+      </strong>
+      {/* <div className="w-[382px] md:w-[816px] pb-6">
         <div className="flex">
           <strong className="text-[20px] md:text-[24px] ">Name</strong>
           <FaStarOfLife width={10} height={24} className="text-[#0D47A1]" />
@@ -77,7 +80,7 @@ export const RevieComment = (props: IdType) => {
         <div className="w-[362px] md:w-[816px]  h-[47px]  rounded-full flex items-center justify-center bg-white border border-black">
           {userData.email}
         </div>
-      </div>
+      </div> */}
       <div className="w-full pb-6">
         <div className="flex">
           <strong className="text-[20px] md:text-[24px] ">Rating</strong>
@@ -105,7 +108,7 @@ export const RevieComment = (props: IdType) => {
             onChange={(event) => {
               setComment({ ...comment, description: event.target.value });
             }}
-            className="textarea textarea-bordered w-[330px] md:w-[780px]  h-[110px]"
+            className="textarea textarea-bordered w-full rounded-xl  h-[110px]"
           ></textarea>
         </div>
       </div>

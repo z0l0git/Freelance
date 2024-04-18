@@ -6,8 +6,6 @@ import { Filter } from "../Filter/Filter";
 import { Projects } from "./Projects";
 import { useState } from "react";
 
-import { useRouter } from "next/navigation";
-import { PiSkullFill } from "react-icons/pi";
 type DataType = {
   name: string;
   description: string;
@@ -23,6 +21,7 @@ type PosdtDataType = {
   createdBy: {
     firstName: string;
     lastName: string;
+    image: string;
   };
   title: string;
   description: string;

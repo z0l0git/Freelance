@@ -51,7 +51,8 @@ const CheckBoxData = [
   },
 ];
 
-export const BadgetAndLinks = () => {
+export const BadgetAndLinks = (props: any) => {
+  const { budget } = props;
   return (
     <div className="h-fit md:h-fit flex flex-col items-center justify-around gap-[20px]">
       <div className="w-full h-fit py-5 flex  items-center justify-center rounded-lg bg-white ">
@@ -64,12 +65,14 @@ export const BadgetAndLinks = () => {
             <div className="w-fit h-[48px] flex items-center justify-between gap-[8px] font-sans font-semibold">
               <p className="text-[14px] md:text-[16px]">From</p>
               <div className="flex">
-                <p className="text-[32px]">$399</p>
+                <p className="text-[32px]">
+                  ₮{budget ? budget : "not specified"}
+                </p>
                 <CiCircleInfo />
               </div>
             </div>
           </div>
-          <div className="mt-[20px] h-[51px] md:h-[54px] flex items-center justify-between">
+          {/* <div className="mt-[20px] h-[51px] md:h-[54px] flex items-center justify-between">
             <p className="font-bold text-[20px]">Per Pages</p>
             <p className="text-[#0D48A1] font-bold text-[20px]">$29</p>
           </div>
@@ -77,13 +80,13 @@ export const BadgetAndLinks = () => {
             {CheckBoxData.map((el, index) => {
               return <CheckBoxMap key={index} text={el.text} />;
             })}
-          </div>
+          </div> */}
           <div className="w-full mt-[20px]">
-            <BlueButton buttonName="Send Proposal" />
+            <BlueButton buttonName="Send Chat" />
           </div>
         </div>
       </div>
-      <div className="w-full h-fit flex items-center  justify-center rounded-lg py-5 bg-white ">
+      {/* <div className="w-full h-fit flex items-center  justify-center rounded-lg py-5 bg-white ">
         <div className="h-fit gap-[40px] flex flex-col">
           <strong className="text-[24px]">Linked Accounts</strong>
           <div className="w-full h-[36px] flex gap-[10px] cursor-pointer ">
@@ -92,7 +95,7 @@ export const BadgetAndLinks = () => {
             })}
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

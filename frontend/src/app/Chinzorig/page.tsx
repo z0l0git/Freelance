@@ -198,8 +198,8 @@ const Chinzorig = () => {
       {/* <ProjectCard /> */}
       {/* <FreelancerCard /> */}
       {/* <FreelancerFilter /> */}
-      <div className="flex md:flex-row flex-col w-screen items-start justify-center bg-slate-200 gap-5 pt-32">
-        <FreelancerFilter mark={"NPL specialists"} counter={"45"} />
+      {/* <div className="flex md:flex-row flex-col w-screen items-start justify-center bg-slate-200 gap-5 pt-32"> */}
+      {/* <FreelancerFilter mark={"NPL specialists"} counter={"45"} />
         <div className="flex w-fit md:w-[880px] sm:w-[800px]  h-fit  flex-wrap justify-center items-center gap-[30px] ">
           {freelancer.map((el, i) => {
             return (
@@ -216,7 +216,7 @@ const Chinzorig = () => {
             );
           })}
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

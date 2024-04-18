@@ -9,6 +9,7 @@ type Response = {
   _id: string;
   firstName: string;
   lastName: string;
+  image: string;
   email: string;
   auth: string;
   socials: [];
@@ -25,7 +26,7 @@ type RequestBody = {
 const GetUserById = async (id?: string) => {
   try {
     const { data } = await axios.post<RequestBody>(
-      "https://freelance-gmjr.onrender.com/getUserById",
+      "http://localhost:8000/getUserById",
       {
         id: id,
       }

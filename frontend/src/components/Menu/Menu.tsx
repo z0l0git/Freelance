@@ -19,7 +19,7 @@ export const Menu = () => {
   const [open, setOpen] = useState(false);
   const [openBell, setOpenBell] = useState(false);
   const [openProfile, setOpenProfile] = useState(false);
-  const { isLoggedIn } = useContext(DataContext);
+  const { isLoggedIn, data } = useContext(DataContext);
   const handleClick = () => {
     setOpenBell(!openBell);
     setOpenProfile(false);
@@ -49,13 +49,13 @@ export const Menu = () => {
             <div className="flex items-center gap-[6%] w-full">
               <Link href={"/projects"}>
                 <WhiteButton
-                  buttonName="Browse Projects"
+                  buttonName="Projects"
                   buttonClass="text-white hover:text-blue-500 hover:underline text-nowrap w-fit"
                 />
               </Link>
               <Link href={"/freelancers"}>
                 <WhiteButton
-                  buttonName="Find Freelancers"
+                  buttonName="Freelancers"
                   buttonClass="text-white hover:text-blue-500 hover:underline text-nowrap w-fit"
                 />
               </Link>
@@ -98,16 +98,19 @@ export const Menu = () => {
             <nav className="flex justify-center items-center rounded-full relative w-10 h-10 ">
               {isLoggedIn ? (
                 <MenuProfileCard
-                  profilePicture="/f10.png"
+                  profilePicture={data.image}
                   setOpenBell={setOpenBell}
                   openProfile={openProfile}
                   setOpenProfile={setOpenProfile}
+                  userName={data.firstName + " " + data.lastName}
+                  userMail={data.email}
+                  userPhone={data.phone}
                 />
               ) : (
                 <Link href="/sign">
                   <WhiteButton
                     buttonName="Log In"
-                    buttonClass="text-white hover:text-blue-500 hover:underline"
+                    buttonClass="text-white hover:text-blue-500 hover:underline text-nowrap w-fit"
                   />
                 </Link>
               )}

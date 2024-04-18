@@ -52,6 +52,7 @@ type PosdtDataType = {
   createdBy: {
     firstName: string;
     lastName: string;
+    image: string;
     createdAt: string;
   };
   title?: string;
@@ -98,6 +99,7 @@ export default function ProjectDetail(props: PropsType) {
   }
 
   const UserName = `${data?.createdBy.firstName} ${data?.createdBy.lastName}`;
+
   const Budget = `${data?.budget}`;
   const title = `${data?.title}`;
   const deliveryTime = `${data?.deliveryTime}`;
@@ -185,7 +187,11 @@ export default function ProjectDetail(props: PropsType) {
               <div className="rounded-full overflow-hidden w-[100px] h-[100px]">
                 <Image
                   alt=""
-                  src="/itachi.jpg"
+                  src={`${
+                    data?.createdBy?.image
+                      ? data?.createdBy?.image
+                      : "/proq.webp"
+                  }`}
                   width={0}
                   height={0}
                   sizes="100vw"

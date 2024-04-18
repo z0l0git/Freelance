@@ -8,9 +8,10 @@ type Response = {
   _id: string;
   firstName: string;
   lastName: string;
+  image: string;
+  budget: string;
   email: string;
   phone: string;
-  password: string;
   discription: string;
 };
 
@@ -41,10 +42,12 @@ export default function FreelancersMidd(props: MiddType) {
                 level="level"
                 levelrank="levlelrank"
                 name={`${el.firstName}  ${el.lastName}`}
-                // image={el.image}
+                image={el.image}
                 worktype="worktype"
                 experience="experience"
-                wages="wages"
+                wages={`${
+                  el.budget ? el.budget.toLocaleString() + "₮" : "Not specified"
+                }`}
               />
             </div>
           );

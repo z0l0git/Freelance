@@ -28,6 +28,7 @@ type PosdtDataType = {
   createdBy: {
     firstName: string;
     lastName: string;
+    image: string;
   };
   title: string;
   description: string;

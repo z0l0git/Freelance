@@ -59,16 +59,16 @@ const StepThree = (props: StepThreeProps) => {
             htmlFor="terms"
             className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
           >
-            Flexible
+            Price is negotiable (Optional)
           </label>
         </div>
         <div className="flex flex-col gap-6 mt-8">
           <p className="font-bold text-[18px] text-[#212e48]">
-            When does your project expire
+            Enter delivery time in days
           </p>
           <NameInputComponent
             handleChange={handleChange}
-            placeholder="Enter Expiration Date (DD day(s))"
+            placeholder="day(s)"
             name1="deliveryTime"
             className="text-black flex"
           />

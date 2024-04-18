@@ -22,6 +22,7 @@ type PosdtDataType = {
   createdBy?: {
     firstName: string;
     lastName: string;
+    image: string;
   };
   title: string;
   description: string;
@@ -47,6 +48,7 @@ export const Projects = (props: ProjectsProps) => {
 
     push(`/projectDetail?id=${projectId}`);
   };
+  console.log(AllPost);
 
   return (
     <div className="flex items-start  justify-center  ">
@@ -64,6 +66,7 @@ export const Projects = (props: ProjectsProps) => {
                     createdby={
                       el.createdBy?.firstName + " " + el.createdBy?.lastName
                     }
+                    profilePicture={el.createdBy?.image}
                     category={el.skills?.map((el2, index2) => {
                       return el2.name;
                     })}

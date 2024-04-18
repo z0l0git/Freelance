@@ -6,11 +6,13 @@ import { LiaUserCheckSolid } from "react-icons/lia";
 import { MdOutlinePostAdd } from "react-icons/md";
 import React, { useState } from "react";
 import Link from "next/link";
+
 type ClickType = {
   setOpenBell: () => void;
   setOpenProfile: () => void;
   openProfile: boolean;
 };
+
 export const MenuProfileCard = (props: any) => {
   const {
     setOpenBell,
@@ -31,12 +33,22 @@ export const MenuProfileCard = (props: any) => {
   return (
     <div className="flex justify-center items-center rounded-full ">
       <button onClick={handleClick}>
-        <Image alt="user picture" src={profilePicture} width={60} height={60} />
+        <Image
+          alt="user picture"
+          src={profilePicture}
+          width={60}
+          height={60}
+          className="rounded-full"
+        />
       </button>
       {openProfile ? (
         <div className="flex flex-col gap-2 absolute top-12 right-0 w-[306px] py-6 px-5 bg-white rounded-2xl">
           <div className="flex flex-col justify-center items-center gap-5">
-            <MenuProfileUserInfoCard />
+            <MenuProfileUserInfoCard
+              userName={userName}
+              userMail={userMail}
+              profilePicture={profilePicture}
+            />
           </div>
           <div className="border-b-2 border-dashed my-4"></div>
           <div>
@@ -76,16 +88,22 @@ export const MenuProfileCard = (props: any) => {
 };
 
 export const MenuProfileUserInfoCard = (props: any) => {
-  const { userName, userMail } = props;
+  const { userName, userMail, profilePicture } = props;
   return (
     <div className="w-[242px] h-16 flex gap-2 items-center">
-      <div className="w-16 h-16 flex justify-center items-center rounded-full border p-2 relative">
-        <Image src="/f10.png" width={62} height={62} alt="user Profile" />
+      <div className="w-16 h-16 flex justify-center items-center rounded-full border relative">
+        <Image
+          src={profilePicture}
+          width={62}
+          height={62}
+          alt="user Profile"
+          className="rounded-full"
+        />
         <IoIosCheckmarkCircle className="absolute bottom-0 right-0  text-green-600" />
       </div>
       <div>
-        <div className="text-lg">{userName}Ner</div>
-        <div className="text-md">{userMail} Mail</div>
+        <div className="text-lg">{userName}</div>
+        <div className="text-md">{userMail}</div>
       </div>
     </div>
   );

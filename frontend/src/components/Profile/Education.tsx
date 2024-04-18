@@ -15,22 +15,36 @@ const InfoData = [
   },
 ];
 
-export const Education = () => {
+type EduDataType = {
+  year: string;
+  startedY: string;
+  finishedY: string;
+  degree: string;
+  schoolName: string;
+  aboutSchool: string;
+};
+
+type EducationProps = {
+  eduData?: EduDataType[];
+};
+
+export const Education = (props: EducationProps) => {
+  const { eduData } = props;
   return (
     <div className="w-[362px] md:w-[816px] h-fit flex flex-col justify-center  ">
       <strong className="text-[18px] md:text-[20px] font-sans">
         Education
       </strong>
-      <div className="w-full flex  justify-between pt-4 border">
-        <div className="flex flex-col justify-between gap-[20px]  ">
-          {InfoData.map((el, index) => {
+      <div className="w-full flex items-center justify-between pt-4 border">
+        <div className="flex flex-col justify-between gap-[20px]">
+          {eduData?.map((el, index) => {
             return (
               <InfoDetailsMap
                 key={index}
-                year={el.year}
-                topic={el.topic}
-                title={el.title}
-                text={el.text}
+                year={el.startedY + "-" + el.finishedY}
+                topic={el.degree}
+                title={el.schoolName}
+                text={el.aboutSchool}
                 index={index}
               />
             );

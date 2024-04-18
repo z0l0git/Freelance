@@ -53,25 +53,9 @@ export const RatingAndReview = (props: IdType) => {
   console.log(rdata);
 
   return (
-    <div className="w-[382px] md:w-[856px] flex flex-col items-center justify-center border border-black   ">
+    <div className="w-[382px] md:w-[856px] flex flex-col items-center justify-center">
       <div className="flex flex-col items-center justify-center px-5 gap-[20px]">
-        <div className="w-[382px] md:w-[800px] h-[34px] flex justify-between">
-          <div className="flex items-center justify-between w-[180px] h-[34px]">
-            <p>Sort by:</p>
-            <Select>
-              <SelectTrigger className="w-[108px] h-full rounded-[100px] font-bold items-center justify-center border-none">
-                <SelectValue placeholder="New" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectGroup>
-                  <SelectItem value="New">New</SelectItem>
-                  <SelectItem value="V1">V1</SelectItem>
-                  <SelectItem value="V2">V2</SelectItem>
-                </SelectGroup>
-              </SelectContent>
-            </Select>
-          </div>
-        </div>
+        <div className="w-[382px] md:w-[800px] h-[34px] flex justify-between"></div>
         <div className="w-[382px] md:w-[800px] h-fit flex flex-col gap-[20px] ">
           {rdata.map((el, index) => {
             return <ReviewMap key={index} userData={el} />;

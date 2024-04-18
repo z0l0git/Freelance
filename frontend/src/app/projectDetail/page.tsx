@@ -24,6 +24,7 @@ type PosdtDataType = {
   createdBy: {
     firstName: string;
     lastName: string;
+    image: string;
     createdAt: string;
   };
   title: string;
@@ -57,13 +58,11 @@ export default async function ProjectDetailPage({
   searchParams: { id: string };
 }) {
   const data: any = await GetPostsById(searchParams.id);
-  console.log(data.createdBy, "by zolooo");
 
   return (
     <div className="">
       <Menu />
       <ProjectDetail data={data as any} />
-      
       <Footer />
     </div>
   );

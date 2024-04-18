@@ -5,7 +5,7 @@ export const getProjectQuery = async (req: Request) => {
   const { filter = {} } = req.body;
   try {
     const post = await ProjectModel.find(filter)
-      .populate("createdBy", "firstName lastName photoUrl")
+      .populate("createdBy", "firstName lastName image")
       .populate("category")
       .populate("skills");
     return post;

@@ -9,6 +9,10 @@ type Response = {
   _id: string;
   firstName: string;
   lastName: string;
+  image: string;
+  jobTitle: string;
+  location: string;
+  budget: string;
   email: string;
   auth: string;
   socials: [];
@@ -19,7 +23,7 @@ type Response = {
 };
 
 type PropsType = {
-  data: Response;
+  data?: Response;
 };
 
 export const ProfileDetails = (props: PropsType) => {
@@ -52,14 +56,16 @@ export const ProfileDetails = (props: PropsType) => {
     return formattedDate;
   }
 
-  const FormatedDate = formatDate(data?.createdAt.split("T")[0]);
+  const FormatedDate = formatDate(
+    data?.createdAt ? data?.createdAt.split("T")[0] : ""
+  );
 
   return (
     <div className="w-[426px] h-fit items-center justify-around gap-[10px] border border-inherit   md:w-[816px] md:h-fit md:py-8 rounded-lg flex flex-col md:items-center md:justify-center ">
       <div className="w-[406px] h-fit flex-col px-5 py-5  bg-white  justify-between md:w-[774px] md:h-[145px] flex md:flex-row md:items-center md:justify-between md:pb-[24px]">
         <div className="flex justify-start md:items-center md:justify-center">
           <Image
-            src={"/profilemain.jpeg"}
+            src={`${data?.image ? data.image : "/proq.webp"}`}
             alt=""
             width={95}
             height={95}
@@ -73,19 +79,21 @@ export const ProfileDetails = (props: PropsType) => {
               {`  ${data?.firstName} ${data?.lastName}`}
             </strong>
             <p className="text-[16px] text-[#222E48] font-sans">
-              Machine Learner
+              {data?.jobTitle ? data?.jobTitle : "Frontend Developer"}
             </p>
           </div>
           <ul className="w-full h-[24px] flex flex-col md:flex-row justify-between ">
             <li className="flex gap-[10px] items-center">
               <CiLocationOn size={24} color="#0d47a1" />
-              <p className="text-[16px] text-[#404A60] font-sans ">Japan</p>
+              <p className="text-[16px] text-[#404A60] font-sans ">
+                {data?.location ? data?.location : "Mongolia"}
+              </p>
             </li>
             <li className="w-fit h-[24px] flex justify-around items-center gap-[10px] ">
               <TbPointFilled />
               <StarIcon className="text-[#febf58] " />
               <p>
-                <span className="font-bold">4.8</span> (114){" "}
+                <span className="font-bold">0</span> (0)
               </p>
             </li>
             <li className="w-fit h-[24px] flex justify-around items-center gap-[10px] ">
@@ -96,9 +104,9 @@ export const ProfileDetails = (props: PropsType) => {
           </ul>
         </div>
       </div>
-      <div className=" flex flex-wrap gap-[10px]  w-[384px] h-[122px] md:w-[774px] md:h-[54px] divide-x divide-solid  md:flex md:justify-between ">
+      {/* <div className=" flex flex-wrap gap-[10px]  w-[384px] h-[122px] md:w-[774px] md:h-[54px] divide-x divide-solid  md:flex md:justify-between ">
         <ProfileInfoDetails />
-      </div>
+      </div> */}
     </div>
   );
 };

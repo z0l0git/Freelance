@@ -5,7 +5,7 @@ export const getProjectByIdQuery = async (req: Request) => {
   const { id } = req.body;
   try {
     const post = await ProjectModel.findById({ _id: id })
-      .populate("createdBy", "firstName lastName createdAt photoUrl")
+      .populate("createdBy", "firstName lastName createdAt image")
       .populate("category")
       .populate("skills");
     return post;

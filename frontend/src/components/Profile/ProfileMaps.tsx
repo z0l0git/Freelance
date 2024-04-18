@@ -175,6 +175,8 @@ export const ReviewMap = ({ userData }: any) => {
   const minutes = date.getMinutes();
   const time = `${hours}:${minutes}`;
 
+  console.log(userData.createdBy.image, "from profile map");
+
   return (
     <div className="w-[382px] md:w-[800px]  flex flex-col justify-between py-5 px-5 rounded-lg bg-[#0D47A10D] border-top">
       <div className="w-[752px] h-[52px] gap-[20px] flex">
@@ -185,7 +187,7 @@ export const ReviewMap = ({ userData }: any) => {
         <p className="text-[14px]">{userData.description}</p>
         <div className="w-[354px] md:w-[752px] flex gap-[20px] pt-5 ">
           <Image
-            src={userData.image}
+            src={userData.createdBy.image}
             alt=""
             width={60}
             height={60}

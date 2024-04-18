@@ -15,7 +15,21 @@ const InfoData = [
   },
 ];
 
-export const WorkExprience = () => {
+type workDataType = {
+  year: string;
+  hiredY: string;
+  firedY: string;
+  occupation: string;
+  companyName: string;
+  about: string;
+};
+
+type WorkProps = {
+  workData: workDataType[];
+};
+
+export const WorkExprience = (props: WorkProps) => {
+  const { workData } = props;
   return (
     <div className="w-[362px] md:w-[816px] h-fit flex flex-col justify-center ">
       <strong className="text-[18px] md:text-[20px] font-sans">
@@ -23,14 +37,14 @@ export const WorkExprience = () => {
       </strong>
       <div className="w-full flex justify-between pt-4">
         <div className="w-[676px] flex flex-col justify-between gap-[20px]">
-          {InfoData.map((el, index) => {
+          {workData.map((el, index) => {
             return (
               <InfoDetailsMap
                 key={index}
-                year={el.year}
-                topic={el.topic}
-                title={el.title}
-                text={el.text}
+                year={el.hiredY + " - " + el.firedY}
+                topic={el.occupation}
+                title={el.companyName}
+                text={el.about}
                 index={index}
               />
             );

@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import React from "react";
 
 type ProjectCard = {
@@ -9,10 +10,19 @@ type ProjectCard = {
   category?: string[];
   createdby?: String;
   flexible?: Boolean;
+  profilePicture?: string;
 };
 
 export const ProjectCard = (props: ProjectCard) => {
-  const { title, price, description, category, createdby, flexible } = props;
+  const {
+    title,
+    price,
+    description,
+    category,
+    createdby,
+    flexible,
+    profilePicture,
+  } = props;
 
   return (
     <div className="flex bg-slate-100 rounded-2xl h-fit cursor-pointer">
@@ -44,7 +54,14 @@ export const ProjectCard = (props: ProjectCard) => {
           </div>
         </div>
 
-        <div className="flex w-full h-fit justify-between items-center border-t border-dashed border-slate-500 py-5">
+        <div className="flex w-full h-fit gap-2 items-center border-t border-dashed border-slate-500 py-5">
+          <Image
+            alt="user picture"
+            src={`${profilePicture ? profilePicture : "/proq.webp"}`}
+            width={40}
+            height={40}
+            className="rounded-full"
+          />
           <span>{createdby}</span>
         </div>
       </div>

@@ -15,24 +15,28 @@ type Response = {
   _id: string;
   firstName: string;
   lastName: string;
+  image: string;
+  jobTitle: string;
+  location: string;
+  budget: string;
   email: string;
   auth: string;
   socials: [];
   skills: [];
-  education: [];
-  workExp: [];
+  education?: [];
+  workExp?: [];
   createdAt: string;
 };
 
 type PropsType = {
-  data: Response;
-  searchParams: any;
+  data?: any;
+  searchParams?: any;
 };
 
 export const Profile = (props: PropsType) => {
   const { data, searchParams } = props;
 
-  console.log(data, "profile data");
+  console.log(data?.education, "profile data");
 
   // const [profile, setProfile] = useState<Response>();
   return (
@@ -41,25 +45,31 @@ export const Profile = (props: PropsType) => {
         <div className="[426px] md:w-[860px] flex items-center justify-center  bg-white border  rounded-lg">
           <div className="w-[406px] md:w[816px] flex flex-col items-center justify-around gap-[30px]">
             <ProfileDetails data={data} />
-            <Description />
             <Skills />
-            <Education />
-            <WorkExprience />
+            <Education eduData={data.education} />
+            <WorkExprience workData={data.workExp} />
             {/* <UserDetails /> */}
           </div>
         </div>
         {/* <div className="w-[426px] md:w-[860px] h-fit flex items-center justify-center bg-white rounded-lg ">
           <FeatureServive />
         </div> */}
-        <div className="w-[426px] md:w-[860px] flex items-center justify-center  bg-white border  rounded-lg">
+        <div className="w-[426px] md:w-[860px] flex items-center justify-center  bg-white rounded-lg">
           <RatingAndReview searchParams={searchParams} />
         </div>
         <div className="w-[426px] md:w-[860px] flex items-center justify-center bg-white  rounded-lg">
-          <RevieComment searchParams={searchParams} />
+          <RevieComment
+            searchParams={searchParams}
+            name={data?.firstName + " " + data?.lastName}
+          />
         </div>
       </div>
       <div className=" w-[402px] md:w-[416px] md:h-[623px] rounded-lg sticky top-0">
-        <BadgetAndLinks />
+        <BadgetAndLinks
+          budget={
+            data?.budget ? data?.budget.toLocaleString() : "Not specified"
+          }
+        />
       </div>
     </div>
   );
