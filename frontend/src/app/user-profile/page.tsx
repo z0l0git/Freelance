@@ -16,12 +16,12 @@ const page = () => {
           Home="Home"
           PageLink="/user-profile"
           PageLinkName="User profile"
-          ButtonClass="blueBorderButton font-semibold"
+          ButtonClass="blueBorderButton responsivePatchCompButton"
           LandingPage="User profile"
           ButtonName="Log Out"
           PictureOfPage={""}
           pictureofalt={""}
-          ImageClass={""}
+          ImageClass="responsivePatchCompImage"
         />
       </div>
       <UsePage />

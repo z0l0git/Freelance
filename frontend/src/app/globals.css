@@ -78,7 +78,13 @@
     @apply px-4 py-3 overflow-hidden rounded-2xl bg-[#0d47a1] border text-sm text-white flex items-center gap-1;
   }
   .blueBorderButton {
-    @apply px-4 py-3 overflow-hidden rounded-2xl border-[#0d47a1] border text-sm text-[#0f48a2] flex items-center gap-1;
+    @apply px-4 py-3 overflow-hidden rounded-2xl  border-[#0d47a1] border text-sm text-[#0f48a2] flex items-center gap-1;
+  }
+  .responsivePatchCompButton {
+    @apply max-sm:w-[40%] justify-center max-w-[300px];
+  }
+  .responsivePatchCompImage {
+    @apply max-sm:hidden max-md:hidden sm:hidden;
   }
 }
 
