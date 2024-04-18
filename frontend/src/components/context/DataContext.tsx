@@ -21,6 +21,10 @@ type Response = {
   password: string;
   discription: string;
   location: string;
+  createdAt: string;
+  image: string;
+  jobTitle: string;
+  budget: number;
 };
 
 export const DataProvider = ({ children }: any) => {
@@ -35,6 +39,10 @@ export const DataProvider = ({ children }: any) => {
     password: "",
     discription: "",
     location: "",
+    createdAt: "",
+    image: "",
+    jobTitle: "",
+    budget: 0,
   });
 
   const accessToken =

@@ -39,7 +39,7 @@ type PosdtDataType = {
 const GetPostsById = async (id: string) => {
   try {
     const { data } = await axios.post<RequestBody>(
-      "http://localhost:8000/getProjectById",
+      "https://freelance-gmjr.onrender.com/getProjectById",
       {
         id: id,
       }
