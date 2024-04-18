@@ -3,7 +3,7 @@ import Image from "next/image";
 export const MenuMessageCard = (props: any) => {
   const { userName, messageSubject, createdDate, profilePicture } = props;
   return (
-    <div className="w-full h-16 flex hover:bg-slate-300 gap-4">
+    <div className=" flex hover:bg-slate-300 gap-4 w-[306px] h-[274px] bg-white py-6 px-5">
       <div className="w-16 h-16 rounded-full bg-gray-600">
         <Image alt="user picture" src={profilePicture} width={60} height={60} />
       </div>
@@ -21,7 +21,7 @@ export const MenuNotificationCard = (props: any) => {
   const { userName, createdDate, profilePicture, className } = props;
   return (
     <div className={className}>
-      <div className="w-full h-16 flex hover:bg-slate-300 gap-4">
+      <div className="w-full h-16 flex hover:bg-slate-300 gap-4 bg-white">
         <div className="w-16 h-16 rounded-full bg-gray-600">
           <Image
             alt="user picture"

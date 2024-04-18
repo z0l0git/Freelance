@@ -1,8 +1,6 @@
-
 import React from "react";
-import { Header } from "@/components/Header/HeaderComp"
+import { Header } from "@/components/Header/HeaderComp";
 import { HeaderHero } from "@/components/HeaderHero";
-
 
 const page = () => {
   return (
@@ -14,5 +12,3 @@ const page = () => {
 };
 
 export default page;
-
-
