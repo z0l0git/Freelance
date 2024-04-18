@@ -22,9 +22,12 @@ export const Chat = ({ socket, username, roomId }: any) => {
 
   useEffect(() => {
     const getMessages = async (id: string) => {
-      const messages = await axios.post(`http://localhost:8000/getConvo`, {
-        roomId: id,
-      });
+      const messages = await axios.post(
+        `https://freelance-gmjr.onrender.com/getConvo`,
+        {
+          roomId: id,
+        }
+      );
       setChat(messages.data.messages);
     };
 
@@ -45,13 +48,16 @@ export const Chat = ({ socket, username, roomId }: any) => {
       };
       await socket.emit("send_msg", msgData);
       try {
-        const msgID = await axios.post("http://localhost:8000/createMsg", {
-          message: msgData.message,
-          author: msgData.author,
-          time: msgData.time,
-        });
+        const msgID = await axios.post(
+          "https://freelance-gmjr.onrender.com/createMsg",
+          {
+            message: msgData.message,
+            author: msgData.author,
+            time: msgData.time,
+          }
+        );
 
-        await axios.post("http://localhost:8000/updateConvo", {
+        await axios.post("https://freelance-gmjr.onrender.com/updateConvo", {
           roomId: msgData.roomId,
           message: msgID.data._id,
         });
