@@ -22,6 +22,8 @@ type Response = {
   discription: string;
   location: string;
   image: string;
+  jobTitle: string;
+  budget: number;
 };
 
 type PropsType = {

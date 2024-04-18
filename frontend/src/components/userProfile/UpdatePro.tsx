@@ -143,7 +143,9 @@ export const UpdatePro = (props: TypePropsstate) => {
             >
               <Image
                 alt=""
-                src={`${profile.image ? profile?.image : "/pro.png"}`}
+
+                src={`${profile?.image ? profile?.image : "/proq.webp"}`}
+
                 width={0}
                 height={0}
                 sizes="100vw"

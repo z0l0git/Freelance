@@ -35,6 +35,8 @@ type Response = {
   discription: string;
   location: string;
   image?: string;
+  jobTitle: string;
+  budget: number;
 };
 type PropsType = {
   profile: SetProDileype;
@@ -85,7 +87,9 @@ export const MainProfileInfo = (props: PropsType) => {
         <div className=" w-[200px] h-[200px] relative flex justify-center items-center p-4 rounded-full border ">
           <Image
             alt="user profile picture"
-            src={`${profile.image ? profile?.image : "/pro.png"}`}
+
+            src={`${profile?.image ? profile?.image : "/proq.webp"}`}
+
             width={0}
             height={0}
             sizes="100vw"
@@ -100,12 +104,13 @@ export const MainProfileInfo = (props: PropsType) => {
       </div>
       <div className="w-full h-fit flex flex-col items-center justify-center gap-4">
         <div className="text-2xl font-bold ">{UserName}</div>
-        <div className="text-base font-medium">job tittle </div>
 
+        <div className="text-base font-medium">{data?.jobTitle} </div>
         <div className="flex items-center gap-4">
           <div className="flex items-center gap-1">
             <CiLocationOn />
-            <div className="xl:text-sm">City</div>
+            <div>{profile?.location}</div>
+
           </div>
           <div className="w-1 h-1 rounded-full bg-blue-800"></div>
           <div className="flex items-center gap-1">

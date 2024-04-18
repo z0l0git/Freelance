@@ -9,23 +9,28 @@ export const Education = () => {
   const clickButton = () => {
     setAddEducation(!addEducation);
   };
+
   return (
     <div className="w-full">
       <div className="w-full flex justify-between items-center mb-4">
         <h3 className="text-2xl font-semibold xl:text-xl">Education</h3>
         {!addEducation ? (
           <WhiteButton
-            buttonClass="font-bold text-[#0d47a1] xl:text-md"
+            buttonClass="font-bold text-[#0d47a1] cursor-pointer "
+
             onClick={clickButton}
-            buttonName="Add New"
+            buttonName="Add New "
           />
         ) : (
-          <IoCloseCircleSharp onClick={clickButton} className="w-6 h-6" />
+          <IoCloseCircleSharp
+            onClick={clickButton}
+            className="w-6 h-6 cursor-pointer"
+          />
         )}
       </div>
       <div>
         {!addEducation ? (
-          <input value="Education" disabled />
+          <div></div>
         ) : (
           <EducationAddComp clickButton={clickButton} />
         )}
@@ -33,6 +38,7 @@ export const Education = () => {
     </div>
   );
 };
+
 export const WorkExperience = () => {
   const [addCertification, setAddCertification] = useState(false);
   const clickButton = () => {
@@ -44,21 +50,22 @@ export const WorkExperience = () => {
         <h3 className="text-2xl font-semibold xl:text-xl">Work Experience</h3>
         {!addCertification ? (
           <WhiteButton
-            buttonClass="font-bold text-[#0d47a1] xl:text-md"
+
+            buttonClass="font-bold text-[#0d47a1] cursor-pointer "
+
             onClick={clickButton}
             buttonName="Add New"
           />
         ) : (
-          <IoCloseCircleSharp onClick={clickButton} className="w-6 h-6" />
+          <IoCloseCircleSharp
+            onClick={clickButton}
+            className="w-6 h-6 cursor-pointer"
+          />
         )}
       </div>
       <div>
         {!addCertification ? (
-          <input
-            type="text"
-            value="End Certification ee oruulaarai"
-            className="w-full h-fit text-[#979CA8]"
-          />
+          <div></div>
         ) : (
           <WorkExperienceComp clickButton={clickButton} />
         )}

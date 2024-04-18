@@ -40,10 +40,10 @@ const UserSchema = new Schema<UserModelType>({
   },
   education: {
     type: [Schema.Types.ObjectId],
-    ref: "Education",
+    ref: "Educations",
     required: false,
   },
-  workExp: { type: [Schema.Types.ObjectId], ref: "WorkExp", required: false },
+  workExp: { type: [Schema.Types.ObjectId], ref: "WorkExps", required: false },
   description: { type: String, required: false },
   budget: { type: Number, required: false },
   image: { type: String, required: false },
