@@ -1,11 +1,7 @@
 "use client";
 
 import React, { useContext, useState } from "react";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+
 import { MenuMessageCard, MenuNotificationCard } from "./MenuMessageCard";
 
 import { BsChatText, BsBell } from "react-icons/bs";
@@ -18,12 +14,6 @@ import { Example } from "./MenuToggle";
 import { MenuList } from "./MenuList";
 import { DataContext } from "../context/DataContext";
 import Link from "next/link";
-import {
-  NavigationMenu,
-  NavigationMenuContent,
-  NavigationMenuTrigger,
-  NavigationMenuItem,
-} from "@radix-ui/react-navigation-menu";
 
 export const Menu = () => {
   const [open, setOpen] = useState(false);
@@ -82,35 +72,46 @@ export const Menu = () => {
             >
               <BsChatText className="color-white text-white w-6 h-6" />
             </div>
+            {/* <DropdownMenu> */}
+            <nav className="flex justify-center items-center p-2 rounded-full bg-[#343e56] w-10 h-10 relative">
+              {/* <DropdownMenuTrigger> */}
 
-            <DropdownMenu>
-              <div className="flex justify-center items-center p-2 rounded-full bg-[#343e56] w-10 h-10">
-                <DropdownMenuTrigger>
-                  <BsBell className="color-white text-white w-6 h-6" />
-                </DropdownMenuTrigger>
-                <DropdownMenuContent className="w-[306px] h-[354px] p-5">
-                  <MenuNotificationCard
-                    userName="Ganaa"
-                    createdDate={DataView}
-                    profilePicture="/f10.png"
-                  />
-                </DropdownMenuContent>
-              </div>
-            </DropdownMenu>
-            <DropdownMenu>
-              <div className="flex justify-center items-center rounded-full ">
-                {isLoggedIn ? (
-                  <MenuProfileCard profilePicture="/f10.png" />
-                ) : (
-                  <Link href="/sign">
-                    <WhiteButton
-                      buttonName="Log In"
-                      buttonClass="text-white hover:text-blue-500 hover:underline "
+              <BsBell
+                className="color-white text-white w-6 h-6"
+                onClick={handleClick}
+              />
+              {/* </DropdownMenuTrigger> */}
+              {/* <DropdownMenuContent className="w-[306px] h-[354px] p-5"> */}
+              <nav className="rounded-xl overflow-hidden ">
+                {open ? (
+                  <div className="w-[306px] h-[274px] bg-white py-6 px-5 absolute top-12 right-0 rounded-xl">
+                    <MenuNotificationCard
+                      userName="Ganaa"
+                      createdDate={DataView}
+                      profilePicture="/f10.png"
                     />
-                  </Link>
+                  </div>
+                ) : (
+                  ""
                 )}
-              </div>
-            </DropdownMenu>
+              </nav>
+              {/* </DropdownMenuContent> */}
+            </nav>
+            {/* </DropdownMenu> */}
+            {/* <DropdownMenu> */}
+            <nav className="flex justify-center items-center rounded-full relative w-10 h-10 ">
+              {isLoggedIn ? (
+                <MenuProfileCard profilePicture="/f10.png" />
+              ) : (
+                <Link href="/sign">
+                  <WhiteButton
+                    buttonName="Log In"
+                    buttonClass="text-white hover:text-blue-500 hover:underline"
+                  />
+                </Link>
+              )}
+            </nav>
+            {/* </DropdownMenu> */}
             <div className="md:hidden" onClick={() => setOpen(!open)}>
               <Example />
             </div>
