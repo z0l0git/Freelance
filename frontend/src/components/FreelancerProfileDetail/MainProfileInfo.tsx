@@ -19,7 +19,7 @@ export const MainProfileInfo = () => {
     console.log("he");
   };
   return (
-    <div className="w-[416px] h-[488px] flex flex-col items-center gap-4 rounded-2xl border bg-white sm:w-full">
+    <div className="w-[416px] h-[488px] flex flex-col items-center gap-4 rounded-2xl border bg-white  max-sm:w-full max-sm:px-2 sm:w-full sm:px-2">
       <div className="flex justify-center items-center p-4 ">
         <div className="w-30 h-30 relative flex justify-center items-center p-4 rounded-full border ">
           <Image
@@ -32,21 +32,21 @@ export const MainProfileInfo = () => {
         </div>
       </div>
       <div className="w-full h-fit flex flex-col items-center justify-center gap-4">
-        <div className="text-2xl font-bold ">UserName</div>
-        <div className="text-base font-medium">User Discription </div>
+        <div className="text-2xl font-bold xl:text-xl ">UserName</div>
+        <div className="text-base font-medium xl:font-sm">User Discription</div>
         <div className="flex items-center gap-4">
           <div className="flex items-center gap-1">
             <CiLocationOn />
-            <div>City</div>
+            <div className="xl:text-sm">City</div>
           </div>
           <div className="w-1 h-1 rounded-full bg-blue-800"></div>
           <div className="flex items-center gap-1">
             <FaStar color="orange" />
-            <div>4.8</div>
-            <div>(118)</div>
+            <div className="xl:text-sm">4.8</div>
+            <div className="xl:text-sm">(118)</div>
           </div>
           <div className="w-1 h-1 rounded-full bg-blue-800"></div>
-          <div className="flex items-center">Member : 2011</div>
+          <div className="flex items-center xl:text-sm">Member : 2011</div>
         </div>
         <div className="flex gap-2">
           <div className="w-9 h-9 flex justify-center items-center rounded-full bg-gray-100 text-[#0D49A1] hover:bg-[#0D49A1] hover:text-white">

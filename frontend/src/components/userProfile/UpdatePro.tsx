@@ -5,7 +5,7 @@ export const UpdatePro = () => {
     <div>
       <div className="flex flex-col  justify-start p-[32px] bg-[#f8f9fc] rounded-[15px] border border-gray-300  gap-[30px]">
         <div className="flex items-center gap-[70px] w-100%  font-semibold text-[22px] mt-[30px]">
-          <div>Update Profile</div>
+          <div className="xl:text-xl">Update Profile</div>
           <div className="flex  items-center justify-center gap-[50px]  ">
             <Image alt="" src="/pro.png" width={100} height={100} />
             <div>update photo </div>

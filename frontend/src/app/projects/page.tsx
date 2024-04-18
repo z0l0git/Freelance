@@ -48,9 +48,9 @@ const page = async () => {
           ButtonClass="hidden"
           LandingPage="projects"
           ButtonName="Log Out"
-          PictureOfPage={""}
-          pictureofalt={""}
-          ImageClass={""}
+          PictureOfPage=""
+          pictureofalt=""
+          ImageClass="responsivePatchCompImage"
         />
       </div>
       <ProjectPageMidd data={data} AllPost={AllPost} skills={skills} />

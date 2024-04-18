@@ -35,23 +35,29 @@ export const PageHeroes = (props: Props) => {
   };
 
   return (
-    <div className="w-full flex justify-start mx-auto  items-center md:flex-col bg-[url(/bg.jpeg)] mt-[-100px] mb-[-250px] z-30">
-      <div className="flex w-[1200px] mx-auto justify-between gap-10 items-center h-[513px] ">
-        <div className="w-6/12 flex flex-col justify-center items-left">
-          <h1 className="text-6xl font-semibold text-white">{PageBigName}</h1>
-          <div className="flex items-center">
+    <div className="w-full flex justify-start mx-auto items-center bg-[url(/bg.jpeg)] overflow-hidden mt-[-100px] mb-[-250px] z-30 max-sm:px-2 max-sm:w-[100%]  sm:w-[100%] sm:px-2 max-md:mx-auto md:justify-center ">
+      <div className="flex w-[1280px] mx-auto justify-between gap-10 md:gap-2 items-center h-[513px] max-sm:flex-col max-sm:justify-center max-sm:items-start sm:mx-auto max-md:flex md:w-[540px] max-md:max-w-[540px] md:mx-auto md:flex xl:w-[990px]  max-xl:min-w-[875px]">
+        <div className="w-6/12 flex flex-col justify-center items-left ">
+          <h1 className="text-6xl font-semibold text-white max-sm:text-4xl text-nowrap max-md:text-4xl ">
+            {PageBigName}
+          </h1>
+          <div className="flex items-center gap-2 max-sm:w-screen max-sm:gap-1 ">
             <Link href="/">
-              <span className="text-white font-normal">{Home}</span>
+              <span className="text-white font-normal text-nowrap">{Home}</span>
             </Link>
-            <IoIosArrowForward className="text-white font-semibold" />
+            <IoIosArrowForward className="text-white font-semibold " />
             <Link href={PageLink}>
-              <span className="text-white font-normal">{PageLinkName}</span>
+              <span className="text-white font-normal text-nowrap">
+                {PageLinkName}
+              </span>
             </Link>
             <IoIosArrowForward className="text-white font-semibold" />
-            <span className="text-white font-normal">{LandingPage}</span>
+            <span className="text-[#f3a102] hover:text-[#0a58ca] hover:cursor-pointer font-normal text-nowrap">
+              {LandingPage}
+            </span>
           </div>
         </div>
-        <div className="w-2/12 flex justify-start items-center">
+        <div className="w-2/12 flex justify-center items-center max-sm:justify-start max-sm:w-4/12 sm:w-[30%] sm:justify-start md:">
           <div className={ImageClass}>
             <Image
               src={PictureOfPage}

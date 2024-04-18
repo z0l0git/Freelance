@@ -11,7 +11,7 @@ export const UPdateprofile = () => {
 
   return (
     <>
-      <div className="w-[856px] p-[32px] bg-white border border-gray-300 rounded-[15px] max-md:w-[416px] max-md:items-center justify-center">
+      <div className="w-[856px] p-[32px] bg-white border border-gray-300 rounded-[15px] max-md:w-[416px] max-md:items-center justify-center max-sm:w-full max-sm:px-2 sm:w-full sm:px-2 max-md:max-w-[540px] max-md:mx-auto  max-xl:max-w-[700px]">
         <div className="bg-[#f8f9fc] flex gap-[20px] px-[20px] py-[20px] rounded-[15px] border border-gray-300 font-bold mb-[32px]">
           <div
             onClick={() => setStage(0)}
@@ -19,7 +19,7 @@ export const UPdateprofile = () => {
               stage === 0 && "text-blue-700"
             } `}
           >
-            <AiOutlineFileAdd className="text-[20px]" /> New Project
+            <AiOutlineFileAdd className="text-[20px] xl:text-xl" /> New Project
           </div>
           <div
             onClick={() => setStage(1)}

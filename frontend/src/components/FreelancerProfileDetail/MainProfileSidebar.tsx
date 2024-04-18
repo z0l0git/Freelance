@@ -3,9 +3,6 @@ import React from "react";
 import { MainProfileInfo } from "./MainProfileInfo";
 import { EditBar } from "./AllEditbar";
 
-
-
-
 type SetProDileype = {
   firstName: string;
   lastName: string;
@@ -38,7 +35,7 @@ export const MainProfileSidebar = (props: PropsType) => {
   };
 
   return (
-    <div className="flex flex-col gap-8  justify-center bg-transparent max-md:w-full">
+    <div className="flex flex-col gap-8 justify-center bg-transparent max-md:w-full max-sm:w-full max-sm:px-2 sm:w-full sm:px-2 max-md:max-w-[540px] max-md:mx-auto lg:w-[416px] max-xl:max-w-[316px]">
       <MainProfileInfo />
       <EditBar />
     </div>
