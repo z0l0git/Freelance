@@ -37,6 +37,7 @@ export const MainProfileSidebar = (props: PropsType) => {
   };
 
   return (
+
     <div className="flex flex-col gap-8  justify-center bg-transparent max-md:w-full">
       <MainProfileInfo profile={profile} data={data} />
       <EditBar />

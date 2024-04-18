@@ -20,9 +20,9 @@ const page = () => {
           ButtonClass="hidden"
           LandingPage="contact"
           ButtonName=""
-          PictureOfPage={"/contact.png"}
+          PictureOfPage="/contact.png"
           pictureofalt="Contact page"
-          ImageClass="w-[406px] h-[373px] flex justify-center items-center"
+          ImageClass="w-[406px] h-[373px] flex justify-center items-center responsivePatchCompImage max-sm:hidden"
         />
       </div>
       <Contact />

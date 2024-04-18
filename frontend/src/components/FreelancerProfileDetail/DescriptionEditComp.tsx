@@ -63,10 +63,12 @@ export const DescriptionEditComp: React.FC<{}> = () => {
   return (
     <div>
       <div className="flex justify-between items-center mb-2">
+
         <h3 className="text-2xl font-semibold">Job Title</h3>
+
         {!showdescriptionEdit ? (
           <WhiteButton
-            buttonClass="font-bold text-[#0d47a1] cursor-pointer"
+            buttonClass="font-bold text-[#0d47a1] cursor-pointer xl:text-md"
             onClick={clickButton}
             buttonName="Edit"
           />
