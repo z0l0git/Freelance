@@ -20,6 +20,7 @@ type Response = {
   phone: string;
   password: string;
   discription: string;
+  location: string;
 };
 
 export const DataProvider = ({ children }: any) => {
@@ -33,6 +34,7 @@ export const DataProvider = ({ children }: any) => {
     phone: "",
     password: "",
     discription: "",
+    location: "",
   });
 
   const accessToken =

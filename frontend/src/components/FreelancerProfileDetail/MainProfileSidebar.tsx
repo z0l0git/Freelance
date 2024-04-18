@@ -4,7 +4,33 @@ import { MainProfileInfo } from "./MainProfileInfo";
 import { EditBar } from "./AllEditbar";
 import { BlueButton } from "../Button";
 
-export const MainProfileSidebar = () => {
+
+
+type SetProDileype = {
+  firstName: string;
+  lastName: string;
+
+  phone: string;
+  location: string;
+};
+type Response = {
+  _id: string;
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone: string;
+  password: string;
+  discription: string;
+  location: string;
+};
+
+type PropsType = {
+  profile: SetProDileype;
+  data: Response;
+};
+export const MainProfileSidebar = (props: PropsType) => {
+  const { profile, data } = props;
+  console.log(profile, "pro");
   const handleLogout = () => {
     localStorage.removeItem("token");
     window.location.pathname = "/";
