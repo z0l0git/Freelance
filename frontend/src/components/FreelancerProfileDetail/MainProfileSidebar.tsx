@@ -6,9 +6,11 @@ import { EditBar } from "./AllEditbar";
 type SetProDileype = {
   firstName: string;
   lastName: string;
-
+  id: string;
   phone: string;
   location: string;
+  createdAt: string;
+  image: string;
 };
 type Response = {
   _id: string;
@@ -19,6 +21,7 @@ type Response = {
   password: string;
   discription: string;
   location: string;
+  image: string;
 };
 
 type PropsType = {
@@ -27,7 +30,6 @@ type PropsType = {
 };
 export const MainProfileSidebar = (props: PropsType) => {
   const { profile, data } = props;
-  console.log(profile, "pro");
 
   const handleLogout = () => {
     localStorage.removeItem("token");
@@ -35,8 +37,9 @@ export const MainProfileSidebar = (props: PropsType) => {
   };
 
   return (
-    <div className="flex flex-col gap-8 justify-center bg-transparent max-md:w-full max-sm:w-full max-sm:px-2 sm:w-full sm:px-2 max-md:max-w-[540px] max-md:mx-auto lg:w-[416px] max-xl:max-w-[316px]">
-      <MainProfileInfo />
+
+    <div className="flex flex-col gap-8  justify-center bg-transparent max-md:w-full">
+      <MainProfileInfo profile={profile} data={data} />
       <EditBar />
     </div>
   );

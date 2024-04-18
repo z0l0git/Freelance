@@ -25,7 +25,7 @@ type RequestBody = {
 const GetUserById = async (id?: string) => {
   try {
     const { data } = await axios.post<RequestBody>(
-      "http://localhost:8000/getUserById",
+      "https://freelance-gmjr.onrender.com/getUserById",
       {
         id: id,
       }
@@ -50,7 +50,7 @@ export default async function ProfilePage({
       <div className="bg-[url(https://pixner.net/aihire/aihire/assets/img/bn/breadcumndbg.jpg)]">
         <Menu />
       </div>
-      <Profile data={data} />
+      <Profile searchParams={searchParams.id} data={data} />
       <Footer />
     </div>
   );

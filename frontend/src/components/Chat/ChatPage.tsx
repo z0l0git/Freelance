@@ -15,7 +15,7 @@ export const ChatPage = () => {
   const [userName, setUserName] = useState("");
 
   var socket: any;
-  socket = io(URL || "http://localhost:8000", {
+  socket = io(URL || "https://freelance-gmjr.onrender.com", {
     transports: ["websocket"],
   });
 

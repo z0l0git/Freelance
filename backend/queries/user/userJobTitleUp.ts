@@ -1,30 +1,22 @@
 import { Request } from "express";
 import { UserModel } from "../../models";
 
-
-export const upUserSj = async (req: Request) => {
-  const { id, firstName, lastName, phone, location, image } = req.body;
-
+export const jobTitleUp = async (req: Request) => {
+  const { id, jobTitle } = req.body;
   try {
     const UpedUser = await UserModel.findByIdAndUpdate(
       { _id: id },
       {
         $set: {
-          firstName: firstName,
-          lastName: lastName,
-          phone: phone,
-          location: location,
-          image: image,
+          jobTitle: jobTitle,
         },
       },
       {
         new: true,
       }
     );
-    return UpedUser;
+    return UpedUser
   } catch (err: any) {
     throw new Error(err.message);
   }
 };
-
-export default upUserSj;

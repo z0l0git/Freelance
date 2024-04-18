@@ -1,7 +1,7 @@
 "user client";
 import React, { useState } from "react";
 import { DescriptionEditComp } from "./DescriptionEditComp";
-import { Languages } from "./Languages";
+import { Budgets } from "./Languages";
 import { Skills } from "./Skills";
 import { WorkExperience, Education } from "./Education";
 import { SocialAccounts } from "./SocialAccounts";
@@ -14,12 +14,12 @@ export const EditBar = () => {
       </div>
       <div className="w-full border-dashed border-t-2 "></div>
       <div className="w-full my-8 ">
-        <Languages />
+        <Budgets />
       </div>
       <div className="w-full border-dashed border-t-2 "></div>
-      <div className="w-full my-8 ">
+      {/* <div className="w-full my-8 ">
         <SocialAccounts />
-      </div>
+      </div> */}
       <div className="w-full border-dashed border-t-2 "></div>
       <div className="w-full my-8">
         <Skills />
