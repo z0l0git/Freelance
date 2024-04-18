@@ -45,7 +45,9 @@ type TypePropsstate = {
 };
 
 const getPresignedURL = async () => {
-  const { data } = await axios.get("https://freelance-gmjr.onrender.com/uploadImage");
+  const { data } = await axios.get(
+    "https://freelance-gmjr.onrender.com/uploadImage"
+  );
   return data as { uploadUrl: string; accessUrls: string };
 };
 
@@ -141,7 +143,7 @@ export const UpdatePro = (props: TypePropsstate) => {
             >
               <Image
                 alt=""
-                src={`${profile?.image}`}
+                src={`${profile?.image ? profile?.image : "/proq.webp"}`}
                 width={0}
                 height={0}
                 sizes="100vw"

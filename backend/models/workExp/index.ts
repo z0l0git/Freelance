@@ -2,14 +2,19 @@ import { model, Schema, Model, models } from "mongoose";
 
 export type WorkExpModelType = {
   _id: Schema.Types.ObjectId;
-  year: string;
+  hiredY: string;
+  firedY: string;
   occupation: string;
   companyName: string;
-  about: string;
+  aboutCompany: string;
 };
 
 const WorkExpSchema = new Schema<WorkExpModelType>({
-  year: {
+  hiredY: {
+    type: String,
+    required: true,
+  },
+  firedY: {
     type: String,
     required: true,
   },
@@ -21,7 +26,7 @@ const WorkExpSchema = new Schema<WorkExpModelType>({
     type: String,
     required: true,
   },
-  about: {
+  aboutCompany: {
     type: String,
     required: true,
   },

@@ -2,14 +2,19 @@ import { model, Schema, Model, models } from "mongoose";
 
 export type EducationModelType = {
   _id: Schema.Types.ObjectId;
-  year: string;
+  startedY: string;
+  finishedY: string;
   degree: string;
   schoolName: string;
-  about: string;
+  aboutSchool: string;
 };
 
 const EducationSchema = new Schema<EducationModelType>({
-  year: {
+  startedY: {
+    type: String,
+    required: true,
+  },
+  finishedY: {
     type: String,
     required: true,
   },
@@ -21,7 +26,7 @@ const EducationSchema = new Schema<EducationModelType>({
     type: String,
     required: true,
   },
-  about: {
+  aboutSchool: {
     type: String,
     required: true,
   },

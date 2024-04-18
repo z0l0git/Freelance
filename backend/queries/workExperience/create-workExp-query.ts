@@ -1,14 +1,33 @@
 import { Request } from "express";
-import { WorkExpModel } from "../../models";
+import { UserModel, WorkExpModel } from "../../models";
 
 export const createWorkExpQuery = async (req: Request) => {
-  const { year, occupation, companyName, about } = req.body;
+  const { id, hiredY, firedY, occupation, companyName, aboutCompany } =
+    req.body;
+  try {
+    const result = await WorkExpModel.create({
+      hiredY,
+      firedY,
+      occupation,
+      companyName,
+      aboutCompany,
+    });
 
-  const workExp = await WorkExpModel.create({
-    year,
-    occupation,
-    companyName,
-    about,
-  });
-  return workExp;
+    const userU = await UserModel.findOneAndUpdate(
+      {
+        _id: id,
+      },
+      {
+        $push: {
+          workExp: [result._id],
+        },
+      },
+      {
+        new: true,
+      }
+    );
+    return userU;
+  } catch (error: any) {
+    return error.message;
+  }
 };
