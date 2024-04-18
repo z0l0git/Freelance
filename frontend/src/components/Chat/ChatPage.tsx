@@ -32,8 +32,6 @@ export const ChatPage = () => {
     <div className="flex w-full justify-center">
       <div className="w-[20%] flex flex-col items-start gap-2 bg-[#402e58] p-3 rounded-xl h-[650px] mt-[20px]">
         <UserList join={handleJoin} room="1" />
-        <UserList join={handleJoin} room="2" />
-        <UserList join={handleJoin} room="3" />
       </div>
       <Chat username={userName} socket={socket} roomId={roomId} />
     </div>
