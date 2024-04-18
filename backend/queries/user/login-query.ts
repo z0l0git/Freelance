@@ -24,6 +24,7 @@ export const loginQuery = async (req: Request) => {
       throw new Error("User or Password not match");
     } else {
       const token = await tokenGenerate(user._id.toString());
+      // const token = user.email;
 
       return token;
     }

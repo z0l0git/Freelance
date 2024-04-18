@@ -41,7 +41,7 @@ export const WorkExperienceComp = (props: Props) => {
   const AddnewEducation = async () => {
     try {
       const { data } = await axios.post(
-        "http://localhost:8000/createEducation",
+        "http://localhost:8000/createWorkExp",
         expData
       );
       console.log(data, "great result for exp");
@@ -59,7 +59,7 @@ export const WorkExperienceComp = (props: Props) => {
             type="number"
             className="bg-white border rounded-2xl p-3 w-[45%]"
             placeholder=" hired year"
-            name="startedY"
+            name="hiredY"
             min={1939}
             max={2024}
             onChange={(e) => handlechange(e)}
@@ -72,7 +72,7 @@ export const WorkExperienceComp = (props: Props) => {
             type="number"
             className="bg-white border rounded-2xl p-3 w-[45%]"
             placeholder="fired year"
-            name="finishedY"
+            name="firedY"
             onChange={(e) => handlechange(e)}
           />
         </div>
@@ -81,21 +81,21 @@ export const WorkExperienceComp = (props: Props) => {
           type="text"
           className="bg-white border rounded-2xl p-3"
           placeholder="occupation"
-          name="degree"
+          name="occupation"
           onChange={(e) => handlechange(e)}
         />
         <input
           type="text"
           className="bg-white border rounded-2xl p-3"
           placeholder="Enter your company name"
-          name="schoolName"
+          name="companyName"
           onChange={(e) => handlechange(e)}
         />
         <input
           type="text"
           className="bg-white border rounded-2xl p-3"
           placeholder="Tell me about your company"
-          name="aboutSchool"
+          name="aboutCompany"
           onChange={(e) => handlechange(e)}
         />
         <div className="w-full flex justify-around p-4">
