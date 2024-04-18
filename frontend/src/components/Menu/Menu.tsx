@@ -18,22 +18,21 @@ import { Example } from "./MenuToggle";
 import { MenuList } from "./MenuList";
 import { DataContext } from "../context/DataContext";
 import Link from "next/link";
-import { motion } from "framer-motion";
-
-const tabs = ["Projects", "Freelancers", "Contact"];
-const tabref = [
-  { text: "Projects", link: "/projects" },
-  { text: "Freelancers", link: "/freelancers" },
-  { text: "Contact", link: "/contact" },
-];
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuTrigger,
+  NavigationMenuItem,
+} from "@radix-ui/react-navigation-menu";
 
 export const Menu = () => {
   const [open, setOpen] = useState(false);
   const { isLoggedIn } = useContext(DataContext);
-  const [selected, setSelected] = useState(tabs[0]);
-
+  const handleClick = () => {
+    setOpen(!open);
+  };
   return (
-    <>
+    <div>
       <div
         className={`py-4 flex justify-around z-50 sticky top-0 bg-[#13203B] w-screen`}
       >
@@ -57,13 +56,13 @@ export const Menu = () => {
             <div className="flex items-center gap-[6%] w-full">
               <Link href={"/projects"}>
                 <WhiteButton
-                  buttonName="Browse Projects"
+                  buttonName="Projects"
                   buttonClass="text-white hover:text-blue-500 hover:underline"
                 />
               </Link>
               <Link href={"/freelancers"}>
                 <WhiteButton
-                  buttonName="Find Freelancers"
+                  buttonName="Freelancers"
                   buttonClass="text-white hover:text-blue-500 hover:underline"
                 />
               </Link>
@@ -121,6 +120,6 @@ export const Menu = () => {
       <div className="w-screen flex justify-center z-40">
         <AnimatePresence>{open && <MenuList />}</AnimatePresence>
       </div>
-    </>
+    </div>
   );
 };

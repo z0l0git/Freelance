@@ -29,7 +29,6 @@ export const MenuProfileCard = (props: any) => {
       <DropdownMenuContent className="flex flex-col gap-2 py-3 px-6">
         <DropdownMenuLabel className="flex flex-col justify-center items-center gap-5">
           <MenuProfileUserInfoCard />
-          <ButtonWithBlueBorder buttonName="Switch to buying" />
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuLabel>
@@ -57,19 +56,6 @@ export const MenuProfileCard = (props: any) => {
             <MdOutlinePostAdd />
             <span className="font-bold ">Post A Project</span>
           </Link>
-        </DropdownMenuItem>
-
-        <DropdownMenuItem className="flex gap-2 w-full h-8">
-          <AiOutlineTeam /> <span className="font-bold ">Refer a Friend</span>
-        </DropdownMenuItem>
-        <DropdownMenuLabel>
-          <p className="text-sm text-gray-600 font-thin">Billing</p>
-        </DropdownMenuLabel>
-        <DropdownMenuItem className="flex gap-2 w-full h-8">
-          <AiOutlineSetting /> <span className="font-bold ">Settings</span>
-        </DropdownMenuItem>
-        <DropdownMenuItem className="flex gap-2 w-full h-8">
-          <MdPayment /> <span className="font-bold ">Payment</span>
         </DropdownMenuItem>
       </DropdownMenuContent>
     </div>

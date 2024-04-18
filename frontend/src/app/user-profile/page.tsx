@@ -1,9 +1,9 @@
 "use client";
 import { Footer } from "@/components/Footer/Footer";
 import { MainProfileSidebar } from "@/components/FreelancerProfileDetail/MainProfileSidebar";
+import { Profilepath } from "@/components/FreelancerProfileDetail/Profilepath";
 import { HeaderSearch } from "@/components/HeaderSearch/HeaderSearch";
 import { Menu } from "@/components/Menu/Menu";
-
 import { UPdateprofile } from "@/components/userProfile/UpdateProFile";
 import React, { useEffect } from "react";
 import { useState } from "react";
@@ -46,15 +46,16 @@ const page = () => {
   console.log(profile, "profile in update profile page");
 
   return (
-    <div>
-      <div className="bg-[url(https://pixner.net/aihire/aihire/assets/img/bn/breadcumndbg.jpg)]">
+    <div className="flex flex-col bg-gray-50 w-screen">
+      <div className="w-full sticky top-0">
         <Menu />
       </div>
+
       <div className="flex justify-center mt-[100px]">
         <MainProfileSidebar profile={profile} data={data} />
         <UPdateprofile />
-      </div>
 
+      </div>
       <Footer />
     </div>
   );

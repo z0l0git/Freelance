@@ -1,6 +1,5 @@
 import { Menu } from "@/components/Menu/Menu";
 import React from "react";
-
 import { Footer } from "@/components/Footer/Footer";
 import axios from "axios";
 import { GetProjectCategory, GetSkillCategory } from "@/utils/axiosInstance";

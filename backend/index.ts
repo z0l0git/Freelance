@@ -12,6 +12,8 @@ import {
 } from "./routes";
 import { Server } from "socket.io";
 import http from "http";
+import { Message } from "./routes/message";
+import { Conversation } from "./routes/conversation";
 
 // Create an express app
 
@@ -27,6 +29,8 @@ app.use(EducationRouter);
 app.use(WorkExperienceRouter);
 app.use(ProjectRouter);
 app.use(PostReview);
+app.use(Message);
+app.use(Conversation);
 
 connectDb();
 

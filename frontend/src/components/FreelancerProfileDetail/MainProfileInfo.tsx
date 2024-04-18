@@ -19,7 +19,7 @@ export const MainProfileInfo = () => {
     console.log("he");
   };
   return (
-    <div className="w-[416px] h-[488px] flex flex-col items-center gap-4 rounded-2xl border">
+    <div className="w-[416px] h-[488px] flex flex-col items-center gap-4 rounded-2xl border bg-white sm:w-full">
       <div className="flex justify-center items-center p-4 ">
         <div className="w-30 h-30 relative flex justify-center items-center p-4 rounded-full border ">
           <Image
