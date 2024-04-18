@@ -110,7 +110,7 @@ export const Contact = () => {
               </div>
             </div>
             <div>
-              <div className="w-[792px] h-[180px]">
+              <div className="w-[792px] h-[180px] px-3">
                 <TextAreaComponent name="Message" className="bg-white" />
               </div>
             </div>
