@@ -56,13 +56,13 @@ export const Menu = () => {
             <div className="flex items-center gap-[6%] w-full">
               <Link href={"/projects"}>
                 <WhiteButton
-                  buttonName="Browse Projects"
+                  buttonName="Projects"
                   buttonClass="text-white hover:text-blue-500 hover:underline"
                 />
               </Link>
               <Link href={"/freelancers"}>
                 <WhiteButton
-                  buttonName="Find Freelancers"
+                  buttonName="Freelancers"
                   buttonClass="text-white hover:text-blue-500 hover:underline"
                 />
               </Link>
