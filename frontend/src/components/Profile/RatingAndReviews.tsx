@@ -34,22 +34,22 @@ type stateType = {
 export const RatingAndReview = (props: IdType) => {
   const { searchParams } = props;
   const [rdata, setRdata] = useState<stateType[]>([]);
-
-  const GetUserById = async () => {
-    try {
-      const reviews = await axios.post("http://localhost:8000/getallreview", {
-        createdFor: searchParams,
-      });
-
-      setRdata(reviews.data);
-      return;
-    } catch (error: any) {
-      throw new Error(error.message);
-    }
-  };
   useEffect(() => {
+    const GetUserById = async () => {
+      try {
+        const reviews = await axios.post("http://localhost:8000/getallreview", {
+          createdFor: searchParams,
+        });
+
+        setRdata(reviews.data);
+        return;
+      } catch (error: any) {
+        throw new Error(error.message);
+      }
+    };
     GetUserById();
-  }, []);
+  }, [searchParams]);
+
   console.log(rdata);
 
   return (

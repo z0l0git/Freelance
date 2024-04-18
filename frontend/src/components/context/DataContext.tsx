@@ -54,7 +54,7 @@ export const DataProvider = ({ children }: any) => {
           );
 
           setdata(data);
-          console.log(data, "dorjo");
+          console.log(data, "userdata");
 
           setIsLoggedIn(true);
           console.log("yes");
