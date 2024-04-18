@@ -25,7 +25,7 @@ export const Menu = () => {
     setOpenProfile(false);
   };
   return (
-    <div className="sticky top-0">
+    <div className="sticky top-0 z-50">
       <div
         className={`py-4 flex justify-around z-50 sticky top-0 bg-[#13203B] w-screen`}
       >

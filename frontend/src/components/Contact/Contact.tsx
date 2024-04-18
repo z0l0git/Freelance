@@ -27,9 +27,9 @@ export const NameInputComponent = (props: Props) => {
 
 export const Contact = () => {
   return (
-    <div className="flex w-screen justify-center items-center py-10">
-      <div className="flex w-[1280px] justify-start items-center gap-5">
-        <div className="flex flex-col w-[416px] h-fill p-8 rounded-2xl">
+    <div className="flex w-screen justify-center items-center py-10 bg-slate-200">
+      <div className="flex w-[1280px] justify-start items-start gap-5 ">
+        <div className="flex flex-col w-[416px] h-fill p-8 rounded-2xl bg-white shadow-xl">
           <div className="flex flex-col  gap-4">
             <div className="flex flex-col mb-8 w-full">
               <h3 className="text-2xl font-semibold">Need more help?</h3>
@@ -74,7 +74,7 @@ export const Contact = () => {
             </div>
           </div>
         </div>
-        <div className="flex flex-col w-[856px] h-[653px] p-8 rounded-2xl">
+        <div className="flex flex-col w-[856px] h-[653px] p-8 rounded-2xl bg-white shadow-xl">
           <div className="flex flex-col mb-8 pb-8 w-full pb-4">
             <h3 className="text-2xl font-semibold mt-[10px]">
               Get in touch with us.
