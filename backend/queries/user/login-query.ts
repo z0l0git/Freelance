@@ -9,6 +9,7 @@ const getByEmail = async (email: string) => {
 
 export const loginQuery = async (req: Request) => {
   const { email, password } = req.body;
+
   try {
     const user = await getByEmail(email);
 
