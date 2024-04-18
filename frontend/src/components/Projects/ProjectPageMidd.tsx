@@ -128,7 +128,7 @@ export default function ProjectPageMidd(props: PropsType) {
 
     try {
       const { data } = await axios.post<PosdtDataType[]>(
-        "http://localhost:8000/getAllProject",
+        "https://freelance-gmjr.onrender.com/getAllProject",
         body
       );
       setPostData(data);
