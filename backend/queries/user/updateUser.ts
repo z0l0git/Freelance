@@ -1,7 +1,7 @@
 import { Request } from "express";
 import { UserModel } from "../../models";
 
-export const upUserSj = async (req: Request) => {
+const upUserSj = async (req: Request) => {
   const {
     id,
     // email,
@@ -33,3 +33,5 @@ export const upUserSj = async (req: Request) => {
     throw new Error(err.message);
   }
 };
+
+export default upUserSj;
