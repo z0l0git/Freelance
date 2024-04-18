@@ -83,40 +83,34 @@ export const Menu = () => {
               <BsChatText className="color-white text-white w-6 h-6" />
             </div>
 
-            <nav className="flex justify-center items-center p-2 rounded-full bg-[#343e56] w-10 h-10 relative">
-              <BsBell
-                className="color-white text-white w-6 h-6"
-                onClick={handleClick}
-              />
-              <div className="absolute top-16 right-0 z-20 bg-white rounded-xl">
-                {open ? (
+            <DropdownMenu>
+              <div className="flex justify-center items-center p-2 rounded-full bg-[#343e56] w-10 h-10">
+                <DropdownMenuTrigger>
+                  <BsBell className="color-white text-white w-6 h-6" />
+                </DropdownMenuTrigger>
+                <DropdownMenuContent className="w-[306px] h-[354px] p-5">
                   <MenuNotificationCard
                     userName="Ganaa"
                     createdDate={DataView}
                     profilePicture="/f10.png"
-                    className="w-[306px] h-[274px] py-6 px-5"
                   />
+                </DropdownMenuContent>
+              </div>
+            </DropdownMenu>
+            <DropdownMenu>
+              <div className="flex justify-center items-center rounded-full ">
+                {isLoggedIn ? (
+                  <MenuProfileCard profilePicture="/f10.png" />
                 ) : (
-                  ""
+                  <Link href="/sign">
+                    <WhiteButton
+                      buttonName="Log In"
+                      buttonClass="text-white hover:text-blue-500 hover:underline "
+                    />
+                  </Link>
                 )}
               </div>
-            </nav>
-
-            <nav className="flex justify-center items-center rounded-full relative">
-              {isLoggedIn ? (
-                <div className="absolute top-16 right-0 z-20 bg-white rounded-xl">
-                  {open ? <MenuProfileCard profilePicture="/f10.png" /> : ""}
-                </div>
-              ) : (
-                <Link href="/sign">
-                  <WhiteButton
-                    buttonName="Log In"
-                    buttonClass="text-white hover:text-blue-500 hover:underline "
-                  />
-                </Link>
-              )}
-            </nav>
-
+            </DropdownMenu>
             <div className="md:hidden" onClick={() => setOpen(!open)}>
               <Example />
             </div>
