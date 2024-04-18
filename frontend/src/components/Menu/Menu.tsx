@@ -17,12 +17,15 @@ import Link from "next/link";
 
 export const Menu = () => {
   const [open, setOpen] = useState(false);
+  const [openBell, setOpenBell] = useState(false);
+  const [openProfile, setOpenProfile] = useState(false);
   const { isLoggedIn } = useContext(DataContext);
   const handleClick = () => {
-    setOpen(!open);
+    setOpenBell(!openBell);
+    setOpenProfile(false);
   };
   return (
-    <div>
+    <div className="sticky top-0">
       <div
         className={`py-4 flex justify-around z-50 sticky top-0 bg-[#13203B] w-screen`}
       >
@@ -47,20 +50,20 @@ export const Menu = () => {
               <Link href={"/projects"}>
                 <WhiteButton
                   buttonName="Browse Projects"
-                  buttonClass="text-white hover:text-blue-500 hover:underline"
+                  buttonClass="text-white hover:text-blue-500 hover:underline text-nowrap w-fit"
                 />
               </Link>
               <Link href={"/freelancers"}>
                 <WhiteButton
                   buttonName="Find Freelancers"
-                  buttonClass="text-white hover:text-blue-500 hover:underline"
+                  buttonClass="text-white hover:text-blue-500 hover:underline text-nowrap w-fit"
                 />
               </Link>
 
               <Link href={"/contact"}>
                 <WhiteButton
                   buttonName="Contact"
-                  buttonClass="text-white hover:text-blue-500 hover:underline"
+                  buttonClass="text-white hover:text-blue-500 hover:underline text-nowrap w-fit"
                 />
               </Link>
             </div>
@@ -72,18 +75,13 @@ export const Menu = () => {
             >
               <BsChatText className="color-white text-white w-6 h-6" />
             </div>
-            {/* <DropdownMenu> */}
             <nav className="flex justify-center items-center p-2 rounded-full bg-[#343e56] w-10 h-10 relative">
-              {/* <DropdownMenuTrigger> */}
-
               <BsBell
                 className="color-white text-white w-6 h-6"
                 onClick={handleClick}
               />
-              {/* </DropdownMenuTrigger> */}
-              {/* <DropdownMenuContent className="w-[306px] h-[354px] p-5"> */}
               <nav className="rounded-xl overflow-hidden ">
-                {open ? (
+                {openBell ? (
                   <div className="w-[306px] h-[274px] bg-white py-6 px-5 absolute top-12 right-0 rounded-xl">
                     <MenuNotificationCard
                       userName="Ganaa"
@@ -95,13 +93,16 @@ export const Menu = () => {
                   ""
                 )}
               </nav>
-              {/* </DropdownMenuContent> */}
             </nav>
-            {/* </DropdownMenu> */}
-            {/* <DropdownMenu> */}
+
             <nav className="flex justify-center items-center rounded-full relative w-10 h-10 ">
               {isLoggedIn ? (
-                <MenuProfileCard profilePicture="/f10.png" />
+                <MenuProfileCard
+                  profilePicture="/f10.png"
+                  setOpenBell={setOpenBell}
+                  openProfile={openProfile}
+                  setOpenProfile={setOpenProfile}
+                />
               ) : (
                 <Link href="/sign">
                   <WhiteButton
@@ -111,7 +112,6 @@ export const Menu = () => {
                 </Link>
               )}
             </nav>
-            {/* </DropdownMenu> */}
             <div className="md:hidden" onClick={() => setOpen(!open)}>
               <Example />
             </div>

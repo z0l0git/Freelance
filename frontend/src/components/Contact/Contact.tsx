@@ -6,6 +6,7 @@ import { TextAreaComponent } from "../../components/TextArea";
 
 import { Input } from "../../components/ui/input";
 import { Label } from "../../components/ui/label";
+import { Menu } from "../Menu/Menu";
 
 type Props = {
   name: string;

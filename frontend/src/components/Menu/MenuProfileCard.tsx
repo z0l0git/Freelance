@@ -3,27 +3,37 @@
 import Image from "next/image";
 import { IoIosCheckmarkCircle, IoMdNotificationsOutline } from "react-icons/io";
 import { LiaUserCheckSolid } from "react-icons/lia";
-import {
-  MdPayment,
-  MdChatBubbleOutline,
-  MdOutlinePostAdd,
-} from "react-icons/md";
-
+import { MdOutlinePostAdd } from "react-icons/md";
 import React, { useState } from "react";
 import Link from "next/link";
-import { DropdownMenu } from "@radix-ui/react-dropdown-menu";
+type ClickType = {
+  setOpenBell: () => void;
+  setOpenProfile: () => void;
+  openProfile: boolean;
+};
 export const MenuProfileCard = (props: any) => {
-  const [open, setOpen] = useState(false);
+  const {
+    setOpenBell,
+    openProfile,
+    setOpenProfile,
+    profilePicture,
+    userName,
+    userMail,
+  } = props;
+
+  console.log(openProfile, "openProfileopenProfileopenProfileopenProfile");
+
   const handleClick = () => {
-    setOpen(!open);
+    setOpenProfile(!openProfile);
+    setOpenBell(false);
   };
-  const { profilePicture, userName, userMail } = props;
+
   return (
     <div className="flex justify-center items-center rounded-full">
       <button onClick={handleClick}>
         <Image alt="user picture" src={profilePicture} width={60} height={60} />
       </button>
-      {open ? (
+      {openProfile ? (
         <div className="flex flex-col gap-2 absolute top-12 right-0 w-[306px] py-6 px-5 bg-white rounded-2xl">
           <div className="flex flex-col justify-center items-center gap-5">
             <MenuProfileUserInfoCard />
