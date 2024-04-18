@@ -50,7 +50,7 @@ export default async function ProfilePage({
       <div className="bg-[url(https://pixner.net/aihire/aihire/assets/img/bn/breadcumndbg.jpg)]">
         <Menu />
       </div>
-      <Profile data={data} />
+      <Profile searchParams={searchParams.id} data={data} />
       <Footer />
     </div>
   );

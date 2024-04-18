@@ -8,6 +8,7 @@ import ThumbUpOutlinedIcon from "@mui/icons-material/ThumbUpOutlined";
 import MessageOutlinedIcon from "@mui/icons-material/MessageOutlined";
 import Rating from "@mui/material/Rating";
 import { CheckCircle } from "../ui/checkcircle";
+import { useState } from "react";
 
 export const DetailsMap = (props: any) => {
   const { icon, topic, text, color } = props;
@@ -164,68 +165,48 @@ export const RatingMap = (props: any) => {
   );
 };
 
-export const ReviewMap = (props: any) => {
-  const { date, time, image, text, name, jobType, likeNum } = props;
-  const [value, setValue] = React.useState<number | null>(5);
-  const [open, setOpen] = React.useState(false);
+export const ReviewMap = ({ userData }: any) => {
+  // const { date, time, image, text, name, jobType, likeNum } = props;
+  const [value, setValue] = useState<number | null>(5);
 
-  const handleComment = () => {
-    setOpen(!open);
-  };
+  const date = new Date(userData.createdAt);
+  const newdate = date.toUTCString();
+  const hours = date.getHours();
+  const minutes = date.getMinutes();
+  const time = `${hours}:${minutes}`;
+
   return (
     <div className="w-[382px] md:w-[800px]  flex flex-col justify-between py-5 px-5 rounded-lg bg-[#0D47A10D] border-top">
       <div className="w-[752px] h-[52px] gap-[20px] flex">
-        {date}
-        <TbPointFilled />
-        {time}
+        {newdate.slice(4, 16)} <span>{time}</span>
       </div>
       <div className="w-[354px] md:w-[752px]">
-        <Rating
-          name="simple-controlled"
-          value={value}
-          onChange={(event, newValue) => {
-            setValue(newValue);
-          }}
-        />
-        <p className="text-[14px]">{text}</p>
+        <Rating name="read-only" value={userData.stars} readOnly />
+        <p className="text-[14px]">{userData.description}</p>
         <div className="w-[354px] md:w-[752px] flex gap-[20px] pt-5 ">
           <Image
-            src={image}
+            src={userData.image}
             alt=""
             width={60}
             height={60}
             className="rounded-full w-[60px] h-[60px]"
           />
           <div className="w-[149px] flex flex-col">
-            <strong className="text-[20px] w-[200px]">{name}</strong>
-            <p className="text-[14px] md:text-[16px]">{jobType}</p>
+            <strong className="text-[20px] w-[200px]">
+              {`${userData.createdBy.firstName} ${userData.createdBy.lastName}`}
+            </strong>
+            <p className="text-[14px] md:text-[16px]">
+              {userData.createdBy.jobTitle}
+            </p>
           </div>
         </div>
         <div className="w-[752px] flex py-6 gap-[20px]">
           <div className="flex items-center text-[#0D47A1] gap-[10px]">
             <ThumbUpOutlinedIcon className="w-[20px] h-[20px]" />
-            {likeNum}
+            bji2
           </div>
         </div>
       </div>
-      {open && (
-        <div className="w-[354px] md:w-[752px] flex items-center justify-between ">
-          <Image
-            src={"/profile2.png"}
-            alt=""
-            width={60}
-            height={60}
-            className="rounded-full w-[60px] h-[60px]"
-          />
-          <div className="w-[280px] md:w-[678px] h-[62px] rounded-full flex items-center justify-center bg-white border border-black">
-            <input
-              className="w-[260px] md:w-[642px] h-[42px] border-transparent text-[16px]"
-              type="text"
-              placeholder="Join the discussion..."
-            />
-          </div>
-        </div>
-      )}
     </div>
   );
 };
