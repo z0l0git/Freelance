@@ -31,7 +31,8 @@
     "src/components/Input.jsx",
     "src/components/Header/HeaderComp.jsx",
     "src/components/Header/HeaderLeft.jsx",
-    "src/components/Header/HeaderRight.jsx"
+    "src/components/Header/HeaderRight.jsx",
+    "src/components/Button.tsx"
   ],
   "exclude": ["node_modules"]
 }

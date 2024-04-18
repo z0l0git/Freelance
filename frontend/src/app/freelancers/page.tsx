@@ -24,7 +24,7 @@ type Response = {
 
 const GetAllUser = async () => {
   try {
-    const { data } = await axios.get("http://localhost:8000/allUser");
+    const { data } = await axios.get("https://freelance-gmjr.onrender.com/allUser");
     return data;
   } catch (err: any) {
     console.log(err.message);

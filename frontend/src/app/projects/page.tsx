@@ -19,9 +19,9 @@ type DataType = {
 
 const GetAllPosts = async () => {
   try {
-    const { data } = await axios.post(
-      "https://freelance-gmjr.onrender.com/getAllProject"
-    );
+
+    const { data } = await axios.post("https://freelance-gmjr.onrender.com/getAllProject");
+
     return data;
   } catch (err: any) {
     console.log(err.message);

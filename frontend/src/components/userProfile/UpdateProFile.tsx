@@ -6,7 +6,45 @@ import { useState } from "react";
 import { NewGig } from "./NewGig";
 import { UpdatePro } from "./UpdatePro";
 
-export const UPdateprofile = () => {
+type SetProDileype = {
+  firstName: string;
+  lastName: string;
+  id: string;
+  phone: string;
+  location: string;
+  createdAt: string;
+  image: string;
+};
+type Response = {
+  _id: string;
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone: string;
+  password: string;
+  discription: string;
+  location: string;
+  image: string;
+};
+
+type TypeProps = {
+  profile: SetProDileype;
+  setProfile: React.Dispatch<
+    React.SetStateAction<{
+      id: string;
+      firstName: string;
+      lastName: string;
+      phone: string;
+      location: string;
+      createdAt: string;
+      image: string;
+    }>
+  >;
+  data: Response;
+};
+export const UPdateprofile = (props: TypeProps) => {
+  const { profile, setProfile, data } = props;
+
   const [stage, setStage] = useState(0);
 
   return (
@@ -45,7 +83,11 @@ export const UPdateprofile = () => {
           {stage === 1 && <div>Active Projects</div>}
           {stage === 2 && (
             <div>
-              <UpdatePro />
+              <UpdatePro
+                profile={profile}
+                setProfile={setProfile}
+                data={data}
+              />
             </div>
           )}
         </div>
