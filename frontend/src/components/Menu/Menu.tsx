@@ -18,13 +18,21 @@ import { Example } from "./MenuToggle";
 import { MenuList } from "./MenuList";
 import { DataContext } from "../context/DataContext";
 import Link from "next/link";
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuTrigger,
+  NavigationMenuItem,
+} from "@radix-ui/react-navigation-menu";
 
 export const Menu = () => {
   const [open, setOpen] = useState(false);
   const { isLoggedIn } = useContext(DataContext);
-
+  const handleClick = () => {
+    setOpen(!open);
+  };
   return (
-    <>
+    <div>
       <div
         className={`py-4 flex justify-around z-50 sticky top-0 bg-[#13203B] w-screen`}
       >
@@ -75,34 +83,40 @@ export const Menu = () => {
               <BsChatText className="color-white text-white w-6 h-6" />
             </div>
 
-            <DropdownMenu>
-              <div className="flex justify-center items-center p-2 rounded-full bg-[#343e56] w-10 h-10">
-                <DropdownMenuTrigger>
-                  <BsBell className="color-white text-white w-6 h-6" />
-                </DropdownMenuTrigger>
-                <DropdownMenuContent className="w-[306px] h-[354px] p-5">
+            <nav className="flex justify-center items-center p-2 rounded-full bg-[#343e56] w-10 h-10 relative">
+              <BsBell
+                className="color-white text-white w-6 h-6"
+                onClick={handleClick}
+              />
+              <div className="absolute top-16 right-0 z-20 bg-white rounded-xl">
+                {open ? (
                   <MenuNotificationCard
                     userName="Ganaa"
                     createdDate={DataView}
                     profilePicture="/f10.png"
+                    className="w-[306px] h-[274px] py-6 px-5"
                   />
-                </DropdownMenuContent>
-              </div>
-            </DropdownMenu>
-            <DropdownMenu>
-              <div className="flex justify-center items-center rounded-full ">
-                {isLoggedIn ? (
-                  <MenuProfileCard profilePicture="/f10.png" />
                 ) : (
-                  <Link href="/sign">
-                    <WhiteButton
-                      buttonName="Log In"
-                      buttonClass="text-white hover:text-blue-500 hover:underline "
-                    />
-                  </Link>
+                  ""
                 )}
               </div>
-            </DropdownMenu>
+            </nav>
+
+            <nav className="flex justify-center items-center rounded-full relative">
+              {isLoggedIn ? (
+                <div className="absolute top-16 right-0 z-20 bg-white rounded-xl">
+                  {open ? <MenuProfileCard profilePicture="/f10.png" /> : ""}
+                </div>
+              ) : (
+                <Link href="/sign">
+                  <WhiteButton
+                    buttonName="Log In"
+                    buttonClass="text-white hover:text-blue-500 hover:underline "
+                  />
+                </Link>
+              )}
+            </nav>
+
             <div className="md:hidden" onClick={() => setOpen(!open)}>
               <Example />
             </div>
@@ -112,6 +126,6 @@ export const Menu = () => {
       <div className="w-screen flex justify-center z-40">
         <AnimatePresence>{open && <MenuList />}</AnimatePresence>
       </div>
-    </>
+    </div>
   );
 };

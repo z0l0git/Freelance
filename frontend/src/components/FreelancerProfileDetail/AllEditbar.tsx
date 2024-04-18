@@ -8,11 +8,10 @@ import { SocialAccounts } from "./SocialAccounts";
 
 export const EditBar = () => {
   return (
-    <div className="w-[416px] h-fit rounded-2xl border p-8 gap-4 ">
+    <div className="w-[416px] h-fit rounded-2xl border p-8 gap-4 bg-white">
       <div className="w-full flex flex-col pb-4 ">
         <DescriptionEditComp />
       </div>
-
       <div className="w-full border-dashed border-t-2 "></div>
       <div className="w-full my-8 ">
         <Languages />
@@ -32,7 +31,6 @@ export const EditBar = () => {
       <div className="w-full border-dashed border-t-2 "></div>
       <div className="w-full my-8">
         <WorkExperience />
-
       </div>
     </div>
   );
