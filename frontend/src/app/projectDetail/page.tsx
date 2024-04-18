@@ -63,6 +63,7 @@ export default async function ProjectDetailPage({
     <div className="">
       <Menu />
       <ProjectDetail data={data as any} />
+      
       <Footer />
     </div>
   );

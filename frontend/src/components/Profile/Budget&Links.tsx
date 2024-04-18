@@ -86,7 +86,7 @@ export const BadgetAndLinks = () => {
       <div className="w-full h-fit flex items-center  justify-center rounded-lg py-5 bg-white ">
         <div className="h-fit gap-[40px] flex flex-col">
           <strong className="text-[24px]">Linked Accounts</strong>
-          <div className="w-full h-[36px] flex gap-[10px] ">
+          <div className="w-full h-[36px] flex gap-[10px] cursor-pointer ">
             {LinkData.map((el, index) => {
               return <LinkMap key={index} linkIcon={el.linkIcon} />;
             })}

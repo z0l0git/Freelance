@@ -26,14 +26,15 @@ type Response = {
 
 type PropsType = {
   data: Response;
+  searchParams: any;
 };
 
 export const Profile = (props: PropsType) => {
-  const { data } = props;
+  const { data, searchParams } = props;
 
   console.log(data, "profile data");
 
-  const [profile, setProfile] = useState<Response>();
+  // const [profile, setProfile] = useState<Response>();
   return (
     <div className="py-6 flex flex-col md:flex-row items-center md:items-start md:justify-center gap-[20px] bg-[#F3F6FA] ">
       <div className="flex flex-col gap-[50px] ">
@@ -51,10 +52,10 @@ export const Profile = (props: PropsType) => {
           <FeatureServive />
         </div> */}
         <div className="w-[426px] md:w-[860px] flex items-center justify-center  bg-white border  rounded-lg">
-          <RatingAndReview />
+          <RatingAndReview searchParams={searchParams} />
         </div>
         <div className="w-[426px] md:w-[860px] flex items-center justify-center bg-white  rounded-lg">
-          <RevieComment />
+          <RevieComment searchParams={searchParams} />
         </div>
       </div>
       <div className=" w-[402px] md:w-[416px] md:h-[623px] rounded-lg sticky top-0">
