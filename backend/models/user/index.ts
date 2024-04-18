@@ -16,6 +16,8 @@ export type UserModelType = {
   skills: [Schema.Types.ObjectId];
   education: [Schema.Types.ObjectId];
   workExp: [Schema.Types.ObjectId];
+  description: string;
+  budget?: number;
 };
 
 const UserSchema = new Schema<UserModelType>({
@@ -41,6 +43,8 @@ const UserSchema = new Schema<UserModelType>({
     required: false,
   },
   workExp: { type: [Schema.Types.ObjectId], ref: "WorkExp", required: false },
+  description: { type: String, required: false },
+  budget: { type: Number, required: false },
 });
 
 UserSchema.index({ email: 1 }, { unique: true });

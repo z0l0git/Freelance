@@ -9,6 +9,7 @@ import {
 } from "../../controller";
 import { updateUserController } from "../../controller/user/update-user";
 import { getRefreshTokenService } from "../../controller/user/refresh";
+import { upUserSjController } from "../../controller/user/userUpdateController";
 
 import { UploadImage } from "../../cloudFlary/intex";
 
@@ -26,3 +27,4 @@ UserRouter.get("/uploadImage", UploadImage);
 
 UserRouter.get("/allUser", getAllUserController);
 UserRouter.post("/getUserById", getUserByIdController);
+UserRouter.post("/upUserSJ", upUserSjController);
