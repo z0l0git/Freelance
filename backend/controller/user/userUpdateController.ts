@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 
-import { upUserSj } from "../../queries/user/UpdateUser";
+import upUserSj from "../../queries/user/updateUser";
+
 
 export const upUserSjController = async (req: Request, res: Response) => {
   try {

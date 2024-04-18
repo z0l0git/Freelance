@@ -6,7 +6,7 @@ import { Menu } from "./Menu/Menu";
 
 export const HeaderHero = () => {
   return (
-    <div className="w-screen relative z-20 bg-[url(https://res.cloudinary.com/dxarul6xr/image/upload/v1711501249/mknv2r8z1g8zp3ig9odn.jpg)] bg-cover no-repeat">
+    <div className="w-screen relative z-20 bg-[url(https://res.cloudinary.com/dxarul6xr/image/upload/v1711501249/mknv2r8z1g8zp3ig9odn.jpg)] bg-cover no-repeat ">
       <Menu />
       <div className="w-screen lg:h-[784px] h-[870px] relative flex justify-center">
         <div className="absolute left-[120px] sm:top-[90px] top-[130px] animate-[wiggle_1s_ease-in-out_infinite]">

@@ -1,11 +1,7 @@
 "use client";
 
 import React, { useContext, useState } from "react";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+
 import { MenuMessageCard, MenuNotificationCard } from "./MenuMessageCard";
 
 import { BsChatText, BsBell } from "react-icons/bs";
@@ -18,21 +14,18 @@ import { Example } from "./MenuToggle";
 import { MenuList } from "./MenuList";
 import { DataContext } from "../context/DataContext";
 import Link from "next/link";
-import {
-  NavigationMenu,
-  NavigationMenuContent,
-  NavigationMenuTrigger,
-  NavigationMenuItem,
-} from "@radix-ui/react-navigation-menu";
 
 export const Menu = () => {
   const [open, setOpen] = useState(false);
+  const [openBell, setOpenBell] = useState(false);
+  const [openProfile, setOpenProfile] = useState(false);
   const { isLoggedIn } = useContext(DataContext);
   const handleClick = () => {
-    setOpen(!open);
+    setOpenBell(!openBell);
+    setOpenProfile(false);
   };
   return (
-    <div>
+    <div className="sticky top-0 z-50">
       <div
         className={`py-4 flex justify-around z-50 sticky top-0 bg-[#13203B] w-screen`}
       >
@@ -56,21 +49,21 @@ export const Menu = () => {
             <div className="flex items-center gap-[6%] w-full">
               <Link href={"/projects"}>
                 <WhiteButton
-                  buttonName="Projects"
-                  buttonClass="text-white hover:text-blue-500 hover:underline"
+                  buttonName="Browse Projects"
+                  buttonClass="text-white hover:text-blue-500 hover:underline text-nowrap w-fit"
                 />
               </Link>
               <Link href={"/freelancers"}>
                 <WhiteButton
-                  buttonName="Freelancers"
-                  buttonClass="text-white hover:text-blue-500 hover:underline"
+                  buttonName="Find Freelancers"
+                  buttonClass="text-white hover:text-blue-500 hover:underline text-nowrap w-fit"
                 />
               </Link>
 
               <Link href={"/contact"}>
                 <WhiteButton
                   buttonName="Contact"
-                  buttonClass="text-white hover:text-blue-500 hover:underline"
+                  buttonClass="text-white hover:text-blue-500 hover:underline text-nowrap w-fit"
                 />
               </Link>
             </div>
@@ -82,35 +75,43 @@ export const Menu = () => {
             >
               <BsChatText className="color-white text-white w-6 h-6" />
             </div>
-
-            <DropdownMenu>
-              <div className="flex justify-center items-center p-2 rounded-full bg-[#343e56] w-10 h-10">
-                <DropdownMenuTrigger>
-                  <BsBell className="color-white text-white w-6 h-6" />
-                </DropdownMenuTrigger>
-                <DropdownMenuContent className="w-[306px] h-[354px] p-5">
-                  <MenuNotificationCard
-                    userName="Ganaa"
-                    createdDate={DataView}
-                    profilePicture="/f10.png"
-                  />
-                </DropdownMenuContent>
-              </div>
-            </DropdownMenu>
-            <DropdownMenu>
-              <div className="flex justify-center items-center rounded-full ">
-                {isLoggedIn ? (
-                  <MenuProfileCard profilePicture="/f10.png" />
-                ) : (
-                  <Link href="/sign">
-                    <WhiteButton
-                      buttonName="Log In"
-                      buttonClass="text-white hover:text-blue-500 hover:underline "
+            <nav className="flex justify-center items-center p-2 rounded-full bg-[#343e56] w-10 h-10 relative">
+              <BsBell
+                className="color-white text-white w-6 h-6"
+                onClick={handleClick}
+              />
+              <nav className="rounded-xl overflow-hidden ">
+                {openBell ? (
+                  <div className="w-[306px] h-[274px] bg-white py-6 px-5 absolute top-12 right-0 rounded-xl">
+                    <MenuNotificationCard
+                      userName="Ganaa"
+                      createdDate={DataView}
+                      profilePicture="/f10.png"
                     />
-                  </Link>
+                  </div>
+                ) : (
+                  ""
                 )}
-              </div>
-            </DropdownMenu>
+              </nav>
+            </nav>
+
+            <nav className="flex justify-center items-center rounded-full relative w-10 h-10 ">
+              {isLoggedIn ? (
+                <MenuProfileCard
+                  profilePicture="/f10.png"
+                  setOpenBell={setOpenBell}
+                  openProfile={openProfile}
+                  setOpenProfile={setOpenProfile}
+                />
+              ) : (
+                <Link href="/sign">
+                  <WhiteButton
+                    buttonName="Log In"
+                    buttonClass="text-white hover:text-blue-500 hover:underline"
+                  />
+                </Link>
+              )}
+            </nav>
             <div className="md:hidden" onClick={() => setOpen(!open)}>
               <Example />
             </div>

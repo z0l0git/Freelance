@@ -6,4 +6,4 @@ import { getAllReviewsController } from "../../controller/review/getAllReviewCon
 export const PostReview = Router();
 
 PostReview.post("/postreview", postReviewController);
-PostReview.get("/getallreview", getAllReviewsController);
+PostReview.post("/getallreview", getAllReviewsController);

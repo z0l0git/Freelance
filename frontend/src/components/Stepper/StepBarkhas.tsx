@@ -121,7 +121,7 @@ export const StepperBarkhas = (props: CateType) => {
 
   return (
     <div>
-      <div className="flex flex-col items-center ">
+      <div className="flex flex-col items-center bg-white gap-10">
         <Stepper step={step} />
         {step < steps.length && (
           <CurrentStep
@@ -134,7 +134,7 @@ export const StepperBarkhas = (props: CateType) => {
             postData={postData}
           />
         )}
-        <div className="flex gap-2  m-[40px] w-[1280px]">
+        <div className="flex gap-2  m-[40px] w-[1280px] bg-white">
           {step < 3 && (
             <div className="w-full flex gap-4 items-center mx-[40px]">
               <BlueButton

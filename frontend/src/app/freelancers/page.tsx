@@ -10,6 +10,7 @@ import axios from "axios";
 import FreelancersMidd from "@/components/FreelancerCardComponent/FreelancersMidd";
 import { Menu } from "@/components/Menu/Menu";
 import { Footer } from "@/components/Footer/Footer";
+import { PageHeroes } from "@/components/Profilepath";
 
 type Response = {
   _id: string;
@@ -40,6 +41,20 @@ const Chinzorig = async () => {
     bg-slate-200"
     >
       <Menu />
+      <div>
+        <PageHeroes
+          PageBigName="Freelancers"
+          Home="Home"
+          PageLink="/freelancers"
+          PageLinkName="freelancers"
+          ButtonClass="hidden"
+          LandingPage="freelancers"
+          ButtonName=""
+          PictureOfPage={""}
+          pictureofalt={""}
+          ImageClass={"w-[406px] h-[373px] flex justify-center items-center"}
+        />
+      </div>
       <FreelancersMidd AllUserData={AllUserData} />
       <Footer />
     </div>
