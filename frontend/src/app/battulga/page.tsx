@@ -4,7 +4,6 @@ const Battulga = () => {
   return (
     <div>
       <Menu />
-      <MainProfileSidebar />
     </div>
   );
 };
