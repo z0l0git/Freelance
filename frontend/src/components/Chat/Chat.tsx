@@ -79,9 +79,9 @@ export const Chat = ({ socket, username, roomId }: any) => {
 
   return (
     <div className="w-[40%] flex h-full">
-      <div className="w-full flex flex-col items-start h-full">
-        <div className="w-full flex items-center gap-[2%] justify-start p-[30px] bg-[#13203B] rounded-t-xl rounded-l-none">
-          <p className="text-[20px] font-bold text-white ">{username}</p>
+      <div className="w-full flex flex-col items-start h-full rounded-l-none">
+        <div className="w-full flex items-center gap-[2%] justify-start p-[30px] bg-[#13203B] rounded-tr-xl rounded-l-none">
+          <p className="text-[20px] font-bold text-white ">{roomId}</p>
         </div>
         <div className="w-full h-full flex flex-col rounded-xl justify-end rounded-t-none rounded-l-none bg-slate-300 p-[20px]">
           <div className="w-full flex  flex-col  overflow-y-scroll scrollbar-hide ">

@@ -14,6 +14,7 @@ export const ChatPage = () => {
   const [roomId, setroomId] = useState("");
   const { data } = useContext(DataContext);
   const [userName, setUserName] = useState("");
+  const [user, setUser] = useState("");
 
   var socket: any;
   socket = io(URL || "https://freelance-gmjr.onrender.com", {
@@ -25,6 +26,7 @@ export const ChatPage = () => {
     setShowChat(true);
     setroomId(roomId);
     setUserName("Room Number: " + roomId);
+    setUser(data.firstName + " " + data.lastName);
     console.log("userName", userName, roomId, "roomId");
     socket.emit("join_room", roomId);
   };
@@ -35,7 +37,7 @@ export const ChatPage = () => {
         <div className="px-4 py-3 border-b border-white w-full">
           <LoggedUser
             name={data.firstName + " " + data.lastName}
-            email={data.email}
+            email={data.firstName}
             image={data.image}
           />
         </div>
@@ -43,7 +45,7 @@ export const ChatPage = () => {
           <UserList join={handleJoin} room="1" />
         </div>
       </div>
-      <Chat username={userName} socket={socket} roomId={roomId} />
+      <Chat username={user} socket={socket} roomId={roomId} />
     </div>
   );
 };
