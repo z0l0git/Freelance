@@ -31,9 +31,15 @@ export const BlueButton = (props: any) => {
 };
 
 export const WhiteButton = (props: any) => {
-  const { buttonName, buttonClass, type, onClick, key = "" } = props;
+  const { buttonName, buttonClass, type, onClick, key = "", disabled } = props;
   return (
-    <button key={key} type={type} className={buttonClass} onClick={onClick}>
+    <button
+      disabled={disabled}
+      key={key}
+      type={type}
+      className={buttonClass}
+      onClick={onClick}
+    >
       {buttonName}
     </button>
   );
