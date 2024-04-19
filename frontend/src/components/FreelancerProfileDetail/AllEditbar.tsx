@@ -8,7 +8,7 @@ import { SocialAccounts } from "./SocialAccounts";
 
 export const EditBar = () => {
   return (
-    <div className="w-[416px] h-fit rounded-2xl border p-8 gap-4 bg-white max-sm:w-full max-sm:px-2 sm:w-full sm:px-2 xl:py-8 xl:px-4">
+    <div className="h-fit rounded-2xl border p-8 gap-4 bg-white  max-sm:px-2  sm:px-2 xl:py-8 xl:px-4">
       <div className="w-full flex flex-col pb-4 ">
         <DescriptionEditComp />
       </div>

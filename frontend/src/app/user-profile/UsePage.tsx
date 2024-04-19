@@ -40,9 +40,7 @@ export const UsePage = () => {
   }, [data]);
 
   return (
-
-    <div className="flex justify-center mt-[100px] gap-8 max-sm:flex-col sm:flex-col max-lg:flex-row xl:flex-row xl:w-[990px] xl:justify-center xl:mx-auto">
-
+    <div className="flex w-[70%] justify-center mt-[100px] gap-8 max-sm:flex-col sm:flex-col max-lg:flex-row xl:flex-row  xl:justify-center">
       <MainProfileSidebar profile={profile} data={data} />
       <UPdateprofile profile={profile} setProfile={setProfile} data={data} />
     </div>
