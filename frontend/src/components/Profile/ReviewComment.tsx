@@ -42,7 +42,7 @@ export const RevieComment = (props: IdType) => {
   const handleChange = async () => {
     try {
       const { data } = await axios.post<Datatype>(
-        "http://localhost:8000/postreview",
+        "https://freelance-gmjr.onrender.com/postreview",
         {
           stars: comment.stars,
           description: comment.description,

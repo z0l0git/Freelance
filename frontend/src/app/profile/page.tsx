@@ -26,7 +26,7 @@ type RequestBody = {
 const GetUserById = async (id?: string) => {
   try {
     const { data } = await axios.post<RequestBody>(
-      "http://localhost:8000/getUserById",
+      "https://freelance-gmjr.onrender.com/getUserById",
       {
         id: id,
       }
