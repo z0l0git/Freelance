@@ -3,24 +3,38 @@ import React, { useState } from "react";
 import { WhiteButton } from "../Button";
 import { FormComp } from "./FormComp";
 import { IoCloseCircleSharp } from "react-icons/io5";
+import { MouseEvent } from "react";
+type SkillType = {
+  name: string;
+  id: string;
+};
+type SkillT = {
+  id: string;
+};
 
-export const Skills = () => {
+type PropsType = {
+  skill: SkillType[];
+};
+
+export const Skills = (props: PropsType) => {
+  const { skill } = props;
+
+  console.log(skill, "skil3333");
   const [addSkills, setAddSkills] = useState(false);
+  const [skillData, setSkillData] = useState<SkillT[]>();
+  console.log(skillData, "skill data");
+
   const clickButton = () => {
     setAddSkills(!addSkills);
   };
-  const SkillArray = [
-    { name: "Machine Learning" },
-    { name: "Virutal Assistan" },
-    { name: "AI" },
-    { name: "AI Chatbot" },
-    { name: "NIP Specialist" },
-    { name: "Data Scientist" },
-    { name: "Deep Learning" },
-    { name: "Robotic" },
-    { name: "Data Analyst" },
-    { name: "Python" },
-  ];
+
+  const handleSkillData = (event: MouseEvent<HTMLDivElement>) => {
+    const SkillId = event.currentTarget.id;
+    console.log(SkillId, "skill id");
+
+    setSkillData((prev) => ...prev, SkillId);
+  };
+
   return (
     <div>
       <div className="flex justify-between items-center mb-4">
@@ -37,13 +51,14 @@ export const Skills = () => {
       </div>
       {!addSkills ? (
         <div className="flex flex-wrap gap-2">
-          {SkillArray?.map((el, index) => {
+          {skill?.map((el, index) => {
             return (
-              <WhiteButton
-                key={index}
-                buttonName={el.name}
-                buttonClass="px-4 py-3 overflow-hidden rounded-[100px] border-[#DFE0E4] border text-sm  text-[#404A60] flex items-center gap-1 hover:text-[#2196F3]"
-              />
+              <div key={index} onClick={handleSkillData} id={el.id}>
+                <WhiteButton
+                  buttonName={el.name}
+                  buttonClass="px-4 py-3 overflow-hidden rounded-[100px] border-[#DFE0E4] border text-sm  text-[#404A60] flex items-center gap-1 hover:text-[#2196F3]"
+                />
+              </div>
             );
           })}
         </div>

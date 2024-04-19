@@ -28,18 +28,6 @@ export const SignUp = (props: SignUpType) => {
   const { setStage } = props;
   const [error, setError] = useState("");
 
-  // const [userdata, setUserData] = useState({
-  //   name: "",
-  //   email: "",
-  //   phone: "",
-  //   password: "",
-  // });
-
-  // const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-  //   const { name, value } = e.target;
-  //   setUserData({ ...userdata, [name]: value });
-  // };
-
   const initialValues = {
     firstName: "",
     lastName: "",

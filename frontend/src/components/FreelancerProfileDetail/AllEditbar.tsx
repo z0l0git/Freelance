@@ -6,7 +6,18 @@ import { Skills } from "./Skills";
 import { WorkExperience, Education } from "./Education";
 import { SocialAccounts } from "./SocialAccounts";
 
-export const EditBar = () => {
+type SkillType = {
+  name: string;
+  id: string;
+};
+
+type PropsType = {
+  skill: SkillType[];
+};
+export const EditBar = (props: PropsType) => {
+  const { skill } = props;
+
+ 
   return (
     <div className="w-[416px] h-fit rounded-2xl border p-8 gap-4 bg-white max-sm:w-full max-sm:px-2 sm:w-full sm:px-2 xl:py-8 xl:px-4">
       <div className="w-full flex flex-col pb-4 ">
@@ -22,7 +33,7 @@ export const EditBar = () => {
       </div> */}
       <div className="w-full border-dashed border-t-2 "></div>
       <div className="w-full my-8">
-        <Skills />
+        <Skills skill={skill} />
       </div>
       <div className="w-full border-dashed border-t-2 "></div>
       <div className="w-full my-8">

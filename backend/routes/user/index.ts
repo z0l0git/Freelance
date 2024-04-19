@@ -13,7 +13,9 @@ import {
   upUserSjController,
   jobTitleUpController,
   budgetUpController,
+  SkillUpController,
 } from "../../controller/user/userUpdateController";
+
 import { getPresignedUrl } from "../../cloudFlary";
 
 export const UserRouter = Router();
@@ -34,5 +36,6 @@ UserRouter.post("/getUserById", getUserByIdController);
 UserRouter.post("/upUserSJ", upUserSjController);
 UserRouter.post("/jobTitleUp", jobTitleUpController);
 UserRouter.post("/budgetUp", budgetUpController);
+UserRouter.post("/skillUp", SkillUpController);
 
 UserRouter.get("/uploadImage", getPresignedUrl);
