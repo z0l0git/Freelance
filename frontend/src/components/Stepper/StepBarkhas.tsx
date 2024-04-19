@@ -102,7 +102,7 @@ export const StepperBarkhas = (props: CateType) => {
     }
 
     if (step === steps.length - 1) {
-      window.location.href = "/";
+      window.location.href = "/projects";
     }
   };
 

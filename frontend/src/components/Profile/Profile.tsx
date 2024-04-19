@@ -42,7 +42,7 @@ export const Profile = (props: PropsType) => {
   return (
     <div className="py-6 flex flex-col md:flex-row items-center md:items-start md:justify-center gap-[20px] bg-[#F3F6FA] ">
       <div className="flex flex-col gap-[50px] ">
-        <div className="[426px] md:w-[860px] flex items-center justify-center  bg-white border  rounded-lg">
+        <div className="[426px] md:w-[860px] flex items-center justify-center bg-white rounded-lg">
           <div className="w-[406px] md:w[816px] flex flex-col items-center justify-around gap-[30px]">
             <ProfileDetails data={data} />
             <Skills />

@@ -89,15 +89,23 @@ export const MenuProfileCard = (props: any) => {
 
 export const MenuProfileUserInfoCard = (props: any) => {
   const { userName, userMail, profilePicture } = props;
+  console.log(profilePicture, "menu pfp");
+
   return (
-    <div className="w-[242px] h-16 flex gap-2 items-center">
+    <div className="w-fit h-16 flex gap-2 items-center">
       <div className="w-16 h-16 flex justify-center items-center rounded-full border relative">
         <Image
           src={profilePicture}
-          width={62}
-          height={62}
-          alt="user Profile"
-          className="rounded-full"
+          alt="pfp"
+          width={0}
+          height={0}
+          sizes="100vw"
+          style={{
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+            borderRadius: "50%",
+          }}
         />
         <IoIosCheckmarkCircle className="absolute bottom-0 right-0  text-green-600" />
       </div>

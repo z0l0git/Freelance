@@ -55,13 +55,22 @@ export const ProjectCard = (props: ProjectCard) => {
         </div>
 
         <div className="flex w-full h-fit gap-2 items-center border-t border-dashed border-slate-500 py-5">
-          <Image
-            alt="user picture"
-            src={`${profilePicture ? profilePicture : "/proq.webp"}`}
-            width={40}
-            height={40}
-            className="rounded-full"
-          />
+          <div className="w-11 h-11 rounded-full overflow-hidden relative">
+            <Image
+              alt="user picture"
+              src={`${profilePicture ? profilePicture : "/proq.webp"}`}
+              width={0}
+              height={0}
+              sizes="100vw"
+              style={{
+                width: "100%",
+                height: "100%",
+                objectFit: "cover",
+                borderRadius: "50%",
+              }}
+            />
+          </div>
+
           <span>{createdby}</span>
         </div>
       </div>

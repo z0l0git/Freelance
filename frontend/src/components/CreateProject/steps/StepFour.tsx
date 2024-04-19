@@ -1,6 +1,10 @@
 import React from "react";
 import Image from "next/image";
-import { BlueButton, ButtonWithBlueBorder } from "@/components/Button";
+import {
+  BlueButton,
+  ButtonWithBlueBorder,
+  WhiteButton,
+} from "@/components/Button";
 
 type StepFourProps = {
   handlePrevious: () => void;
@@ -16,18 +20,28 @@ const StepFour = ({ handlePrevious, handleSubmit }: StepFourProps) => {
         </div>
         <div className="flex flex-col items-center justify-center gap-5">
           <h1 className="font-bold  text-[#212e48] text-[22px] ">
-            Your part is done, we’ll take it from here
+            Your project is posted, Good Luck!
           </h1>
           <p className="text-[#212e48]">
-            These suggestions are based on your brief’s title.
+            You can see your projects in the "Projects" page
           </p>
         </div>
         <div className="flex gap-2 my-5 items-center justify-center ">
           <BlueButton
             height="60px"
             width="190px"
-            buttonName="Back to home"
+            buttonName="Go to Projects"
             handleSubmit={handleSubmit}
+          />
+
+          <WhiteButton
+            height="60px"
+            width="190px"
+            buttonClass="w-[190px] h-[60px]"
+            buttonName="Go to Home"
+            onClick={() => {
+              window.location.href = "/";
+            }}
           />
         </div>
       </div>

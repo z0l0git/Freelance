@@ -5,9 +5,10 @@ import { GiTakeMyMoney } from "react-icons/gi";
 import Image from "next/image";
 import { AiFillWechat } from "react-icons/ai";
 import { PiClockCountdownLight } from "react-icons/pi";
-import { BsCheck2Circle } from "react-icons/bs";
-import { CaretDownIcon } from "@radix-ui/react-icons";
-import { DataArrayTexture } from "three";
+import { BsTags } from "react-icons/bs";
+
+import { GoDotFill } from "react-icons/go";
+import { BiSolidCategory } from "react-icons/bi";
 
 type SkillPropType = {
   skil: string;
@@ -43,16 +44,16 @@ type SkillType = {
 };
 type CtType = {
   _id: string;
-  name: string;
+  name?: string;
   description: string;
 };
 
 type PosdtDataType = {
   _id: string;
   createdBy: {
-    firstName: string;
-    lastName: string;
-    image: string;
+    firstName?: string;
+    lastName?: string;
+    image?: string;
     createdAt: string;
   };
   title?: string;
@@ -60,12 +61,12 @@ type PosdtDataType = {
   budget?: number;
   deliveryTime?: string;
   flexible?: boolean;
-  category?: CtType[];
+  category: CtType[];
   skills?: SkillType[];
   createdAt: string;
 };
 type PropsType = {
-  data: PosdtDataType;
+  data?: PosdtDataType;
 };
 
 export default function ProjectDetail(props: PropsType) {
@@ -100,13 +101,15 @@ export default function ProjectDetail(props: PropsType) {
 
   const UserName = `${data?.createdBy.firstName} ${data?.createdBy.lastName}`;
 
-  const Budget = `${data?.budget}`;
+  const Budget = `${data?.budget?.toLocaleString()}`;
   const title = `${data?.title}`;
   const deliveryTime = `${data?.deliveryTime}`;
   const Flexible = `${data?.flexible}`;
   const Categorys = `${data?.category}`;
-  const CreatedAt = formatDate(data?.createdBy.createdAt.split("T")[0]);
-  const FormatedDate = formatDate(data?.createdAt.split("T")[0]);
+  const createdAtDate = `${data?.createdBy?.createdAt.split("T")[0]}`;
+  const CreatedAt = formatDate(createdAtDate);
+  const formatcreatedDate = `${data?.createdAt.split("T")[0]}`;
+  const FormatedDate = formatDate(formatcreatedDate);
 
   const Description = `${data?.description}`;
   console.log(data?.category, "scategorieslls");
@@ -119,33 +122,34 @@ export default function ProjectDetail(props: PropsType) {
             <div className="text-[38px] mt-[10px] font-semibold border-b border-dashed border-slate-300 pb-[20px]">
               {title}
             </div>
-            <div className="mt-[20px] flex gap-[20px]">
-              <div className="flex gap-[18px] border-r border-slate-400 w-fit pr-[18px] ">
+            <div className="mt-[20px] flex gap-[20px] justify-between items-center">
+              <div className="flex gap-[18px]  w-fit pr-[18px] ">
                 <div className="bg-blue-800 rounded-full w-fit h-fit p-[7px]">
                   <AiOutlineFieldTime className="text-[29px] text-white" />
                 </div>
                 <div>
-                  <div>Delivery time</div>
-                  <div>{deliveryTime}</div>
+                  <div className="font-bold text-sm">Delivery time</div>
+                  <div className="text-[17px]">{deliveryTime}</div>
                 </div>
               </div>
-
-              <div className="flex gap-[18px]  border-r border-slate-400 w-fit pr-[18px] ">
+              <GoDotFill />
+              <div className="flex gap-[18px] items-center  w-fit pr-[18px] ">
                 <div className="bg-yellow-500 rounded-full w-fit h-fit p-[7px]">
-                  <MdOutlineDeveloperMode className="text-[29px] text-white" />
+                  <BiSolidCategory className="text-[29px] text-white" />
                 </div>
                 <div>
-                  <div>App development</div>
-                  <div></div>
+                  <div className="font-bold text-sm">Category</div>
+                  <div>{data?.category[0].name}</div>
                 </div>
               </div>
+              <GoDotFill />
 
               <div className="flex gap-[18px]  w-fit pr-[18px] ">
                 <div className="bg-blue-800 rounded-full w-fit h-fit p-[7px]">
                   <PiClockCountdownLight className="text-[29px] text-white" />
                 </div>
                 <div>
-                  <div>Created at</div>
+                  <div className="font-bold text-sm">Created at</div>
                   <div>{FormatedDate}</div>
                 </div>
               </div>
@@ -156,7 +160,7 @@ export default function ProjectDetail(props: PropsType) {
             <div className="mt-[17px]">{Description}</div>
           </div>
           <div className="mt-[20px] border-b border-dashed border-slate-300 pb-[20px]">
-            <div className="text-[35px] font-semibold">Skill requared</div>
+            <div className="text-[35px] font-semibold">Skills required</div>
             <div className="mt-[17px] flex flex-wrap gap-4">
               {data?.skills?.map((el, index) => (
                 <Skill skil={el.name} key={index} />
@@ -165,7 +169,11 @@ export default function ProjectDetail(props: PropsType) {
           </div>
           <div className="mt-[20px]">
             {data?.category?.map((el, index) => (
-              <Category key={index} text1={el.name} text2={el.description} />
+              <Category
+                key={index}
+                text1={el.name ? el.name : "No category"}
+                text2={el.description}
+              />
             ))}
           </div>
         </div>
@@ -173,9 +181,9 @@ export default function ProjectDetail(props: PropsType) {
           <div className="border-b border-dashed border-slate-300 pb-[20px]">
             <div className="font-semibold text-[31px]">Budget</div>
             <div className="flex items-center mt-[20px] gap-[14px]">
-              <GiTakeMyMoney className="text-[50px]" />
+              <BsTags className="text-[50px]" />
               <div className="flex items-center">
-                from{" "}
+                from
                 <span className="text-[40px] ml-[14px] font-semibold">
                   {Budget}₮
                 </span>

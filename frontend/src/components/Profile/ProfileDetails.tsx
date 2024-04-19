@@ -63,13 +63,19 @@ export const ProfileDetails = (props: PropsType) => {
   return (
     <div className="w-[426px] h-fit items-center justify-around gap-[10px] border border-inherit   md:w-[816px] md:h-fit md:py-8 rounded-lg flex flex-col md:items-center md:justify-center ">
       <div className="w-[406px] h-fit flex-col px-5 py-5  bg-white  justify-between md:w-[774px] md:h-[145px] flex md:flex-row md:items-center md:justify-between md:pb-[24px]">
-        <div className="flex justify-start md:items-center md:justify-center">
+        <div className="flex justify-start md:items-center md:justify-center md:w-[100px] md:h-[100px]">
           <Image
             src={`${data?.image ? data.image : "/proq.webp"}`}
             alt=""
-            width={95}
-            height={95}
-            className="rounded-full w-[95px] h-[95px] "
+            width={0}
+            height={0}
+            sizes="100vw"
+            style={{
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
+            }}
+            className="rounded-full"
           />
         </div>
 

@@ -49,7 +49,7 @@ const Chinzorig = async () => {
           ButtonClass="hidden"
           LandingPage="freelancers"
           ButtonName=""
-          PictureOfPage={""}
+          PictureOfPage={"/bread-service.png"}
           pictureofalt={""}
           ImageClass={"w-[406px] h-[373px] flex justify-center items-center"}
         />

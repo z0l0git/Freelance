@@ -23,7 +23,7 @@ export const ChatPage = () => {
     console.log("handleJoin", roomId);
     setShowChat(true);
     setroomId(roomId);
-    setUserName(data.firstName + " " + data.lastName);
+    setUserName("Room Number: " + roomId);
     console.log("userName", userName, roomId, "roomId");
     socket.emit("join_room", roomId);
   };

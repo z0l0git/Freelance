@@ -40,7 +40,7 @@ const page = async () => {
       <div className="bg-[url(https://pixner.net/aihire/aihire/assets/img/bn/breadcumndbg.jpg)]">
         <Menu />
       </div>
-      <div>
+      {/* <div className="z-20">
         <PageHeroes
           PageBigName="Projects"
           Home="Home"
@@ -49,11 +49,11 @@ const page = async () => {
           ButtonClass="hidden"
           LandingPage="projects"
           ButtonName="Log Out"
-          PictureOfPage=""
+          PictureOfPage="/bread-service.png"
           pictureofalt=""
           ImageClass="responsivePatchCompImage"
         />
-      </div>
+      </div> */}
       <ProjectPageMidd data={data} AllPost={AllPost} skills={skills} />
       <Footer />
     </div>

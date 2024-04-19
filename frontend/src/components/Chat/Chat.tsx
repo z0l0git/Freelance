@@ -81,12 +81,6 @@ export const Chat = ({ socket, username, roomId }: any) => {
     <div className="w-[40%] flex items-start justify-center h-fit">
       <div className="w-full flex flex-col items-start m-[20px]">
         <div className="w-full flex items-center gap-[2%] justify-start p-[30px] bg-[#13203B] rounded-t-xl">
-          <Image
-            src={"/profiles.png"}
-            width={50}
-            height={50}
-            alt={"profile pic"}
-          />
           <p className="text-[20px] font-bold text-white ">{username}</p>
         </div>
         <div className="w-full flex flex-col rounded-xl rounded-t-none bg-slate-300 p-[20px]">
@@ -100,7 +94,11 @@ export const Chat = ({ socket, username, roomId }: any) => {
                   {roomId === roomId && author === username ? (
                     <SentChat message={message} time={time} />
                   ) : (
-                    <RecievedChat message={message} time={time} />
+                    <RecievedChat
+                      author={author}
+                      message={message}
+                      time={time}
+                    />
                   )}
                 </ul>
               ))}

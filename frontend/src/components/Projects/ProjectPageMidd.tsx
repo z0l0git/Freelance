@@ -139,8 +139,8 @@ export default function ProjectPageMidd(props: PropsType) {
   };
 
   return (
-    <div>
-      <div className="flex justify-center bg-slate-200 h-fit gap-5">
+    <div className="bg-slate-200">
+      <div className="flex justify-center h-fit gap-5 z-10">
         <div className="sticky top-0 h-[100%] my-[100px] ">
           <Filter
             handlerClick={handlerClick}

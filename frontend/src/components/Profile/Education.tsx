@@ -35,7 +35,7 @@ export const Education = (props: EducationProps) => {
       <strong className="text-[18px] md:text-[20px] font-sans">
         Education
       </strong>
-      <div className="w-full flex items-center justify-between pt-4 border">
+      <div className="w-full flex items-center justify-between pt-4">
         <div className="flex flex-col justify-between gap-[20px]">
           {eduData?.map((el, index) => {
             return (

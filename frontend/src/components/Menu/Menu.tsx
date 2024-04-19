@@ -98,7 +98,7 @@ export const Menu = () => {
             <nav className="flex justify-center items-center rounded-full relative w-10 h-10 ">
               {isLoggedIn ? (
                 <MenuProfileCard
-                  profilePicture={data.image}
+                  profilePicture={`${data.image ? data?.image : "/proq.webp"}`}
                   setOpenBell={setOpenBell}
                   openProfile={openProfile}
                   setOpenProfile={setOpenProfile}
