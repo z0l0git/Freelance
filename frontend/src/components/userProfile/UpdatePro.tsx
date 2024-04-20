@@ -7,6 +7,9 @@ import Button from "./HoverButton";
 import { useState } from "react";
 import { BiSolidCommentEdit } from "react-icons/bi";
 import Example from "./HoverButton";
+
+import { toast } from "react-toastify";
+import { Bounce } from "react-toastify";
 type SetProDileype = {
   firstName: string;
   lastName: string;
@@ -106,14 +109,44 @@ export const UpdatePro = (props: TypePropsstate) => {
     }));
   };
 
+  const notifySuccess = () => {
+    toast.success("💻 Profile changes saved successfully.", {
+      position: "top-center",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      transition: Bounce,
+    });
+  };
+
+  const notifyError = () => {
+    toast.error("❗ Oops! Incorrect email or password. Please try again", {
+      position: "top-center",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      transition: Bounce,
+    });
+  };
+
   const HandlerClick = async () => {
     try {
       const { data } = await axios.post(
         "https://freelance-gmjr.onrender.com/upUserSJ",
         profile
       );
+      notifySuccess();
       console.log(data);
     } catch (err: any) {
+      notifyError();
       console.log(err.message);
     }
   };
@@ -143,9 +176,7 @@ export const UpdatePro = (props: TypePropsstate) => {
             >
               <Image
                 alt=""
-
                 src={`${profile?.image ? profile?.image : "/proq.webp"}`}
-
                 width={0}
                 height={0}
                 sizes="100vw"

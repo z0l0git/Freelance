@@ -7,6 +7,9 @@ import { MouseEvent } from "react";
 import { useContext } from "react";
 import { DataContext } from "../context/DataContext";
 import axios from "axios";
+import { toast } from "react-toastify";
+import { Bounce } from "react-toastify";
+
 type SkillType = {
   name: string;
   id: string;
@@ -56,6 +59,34 @@ export const Skills = (props: PropsType) => {
     }
   };
 
+  const notifySuccess = () => {
+    toast.success("🆕Success! Your profile edits have been saved.", {
+      position: "top-center",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      transition: Bounce,
+    });
+  };
+
+  const notifyError = () => {
+    toast.error("❗️Oops! Profile update failed. Please try again later.", {
+      position: "top-center",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      transition: Bounce,
+    });
+  };
+
   const upSkills = async () => {
     try {
       const { data: skilledBaachka } = await axios.post(
@@ -67,8 +98,10 @@ export const Skills = (props: PropsType) => {
       );
       clickButton();
       console.log(skilledBaachka, "newww");
+      notifySuccess();
     } catch (err: any) {
       console.log(err.message, "error");
+      notifyError();
     }
   };
 

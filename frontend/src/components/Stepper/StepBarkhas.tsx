@@ -11,6 +11,8 @@ import StepFour from "@/components/CreateProject/steps/StepFour";
 import { useContext } from "react";
 import { DataContext } from "../context/DataContext";
 import axios from "axios";
+import { toast } from "react-toastify";
+import { Bounce } from "react-toastify";
 
 type PosdtDataType = {
   createdBy: string;
@@ -62,6 +64,34 @@ export const StepperBarkhas = (props: CateType) => {
 
   const { push } = useRouter();
 
+  const notifySuccess = () => {
+    toast.success("📝  Success! Your post has been published.", {
+      position: "top-center",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      transition: Bounce,
+    });
+  };
+
+  const notifyError = () => {
+    toast.error("❗ Oops! Something went wrong", {
+      position: "top-center",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      transition: Bounce,
+    });
+  };
+
   const CurrentStep = steps[step];
 
   const handleNext = async () => {
@@ -95,8 +125,9 @@ export const StepperBarkhas = (props: CateType) => {
           setError("");
           setStep(step + 1);
           console.log(data, "new post");
-          console.log("amjilttai uuslee");
+          notifySuccess();
         } catch (err: any) {
+          notifyError();
           console.log(err.message, "err");
         }
       }
