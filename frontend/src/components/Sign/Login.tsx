@@ -16,7 +16,8 @@ import Image from "next/image";
 import { Formik, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
-
+import { toast } from "react-toastify";
+import { Bounce } from "react-toastify";
 type LoginDataType = {
   email: string;
   password: string;
@@ -30,10 +31,33 @@ export const Login = () => {
   });
   const [error, setError] = useState("");
 
-  // const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-  //   const { name, value } = e.target;
-  //   setUserData({ ...userdata, [name]: value });
-  // };
+  const notifySuccess = () => {
+    toast.success("🦄 Welcome! You're now signed in", {
+      position: "top-center",
+      autoClose: 4000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      transition: Bounce,
+    });
+  };
+
+  const notifyError = () => {
+    toast.error("❗ Oops! Incorrect email or password. Please try again", {
+      position: "top-center",
+      autoClose: 4000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      transition: Bounce,
+    });
+  };
 
   const initialValues = {
     email: "",
@@ -60,12 +84,9 @@ export const Login = () => {
       console.log(data, "token");
       localStorage.setItem("token", data);
       push("/");
+      notifySuccess();
     } catch (err: any) {
-      console.log(err.response.data);
-      setError(err.response.data);
-      setTimeout(() => {
-        setError("");
-      }, 2000);
+      notifyError();
     }
   };
 

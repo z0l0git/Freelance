@@ -12,6 +12,8 @@ import { AxiosInstance } from "../../utils/axiosInstance";
 import { Formik, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 
+import { toast } from "react-toastify";
+import { Bounce } from "react-toastify";
 type LoginDataType = {
   firstName: string;
   lastName: string;
@@ -27,6 +29,37 @@ type SignUpType = {
 export const SignUp = (props: SignUpType) => {
   const { setStage } = props;
   const [error, setError] = useState("");
+
+  const notifySuccess = () => {
+    toast.success("🆕Congratulations! Your account has been created.", {
+      position: "top-center",
+      autoClose: 4000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      transition: Bounce,
+    });
+  };
+
+  const notifyError = () => {
+    toast.error(
+      " ❗️ Oops! It seems like there's already an account with this email. Please sign up instead!",
+      {
+        position: "top-center",
+        autoClose: 4000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Bounce,
+      }
+    );
+  };
 
   const initialValues = {
     firstName: "",
@@ -67,11 +100,9 @@ export const SignUp = (props: SignUpType) => {
       console.log(data);
       if (typeof data === "string") {
         console.log("User already exists");
-        setError("User already exists");
-        setTimeout(() => {
-          setError("");
-        }, 2000);
+        notifyError();
       } else {
+        notifySuccess();
         setStage(0);
       }
     } catch (err: any) {

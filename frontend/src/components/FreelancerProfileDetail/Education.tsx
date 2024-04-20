@@ -4,6 +4,8 @@ import { WhiteButton } from "../Button";
 import { EducationAddComp } from "./EducationAddComp";
 import { WorkExperienceComp } from "./WorkExperience";
 import { IoCloseCircleSharp } from "react-icons/io5";
+
+
 export const Education = () => {
   const [addEducation, setAddEducation] = useState(false);
   const clickButton = () => {
@@ -17,7 +19,6 @@ export const Education = () => {
         {!addEducation ? (
           <WhiteButton
             buttonClass="font-bold text-[#0d47a1] cursor-pointer "
-
             onClick={clickButton}
             buttonName="Add New "
           />
@@ -50,9 +51,7 @@ export const WorkExperience = () => {
         <h3 className="text-2xl font-semibold xl:text-xl">Work Experience</h3>
         {!addCertification ? (
           <WhiteButton
-
             buttonClass="font-bold text-[#0d47a1] cursor-pointer "
-
             onClick={clickButton}
             buttonName="Add New"
           />

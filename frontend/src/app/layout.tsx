@@ -3,6 +3,10 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import { DataProvider } from "@/components/context/DataContext";
+import { Bounce } from "react-toastify";
+
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -23,6 +27,19 @@ export default function RootLayout({
         <ClerkProvider>
           <DataProvider>{children}</DataProvider>
         </ClerkProvider>
+        <ToastContainer
+          position="top-center"
+          autoClose={2000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light"
+          transition={Bounce} // Here's the correct way to apply the transition
+        />
       </body>
       <script
         src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.5.0/socket.io.js"

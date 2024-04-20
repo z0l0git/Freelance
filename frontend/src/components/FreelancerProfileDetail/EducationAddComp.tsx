@@ -7,6 +7,9 @@ import { useState } from "react";
 import { useContext } from "react";
 import { DataContext } from "../context/DataContext";
 import axios from "axios";
+
+import { toast } from "react-toastify";
+import { Bounce } from "react-toastify";
 type Props = {
   clickButton: () => void;
 };
@@ -38,6 +41,34 @@ export const EducationAddComp = (props: Props) => {
     });
   }, [data]);
 
+  const notifySuccess = () => {
+    toast.success("🆕Success! Your profile edits have been saved.", {
+      position: "top-center",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      transition: Bounce,
+    });
+  };
+
+  const notifyError = () => {
+    toast.error("❗️Oops! Profile update failed. Please try again later.", {
+      position: "top-center",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      transition: Bounce,
+    });
+  };
+
   const AddnewEducation = async () => {
     try {
       const { data } = await axios.post(
@@ -46,7 +77,9 @@ export const EducationAddComp = (props: Props) => {
       );
       console.log(data, "great result");
       clickButton();
+      notifySuccess();
     } catch (err: any) {
+      notifyError();
       console.log(err.message);
     }
   };

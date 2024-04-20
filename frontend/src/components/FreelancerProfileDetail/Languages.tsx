@@ -7,6 +7,9 @@ import { DataContext } from "../context/DataContext";
 import axios from "axios";
 import { IoCloseCircleSharp } from "react-icons/io5";
 
+import { toast } from "react-toastify";
+import { Bounce } from "react-toastify";
+
 type descriptionType = {
   discription: string;
 };
@@ -39,6 +42,34 @@ export const Budgets: React.FC<{}> = () => {
   const clickButton = () => {
     setShowDescriptionEdit(!showdescriptionEdit);
   };
+
+  const notifySuccess = () => {
+    toast.success("🆕Success! Your profile edits have been saved.", {
+      position: "top-center",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      transition: Bounce,
+    });
+  };
+
+  const notifyError = () => {
+    toast.error("❗️Oops! Profile update failed. Please try again later.", {
+      position: "top-center",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      transition: Bounce,
+    });
+  };
   const UpJobTitle = async () => {
     try {
       const { data: JobUp } = await axios.post(
@@ -50,8 +81,10 @@ export const Budgets: React.FC<{}> = () => {
       );
       console.log(JobUp, "budget");
       setShowDescriptionEdit(!showdescriptionEdit);
+      notifySuccess();
     } catch (err: any) {
       console.log(err.message);
+      notifyError();
     }
   };
 
@@ -59,12 +92,10 @@ export const Budgets: React.FC<{}> = () => {
   const initialValues: MyBioValues = { discription: "" };
 
   return (
-
     <div>
       <div className="flex justify-between items-center mb-2">
         <h3 className="text-2xl font-semibold">Budget</h3>
         {!showdescriptionEdit ? (
-
           <WhiteButton
             buttonClass="font-bold text-[#0d47a1] cursor-pointer xl:text-md"
             onClick={clickButton}
