@@ -7,6 +7,8 @@ import { MouseEvent } from "react";
 import { useRouter } from "next/navigation";
 import { ChangeEvent } from "react";
 import { BiSearch } from "react-icons/bi";
+import { MdClear } from "react-icons/md";
+
 type Filter = {
   jobs: string;
   counter: string;
@@ -61,6 +63,7 @@ type PropsType = {
   search?: string;
   budget: BudgetType;
   handlerClick: () => void;
+  handleZero: () => void;
 };
 
 export const Filter = (props: PropsType) => {
@@ -80,6 +83,7 @@ export const Filter = (props: PropsType) => {
     HnadleSearch,
     search,
     budget,
+    handleZero,
   } = props;
 
   // const { push } = useRouter();
@@ -128,13 +132,14 @@ export const Filter = (props: PropsType) => {
         <div className="w-[352px] h-[56px] pt-6 mb-5">
           <h2 className="text-2xl font-semibold ml-[-14px]">Budget</h2>
         </div>
-        <div className="flex gap-8">
+        <div className="flex gap-4">
           <div className="flex items-center justify-center p-4 w-36 h-12 border-solid border-slate-500 bg-slate-200 rounded-3xl">
             <input
               className="w-[97px] bg-slate-200 outline-none"
               placeholder="Min"
               name="min"
               type="number"
+              value={budget.min ? budget.min : ""}
               onChange={(event) => handleChange(event)}
             />
           </div>
@@ -145,8 +150,15 @@ export const Filter = (props: PropsType) => {
               placeholder="Max"
               name="max"
               type="number"
+              value={budget.max ? budget.max : ""}
               onChange={(event) => handleChange(event)}
             />
+          </div>
+          <div
+            onClick={handleZero}
+            className="flex items-center justify-center text-[30px] font-semibold"
+          >
+            <MdClear />
           </div>
         </div>
 

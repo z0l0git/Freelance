@@ -1,14 +1,31 @@
 "use client";
 
-import React from "react";
+import React, { ChangeEvent } from "react";
 // import { ButtonWithBlueBorder } from "../Button";
 import { Input } from "../../components/ui/input";
 import { CheckCircle } from "../../components/ui/checkcircle";
 import { FaStar } from "react-icons/fa6";
+import { MdClear } from "react-icons/md";
+import { MouseEvent } from "react";
 
+type BudgetType = {
+  min: number;
+  max: number;
+};
+type SkillType = {
+  name: string;
+  id: string;
+};
 type freelance = {
   mark: string;
   counter: string;
+  handleChange: (event: ChangeEvent<HTMLInputElement>) => void;
+  handleZero: () => void;
+  budget: BudgetType;
+  Handlereset: () => void;
+  skills: SkillType[];
+  skillFilter: (e: SkillType) => void;
+  skillId?: string;
 };
 
 const typeCategory = [
@@ -61,7 +78,17 @@ const locationCategory = [
 ];
 
 export const FreelancerFilter = (props: freelance) => {
-  const { mark, counter } = props;
+  const {
+    mark,
+    counter,
+    handleChange,
+    handleZero,
+    budget,
+    Handlereset,
+    skills,
+    skillFilter,
+    skillId,
+  } = props;
   return (
     <div className="flex bg-slate-100 w-fit h-fit rounded-2xl">
       <div
@@ -105,16 +132,46 @@ export const FreelancerFilter = (props: freelance) => {
           <Input
             className="flex items-center justify-center p-4 w-28 h-10 border-solid border-slate-500 bg-slate-200 rounded-3xl"
             type={"number"}
-            id={"min"}
             placeholder={"min"}
+            name="min"
+            value={budget.min ? budget.min : ""}
+            onChange={(el) => handleChange(el)}
           />
           <span className="flex items-center justify-center">to</span>
           <Input
             className="flex items-center justify-center p-4 w-28 h-10 border-solid border-slate-500 bg-slate-200 rounded-3xl"
             type={"number"}
-            id={"max"}
             placeholder={"max"}
+            name="max"
+            value={budget.max ? budget.max : ""}
+            onChange={(el) => handleChange(el)}
           />
+          <div
+            onClick={handleZero}
+            className="flex items-center justify-center text-[30px] font-semibold"
+          >
+            <MdClear />
+          </div>
+        </div>
+        <div className="w-[352px] h-[56px] pt-6 mb-1">
+          <h2 className="text-2xl font-semibold">Skills</h2>
+        </div>
+        <div className="flex flex-col gap-2">
+          {skills.map((el, i) => {
+            return (
+              <div
+                onClick={() => skillFilter(el)}
+                id={el.id}
+                key={i}
+                className="flex items-center justify-between w-352px h-[32px"
+              >
+                <div className="flex gap-2 items-center">
+                  <CheckCircle className="" checked={skillId === el.id} />
+                  <h3 className="text-base font-medium">{el.name}</h3>
+                </div>
+              </div>
+            );
+          })}
         </div>
         <div className="w-[352px] h-[56px] pt-6 mb-1">
           <h2 className="text-2xl font-semibold">Delivery time</h2>
@@ -196,7 +253,10 @@ export const FreelancerFilter = (props: freelance) => {
             })}
           </div>
           <div>
-            <button className="flex items-center justify-center p-4 w-full h-12 border-solid border-[#0D47A1] border-2 bg-slate-50 rounded-3xl mt-8 text-base font-semibold text-[#0D47A1] ">
+            <button
+              onClick={Handlereset}
+              className="flex items-center justify-center p-4 w-full h-12 border-solid border-[#0D47A1] border-2 bg-slate-50 rounded-3xl mt-8 text-base font-semibold text-[#0D47A1] "
+            >
               Reset Filter
             </button>
           </div>
