@@ -51,8 +51,10 @@ export const UsePage = (props: PropsType) => {
   }, [data]);
 
   return (
+
     <div className="flex justify-center mt-[100px] gap-8 max-sm:flex-col sm:flex-col max-lg:flex-row xl:flex-row xl:w-[990px] xl:justify-center xl:mx-auto">
       <MainProfileSidebar profile={profile} data={data} skill={skill} />
+
       <UPdateprofile profile={profile} setProfile={setProfile} data={data} />
     </div>
   );

@@ -37,6 +37,7 @@ type PropsType = {
   skill: SkillType[];
 };
 
+
 export const MainProfileSidebar = (props: PropsType) => {
   const { profile, data, skill } = props;
   
@@ -46,7 +47,7 @@ export const MainProfileSidebar = (props: PropsType) => {
   };
 
   return (
-    <div className="flex flex-col gap-8 justify-center bg-transparent max-md:w-full">
+    <div className="flex flex-col gap-8 justify-center bg-transparent w-[30%]">
       <MainProfileInfo profile={profile} data={data} />
       <EditBar skill={skill} />
     </div>

@@ -25,9 +25,9 @@ export const Menu = () => {
     setOpenProfile(false);
   };
   return (
-    <div className="sticky top-0 z-50">
+    <div className="sticky top-0 z-40">
       <div
-        className={`py-4 flex justify-around z-50 sticky top-0 bg-[#13203B] w-screen`}
+        className={`py-4 flex justify-around z-50 sticky top-0 bg-[#13203B] w-screen z-50`}
       >
         <div className=" w-full mx-auto px-3 flex md:justify-around justify-between items-center gap-4">
           <Image

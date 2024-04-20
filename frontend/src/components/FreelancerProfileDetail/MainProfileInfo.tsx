@@ -46,10 +46,6 @@ type PropsType = {
 export const MainProfileInfo = (props: PropsType) => {
   const { profile, data } = props;
 
-  const handlePush = () => {
-    window.location.href = "/profile";
-    console.log("he");
-  };
   function formatDate(originalDate: string): string {
     const [yearStr, monthStr, dayStr] = originalDate.split("-");
     const year = parseInt(yearStr);
@@ -82,14 +78,12 @@ export const MainProfileInfo = (props: PropsType) => {
   console.log(data.image, "imagee56");
 
   return (
-    <div className="w-[30%] h-[488px] flex flex-col items-center gap-4 rounded-2xl border bg-white  max-sm:w-full max-sm:px-2 sm:w-full sm:px-2">
+    <div className="h-[488px] flex flex-col items-center gap-4 rounded-2xl border bg-white max-sm:px-2 sm:px-2">
       <div className="flex justify-center items-center p-4 ">
-        <div className=" w-[200px] h-[200px] relative flex justify-center items-center p-4 rounded-full border ">
+        <div className=" w-[200px] h-[200px] relative flex justify-center items-center p-4 rounded-full border z-10">
           <Image
             alt="user profile picture"
-
             src={`${profile?.image ? profile?.image : "/proq.webp"}`}
-
             width={0}
             height={0}
             sizes="100vw"
@@ -110,7 +104,6 @@ export const MainProfileInfo = (props: PropsType) => {
           <div className="flex items-center gap-1">
             <CiLocationOn />
             <div>{profile?.location}</div>
-
           </div>
           <div className="w-1 h-1 rounded-full bg-blue-800"></div>
           <div className="flex items-center gap-1">

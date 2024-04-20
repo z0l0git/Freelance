@@ -37,9 +37,12 @@ export const RatingAndReview = (props: IdType) => {
   useEffect(() => {
     const GetUserById = async () => {
       try {
-        const reviews = await axios.post("http://localhost:8000/getallreview", {
-          createdFor: searchParams,
-        });
+        const reviews = await axios.post(
+          "https://freelance-gmjr.onrender.com/getallreview",
+          {
+            createdFor: searchParams,
+          }
+        );
 
         setRdata(reviews.data);
         return;

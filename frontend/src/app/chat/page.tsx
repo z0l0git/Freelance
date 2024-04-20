@@ -8,7 +8,9 @@ const page = () => {
   return (
     <div>
       <Menu />
-      <ChatPage />
+      <div className="h-screen">
+        <ChatPage />
+      </div>
     </div>
   );
 };

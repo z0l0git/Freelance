@@ -9,7 +9,7 @@ const page = async () => {
   const skill = await GetSkillCategory();
 
   return (
-    <div className="flex flex-col bg-gray-50 w-screen">
+    <div className="flex flex-col bg-gray-50 w-screen items-center">
       <div className="w-full sticky top-0">
         <Menu />
       </div>

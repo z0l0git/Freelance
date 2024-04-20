@@ -36,9 +36,9 @@ export const PageHeroes = (props: Props) => {
   };
 
   return (
-    <div className="w-full flex justify-start mx-auto items-center bg-[url(/bg.jpeg)] overflow-hidden mt-[-100px] mb-[-250px] z-40 max-sm:px-2 max-sm:w-[100%]  sm:w-[100%] sm:px-2 max-md:mx-auto md:justify-center ">
-      <div className="flex w-[1280px] mx-auto justify-between gap-10 md:gap-2 items-center h-[513px] max-sm:flex-col max-sm:justify-center max-sm:items-start sm:mx-auto max-md:flex md:w-[540px] max-md:max-w-[540px] md:mx-auto md:flex xl:w-[990px]  max-xl:min-w-[875px]">
-        <div className="w-6/12 flex flex-col justify-center items-left ">
+    <div className="w-screen flex justify-start items-center bg-[url(/bg.jpeg)] overflow-hidden mt-[-100px] mb-[-250px] z-40 max-sm:px-2  sm:px-2 max-md:mx-auto md:justify-center ">
+      <div className="flex w-full mx-auto justify-around gap-10 md:gap-2 items-center h-[513px] max-sm:flex-col max-sm:justify-center  sm:mx-auto max-md:flex ]  md:mx-auto md:flex ">
+        <div className=" flex flex-col justify-center items-left ">
           <h1 className="text-6xl font-semibold text-white max-sm:text-4xl text-nowrap max-md:text-4xl ">
             {PageBigName}
           </h1>
@@ -58,7 +58,7 @@ export const PageHeroes = (props: Props) => {
             </span>
           </div>
         </div>
-        <div className="w-2/12 flex justify-center items-center max-sm:justify-start max-sm:w-4/12 sm:w-[30%] sm:justify-start md:">
+        <div className=" flex justify-center items-center max-sm:justify-start  sm:justify-start ">
           <div className={ImageClass}>
             <Image
               src={PictureOfPage}

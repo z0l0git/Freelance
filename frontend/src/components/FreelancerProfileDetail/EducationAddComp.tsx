@@ -41,7 +41,7 @@ export const EducationAddComp = (props: Props) => {
   const AddnewEducation = async () => {
     try {
       const { data } = await axios.post(
-        "http://localhost:8000/createEducation",
+        "https://freelance-gmjr.onrender.com/createEducation",
         eduData
       );
       console.log(data, "great result");
