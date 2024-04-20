@@ -26,17 +26,30 @@ type Response = {
   budget: number;
 };
 
+type SkillType = {
+  name: string;
+  id: string;
+};
+
 type PropsType = {
   profile: SetProDileype;
   data: Response;
+  skill: SkillType[];
 };
+
+
 export const MainProfileSidebar = (props: PropsType) => {
-  const { profile, data } = props;
+  const { profile, data, skill } = props;
+  
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    window.location.pathname = "/";
+  };
 
   return (
     <div className="flex flex-col gap-8 justify-center bg-transparent w-[30%]">
       <MainProfileInfo profile={profile} data={data} />
-      <EditBar />
+      <EditBar skill={skill} />
     </div>
   );
 };

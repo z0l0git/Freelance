@@ -12,8 +12,19 @@ type SetProDileype = {
   createdAt: string;
   image: string;
 };
+type SkillType = {
+  name: string;
+  id: string;
+};
 
-export const UsePage = () => {
+type PropsType = {
+  skill: SkillType[];
+};
+
+export const UsePage = (props: PropsType) => {
+  const { skill } = props;
+  
+
   const { data } = useContext(DataContext);
 
   const [profile, setProfile] = useState<SetProDileype>({
@@ -40,8 +51,10 @@ export const UsePage = () => {
   }, [data]);
 
   return (
-    <div className="flex w-[70%] justify-center mt-[100px] gap-8 max-sm:flex-col sm:flex-col max-lg:flex-row xl:flex-row  xl:justify-center">
-      <MainProfileSidebar profile={profile} data={data} />
+
+    <div className="flex justify-center mt-[100px] gap-8 max-sm:flex-col sm:flex-col max-lg:flex-row xl:flex-row xl:w-[990px] xl:justify-center xl:mx-auto">
+      <MainProfileSidebar profile={profile} data={data} skill={skill} />
+
       <UPdateprofile profile={profile} setProfile={setProfile} data={data} />
     </div>
   );

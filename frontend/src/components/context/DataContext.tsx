@@ -12,6 +12,10 @@ type DataContextType = {
 export const DataContext = createContext<DataContextType>(
   {} as DataContextType
 );
+
+type SkillT = {
+  id?: string;
+};
 type Response = {
   _id: string;
   firstName: string;
@@ -25,6 +29,7 @@ type Response = {
   image: string;
   jobTitle: string;
   budget: number;
+  skills: SkillT[];
 };
 
 export const DataProvider = ({ children }: any) => {
@@ -43,6 +48,7 @@ export const DataProvider = ({ children }: any) => {
     image: "",
     jobTitle: "",
     budget: 0,
+    skills: [],
   });
 
   const accessToken =

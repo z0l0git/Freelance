@@ -46,6 +46,7 @@ export const StepperBarkhas = (props: CateType) => {
 
   const [step, setStep] = useState(0);
   const [error, setError] = useState<string>("");
+  const [test, setTest] = useState<string>();
 
   const [postData, setPostData] = useState<PosdtDataType>({
     createdBy: "",
