@@ -38,9 +38,24 @@ type Response = {
   jobTitle: string;
   budget: number;
 };
+
+type getDataType = {
+  _id: string;
+  firstName: string;
+  lastName: string;
+  image: string;
+  email: string;
+  auth: string;
+  socials: [];
+  skills: [];
+  education: [];
+  workExp: [];
+  createdAt: string;
+};
 type PropsType = {
   profile: SetProDileype;
   data: Response;
+
 };
 
 export const MainProfileInfo = (props: PropsType) => {

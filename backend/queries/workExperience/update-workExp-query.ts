@@ -1,23 +1,29 @@
 import { Request } from "express";
-import { WorkExpModel } from "../../models";
+import { EducationModel, WorkExpModel } from "../../models";
 
 export const updateWorkExpQuery = async (req: Request) => {
-  const { id, year, occupation, companyName, about } = req.body;
+  const { _id, hiredY, firedY, occupation, companyName, aboutCompany } =
+    req.body;
+  console.log(_id, hiredY, firedY, occupation, companyName, aboutCompany);
 
   try {
-    const workExp = await WorkExpModel.findById({ _id: id });
-
-    if (!workExp) {
-      throw new Error("blaavgai");
-    }
-
-    const updatedWorkExp = await WorkExpModel.updateOne(
-      { _id: id },
-      { $set: { year, occupation, companyName, about } }
+    const upedEdu = await WorkExpModel.findByIdAndUpdate(
+      {
+        _id: _id,
+      },
+      {
+        $set: {
+          hiredY: hiredY,
+          firedY: firedY,
+          occupation: occupation,
+          companyName: companyName,
+          aboutCompany: aboutCompany,
+        },
+      },
+      { new: true }
     );
-
-    return updatedWorkExp;
-  } catch (error: any) {
-    return "unsuccessful";
+    return upedEdu;
+  } catch (err: any) {
+    throw new Error(err.message);
   }
 };

@@ -26,13 +26,13 @@ export const Skills = (props: PropsType) => {
   const { skill } = props;
 
   const { data } = useContext(DataContext);
-  console.log(data, "dataaa");
 
-  console.log(skill, "skil3333");
+
+  
   const [addSkills, setAddSkills] = useState(false);
 
   const [skillData, setSkillData] = useState<SkillT[]>([]);
-  console.log(skillData, "skill data");
+
 
   useEffect(() => {
     setSkillData(data?.skills);
@@ -44,7 +44,7 @@ export const Skills = (props: PropsType) => {
 
   const handleSkillData = (event: MouseEvent<HTMLDivElement>) => {
     const SkillId: any = event.currentTarget.id;
-    console.log(SkillId, "skill id");
+   
 
     const selectedSkill = skill.find((skill) => skill.id === SkillId);
 

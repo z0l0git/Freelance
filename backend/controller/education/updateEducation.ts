@@ -7,7 +7,7 @@ export const updateEducationController = async (
 ) => {
   try {
     const result = await updateEducationQuery(req);
-    res.status(200).send(result);
+    res.send(result);
   } catch (error: any) {
     res.status(400).send(error.message);
   }
