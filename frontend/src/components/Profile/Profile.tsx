@@ -36,7 +36,7 @@ type PropsType = {
 export const Profile = (props: PropsType) => {
   const { data, searchParams } = props;
 
-  console.log(data?.education, "profile data");
+  console.log(data, "profile datadddd");
 
   // const [profile, setProfile] = useState<Response>();
   return (

@@ -31,25 +31,38 @@ type SkillType = {
   id: string;
 };
 
+type getDataType = {
+  _id: string;
+  firstName: string;
+  lastName: string;
+  image: string;
+  email: string;
+  auth: string;
+  socials: [];
+  skills: [];
+  education: [];
+  workExp: [];
+  createdAt: string;
+};
 type PropsType = {
   profile: SetProDileype;
   data: Response;
   skill: SkillType[];
+  userDataGet: getDataType | undefined;
 };
 
-
 export const MainProfileSidebar = (props: PropsType) => {
-  const { profile, data, skill } = props;
-  
+  const { profile, data, skill, userDataGet } = props;
+
   const handleLogout = () => {
     localStorage.removeItem("token");
     window.location.pathname = "/";
   };
 
   return (
-    <div className="flex flex-col gap-8 justify-center bg-transparent w-[30%]">
+    <div className="flex flex-col gap-8 justify-center bg-transparent w-[40%] ">
       <MainProfileInfo profile={profile} data={data} />
-      <EditBar skill={skill} />
+      <EditBar skill={skill} userDataGet={userDataGet} />
     </div>
   );
 };

@@ -9,4 +9,4 @@ export const WorkExperienceRouter = Router();
 
 WorkExperienceRouter.post("/createWorkExp", createWorkExpController);
 WorkExperienceRouter.post("/updateWorkExp", updateWorkExpController);
-WorkExperienceRouter.delete("/deleteWorkExp", deleteWorkExpController);
+WorkExperienceRouter.post("/deleteWorkExp", deleteWorkExpController);

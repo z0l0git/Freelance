@@ -10,11 +10,44 @@ import axios from "axios";
 
 import { toast } from "react-toastify";
 import { Bounce } from "react-toastify";
+
+type eduType = {
+  startedY: string;
+  profession: string;
+  finishedY: string;
+  degree: string;
+  schoolName: string;
+  aboutSchool: string;
+  _id: string;
+};
+type ExpType = {
+  aboutCompany: string;
+  companyName: string;
+  firedY: string;
+  hiredY: string;
+  occupation: string;
+  _id: string;
+};
+
+type getDataType = {
+  _id: string;
+  firstName: string;
+  lastName: string;
+  image: string;
+  email: string;
+  auth: string;
+  socials: [];
+  skills: [];
+  education: eduType[];
+  workExp: ExpType[];
+  createdAt: string;
+};
 type Props = {
   clickButton: () => void;
+  HandlePushEduArray: (obj: ExpType) => void;
 };
 export const WorkExperienceComp = (props: Props) => {
-  const { clickButton } = props;
+  const { clickButton, HandlePushEduArray } = props;
 
   const [expData, setExpData] = useState({
     hiredY: "",
@@ -72,10 +105,11 @@ export const WorkExperienceComp = (props: Props) => {
   const AddnewEducation = async () => {
     try {
       const { data } = await axios.post(
-        "https://freelance-gmjr.onrender.com/createWorkExp",
+        "http://localhost:8000/createWorkExp",
         expData
       );
-      console.log(data, "great result for exp");
+      HandlePushEduArray(data?.workExp[data?.workExp?.length - 1]);
+
       clickButton();
       notifySuccess();
     } catch (err: any) {
@@ -136,7 +170,7 @@ export const WorkExperienceComp = (props: Props) => {
             onClick={AddnewEducation}
             className="px-[10px] py-[5px] bg-blue-800 rounded-lg text-white font-bold"
           >
-            Update
+            Add
           </button>
         </div>
       </div>

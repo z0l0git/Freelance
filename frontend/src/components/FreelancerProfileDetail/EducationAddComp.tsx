@@ -10,11 +10,36 @@ import axios from "axios";
 
 import { toast } from "react-toastify";
 import { Bounce } from "react-toastify";
+
+type eduType = {
+  startedY: string;
+  profession: string;
+  finishedY: string;
+  degree: string;
+  schoolName: string;
+  aboutSchool: string;
+  _id: string;
+};
+
+type getDataType = {
+  _id: string;
+  firstName: string;
+  lastName: string;
+  image: string;
+  email: string;
+  auth: string;
+  socials: [];
+  skills: [];
+  education: eduType[];
+  workExp: [];
+  createdAt: string;
+};
 type Props = {
   clickButton: () => void;
+  HandlePushEduArray: (obj: eduType) => void;
 };
 export const EducationAddComp = (props: Props) => {
-  const { clickButton } = props;
+  const { clickButton, HandlePushEduArray } = props;
 
   const [eduData, setEduData] = useState({
     startedY: "",
@@ -23,6 +48,7 @@ export const EducationAddComp = (props: Props) => {
     schoolName: "",
     aboutSchool: "",
     id: "",
+    profession: "",
   });
 
   console.log(eduData, "edu");
@@ -71,11 +97,18 @@ export const EducationAddComp = (props: Props) => {
 
   const AddnewEducation = async () => {
     try {
-      const { data } = await axios.post(
-        "https://freelance-gmjr.onrender.com/createEducation",
+      const { data } = await axios.post<getDataType>(
+        "http://localhost:8000/createEducation",
         eduData
       );
-      console.log(data, "great result");
+      console.log(data, "yahuu");
+
+      // console.log(
+      //   data?.education[data?.education.length - 1],
+      //   "hiiiiiiiiiiiiiiii"
+      // );
+
+      HandlePushEduArray(data?.education[data?.education?.length - 1]);
       clickButton();
       notifySuccess();
     } catch (err: any) {
@@ -109,14 +142,6 @@ export const EducationAddComp = (props: Props) => {
             onChange={(e) => handlechange(e)}
           />
         </div>
-
-        <input
-          type="text"
-          className="bg-white border rounded-2xl p-3"
-          placeholder="Enter your degree"
-          name="degree"
-          onChange={(e) => handlechange(e)}
-        />
         <input
           type="text"
           className="bg-white border rounded-2xl p-3"
@@ -124,6 +149,22 @@ export const EducationAddComp = (props: Props) => {
           name="schoolName"
           onChange={(e) => handlechange(e)}
         />
+        <input
+          type="text"
+          className="bg-white border rounded-2xl p-3"
+          placeholder="Enter your degree"
+          name="degree"
+          onChange={(e) => handlechange(e)}
+        />
+
+        <input
+          type="text"
+          className="bg-white border rounded-2xl p-3"
+          placeholder="profession"
+          name="profession"
+          onChange={(e) => handlechange(e)}
+        />
+
         <input
           type="text"
           className="bg-white border rounded-2xl p-3"
@@ -136,7 +177,7 @@ export const EducationAddComp = (props: Props) => {
             onClick={AddnewEducation}
             className="px-[10px] py-[5px] bg-blue-800 rounded-lg text-white font-bold"
           >
-            Update
+            Add
           </button>
         </div>
       </div>

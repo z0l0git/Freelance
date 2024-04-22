@@ -1,24 +1,20 @@
 "use client";
-import React, { useEffect, useState } from "react";
-import { WhiteButton } from "../Button";
-import { EducationAddComp } from "./EducationAddComp";
+import React, { MouseEvent } from "react";
+import { useEffect, useState } from "react";
 import { WorkExperienceComp } from "./WorkExperience";
 import { IoCloseCircleSharp } from "react-icons/io5";
-
+import { WhiteButton } from "../Button";
 import EducationModelOfMap from "./EducationModelOfMap";
-import { useContext } from "react";
-import { DataContext } from "../context/DataContext";
-import axios from "axios";
-import { MouseEvent } from "react";
 
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import EduModalForDelete from "./EduModalForDelete";
+import { StyledString } from "next/dist/build/swc";
+import axios from "axios";
 import EducationModalFroEdit from "./EducationModalFroEdit";
-import { WorkExperience } from "./WorkExperienceSda";
-
+import ExpEditForModal from "./ExpEditForModal";
 type eduType = {
   startedY: string;
   profession: string;
@@ -31,7 +27,6 @@ type eduType = {
 type deletType = {
   id: eduType[];
 };
-
 type ExpType = {
   aboutCompany: string;
   companyName: string;
@@ -57,18 +52,30 @@ type getDataType = {
 type PropsType = {
   userDataGet: getDataType | undefined;
 };
-
-export const Education = (props: PropsType) => {
+export const WorkExperience = (props: PropsType) => {
   const { userDataGet } = props;
-
-  const [getUserState, setGetUserData] = useState<getDataType>();
-  const [founded, setFounded] = useState<eduType>();
+  const [workExp, setWorkExp] = useState<getDataType>();
   const [idForDelete, setIdForDelete] = useState<string>();
-  // const [idForEdit, setIdForEdit] = useState<string>();
+  const [founded, setFounded] = useState<ExpType>();
+  console.log(idForDelete, "in exppp");
 
   useEffect(() => {
-    setGetUserData(userDataGet);
-  }, [userDataGet?.education]);
+    setWorkExp(userDataGet);
+  }, [userDataGet?.workExp]);
+
+  console.log(workExp, "workeererereer");
+
+  const HandlePushEduArray = (obj: ExpType) => {
+    setWorkExp((prev: getDataType | undefined) => {
+      if (prev) {
+        return {
+          ...prev,
+          workExp: [...prev.workExp, obj],
+        };
+      }
+      return prev;
+    });
+  };
 
   const deletemodal = (event: MouseEvent<HTMLDivElement>) => {
     const eduId = event.currentTarget.id;
@@ -78,20 +85,17 @@ export const Education = (props: PropsType) => {
 
   const deleteEdu = async () => {
     try {
-      const { data } = await axios.post(
-        "http://localhost:8000/deleteEducation",
-        {
-          id: idForDelete,
-        }
-      );
-      const leftOverData: any = getUserState?.education?.filter(
+      const { data } = await axios.post("http://localhost:8000/deleteWorkExp", {
+        id: idForDelete,
+      });
+      const leftOverData: any = workExp?.workExp?.filter(
         (item: any) => item._id !== idForDelete
       );
-      setGetUserData((prev: getDataType | undefined) => {
+      setWorkExp((prev: getDataType | undefined) => {
         if (prev) {
           return {
             ...prev,
-            education: leftOverData,
+            workExp: leftOverData,
           };
         }
       });
@@ -102,24 +106,12 @@ export const Education = (props: PropsType) => {
     }
   };
 
-  const HandlePushEduArray = (obj: eduType) => {
-    setGetUserData((prev: getDataType | undefined) => {
-      if (prev) {
-        return {
-          ...prev,
-          education: [...prev.education, obj],
-        };
-      }
-      return prev;
-    });
-  };
-
   const editEdu = (event: MouseEvent<HTMLDivElement>) => {
     const eduId = event.currentTarget.id;
     console.log(eduId, "id");
     // setIdForEdit(eduId);
 
-    const foundedOne = getUserState?.education?.find(
+    const foundedOne = workExp?.workExp?.find(
       (item: any) => item._id === eduId
     );
 
@@ -129,9 +121,9 @@ export const Education = (props: PropsType) => {
     setFounded(foundedOne);
   };
 
-  const [addEducation, setAddEducation] = useState(false);
+  const [addCertification, setAddCertification] = useState(false);
   const clickButton = () => {
-    setAddEducation(!addEducation);
+    setAddCertification(!addCertification);
   };
 
   ///Mui Funcs for delete Edu
@@ -147,12 +139,12 @@ export const Education = (props: PropsType) => {
   return (
     <div className="w-full">
       <div className="w-full flex justify-between items-center mb-4">
-        <h3 className="text-2xl font-semibold xl:text-xl">Education</h3>
-        {!addEducation ? (
+        <h3 className="text-2xl font-semibold xl:text-xl">Work Experience</h3>
+        {!addCertification ? (
           <WhiteButton
             buttonClass="font-bold text-[#0d47a1] cursor-pointer "
             onClick={clickButton}
-            buttonName="Add New "
+            buttonName="Add New"
           />
         ) : (
           <IoCloseCircleSharp
@@ -162,28 +154,26 @@ export const Education = (props: PropsType) => {
         )}
       </div>
       <div>
-        {!addEducation ? (
+        {!addCertification ? (
           <div>
-            {getUserState?.education?.map((item: eduType, index: number) => (
+            {workExp?.workExp?.map((el: any, index: number) => (
               <div key={index}>
-                <div>
-                  <EducationModelOfMap
-                    editEdu={editEdu}
-                    deleteEdu={deleteEdu}
-                    deletemodal={deletemodal}
-                    schoolName={item?.schoolName}
-                    profession={item?.profession}
-                    index={index}
-                    id={item._id}
-                    title1="School "
-                    title2="profession"
-                  />
-                </div>
+                <EducationModelOfMap
+                  deleteEdu={deleteEdu}
+                  editEdu={editEdu}
+                  deletemodal={deletemodal}
+                  title1="Company"
+                  title2="Occupation"
+                  schoolName={el?.companyName}
+                  profession={el?.occupation}
+                  index={index}
+                  id={el?._id}
+                />
               </div>
             ))}
           </div>
         ) : (
-          <EducationAddComp
+          <WorkExperienceComp
             clickButton={clickButton}
             HandlePushEduArray={HandlePushEduArray}
           />
@@ -204,7 +194,6 @@ export const Education = (props: PropsType) => {
           </div>
         </div>
       </Modal>
-
       <Modal
         open={openEditEdu}
         onClose={handleCloseEdit}
@@ -213,10 +202,10 @@ export const Education = (props: PropsType) => {
       >
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 ">
           <div>
-            <EducationModalFroEdit
+            <ExpEditForModal
               founded={founded}
-              setGetUserData={setGetUserData}
-              getUserState={getUserState}
+              setGetUserData={setWorkExp}
+              getUserState={workExp}
               handleCloseEdit={handleCloseEdit}
             />
           </div>
