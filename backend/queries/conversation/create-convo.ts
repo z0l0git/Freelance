@@ -5,7 +5,7 @@ export const createConvoQuery = async (req: Request) => {
   const { participants } = req.body;
   try {
     const existingConversation = await ConversationModel.findOne({
-      participants,
+      participants: { $all: participants },
     });
 
     if (existingConversation) {
