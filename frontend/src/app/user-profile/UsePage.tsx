@@ -23,7 +23,6 @@ type PropsType = {
 
 export const UsePage = (props: PropsType) => {
   const { skill } = props;
-  
 
   const { data } = useContext(DataContext);
 
@@ -51,10 +50,9 @@ export const UsePage = (props: PropsType) => {
   }, [data]);
 
   return (
-
-    <div className="flex justify-center mt-[100px] gap-8 max-sm:flex-col sm:flex-col max-lg:flex-row xl:flex-row xl:w-[990px] xl:justify-center xl:mx-auto">
+    <div className="max-w-[1200px] flex justify-center mt-[100px] gap-8  max-md:flex-col md:w-[85%] max-md:items-center sm:max-w-[98%]">
+      {/* max-sm:flex-col sm:flex-col max-lg:flex-row xl:flex-row xl:w-[990px] xl:justify-center xl:mx-auto */}
       <MainProfileSidebar profile={profile} data={data} skill={skill} />
-
       <UPdateprofile profile={profile} setProfile={setProfile} data={data} />
     </div>
   );

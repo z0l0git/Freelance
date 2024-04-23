@@ -1,6 +1,5 @@
 import { Formik } from "formik";
-import { BlueButton, ButtonWithBlueBorder, WhiteButton } from "../Button";
-import { ReactEventHandler } from "react";
+import { WhiteButton } from "../Button";
 type Props = { clickButton: () => void };
 export const FormComp: React.FC<Props> = (props) => {
   const { clickButton } = props;

@@ -1,8 +1,5 @@
 "use client";
-import { Formik, FormikProps, ErrorMessageProps } from "formik";
-import { BlueButton, ButtonWithBlueBorder, WhiteButton } from "../Button";
-import { ChangeEvent, ReactEventHandler, useEffect } from "react";
-import { string } from "yup";
+import { ChangeEvent, useEffect } from "react";
 import { useState } from "react";
 import { useContext } from "react";
 import { DataContext } from "../context/DataContext";
@@ -132,10 +129,7 @@ export const EducationAddComp = (props: Props) => {
           onChange={(e) => handlechange(e)}
         />
         <div className="w-full flex justify-around p-4">
-          <button
-            onClick={AddnewEducation}
-            className="px-[10px] py-[5px] bg-blue-800 rounded-lg text-white font-bold"
-          >
+          <button onClick={AddnewEducation} className="skillUpdateButton">
             Update
           </button>
         </div>
