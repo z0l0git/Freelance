@@ -53,14 +53,13 @@ type PropsType = {
 
 export const MainProfileSidebar = (props: PropsType) => {
   const { profile, data, skill, userDataGet } = props;
-
   const handleLogout = () => {
     localStorage.removeItem("token");
     window.location.pathname = "/";
   };
 
   return (
-    <div className="flex flex-col gap-8 justify-center bg-transparent w-[40%] ">
+    <div className="max-sm:w-[95%] flex flex-col gap-8 justify-center bg-transparent max-md:w-[70%] max-md:flex-col max-md:items-center w-4/12">
       <MainProfileInfo profile={profile} data={data} />
       <EditBar skill={skill} userDataGet={userDataGet} />
     </div>

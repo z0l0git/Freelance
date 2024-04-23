@@ -86,14 +86,14 @@ export const UsePage = (props: PropsType) => {
   }, [data]);
 
   return (
-    <div className="flex justify-center mt-[100px] gap-8 max-sm:flex-col sm:flex-col max-lg:flex-row xl:flex-row xl:w-[1130px]   xl:justify-center xl:mx-auto">
+    <div className="max-sm:flex-col max-sm:items-center max-sm:justify-center   max-md:flex-col  md:w-[85%] max-md:items-center max-w-[1200px] items-start flex justify-center mt-[100px] gap-8">
+      {/* max-sm:flex-col sm:flex-col max-lg:flex-row xl:flex-row xl:w-[990px] xl:justify-center xl:mx-auto */}
       <MainProfileSidebar
         profile={profile}
         data={data}
         skill={skill}
-        userDataGet={userDataGet}
+        userDataGet={undefined}
       />
-
       <UPdateprofile profile={profile} setProfile={setProfile} data={data} />
     </div>
   );

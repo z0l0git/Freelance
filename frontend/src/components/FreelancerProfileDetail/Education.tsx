@@ -147,18 +147,15 @@ export const Education = (props: PropsType) => {
   return (
     <div className="w-full">
       <div className="w-full flex justify-between items-center mb-4">
-        <h3 className="text-2xl font-semibold xl:text-xl">Education</h3>
+        <h3 className="skillTitle">Education</h3>
         {!addEducation ? (
           <WhiteButton
-            buttonClass="font-bold text-[#0d47a1] cursor-pointer "
+            buttonClass="skillEditButton"
             onClick={clickButton}
             buttonName="Add New "
           />
         ) : (
-          <IoCloseCircleSharp
-            onClick={clickButton}
-            className="w-6 h-6 cursor-pointer"
-          />
+          <IoCloseCircleSharp onClick={clickButton} className="skillCancel" />
         )}
       </div>
       <div>
