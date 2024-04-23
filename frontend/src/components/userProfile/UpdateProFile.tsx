@@ -5,6 +5,7 @@ import { RiEditBoxLine } from "react-icons/ri";
 import { useState } from "react";
 import { NewGig } from "./NewGig";
 import { UpdatePro } from "./UpdatePro";
+import ActiveProject from "./ActiveProject";
 
 type SetProDileype = {
   firstName: string;
@@ -26,6 +27,10 @@ type Response = {
   location: string;
   image: string;
 };
+type SkillType = {
+  name: string;
+  id: string;
+};
 
 type TypeProps = {
   profile: SetProDileype;
@@ -41,9 +46,10 @@ type TypeProps = {
     }>
   >;
   data: Response;
+  skill: SkillType[];
 };
 export const UPdateprofile = (props: TypeProps) => {
-  const { profile, setProfile, data } = props;
+  const { profile, setProfile, data, skill } = props;
 
   const [stage, setStage] = useState(0);
 
@@ -80,7 +86,11 @@ export const UPdateprofile = (props: TypeProps) => {
         </div>
         <div>
           {stage === 0 && <NewGig />}
-          {stage === 1 && <div>Active Projects</div>}
+          {stage === 1 && (
+            <div>
+              <ActiveProject skill={skill} />
+            </div>
+          )}
           {stage === 2 && (
             <div>
               <UpdatePro

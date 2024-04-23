@@ -94,7 +94,12 @@ export const UsePage = (props: PropsType) => {
         userDataGet={userDataGet}
       />
 
-      <UPdateprofile profile={profile} setProfile={setProfile} data={data} />
+      <UPdateprofile
+        profile={profile}
+        setProfile={setProfile}
+        data={data}
+        skill={skill}
+      />
     </div>
   );
 };
