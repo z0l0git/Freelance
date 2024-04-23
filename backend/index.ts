@@ -18,28 +18,9 @@ import { Conversation } from "./routes/conversation";
 
 const app = express();
 
-const URL = process.env.FRONT_URL;
-
-console.log(URL);
-
 dotenv.config();
 
-app.use(
-  cors({
-    origin: URL || "http://localhost:3000",
-    methods: ["GET", "POST"],
-    credentials: true,
-    allowedHeaders: [
-      "Content-Type",
-      "Authorization",
-      "Access-Control-Allow-Origin",
-      "Access-Control-Allow-Headers",
-      "Access-Control-Allow-Methods",
-      "Access-Control-Allow-Credentials",
-    ],
-  })
-);
-
+app.use(cors());
 app.use(express.json());
 app.use(CategoryRouter);
 app.use(UserRouter);
@@ -64,6 +45,10 @@ connectDb();
 const server = app.listen(8000, () => {
   console.log("Server Running on:", "http://localhost:8000");
 });
+
+const URL = process.env.FRONT_URL;
+
+console.log(URL);
 
 const io = require("socket.io")(server, {
   pingTimeout: 60000,
