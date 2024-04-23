@@ -58,7 +58,7 @@ export const PageHeroes = (props: Props) => {
             </span>
           </div>
         </div>
-        <div className=" flex justify-center items-center max-sm:justify-start  sm:justify-start ">
+        <div className="max-sm:justify-start sm:justify-start flex justify-center items-center ">
           <div className={ImageClass}>
             <Image
               src={PictureOfPage}
