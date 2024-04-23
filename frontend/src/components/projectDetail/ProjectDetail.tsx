@@ -131,7 +131,7 @@ export default function ProjectDetail(props: PropsType) {
 
   const handleChat = async () => {
     const conversation = await axios.post<ConversationType>(
-      "http://localhost:8000/createConvo",
+      "https://freelance-gmjr.onrender.com/createConvo",
       {
         participants: [data?.createdBy?._id, userData._id],
       }
