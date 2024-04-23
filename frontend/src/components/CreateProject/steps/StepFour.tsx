@@ -26,7 +26,7 @@ const StepFour = ({ handlePrevious, handleSubmit }: StepFourProps) => {
             You can see your projects in the "Projects" page
           </p>
         </div>
-        <div className="flex gap-2 my-5 items-center justify-center ">
+        <div className="w-full flex gap-2 my-5 items-center justify-center ">
           <BlueButton
             height="60px"
             width="190px"

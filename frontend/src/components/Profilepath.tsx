@@ -15,6 +15,7 @@ type Props = {
   PictureOfPage: string;
   pictureofalt: string;
   ImageClass: string;
+  heightofHero: string;
 };
 export const PageHeroes = (props: Props) => {
   const {
@@ -28,6 +29,7 @@ export const PageHeroes = (props: Props) => {
     PictureOfPage = "",
     pictureofalt = "",
     ImageClass = "",
+    heightofHero,
   } = props;
   const handleLogout = () => {
     localStorage.deleteItem("token");
@@ -36,8 +38,10 @@ export const PageHeroes = (props: Props) => {
   };
 
   return (
-    <div className="w-screen flex justify-start items-center bg-[url(/bg.jpeg)] overflow-hidden mt-[-100px] mb-[-250px] z-40 max-sm:px-2  sm:px-2 max-md:mx-auto md:justify-center ">
-      <div className="flex w-full mx-auto justify-around gap-10 md:gap-2 items-center h-[513px] max-sm:flex-col max-sm:justify-center  sm:mx-auto max-md:flex ]  md:mx-auto md:flex ">
+    <div className="max-sm:px-2  sm:px-2 max-md:mx-auto md:justify-center w-screen flex justify-start items-center bg-[url(/bg.jpeg)] overflow-hidden mt-[-100px] mb-[-250px] z-40   ">
+      <div
+        className={`flex w-full mx-auto justify-around gap-10 md:gap-2 items-center ${heightofHero} max-sm:flex-col max-sm:justify-center  sm:mx-auto max-md:flex ]  md:mx-auto md:flex`}
+      >
         <div className=" flex flex-col justify-center items-left ">
           <h1 className="text-6xl font-semibold text-white max-sm:text-4xl text-nowrap max-md:text-4xl ">
             {PageBigName}

@@ -152,23 +152,25 @@ export const StepperBarkhas = (props: CateType) => {
   }, [data]);
 
   return (
-    <div>
-      <div className="flex flex-col items-center bg-white gap-10">
-        <Stepper step={step} />
-        {step < steps.length && (
-          <CurrentStep
-            handlePrevious={handlePrevious}
-            handleSubmit={handleNext}
-            dataProjectCategory={dataProjectCategory}
-            skillCategory={skillCategory}
-            handleChange={handleChange}
-            setPostData={setPostData}
-            postData={postData}
-          />
-        )}
-        <div className="flex gap-2  m-[40px] w-[1280px] bg-white">
+    <div className="bg-slate-200">
+      <div className=" max-w-[1200px] mx-auto flex flex-col bg-slate-200 gap-10">
+        <div className="flex flex-col items-center gap-10">
+          <Stepper step={step} />
+          {step < steps.length && (
+            <CurrentStep
+              handlePrevious={handlePrevious}
+              handleSubmit={handleNext}
+              dataProjectCategory={dataProjectCategory}
+              skillCategory={skillCategory}
+              handleChange={handleChange}
+              setPostData={setPostData}
+              postData={postData}
+            />
+          )}
+        </div>
+        <div className="flex gap-2 m-[40px] max-w-[1200px]">
           {step < 3 && (
-            <div className="w-full flex gap-4 items-center mx-[40px]">
+            <div className="w-full flex gap-4 items-center mx-[40px] bg-tran">
               <BlueButton
                 height="60px"
                 width="210px"

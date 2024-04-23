@@ -2,21 +2,6 @@ import React from "react";
 import Image from "next/image";
 import { ChangeEvent } from "react";
 import { NameInputComponent } from "@/components/Input";
-import { AiOutlinePicture } from "react-icons/ai";
-import {
-  FontBoldIcon,
-  FontItalicIcon,
-  UnderlineIcon,
-} from "@radix-ui/react-icons";
-import { FaListOl, FaListUl } from "react-icons/fa";
-import {
-  MdOutlineUndo,
-  MdOutlineRedo,
-  MdOutlineAttachment,
-} from "react-icons/md";
-
-import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
-import { Textarea } from "@/components/ui/textarea";
 
 type StepOneProps = {
   handleChange: (el: ChangeEvent<HTMLInputElement>) => void;
@@ -25,7 +10,7 @@ const StepOne = (props: StepOneProps) => {
   const { handleChange } = props;
 
   return (
-    <div className="flex flex-col md:flex-row justify-center gap-5 h-fit">
+    <div className="md:flex-row max-w-[1200px] bg-white p-8 rounded-xl flex flex-col  justify-center gap-5 h-fit ">
       <div className="flex flex-col border rounded-xl p-4 gap-4 w-fit md:w-[750px]">
         <div className="flex flex-col gap-6">
           <h1 className="font-bold  text-[#212e48] text-[22px]">

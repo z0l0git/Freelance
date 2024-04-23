@@ -27,9 +27,9 @@ export const Menu = () => {
   return (
     <div className="sticky top-0 z-40">
       <div
-        className={`py-4 flex justify-around z-50 sticky top-0 bg-[#13203B] w-screen z-50`}
+        className={`py-4 flex justify-around sticky top-0 bg-[#13203B] w-screen z-50`}
       >
-        <div className=" w-full mx-auto px-3 flex md:justify-around justify-between items-center gap-4">
+        <div className="md:justify-around w-full mx-auto px-3 flex  justify-between items-center gap-4">
           <Image
             src={"/logoSquare.png"}
             alt="logo"
@@ -37,7 +37,7 @@ export const Menu = () => {
             height={30}
             className="md:hidden"
           />
-          <div className="hidden md:flex flex gap-[5%] relative justify-start items-center w-fit">
+          <div className="hidden md:flex gap-[5%] relative justify-start items-center w-fit">
             <Image
               src="/logo.png"
               alt="Google"

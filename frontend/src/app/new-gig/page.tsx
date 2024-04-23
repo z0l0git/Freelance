@@ -18,22 +18,23 @@ const page = async () => {
   const skill = await GetSkillCategory();
 
   return (
-    <div className="bg-slate-200">
+    <div className=" ">
       <div className="bg-[url(https://pixner.net/aihire/aihire/assets/img/bn/breadcumndbg.jpg)]">
         <Menu />
       </div>
       <div className="mb-[200px] bg-slate-200">
         <PageHeroes
-          PageBigName="Post a Request"
+          PageBigName="Post a Project"
           Home="Home"
           PageLink="/user-profile"
           PageLinkName="User Profile"
           ButtonClass="blueBorderButton font-semibold"
-          LandingPage="Post a Request"
+          LandingPage="Post a Project"
           ButtonName="Log Out"
           PictureOfPage={""}
           pictureofalt={""}
           ImageClass={"hidden"}
+          heightofHero={"h-[540px]"}
         />
       </div>
       <StepperBarkhas dataProjectCategory={data} skillCategory={skill} />
