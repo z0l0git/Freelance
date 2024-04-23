@@ -11,11 +11,7 @@ export const createConversation = async (req: Request, res: Response) => {
       | ConversationModelType;
 
     if (Object(result).existingConversation) {
-      return res.redirect(
-        `${req.headers.origin}/chat?roomId=${
-          Object(result).existingConversation.roomId
-        }`
-      );
+      return res.status(200).send(Object(result).existingConversation);
     } else {
       console.log(result);
       res.status(200).send(result);
