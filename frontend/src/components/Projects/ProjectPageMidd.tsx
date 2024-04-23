@@ -46,13 +46,11 @@ export default function ProjectPageMidd(props: PropsType) {
 
   const [skill, setSkill] = useState("");
   const [category, setCategory] = useState("");
-  console.log(skill, "category");
 
   const [budget, setBudget] = useState<BudgetType>({ min: 0, max: 0 });
   const [search, setSearch] = useState("");
   const [tempStage, settempStage] = useState<boolean>();
   const [postData, setPostData] = useState<PosdtDataType[]>([]);
-  console.log(postData, "postData");
 
   const [stage, setStage] = useState(true);
 
@@ -144,8 +142,6 @@ export default function ProjectPageMidd(props: PropsType) {
         body
       );
       setPostData(data);
-
-      console.log(data, "data");
     } catch (err: any) {
       console.log(err.message);
     }
