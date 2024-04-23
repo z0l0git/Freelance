@@ -1,7 +1,6 @@
 "use client ";
 import React, { useEffect, useState } from "react";
 import { WhiteButton } from "../Button";
-import { FormComp } from "./FormComp";
 import { IoCloseCircleSharp } from "react-icons/io5";
 import { MouseEvent } from "react";
 import { useContext } from "react";
@@ -108,15 +107,15 @@ export const Skills = (props: PropsType) => {
   return (
     <div>
       <div className="flex justify-between items-center mb-4">
-        <h3 className="text-2xl font-semibold xl:text-xl">Skills</h3>
+        <h3 className="skillTitle">Skills</h3>
         {!addSkills ? (
           <WhiteButton
-            buttonClass="font-bold text-[#0d47a1] cursor-pointer xl:text-md"
+            buttonClass="skillEditButton"
             onClick={clickButton}
             buttonName="Add New"
           />
         ) : (
-          <IoCloseCircleSharp onClick={clickButton} className="w-6 h-6" />
+          <IoCloseCircleSharp onClick={clickButton} className="skillCancel" />
         )}
       </div>
 
@@ -142,7 +141,7 @@ export const Skills = (props: PropsType) => {
         <div className="w-full  flex p-4 justify-end" onClick={upSkills}>
           <button
             // onClick={UpJobTitle}
-            className="px-[10px] py-[5px] bg-blue-800 rounded-lg text-white font-bold"
+            className="skillUpdateButton"
           >
             Update
           </button>
