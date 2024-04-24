@@ -3,12 +3,14 @@ import * as React from "react";
 import Image from "next/image";
 import StarIcon from "@mui/icons-material/Star";
 import StarBorderOutlinedIcon from "@mui/icons-material/StarBorderOutlined";
-import { TbPointFilled } from "react-icons/tb";
-import ThumbUpOutlinedIcon from "@mui/icons-material/ThumbUpOutlined";
-import MessageOutlinedIcon from "@mui/icons-material/MessageOutlined";
+import ThumbUpAltIcon from "@mui/icons-material/ThumbUpAlt";
+import ThumbUpOffAltIcon from "@mui/icons-material/ThumbUpOffAlt";
+import { Comment } from "./ReviewComment";
 import Rating from "@mui/material/Rating";
 import { CheckCircle } from "../ui/checkcircle";
 import { useState } from "react";
+import { Toggle } from "@/components/ui/toggle";
+import axios from "axios";
 
 export const DetailsMap = (props: any) => {
   const { icon, topic, text, color } = props;
@@ -149,45 +151,24 @@ export const CheckBoxMap = (props: any) => {
   );
 };
 
-export const RatingMap = (props: any) => {
-  const { starNumber, width, percent } = props;
-  return (
-    <div className="w-[382px] md:w-[800px] h-[24px] flex items-center justify-between">
-      <div className="w-[26px] h-[21px] md:w-[30px] md:h-[24px] flex items-center justify-between">
-        <p> {starNumber}</p>
-        <StarBorderOutlinedIcon className="w-[14px] h-[14px] md:-[24px] md:-[24px]" />
-      </div>
-      <div className="w-[285px] md:w-[700px] h-[12px] bg-[#DFE0E4] rounded-lg">
-        <div className={`${width} h-[12px] bg-[#F3A102] rounded-lg`}></div>
-      </div>
-      <div>{percent}</div>
-    </div>
-  );
-};
-
 export const ReviewMap = ({ userData }: any) => {
-  // const { date, time, image, text, name, jobType, likeNum } = props;
-  const [value, setValue] = useState<number | null>(5);
-
-  const date = new Date(userData.createdAt);
+  const date = new Date(userData?.createdAt);
   const newdate = date.toUTCString();
   const hours = date.getHours();
   const minutes = date.getMinutes();
   const time = `${hours}:${minutes}`;
 
-  console.log(userData.createdBy.image, "from profile map");
-
   return (
     <div className="w-[382px] md:w-[800px]  flex flex-col justify-between py-5 px-5 rounded-lg bg-[#0D47A10D] border-top">
       <div className="w-[752px] h-[52px] gap-[20px] flex">
-        {newdate.slice(4, 16)} <span>{time}</span>
+        {newdate?.slice(4, 16)} <span>{time}</span>
       </div>
       <div className="w-[354px] md:w-[752px]">
-        <Rating name="read-only" value={userData.stars} readOnly />
-        <p className="text-[14px]">{userData.description}</p>
+        <Rating name="read-only" value={userData?.stars} readOnly />
+        <p className="text-[14px]">{userData?.description}</p>
         <div className="w-[354px] md:w-[752px] flex gap-[20px] pt-5 ">
           <Image
-            src={userData.createdBy.image}
+            src={userData?.createdBy?.image}
             alt=""
             width={60}
             height={60}
@@ -195,18 +176,15 @@ export const ReviewMap = ({ userData }: any) => {
           />
           <div className="w-[149px] flex flex-col">
             <strong className="text-[20px] w-[200px]">
-              {`${userData.createdBy.firstName} ${userData.createdBy.lastName}`}
+              {`${userData?.createdBy?.firstName} ${userData?.createdBy?.lastName}`}
             </strong>
             <p className="text-[14px] md:text-[16px]">
-              {userData.createdBy.jobTitle}
+              {userData?.createdBy?.jobTitle}
             </p>
           </div>
         </div>
         <div className="w-[752px] flex py-6 gap-[20px]">
-          <div className="flex items-center text-[#0D47A1] gap-[10px]">
-            <ThumbUpOutlinedIcon className="w-[20px] h-[20px]" />
-            bji2
-          </div>
+          <div className="flex items-center text-[#0D47A1] gap-[10px]"></div>
         </div>
       </div>
     </div>
