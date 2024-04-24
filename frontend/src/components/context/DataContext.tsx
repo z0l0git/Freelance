@@ -68,7 +68,7 @@ export const DataProvider = ({ children }: any) => {
       const getloggedUser = async () => {
         try {
           const { data } = await axios.get(
-            "http://localhost:8000/users/refresh",
+            "https://freelance-gmjr.onrender.com/users/refresh",
             {
               headers: {
                 Authorization: `Bearer ${accessToken}`,
