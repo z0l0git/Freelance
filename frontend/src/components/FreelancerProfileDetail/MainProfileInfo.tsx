@@ -59,6 +59,7 @@ type PropsType = {
 
 export const MainProfileInfo = (props: PropsType) => {
   const { profile, data } = props;
+  console.log(data, "dataaddds");
 
   function formatDate(originalDate: string): string {
     const [yearStr, monthStr, dayStr] = originalDate.split("-");
@@ -97,8 +98,6 @@ export const MainProfileInfo = (props: PropsType) => {
   const FormatedDate = formatDate(profile?.createdAt.split("T")[0]);
   const UserName = profile.firstName + " " + profile.lastName;
 
-  console.log(data.image, "imagee56");
-
   return (
     <div className="max-h-fit p-8 max-w-full  flex flex-col items-center gap-4 max-md:gap-2 rounded-2xl border bg-white max-md:w-full max-md:h-fit max-md:py-4 max-sm:px-2 sm:px-2">
       <div className="flex justify-center items-center p-4 max-md:min-h-3/12 max-md:min-w-3/12 ">
@@ -134,7 +133,7 @@ export const MainProfileInfo = (props: PropsType) => {
           <div className="w-1 h-1 rounded-full bg-blue-800"></div>
           <div className="flex items-center gap-1">
             <FaStar color="orange" />
-            <div className="xl:text-sm">4.8</div>
+            {/* <div className="xl:text-sm">{data?.rating?.stars}</div> */}
             <div className="xl:text-sm">(118)</div>
           </div>
           <div className="w-1 h-1 rounded-full bg-blue-800"></div>
