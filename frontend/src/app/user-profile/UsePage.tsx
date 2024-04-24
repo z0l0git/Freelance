@@ -39,6 +39,8 @@ export const UsePage = (props: PropsType) => {
   const { skill } = props;
 
   const { data } = useContext(DataContext);
+  console.log(data, "dataaaaaa ni envheee");
+
   const [userDataGet, setUserDataGet] = useState<getDataType>();
 
   const [profile, setProfile] = useState<SetProDileype>({
@@ -92,9 +94,8 @@ export const UsePage = (props: PropsType) => {
         profile={profile}
         data={data}
         skill={skill}
-        userDataGet={undefined}
+        userDataGet={userDataGet}
       />
-
 
       <UPdateprofile
         profile={profile}
@@ -102,7 +103,6 @@ export const UsePage = (props: PropsType) => {
         data={data}
         skill={skill}
       />
-
     </div>
   );
 };

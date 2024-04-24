@@ -5,7 +5,7 @@ import { useState } from "react";
 
 type DataContextType = {
   isLoggedIn: boolean;
-
+  setdata: React.Dispatch<React.SetStateAction<Response>>;
   data: Response;
 };
 
@@ -15,6 +15,10 @@ export const DataContext = createContext<DataContextType>(
 
 type SkillT = {
   id?: string;
+};
+type Rating = {
+  howMany: number;
+  stars: number;
 };
 type Response = {
   _id: string;
@@ -30,6 +34,7 @@ type Response = {
   jobTitle: string;
   budget: number;
   skills: SkillT[];
+  rating: Rating;
 };
 
 export const DataProvider = ({ children }: any) => {
@@ -49,6 +54,10 @@ export const DataProvider = ({ children }: any) => {
     jobTitle: "",
     budget: 0,
     skills: [],
+    rating: {
+      howMany: 0,
+      stars: 0,
+    },
   });
 
   const accessToken =
@@ -59,7 +68,7 @@ export const DataProvider = ({ children }: any) => {
       const getloggedUser = async () => {
         try {
           const { data } = await axios.get(
-            "https://freelance-gmjr.onrender.com/users/refresh",
+            "http://localhost:8000/users/refresh",
             {
               headers: {
                 Authorization: `Bearer ${accessToken}`,
@@ -86,6 +95,7 @@ export const DataProvider = ({ children }: any) => {
       value={{
         isLoggedIn,
         data,
+        setdata,
       }}
     >
       {children}
