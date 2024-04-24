@@ -11,7 +11,7 @@ export type UserModelType = {
   createdAt: Date;
   jobTitle: string;
   location: string;
-  rating: string;
+  rating: object;
   socials: [string];
   skills: [Schema.Types.ObjectId];
   education: [Schema.Types.ObjectId];
@@ -31,7 +31,7 @@ const UserSchema = new Schema<UserModelType>({
   createdAt: { type: Date, default: Date.now },
   jobTitle: { type: String, required: false },
   location: { type: String, required: false },
-  rating: { type: String, required: false },
+  rating: { type: Object, required: false },
   socials: { type: [String], required: false },
   skills: {
     type: [Schema.Types.ObjectId],
@@ -46,6 +46,7 @@ const UserSchema = new Schema<UserModelType>({
   workExp: { type: [Schema.Types.ObjectId], ref: "WorkExp", required: false },
   description: { type: String, required: false },
   budget: { type: Number, required: false },
+
   image: { type: String, required: false },
 });
 
