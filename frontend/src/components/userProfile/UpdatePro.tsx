@@ -166,12 +166,12 @@ export const UpdatePro = (props: TypePropsstate) => {
 
   return (
     <div>
-      <div className="flex flex-col  justify-start p-[32px] bg-[#f8f9fc] rounded-[15px] border border-gray-300  gap-[30px]">
-        <div className="flex items-center gap-[60px] w-100%  font-semibold text-[22px] mt-[30px]">
-          <div>Profile Photo</div>
-          <div className="flex  items-center justify-center  gap-[50px] ">
+      <div className="max-sm:p-4 flex flex-col  justify-start p-[32px] bg-[#f8f9fc] rounded-[15px] border border-gray-300  gap-[30px]">
+        <div className="max-sm:mt-1 max-md:flex-col max-md:gap-8 max-md:mt-4 max-md:items-start flex items-center gap-[60px] w-[100%]  font-semibold text-[22px] mt-[30px]">
+          <div className="skillTitle text-md">Profile Photo</div>
+          <div className="max-md:flex-col max-md:items-start  flex items-center justify-center gap-12  ">
             <label
-              className="flex flex-col w-[150px] h-[150px] relative border border-gray-300 rounded-full p-3 bg-[#f8f9fc] items-center justify-center cursor-pointer"
+              className=" flex flex-col relative border border-gray-300 rounded-full p-3 bg-[#f8f9fc] items-center justify-center cursor-pointer"
               htmlFor="file-upload"
             >
               <Image
@@ -180,6 +180,7 @@ export const UpdatePro = (props: TypePropsstate) => {
                 width={0}
                 height={0}
                 sizes="100vw"
+                className="max-w-24 max-h-24 min-w-16 min-h-16"
                 style={{
                   width: "100%",
                   height: "100%",
@@ -190,21 +191,22 @@ export const UpdatePro = (props: TypePropsstate) => {
               <input id="file-upload" type="file" onChange={handleChooseFile} />
               <BiSolidCommentEdit className="absolute z-30 top-[-4px] text-[30px] right-[15px]" />
             </label>
-
-            <div onClick={uploadImage}>{loading ? "Loading" : "Submit"} </div>
-            <div
-              onClick={deleteImage}
-              className="cursor-pointer active:scale-[0.95] hover:scale-[1.05]"
-            >
-              Delete photo
+            <div className="max-sm:w-full flex gap-2">
+              <button onClick={uploadImage} className="blueButton w-full">
+                {loading ? "Loading" : "Upload Photo"}{" "}
+              </button>
+              <button
+                onClick={deleteImage}
+                className="cursor-pointer active:scale-[0.95] hover:scale-[1.05] blueBorderButton"
+              >
+                Delete photo
+              </button>
             </div>
           </div>
         </div>
-        <div className="flex w-[100%] gap-[30px] mt-[20px]">
-          <div className="w-[50%] ">
-            <div className="font-semibold text-[22px] mb-[20px] ">
-              FirstName:
-            </div>
+        <div className="max-md:flex-col flex w-[100%] gap-[30px] mt-[20px]">
+          <div className="updateProfileTitleBox">
+            <h3 className="updateProfileTitles">FirstName:</h3>
             <InputUserProfile
               name="firstName"
               placeHolder="First Name"
@@ -212,10 +214,8 @@ export const UpdatePro = (props: TypePropsstate) => {
               handlehange={(e: ChangeEvent<HTMLInputElement>) => handlehange(e)}
             />
           </div>
-          <div className="w-[50%]">
-            <div className="font-semibold text-[22px] mb-[20px] ">
-              LastName:
-            </div>
+          <div className="updateProfileTitleBox">
+            <div className="updateProfileTitles">LastName:</div>
             <InputUserProfile
               name="lastName"
               placeHolder="Last Name"
@@ -224,11 +224,9 @@ export const UpdatePro = (props: TypePropsstate) => {
             />
           </div>
         </div>
-        <div className="flex w-[100%] gap-[30px] mt-[20px]">
-          <div className="w-[50%] ">
-            <div className="font-semibold text-[22px] mb-[20px] ">
-              Location:
-            </div>
+        <div className="max-md:flex-col max-md:mt-0 flex w-[100%] gap-[30px] mt-[20px]">
+          <div className="updateProfileTitleBox">
+            <div className="updateProfileTitles">Location:</div>
             <InputUserProfile
               name="location"
               placeHolder="add your location"
@@ -236,8 +234,8 @@ export const UpdatePro = (props: TypePropsstate) => {
               handlehange={(e: ChangeEvent<HTMLInputElement>) => handlehange(e)}
             />
           </div>
-          <div className="w-[50%]">
-            <div className="font-semibold text-[22px] mb-[20px] ">Phone:</div>
+          <div className="updateProfileTitleBox">
+            <div className="updateProfileTitles">Phone:</div>
             <InputUserProfile
               name="phone"
               placeHolder="add your phone number"
@@ -248,7 +246,7 @@ export const UpdatePro = (props: TypePropsstate) => {
         </div>
         <div
           onClick={HandlerClick}
-          className="cursor-pointer w-fit active:scale-[0.95] hover:scale-[1.05] px-[10px] py-[5px] bg-green-800 rounded-lg text-white font-bold"
+          className="cursor-pointer w-fit active:scale-[0.95] hover:scale-[1.05] px-[15px] py-[10px] bg-[#0D47A1] rounded-2xl text-md text-white font-semibold"
         >
           save changes
           {/* <Example onclick={HandlerClick} /> */}

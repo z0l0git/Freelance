@@ -87,7 +87,7 @@ export const RevieComment = (props: IdType) => {
           <FaStarOfLife width={10} height={24} className="text-[#0D47A1]" />
         </div>
 
-        <div className="w-[362px] md:w-[816px]   h-[47px]  rounded-full flex items-center px-5 bg-white border border-black">
+        <div className="w-[362px] md:w-[816px] h-[47px] rounded-full flex items-center px-5 bg-white border border-black">
           <Rating
             name="simple-controlled"
             value={comment.stars}

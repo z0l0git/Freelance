@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 
 import { MenuMessageCard, MenuNotificationCard } from "./MenuMessageCard";
 
@@ -20,10 +20,21 @@ export const Menu = () => {
   const [openBell, setOpenBell] = useState(false);
   const [openProfile, setOpenProfile] = useState(false);
   const { isLoggedIn, data } = useContext(DataContext);
+  const [profile, setProfile] = useState(false);
+
   const handleClick = () => {
     setOpenBell(!openBell);
     setOpenProfile(false);
   };
+
+  useEffect(() => {
+    if (isLoggedIn) {
+      setProfile(true);
+    } else {
+      setProfile(false);
+    }
+  }, [isLoggedIn]);
+
   return (
     <div className="sticky top-0 z-40">
       <div
@@ -96,7 +107,7 @@ export const Menu = () => {
             </nav>
 
             <nav className="flex justify-center items-center rounded-full relative w-10 h-10 ">
-              {isLoggedIn ? (
+              {profile ? (
                 <MenuProfileCard
                   profilePicture={`${data.image ? data?.image : "/proq.webp"}`}
                   setOpenBell={setOpenBell}

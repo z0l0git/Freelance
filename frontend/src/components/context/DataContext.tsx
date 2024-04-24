@@ -66,9 +66,7 @@ export const DataProvider = ({ children }: any) => {
               },
             }
           );
-
           setdata(data);
-          console.log(data, "userdata");
           localStorage.setItem("userId", data._id);
           setIsLoggedIn(true);
           console.log("yes");

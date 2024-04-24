@@ -1,14 +1,16 @@
-import React from "react";
+"use client";
+import React, { useContext } from "react";
 import { AiOutlineFieldTime } from "react-icons/ai";
-import { MdOutlineDeveloperMode } from "react-icons/md";
-import { GiTakeMyMoney } from "react-icons/gi";
 import Image from "next/image";
 import { AiFillWechat } from "react-icons/ai";
 import { PiClockCountdownLight } from "react-icons/pi";
 import { BsTags } from "react-icons/bs";
-
 import { GoDotFill } from "react-icons/go";
 import { BiSolidCategory } from "react-icons/bi";
+import { useRouter } from "next/navigation";
+import axios from "axios";
+import { DataContext } from "../context/DataContext";
+import { io } from "socket.io-client";
 
 type SkillPropType = {
   skil: string;
@@ -51,6 +53,7 @@ type CtType = {
 type PosdtDataType = {
   _id: string;
   createdBy: {
+    _id: string;
     firstName?: string;
     lastName?: string;
     image?: string;
@@ -69,9 +72,16 @@ type PropsType = {
   data?: PosdtDataType;
 };
 
+type ConversationType = {
+  _id: string;
+  roomId: string;
+  messages: string[];
+  participants: [string];
+};
+
 export default function ProjectDetail(props: PropsType) {
   const { data } = props;
-  console.log(data, "data");
+  const { data: userData } = useContext(DataContext);
 
   function formatDate(originalDate: string): string {
     const [yearStr, monthStr, dayStr] = originalDate.split("-");
@@ -104,15 +114,33 @@ export default function ProjectDetail(props: PropsType) {
   const Budget = `${data?.budget?.toLocaleString()}`;
   const title = `${data?.title}`;
   const deliveryTime = `${data?.deliveryTime}`;
-  const Flexible = `${data?.flexible}`;
-  const Categorys = `${data?.category}`;
   const createdAtDate = `${data?.createdBy?.createdAt.split("T")[0]}`;
   const CreatedAt = formatDate(createdAtDate);
   const formatcreatedDate = `${data?.createdAt.split("T")[0]}`;
   const FormatedDate = formatDate(formatcreatedDate);
 
   const Description = `${data?.description}`;
-  console.log(data?.category, "scategorieslls");
+  const { push } = useRouter();
+
+  const URL = process.env.NEXT_PUBLIC_BACKEND;
+
+  var socket: any;
+  socket = io(URL || "https://freelance-gmjr.onrender.com", {
+    transports: ["websocket"],
+  });
+
+  const handleChat = async () => {
+    const conversation = await axios.post<ConversationType>(
+      "https://freelance-gmjr.onrender.com/createConvo",
+      {
+        participants: [data?.createdBy?._id, userData._id],
+      }
+    );
+    console.log(conversation.data);
+
+    socket.emit("join_room", conversation.data.roomId);
+    push(`/chat?roomId=${conversation?.data.roomId}`);
+  };
 
   return (
     <div className="w-screen h-screen flex justify-center bg-slate-200">
@@ -215,7 +243,7 @@ export default function ProjectDetail(props: PropsType) {
               </div>
               {/* <div className="p-[10px] w-[100%]"></div> */}
             </div>
-            <div className="cursor-pointer w-[100%] ">
+            <div onClick={handleChat} className="cursor-pointer w-[100%] ">
               <button className="flex justify-center group w-full h-full relative px-[31px] py-[15px] overflow-hidden rounded-[100px] bg-[#0d47a1] text-lg font-bold text-white md:h-[60%] lg:h-[40%] sm:h-[20%]">
                 <div className="absolute inset-0 h-full z-0 w-full scale-0 rounded-2xl transition-all duration-300 group-hover:scale-100 group-hover:text-transparent group-hover:bg-white/40"></div>
                 <div className="flex gap-[8px]">

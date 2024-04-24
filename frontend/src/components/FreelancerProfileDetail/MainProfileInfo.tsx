@@ -55,7 +55,6 @@ type getDataType = {
 type PropsType = {
   profile: SetProDileype;
   data: Response;
-
 };
 
 export const MainProfileInfo = (props: PropsType) => {
@@ -86,16 +85,24 @@ export const MainProfileInfo = (props: PropsType) => {
     const formattedDate: string = `${monthName} ${day}, ${year}`;
     return formattedDate;
   }
+  function formatYear(originalDate: string): string {
+    const [yearStr] = originalDate.split("-");
+    const year = parseInt(yearStr);
+    const date = new Date(year);
+    const formattedYear: string = `${year}`;
+    return formattedYear;
+  }
 
+  const FormatedYear = formatYear(profile?.createdAt.split("T")[0]);
   const FormatedDate = formatDate(profile?.createdAt.split("T")[0]);
   const UserName = profile.firstName + " " + profile.lastName;
 
   console.log(data.image, "imagee56");
 
   return (
-    <div className="h-[488px] flex flex-col items-center gap-4 rounded-2xl border bg-white max-sm:px-2 sm:px-2">
-      <div className="flex justify-center items-center p-4 ">
-        <div className=" w-[200px] h-[200px] relative flex justify-center items-center p-4 rounded-full border z-10">
+    <div className="max-h-fit p-8 max-w-full  flex flex-col items-center gap-4 max-md:gap-2 rounded-2xl border bg-white max-md:w-full max-md:h-fit max-md:py-4 max-sm:px-2 sm:px-2">
+      <div className="flex justify-center items-center p-4 max-md:min-h-3/12 max-md:min-w-3/12 ">
+        <div className="max-sm:w-20 max-sm:h-20 max-md:p-2 max-md:max-w-20 max-md:max-h-24 max-w-24 max-h-25 relative flex justify-center items-center p-4 rounded-full border z-10 ">
           <Image
             alt="user profile picture"
             src={`${profile?.image ? profile?.image : "/proq.webp"}`}
@@ -111,14 +118,18 @@ export const MainProfileInfo = (props: PropsType) => {
           />
         </div>
       </div>
-      <div className="w-full h-fit flex flex-col items-center justify-center gap-4">
-        <div className="text-2xl font-bold ">{UserName}</div>
+      <div className="w-full h-fit flex flex-col items-center justify-center gap-8 max-md:gap-2 ">
+        <div className="text-2xl font-bold max-w-10/12 max-md:text-md">
+          {UserName}
+        </div>
 
-        <div className="text-base font-medium">{data?.jobTitle} </div>
-        <div className="flex items-center gap-4">
+        <div className="text-base font-medium max-w-10/12">
+          {data?.jobTitle}{" "}
+        </div>
+        <div className="flex items-center gap-1 max-w-full">
           <div className="flex items-center gap-1">
             <CiLocationOn />
-            <div>{profile?.location}</div>
+            <div className="text-sm">{profile?.location}</div>
           </div>
           <div className="w-1 h-1 rounded-full bg-blue-800"></div>
           <div className="flex items-center gap-1">
@@ -128,19 +139,21 @@ export const MainProfileInfo = (props: PropsType) => {
           </div>
           <div className="w-1 h-1 rounded-full bg-blue-800"></div>
 
-          <div className="flex items-center">Member : {FormatedDate}</div>
+          <div className="flex items-center text-sm text-nowrap">
+            Member : {FormatedYear}
+          </div>
         </div>
 
         <div className="flex items-center gap-4">
           <div className="flex items-center gap-1">
             <MdOutlineAttachEmail />
-            <div>{data?.email}</div>
+            <div className="text-sm">{data?.email}</div>
           </div>
           <div className="w-1 h-1 rounded-full bg-blue-800"></div>
 
           <div className="flex items-center gap-1">
             <AiOutlinePhone />
-            <div>{profile?.phone}</div>
+            <div className="text-sm">{profile?.phone}</div>
           </div>
         </div>
 
