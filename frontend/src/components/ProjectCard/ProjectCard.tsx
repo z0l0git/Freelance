@@ -37,7 +37,7 @@ export const ProjectCard = (props: ProjectCard) => {
               {price}₮
             </h5>
           </div>
-          <div className="flex gap-10 justify-stretch w-full h-[41px] mb-6">
+          <div className="flex gap-5 justify-stretch w-full h-fit flex-wrap mb-6">
             {category?.map((element, index) => {
               return (
                 <div
