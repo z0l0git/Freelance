@@ -8,8 +8,8 @@ type SentChatProps = {
 export const SentChat = (props: SentChatProps) => {
   const { message, time } = props;
   return (
-    <li className="w-fit max-w-[60%] self-end">
-      <p className="p-[10px] bg-blue-300 rounded-lg rounded-br-none text-black">
+    <li className="w-fit flex flex-col w-[80%] md:max-w-[60%] self-end text-left">
+      <p className="p-[10px] bg-blue-300 rounded-lg rounded-br-none text-black ">
         {message}
       </p>
       <div className="w-full flex justify-end items-center">

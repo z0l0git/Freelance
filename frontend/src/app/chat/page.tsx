@@ -8,7 +8,7 @@ const page = () => {
   return (
     <div>
       <Menu />
-      <div className="h-screen">
+      <div className="h-[80vh] flex items-center justify-center">
         <ChatPage />
       </div>
     </div>
