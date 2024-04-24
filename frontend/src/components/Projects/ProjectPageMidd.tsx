@@ -46,13 +46,11 @@ export default function ProjectPageMidd(props: PropsType) {
 
   const [skill, setSkill] = useState("");
   const [category, setCategory] = useState("");
-  console.log(skill, "category");
 
   const [budget, setBudget] = useState<BudgetType>({ min: 0, max: 0 });
   const [search, setSearch] = useState("");
   const [tempStage, settempStage] = useState<boolean>();
   const [postData, setPostData] = useState<PosdtDataType[]>([]);
-  console.log(postData, "postData");
 
   const [stage, setStage] = useState(true);
 
@@ -61,6 +59,7 @@ export default function ProjectPageMidd(props: PropsType) {
     setSearch("");
     setCategory("");
     setSkill("");
+    handleZero();
   };
 
   const handleSkillFilter = (e: SkillType) => {
@@ -68,6 +67,7 @@ export default function ProjectPageMidd(props: PropsType) {
     setStage(false);
     setSearch("");
     setCategory("");
+    handleZero();
 
     const dataSkill: PosdtDataType[] = AllPost.filter((post) => {
       return post?.skills?.some((skill) => skill.name === e.name);
@@ -81,6 +81,7 @@ export default function ProjectPageMidd(props: PropsType) {
     setSearch("");
     setSkill("");
     setStage(false);
+    handleZero();
 
     const datacategory: PosdtDataType[] = AllPost.filter((post) => {
       return post?.category?.some((category) => category._id === e._id);
@@ -94,17 +95,27 @@ export default function ProjectPageMidd(props: PropsType) {
     const { name, value } = event.target;
     setBudget({ ...budget, [name]: value });
     setStage(false);
+    setSearch("");
     setCategory("");
   };
 
   useEffect(() => {
-    setPostData(
-      AllPost.filter((post) => {
-        return post.budget >= budget.min && post.budget <= budget.max;
-      })
-    );
+    if (budget.min === 0 && budget.max === 0) {
+      setPostData(AllPost);
+    } else {
+      setPostData(
+        AllPost.filter((post) => {
+          return post.budget >= budget.min && post.budget <= budget.max;
+        })
+      );
+    }
+
     // setStage(false);
   }, [budget]);
+
+  const handleZero = () => {
+    setBudget({ min: 0, max: 0 });
+  };
 
   const HnadleSearch = async () => {
     setCategory("");
@@ -131,8 +142,6 @@ export default function ProjectPageMidd(props: PropsType) {
         body
       );
       setPostData(data);
-
-      console.log(data, "data");
     } catch (err: any) {
       console.log(err.message);
     }
@@ -143,6 +152,7 @@ export default function ProjectPageMidd(props: PropsType) {
       <div className="flex justify-center h-fit gap-5 z-10">
         <div className="sticky top-0 h-[100%] my-[100px] ">
           <Filter
+            handleZero={handleZero}
             handlerClick={handlerClick}
             budget={budget}
             search={search}

@@ -26,7 +26,10 @@ export const createWorkExpQuery = async (req: Request) => {
         new: true,
       }
     );
-    return userU;
+    const allUser = await UserModel.findById({ _id: id }).populate(
+      "education workExp skills"
+    );
+    return allUser;
   } catch (error: any) {
     return error.message;
   }

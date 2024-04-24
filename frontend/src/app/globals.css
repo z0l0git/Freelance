@@ -78,13 +78,43 @@
     @apply px-4 py-3 overflow-hidden rounded-2xl bg-[#0d47a1] border text-sm text-white flex items-center gap-1;
   }
   .blueBorderButton {
-    @apply px-4 py-3 overflow-hidden rounded-2xl  border-[#0d47a1] border text-sm text-[#0f48a2] flex items-center gap-1;
+    @apply min-w-fit px-4 py-3 text-nowrap overflow-hidden rounded-2xl border-[#0d47a1] border text-sm text-[#0f48a2] flex items-center gap-1;
   }
   .responsivePatchCompButton {
     @apply max-sm:w-[40%] justify-center max-w-[300px];
   }
   .responsivePatchCompImage {
     @apply max-sm:hidden max-md:hidden sm:hidden;
+  }
+  .skillTitle {
+    @apply max-md:text-lg text-2xl font-semibold ml-2;
+  }
+  .skillEditButton {
+    @apply font-bold text-[#0d47a1] cursor-pointer max-md:text-sm;
+  }
+  .skillTextShow {
+    @apply w-full h-fit p-1 bg-transparent text-justify text-gray-700 max-md:text-sm;
+  }
+  .skillTextEdit {
+    @apply w-full bg-transparent text-black mb-8 pb-8 border-b-2 max-md:text-sm cursor-pointer;
+  }
+  .skillCancel {
+    @apply w-6 h-6 cursor-pointer;
+  }
+  .skillEditBoxNormal {
+    @apply w-full rounded-xl p-2 overflow-hidden;
+  }
+  .skillEditBoxEditMode {
+    @apply bg-gray-100 rounded-xl p-4;
+  }
+  .skillUpdateButton {
+    @apply px-[10px] py-[5px] bg-[#0D47A1] rounded-lg text-white font-bold;
+  }
+  .updateProfileTitleBox {
+    @apply max-md:w-full w-[50%];
+  }
+  .updateProfileTitles {
+    @apply font-semibold text-[22px] mb-[20px];
   }
 }
 
@@ -105,4 +135,27 @@ input[type="file"] {
 
 .anchor {
   overflow-anchor: auto;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+select {
+  /* for Firefox */
+  -moz-appearance: none;
+  /* for Chrome */
+  -webkit-appearance: none;
+}
+
+/* For IE10 */
+select::-ms-expand {
+  display: none;
 }

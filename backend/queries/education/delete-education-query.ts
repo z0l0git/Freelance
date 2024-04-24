@@ -9,5 +9,5 @@ export const deleteEducationQuery = async (req: Request) => {
   if (!result) {
     throw new Error("not found");
   }
-  return "success";
+  return result;
 };

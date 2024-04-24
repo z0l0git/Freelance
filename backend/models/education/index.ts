@@ -7,30 +7,40 @@ export type EducationModelType = {
   degree: string;
   schoolName: string;
   aboutSchool: string;
+  profession: string;
 };
 
-const EducationSchema = new Schema<EducationModelType>({
-  startedY: {
-    type: String,
-    required: true,
+const EducationSchema = new Schema<EducationModelType>(
+  {
+    startedY: {
+      type: String,
+      required: true,
+    },
+    finishedY: {
+      type: String,
+      required: true,
+    },
+    degree: {
+      type: String,
+      required: true,
+    },
+    schoolName: {
+      type: String,
+      required: true,
+    },
+    profession: {
+      type: String,
+      required: true,
+    },
+    aboutSchool: {
+      type: String,
+      required: true,
+    },
   },
-  finishedY: {
-    type: String,
-    required: true,
-  },
-  degree: {
-    type: String,
-    required: true,
-  },
-  schoolName: {
-    type: String,
-    required: true,
-  },
-  aboutSchool: {
-    type: String,
-    required: true,
-  },
-});
+  {
+    timestamps: true,
+  }
+);
 
 export const EducationModel: Model<EducationModelType> =
   models["Education"] || model("Education", EducationSchema);

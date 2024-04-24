@@ -5,13 +5,21 @@ import { useState } from "react";
 
 type DataContextType = {
   isLoggedIn: boolean;
-
+  setdata: React.Dispatch<React.SetStateAction<Response>>;
   data: Response;
 };
 
 export const DataContext = createContext<DataContextType>(
   {} as DataContextType
 );
+
+type SkillT = {
+  id?: string;
+};
+type Rating = {
+  howMany: number;
+  stars: number;
+};
 type Response = {
   _id: string;
   firstName: string;
@@ -25,6 +33,8 @@ type Response = {
   image: string;
   jobTitle: string;
   budget: number;
+  skills: SkillT[];
+  rating: Rating;
 };
 
 export const DataProvider = ({ children }: any) => {
@@ -43,6 +53,11 @@ export const DataProvider = ({ children }: any) => {
     image: "",
     jobTitle: "",
     budget: 0,
+    skills: [],
+    rating: {
+      howMany: 0,
+      stars: 0,
+    },
   });
 
   const accessToken =
@@ -61,6 +76,9 @@ export const DataProvider = ({ children }: any) => {
             }
           );
           setdata(data);
+
+          localStorage.setItem("userId", data._id);
+
           setIsLoggedIn(true);
         } catch (error) {
           console.log("eror from get logged in user");
@@ -78,6 +96,7 @@ export const DataProvider = ({ children }: any) => {
       value={{
         isLoggedIn,
         data,
+        setdata,
       }}
     >
       {children}

@@ -11,6 +11,12 @@ import FreelancersMidd from "@/components/FreelancerCardComponent/FreelancersMid
 import { Menu } from "@/components/Menu/Menu";
 import { Footer } from "@/components/Footer/Footer";
 import { PageHeroes } from "@/components/Profilepath";
+import { GetSkillCategory } from "@/utils/axiosInstance";
+
+type SkillType = {
+  name: string;
+  id: string;
+};
 
 type Response = {
   _id: string;
@@ -36,6 +42,8 @@ const GetAllUser = async () => {
 const Chinzorig = async () => {
   const AllUserData = await GetAllUser();
 
+  const skills: SkillType[] = await GetSkillCategory();
+
   return (
     <div
       className="flex flex-col gap-[20px] 
@@ -56,7 +64,7 @@ const Chinzorig = async () => {
           ImageClass={"w-[406px] h-[373px] flex justify-center items-center"}
         />
       </div>
-      <FreelancersMidd AllUserData={AllUserData} />
+      <FreelancersMidd AllUserData={AllUserData} skills={skills} />
       <Footer />
     </div>
   );

@@ -45,10 +45,8 @@ export const Projects = (props: ProjectsProps) => {
 
   const handlerClick = (event: MouseEvent<HTMLDivElement>) => {
     const projectId = event.currentTarget.id;
-
     push(`/projectDetail?id=${projectId}`);
   };
-  console.log(AllPost);
 
   return (
     <div className="flex items-start  justify-center  ">

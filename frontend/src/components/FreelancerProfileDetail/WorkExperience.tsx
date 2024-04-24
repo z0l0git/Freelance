@@ -1,17 +1,50 @@
 "use client";
-import { Formik, FormikProps, ErrorMessageProps } from "formik";
-import { BlueButton, ButtonWithBlueBorder, WhiteButton } from "../Button";
-import { ChangeEvent, ReactEventHandler, useEffect } from "react";
-import { string } from "yup";
+import { ChangeEvent, useEffect } from "react";
 import { useState } from "react";
 import { useContext } from "react";
 import { DataContext } from "../context/DataContext";
 import axios from "axios";
+
+import { toast } from "react-toastify";
+import { Bounce } from "react-toastify";
+
+type eduType = {
+  startedY: string;
+  profession: string;
+  finishedY: string;
+  degree: string;
+  schoolName: string;
+  aboutSchool: string;
+  _id: string;
+};
+type ExpType = {
+  aboutCompany: string;
+  companyName: string;
+  firedY: string;
+  hiredY: string;
+  occupation: string;
+  _id: string;
+};
+
+type getDataType = {
+  _id: string;
+  firstName: string;
+  lastName: string;
+  image: string;
+  email: string;
+  auth: string;
+  socials: [];
+  skills: [];
+  education: eduType[];
+  workExp: ExpType[];
+  createdAt: string;
+};
 type Props = {
   clickButton: () => void;
+  HandlePushEduArray: (obj: ExpType) => void;
 };
 export const WorkExperienceComp = (props: Props) => {
-  const { clickButton } = props;
+  const { clickButton, HandlePushEduArray } = props;
 
   const [expData, setExpData] = useState({
     hiredY: "",
@@ -38,15 +71,46 @@ export const WorkExperienceComp = (props: Props) => {
     });
   }, [data]);
 
+  const notifySuccess = () => {
+    toast.success("🆕Success! Your profile edits have been saved.", {
+      position: "top-center",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      transition: Bounce,
+    });
+  };
+
+  const notifyError = () => {
+    toast.error("❗️Oops! Profile update failed. Please try again later.", {
+      position: "top-center",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      transition: Bounce,
+    });
+  };
+
   const AddnewEducation = async () => {
     try {
       const { data } = await axios.post(
-        "https://freelance-gmjr.onrender.com/createWorkExp",
+        "http://localhost:8000/createWorkExp",
         expData
       );
-      console.log(data, "great result for exp");
+      HandlePushEduArray(data?.workExp[data?.workExp?.length - 1]);
+
       clickButton();
+      notifySuccess();
     } catch (err: any) {
+      notifyError();
       console.log(err.message);
     }
   };
@@ -99,10 +163,7 @@ export const WorkExperienceComp = (props: Props) => {
           onChange={(e) => handlechange(e)}
         />
         <div className="w-full flex justify-around p-4">
-          <button
-            onClick={AddnewEducation}
-            className="px-[10px] py-[5px] bg-blue-800 rounded-lg text-white font-bold"
-          >
+          <button onClick={AddnewEducation} className="skillUpdateButton">
             Update
           </button>
         </div>

@@ -1,5 +1,6 @@
 import { ReviewMap } from "./ProfileMaps";
 import { useContext, useEffect, useState } from "react";
+import { DataContext } from "../context/DataContext";
 
 import axios from "axios";
 import { DataContext } from "../context/DataContext";
@@ -11,14 +12,16 @@ type IdType = {
 };
 
 export const RatingAndReview = (props: IdType) => {
+
   const { data: userData } = useContext(DataContext);
 
   const { searchParams, rdata, setRdata } = props;
 
+
   useEffect(() => {
     const GetUserById = async () => {
       try {
-        const reviews = await axios.post(
+        const reviews = await axios.post<stateType[]>(
           "https://freelance-gmjr.onrender.com/getallreview",
           {
             createdFor: searchParams,
@@ -26,6 +29,23 @@ export const RatingAndReview = (props: IdType) => {
         );
         console.log("this worked aHAHAH");
         setRdata(reviews.data);
+
+        const totalStarsArray: number[] = reviews.data.map((el) =>
+          el.stars !== undefined ? el.stars : 0
+        );
+
+        const sum = totalStarsArray.reduce((acc, stars) => acc + stars, 0);
+        const average = sum / totalStarsArray.length;
+
+        const roundedAverage: number = Number(average.toFixed(1));
+
+        console.log("Average stars:", roundedAverage);
+        // setdata({ ...data, stars: roundedAverage });
+        setdata({
+          ...data,
+          rating: { stars: roundedAverage, howMany: totalStarsArray.length },
+        });
+
         return;
       } catch (error: any) {
         throw new Error(error.message);

@@ -47,7 +47,9 @@ type stateType = {
 export const Profile = (props: PropsType) => {
   const [rdata, setRdata] = useState<stateType[]>([]);
   const { data, searchParams } = props;
+
   const { data: userData } = useContext(DataContext);
+
 
   // const [profile, setProfile] = useState<Response>();
   return (
