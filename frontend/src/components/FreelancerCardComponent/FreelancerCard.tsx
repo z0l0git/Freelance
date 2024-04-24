@@ -6,20 +6,33 @@ import { TiStarFullOutline } from "react-icons/ti";
 import { MdOutlineSignalCellularAlt } from "react-icons/md";
 import { BsStopwatch } from "react-icons/bs";
 import { BsChatLeftText } from "react-icons/bs";
+import { homedir } from "os";
 
 type FreelancerCard = {
-  star: string;
   level: string;
   levelrank: string;
   image: string;
   name: string;
   worktype: string;
-  experience: string;
+
   wages: string;
+  star: string;
+  rating: number;
+  howManyPeople: number;
 };
 
 export const FreelancerCard = (props: FreelancerCard) => {
-  const { star, image, levelrank, name, worktype, experience, wages } = props;
+  const {
+    star,
+    image,
+    levelrank,
+    name,
+    worktype,
+
+    wages,
+    howManyPeople,
+    rating,
+  } = props;
   return (
     <div className="flex items-center justify-center w-[362px] md:w-[336px] sm:w-[336px] xl:w-[270px] cursor-pointer">
       <div
@@ -33,8 +46,8 @@ export const FreelancerCard = (props: FreelancerCard) => {
           <div className="flex w-[88px] h-6 gap-1 items-center">
             <TiStarFullOutline size={25} color={"#ffbe57"} />
             <h6 className="text-base font-semibold">
-              {0}
-              <span className="font-normal ml-2">(0)</span>{" "}
+              {rating}
+              <span className="font-normal">{`(${howManyPeople})`}</span>{" "}
             </h6>
           </div>
         </div>
@@ -56,16 +69,7 @@ export const FreelancerCard = (props: FreelancerCard) => {
         <h2 className="w-full h-[50px] mt-5 pb-6 text-xl font-medium">
           {name}
         </h2>
-        <div className="flex w-full h-[45px] justify-between pb-5">
-          <div className="flex justify-center items-center gap-1">
-            <BsStopwatch className="flex w-4 h-4 " />
-            <span>full-time</span>
-          </div>
-          <div className="flex items-center justify-center gap-1">
-            <MdOutlineSignalCellularAlt className="flex w-4 h-4 justify-center items-center" />
-            <span>{experience}</span>
-          </div>
-        </div>
+
         <div className="flex w-full h-[50px] items-center justify-between pt-5 border-dashed border-t-2 border-current">
           <span className="text-xl font-semibold text-[#0D47A1]">{wages}</span>
         </div>

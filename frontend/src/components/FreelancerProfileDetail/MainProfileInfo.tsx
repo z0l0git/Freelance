@@ -6,6 +6,8 @@ import { CiLocationOn } from "react-icons/ci";
 import { MdOutlineAttachEmail } from "react-icons/md";
 import { FaStar } from "react-icons/fa";
 import { AiOutlinePhone } from "react-icons/ai";
+import { useContext } from "react";
+import { DataContext } from "../context/DataContext";
 
 import {
   FaFacebook,
@@ -52,14 +54,52 @@ type getDataType = {
   workExp: [];
   createdAt: string;
 };
+
+type SkillType = {
+  name: string;
+  id: string;
+};
+
+interface YourObjectType {
+  _doc: {
+    _id: string;
+    firstName: string;
+    lastName: string;
+    email: string;
+    phone: string;
+    password: string;
+    discription: string;
+    location: string;
+    createdAt: string;
+    image: string;
+    jobTitle: string;
+    budget: number;
+    skills: SkillType[];
+  };
+  rating: number;
+  howManyPeople: number;
+}
+type Rating = {
+  howManyPeople: number;
+  rating: number;
+};
 type PropsType = {
   profile: SetProDileype;
   data: Response;
+  AllUser: YourObjectType[] | undefined;
 };
 
 export const MainProfileInfo = (props: PropsType) => {
-  const { profile, data } = props;
-  console.log(data, "dataaddds");
+  const { profile, data, AllUser } = props;
+  const { rating } = useContext(DataContext);
+  console.log(rating, "rating");
+  const ss: Rating[] | any = AllUser?.map((el) => {
+    if (el._doc._id === data?._id) {
+      return { rating: el.rating, howManyPeople: el.howManyPeople };
+    } else {
+      return null; // or any default value if you want
+    }
+  }).find((el) => el !== null);
 
   function formatDate(originalDate: string): string {
     const [yearStr, monthStr, dayStr] = originalDate.split("-");
@@ -125,7 +165,7 @@ export const MainProfileInfo = (props: PropsType) => {
         <div className="text-base font-medium max-w-10/12">
           {data?.jobTitle}{" "}
         </div>
-        <div className="flex items-center gap-1 max-w-full">
+        <div className="flex items-center gap-3 max-w-full">
           <div className="flex items-center gap-1">
             <CiLocationOn />
             <div className="text-sm">{profile?.location}</div>
@@ -133,8 +173,10 @@ export const MainProfileInfo = (props: PropsType) => {
           <div className="w-1 h-1 rounded-full bg-blue-800"></div>
           <div className="flex items-center gap-1">
             <FaStar color="orange" />
-            {/* <div className="xl:text-sm">{data?.rating?.stars}</div> */}
-            <div className="xl:text-sm">(118)</div>
+            <div className="xl:text-sm">{ss?.rating ? ss?.rating : 0}</div>
+            <div className="xl:text-sm">{`(${
+              ss?.howManyPeople ? ss?.howManyPeople : 0
+            })`}</div>
           </div>
           <div className="w-1 h-1 rounded-full bg-blue-800"></div>
 

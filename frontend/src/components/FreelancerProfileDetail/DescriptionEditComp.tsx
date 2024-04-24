@@ -14,11 +14,11 @@ interface MyBioValues {
 
 export const DescriptionEditComp: React.FC<{}> = () => {
   const { data } = useContext(DataContext);
-  // console.log(data, "data");
+ 
 
   const [showdescriptionEdit, setShowDescriptionEdit] = useState(false);
   const [jobTitle, setJobTitle] = useState("");
-  console.log(jobTitle, "jobTitle");
+
 
   useEffect(() => {
     setJobTitle(data?.jobTitle);
@@ -64,13 +64,13 @@ export const DescriptionEditComp: React.FC<{}> = () => {
           jobTitle: jobTitle,
         }
       );
-      console.log(JobUp, "JobUp");
+    
       setShowDescriptionEdit(!showdescriptionEdit);
       notifySuccess();
 
-      console.log(data, "jobtdata");
+    
     } catch (err: any) {
-      console.log(err.message);
+    
       notifyError();
     }
   };

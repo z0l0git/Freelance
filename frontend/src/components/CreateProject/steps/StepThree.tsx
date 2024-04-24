@@ -41,7 +41,7 @@ const StepThree = (props: StepThreeProps) => {
   const [flexible, setFlexible] = useState(false);
 
   const [test, setTest] = useState<string>("day");
-  console.log(test);
+
 
   const HandleFlexible = () => {
     setFlexible(!flexible);
@@ -57,7 +57,7 @@ const StepThree = (props: StepThreeProps) => {
 
   const handleBlur = (event: React.FocusEvent<HTMLInputElement>) => {
     const { value } = event.target;
-    console.log("onbluring");
+   
 
     setPostData({
       ...postData,

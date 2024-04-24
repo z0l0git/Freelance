@@ -24,7 +24,7 @@ UserRouter.post("/createByClerk", createUserByClerkController);
 UserRouter.post("/createUser", createUserController);
 UserRouter.post("/updateUser", updateUserController);
 UserRouter.post("/login", loginController);
-UserRouter.delete("/deleteUser", deleteUserController);
+UserRouter.post("/deleteUser", deleteUserController);
 
 UserRouter.get("/users/refresh", getRefreshTokenService);
 

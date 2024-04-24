@@ -17,7 +17,7 @@ import axios from "axios";
 import { AuroraHero } from "@/components/Header/StarsHeader";
 
 let url: string = process.env.NEXT_PUBLIC_PRODUCTION!;
-console.log(url, "jiiiii");
+
 
 export default function Home() {
   useEffect(() => {
@@ -25,7 +25,7 @@ export default function Home() {
       try {
         const result = await axios.get(url);
 
-        console.log(result.data?.user.emailAddresses[0].emailAddress, "result");
+    
 
         const { data } = await axios.post(
           "https://freelance-gmjr.onrender.com/createByClerk",
@@ -36,7 +36,7 @@ export default function Home() {
           }
         );
 
-        console.log(data, "tokenpage");
+     
         if (typeof window !== "undefined") {
           localStorage.setItem("token", data);
         }

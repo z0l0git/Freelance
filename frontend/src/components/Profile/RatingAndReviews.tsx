@@ -34,8 +34,8 @@ type stateType = {
 
 export const RatingAndReview = (props: IdType) => {
   const { searchParams } = props;
-  const { setdata, data } = useContext(DataContext);
-  console.log(data, "datainreview");
+  const { setRating, data } = useContext(DataContext);
+  console.log(data, "datainreviewsdaa");
 
   const [rdata, setRdata] = useState<stateType[]>([]);
   console.log(rdata, "rdata");
@@ -62,11 +62,15 @@ export const RatingAndReview = (props: IdType) => {
         const roundedAverage: number = Number(average.toFixed(1));
 
         console.log("Average stars:", roundedAverage);
+        console.log(totalStarsArray.length, "how ,may peopeel");
+
         // setdata({ ...data, stars: roundedAverage });
-        setdata({
-          ...data,
-          rating: { stars: roundedAverage, howMany: totalStarsArray.length },
-        });
+        setRating({ stars: roundedAverage, howMany: totalStarsArray.length });
+
+        // setdata({
+        //   ...data,
+        //   rating: { stars: roundedAverage, howMany: totalStarsArray.length },
+        // });
 
         return;
       } catch (error: any) {

@@ -11,15 +11,6 @@ export const updateEducationQuery = async (req: Request) => {
     aboutSchool,
     profession,
   } = req.body;
-  console.log(
-    _id,
-    startedY,
-    finishedY,
-    degree,
-    schoolName,
-    aboutSchool,
-    profession
-  );
 
   try {
     const upedEdu = await EducationModel.findByIdAndUpdate(

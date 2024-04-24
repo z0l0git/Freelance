@@ -18,20 +18,31 @@ type SkillType = {
   id: string;
 };
 
-type Response = {
-  _id: string;
-  firstName: string;
-  lastName: string;
-  email: string;
-  phone: string;
-  password: string;
-  discription: string;
-};
+
+interface YourObjectType {
+  _doc: {
+    _id: string;
+    firstName: string;
+    lastName: string;
+    email: string;
+    phone: string;
+    password: string;
+    discription: string;
+    location: string;
+    createdAt: string;
+    image: string;
+    jobTitle: string;
+    budget: number;
+    skills: SkillType[];
+  };
+  rating: number;
+  howManyPeople: number;
+}
 
 const GetAllUser = async () => {
   try {
-    const { data } = await axios.get(
-      "https://freelance-gmjr.onrender.com/allUser"
+    const { data } = await axios.get<YourObjectType[]>(
+      "http://localhost:8000/allUser"
     );
     return data;
   } catch (err: any) {
@@ -40,7 +51,7 @@ const GetAllUser = async () => {
 };
 
 const Chinzorig = async () => {
-  const AllUserData = await GetAllUser();
+  const AllUser = await GetAllUser();
 
   const skills: SkillType[] = await GetSkillCategory();
 
@@ -64,7 +75,7 @@ const Chinzorig = async () => {
           ImageClass={"w-[406px] h-[373px] flex justify-center items-center"}
         />
       </div>
-      <FreelancersMidd AllUserData={AllUserData} skills={skills} />
+      <FreelancersMidd AllUser={AllUser as YourObjectType[]} skills={skills} />
       <Footer />
     </div>
   );

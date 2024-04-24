@@ -1,3 +1,4 @@
+"use client";
 import { CiLocationOn } from "react-icons/ci";
 import { TbPointFilled } from "react-icons/tb";
 import StarIcon from "@mui/icons-material/Star";
@@ -5,6 +6,8 @@ import { ProfileInfoDetails } from "./ProfileInfoDetails";
 import Image from "next/image";
 import CheckIcon from "@mui/icons-material/Check";
 import { format } from "path";
+import { useContext } from "react";
+import { DataContext } from "../context/DataContext";
 type Response = {
   _id: string;
   firstName: string;
@@ -28,7 +31,8 @@ type PropsType = {
 
 export const ProfileDetails = (props: PropsType) => {
   const { data } = props;
-  console.log(data?.firstName, "first");
+
+  const { rating } = useContext(DataContext);
 
   function formatDate(originalDate: string): string {
     const [yearStr, monthStr, dayStr] = originalDate.split("-");
@@ -99,7 +103,8 @@ export const ProfileDetails = (props: PropsType) => {
               <TbPointFilled />
               <StarIcon className="text-[#febf58] " />
               <p>
-                <span className="font-bold">0</span> (0)
+                <span className="font-bold">{rating.stars}</span> (
+                {rating.howMany})
               </p>
             </li>
             <li className="w-fit h-[24px] flex justify-around items-center gap-[10px] ">

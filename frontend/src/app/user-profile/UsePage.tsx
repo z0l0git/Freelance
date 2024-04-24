@@ -18,8 +18,29 @@ type SkillType = {
   id: string;
 };
 
+interface YourObjectType {
+  _doc: {
+    _id: string;
+    firstName: string;
+    lastName: string;
+    email: string;
+    phone: string;
+    password: string;
+    discription: string;
+    location: string;
+    createdAt: string;
+    image: string;
+    jobTitle: string;
+    budget: number;
+    skills: SkillType[];
+  };
+  rating: number;
+  howManyPeople: number;
+}
+
 type PropsType = {
   skill: SkillType[];
+  AllUser: YourObjectType[] | undefined;
 };
 type getDataType = {
   _id: string;
@@ -36,10 +57,10 @@ type getDataType = {
 };
 
 export const UsePage = (props: PropsType) => {
-  const { skill } = props;
+  const { skill, AllUser } = props;
 
   const { data } = useContext(DataContext);
-  console.log(data, "dataaaaaa ni envheee");
+ 
 
   const [userDataGet, setUserDataGet] = useState<getDataType>();
 
@@ -63,7 +84,7 @@ export const UsePage = (props: PropsType) => {
               id: data?._id,
             }
           );
-          console.log(temp, "temp");
+
 
           setUserDataGet(temp);
         } catch (err: any) {
@@ -91,6 +112,7 @@ export const UsePage = (props: PropsType) => {
     <div className="max-sm:flex-col max-sm:items-center max-sm:justify-center   max-md:flex-col  md:w-[85%] max-md:items-center max-w-[1200px] items-start flex justify-center mt-[100px] gap-8">
       {/* max-sm:flex-col sm:flex-col max-lg:flex-row xl:flex-row xl:w-[990px] xl:justify-center xl:mx-auto */}
       <MainProfileSidebar
+        AllUser={AllUser}
         profile={profile}
         data={data}
         skill={skill}

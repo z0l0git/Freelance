@@ -11,7 +11,7 @@ export const ReviewPostQuery = async (req: Request) => {
       createdBy: createdBy,
       createdFor: createdFor,
     });
-    console.log(postReview);
+   
     return postReview;
   } catch (err: any) {
     throw new Error(err.message);

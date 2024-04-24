@@ -16,18 +16,7 @@ export const updateProjectQuery = async (req: Request) => {
     flexible,
   } = req.body;
 
-  console.log(
-    _id,
 
-    title,
-    description,
-
-    category,
-    skills,
-    budget,
-    deliveryTime,
-    flexible
-  );
 
   try {
     const upedPOst = await ProjectModel.findByIdAndUpdate(

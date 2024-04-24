@@ -18,7 +18,7 @@ export const loginQuery = async (req: Request) => {
     }
 
     const isPasswordRight = await compareHash(user.password, password);
-    console.log(isPasswordRight);
+  
 
     if (!isPasswordRight) {
       throw new Error("User or Password not match");

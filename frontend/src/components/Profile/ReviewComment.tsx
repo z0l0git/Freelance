@@ -8,6 +8,8 @@ import { useContext } from "react";
 import { DataContext, useData } from "../context/DataContext";
 import { BlueButton } from "../Button";
 import { set } from "react-hook-form";
+import { toast } from "react-toastify";
+import { Bounce } from "react-toastify";
 
 type Datatype = {
   stars?: number;
@@ -37,7 +39,33 @@ export const RevieComment = (props: IdType) => {
     description: "",
   });
 
-  console.log(comment);
+  const notifySuccess = () => {
+    toast.success("🦄 Changes applied successfully.", {
+      position: "top-center",
+      autoClose: 4000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      transition: Bounce,
+    });
+  };
+
+  const notifyError = () => {
+    toast.error("❗Unable to update data. Please try again later", {
+      position: "top-center",
+      autoClose: 4000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      transition: Bounce,
+    });
+  };
 
   const handleChange = async () => {
     try {
@@ -51,8 +79,10 @@ export const RevieComment = (props: IdType) => {
         }
       );
       window.location.reload();
+      notifySuccess();
       return data;
     } catch (err: any) {
+      notifyError();
       throw new Error(err.message);
     }
   };
