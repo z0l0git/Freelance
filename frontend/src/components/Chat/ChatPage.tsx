@@ -82,7 +82,11 @@ export const ChatPage = () => {
                 room={el.roomId}
                 name={currentUser.firstName + " " + currentUser.lastName}
                 image={currentUser.image}
-                msg={el.messages[el.messages.length - 1].message}
+                msg={
+                  el.messages.length > 0
+                    ? el.messages[el.messages.length - 1].message
+                    : ""
+                }
               />
             );
           })}

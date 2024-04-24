@@ -28,7 +28,7 @@ export const UserList = (props: any) => {
           {name}
         </p>
         <p className="text-[13px] text-slate-400 text-ellipsis overflow-hidden text-left whitespace-nowrap">
-          {msg}
+          {msg ? msg : "No Message"}
         </p>
       </div>
     </button>
