@@ -23,6 +23,7 @@ export const ChatPage = () => {
   const { push } = useRouter();
 
   var socket: any;
+
   socket = io(URL || "https://freelance-gmjr.onrender.com", {
     transports: ["websocket"],
   });
@@ -83,9 +84,8 @@ export const ChatPage = () => {
                 name={currentUser.firstName + " " + currentUser.lastName}
                 image={currentUser.image}
                 msg={
-                  el.messages.length > 0
-                    ? el.messages[el.messages.length - 1].message
-                    : ""
+                  el.messages.length > 0 &&
+                  el.messages[el.messages.length - 1].message
                 }
               />
             );
