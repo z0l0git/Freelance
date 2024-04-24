@@ -3,7 +3,6 @@ import { useContext, useEffect, useState } from "react";
 import { DataContext } from "../context/DataContext";
 
 import axios from "axios";
-import { DataContext } from "../context/DataContext";
 
 type IdType = {
   searchParams: string;
@@ -12,16 +11,14 @@ type IdType = {
 };
 
 export const RatingAndReview = (props: IdType) => {
-
   const { data: userData } = useContext(DataContext);
 
   const { searchParams, rdata, setRdata } = props;
 
-
   useEffect(() => {
     const GetUserById = async () => {
       try {
-        const reviews = await axios.post<stateType[]>(
+        const reviews = await axios.post<any[]>(
           "https://freelance-gmjr.onrender.com/getallreview",
           {
             createdFor: searchParams,
@@ -41,10 +38,10 @@ export const RatingAndReview = (props: IdType) => {
 
         console.log("Average stars:", roundedAverage);
         // setdata({ ...data, stars: roundedAverage });
-        setdata({
-          ...data,
-          rating: { stars: roundedAverage, howMany: totalStarsArray.length },
-        });
+        // setdata({
+        //   ...data,
+        //   rating: { stars: roundedAverage, howMany: totalStarsArray.length },
+        // });
 
         return;
       } catch (error: any) {
