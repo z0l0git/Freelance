@@ -23,8 +23,6 @@ export const MenuProfileCard = (props: any) => {
     userMail = "",
   } = props;
 
-  console.log(openProfile, "openProfileopenProfileopenProfileopenProfile");
-
   const handleClick = () => {
     setOpenProfile(!openProfile);
     setOpenBell(false);
@@ -89,7 +87,6 @@ export const MenuProfileCard = (props: any) => {
 
 export const MenuProfileUserInfoCard = (props: any) => {
   const { userName, userMail, profilePicture } = props;
-  console.log(profilePicture, "menu pfp");
 
   return (
     <div className="w-fit h-16 flex gap-2 items-center">

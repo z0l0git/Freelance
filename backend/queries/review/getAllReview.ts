@@ -8,7 +8,6 @@ export const getAllReviews = async (req: Request) => {
     const getAllReviews = await ReviewsModel.find({
       createdFor: createdFor,
     }).populate("createdBy", "firstName lastName email image jobTitle");
-    console.log(getAllReviews);
     return getAllReviews;
   } catch (err: any) {
     throw new Error(err.message);

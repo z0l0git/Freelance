@@ -35,7 +35,6 @@ const ReviewsSchema = new Schema<ReviewsModelType>({
     ref: "Users",
     required: true,
   },
-
   likes: {
     type: Number,
     required: false,

@@ -1,10 +1,9 @@
 import { CiLocationOn } from "react-icons/ci";
 import { TbPointFilled } from "react-icons/tb";
 import StarIcon from "@mui/icons-material/Star";
-import { ProfileInfoDetails } from "./ProfileInfoDetails";
+import { useState } from "react";
 import Image from "next/image";
-import CheckIcon from "@mui/icons-material/Check";
-import { format } from "path";
+
 type Response = {
   _id: string;
   firstName: string;
@@ -28,7 +27,6 @@ type PropsType = {
 
 export const ProfileDetails = (props: PropsType) => {
   const { data } = props;
-  console.log(data?.firstName, "first");
 
   function formatDate(originalDate: string): string {
     const [yearStr, monthStr, dayStr] = originalDate.split("-");
@@ -99,7 +97,8 @@ export const ProfileDetails = (props: PropsType) => {
               <TbPointFilled />
               <StarIcon className="text-[#febf58] " />
               <p>
-                <span className="font-bold">0</span> (0)
+                <span className="font-bold">0</span>
+                <span>(0)</span>
               </p>
             </li>
             <li className="w-fit h-[24px] flex justify-around items-center gap-[10px] ">
@@ -110,9 +109,6 @@ export const ProfileDetails = (props: PropsType) => {
           </ul>
         </div>
       </div>
-      {/* <div className=" flex flex-wrap gap-[10px]  w-[384px] h-[122px] md:w-[774px] md:h-[54px] divide-x divide-solid  md:flex md:justify-between ">
-        <ProfileInfoDetails />
-      </div> */}
     </div>
   );
 };
