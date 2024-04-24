@@ -83,34 +83,38 @@ export const UPdateprofile = (props: TypeProps) => {
             </div>
           )}
 
-        <div
-          onClick={() => setStage(1)}
-          className={`flex cursor-pointer items-center gap-[6px] ${
-            stage === 1 && "text-[#0D47A1]"
-          } `}
-        >
-          <BsFileEarmarkBarGraph className="text-[20px] " />
-          Active Projects
-
-        </div>
-        <div
-          onClick={() => setStage(2)}
-          className={`flex cursor-pointer items-center gap-[6px] ${
-            stage === 2 && "text-[#0D47A1]"
-          } `}
-        >
-          <RiEditBoxLine className="text-[20px] " />
-          Update Profile
-        </div>
-      </div>
-      <div className="">
-        {stage === 0 && <NewGig />}
-        {stage === 1 && <div>Active Projects</div>}
-        {stage === 2 && (
-          <div>
-            <UpdatePro profile={profile} setProfile={setProfile} data={data} />
+          <div
+            onClick={() => setStage(1)}
+            className={`flex cursor-pointer items-center gap-[6px] ${
+              stage === 1 && "text-[#0D47A1]"
+            } `}
+          >
+            <BsFileEarmarkBarGraph className="text-[20px] " />
+            Active Projects
           </div>
-        )}
+          <div
+            onClick={() => setStage(2)}
+            className={`flex cursor-pointer items-center gap-[6px] ${
+              stage === 2 && "text-[#0D47A1]"
+            } `}
+          >
+            <RiEditBoxLine className="text-[20px] " />
+            Update Profile
+          </div>
+        </div>
+        <div className="">
+          {stage === 0 && <NewGig />}
+          {stage === 1 && <div>Active Projects</div>}
+          {stage === 2 && (
+            <div>
+              <UpdatePro
+                profile={profile}
+                setProfile={setProfile}
+                data={data}
+              />
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );
