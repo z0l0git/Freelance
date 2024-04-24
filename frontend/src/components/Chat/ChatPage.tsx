@@ -39,9 +39,12 @@ export const ChatPage = () => {
 
   const getUserRooms = async () => {
     try {
-      const { data } = await axios.post("http://localhost:8000/getUserConvo", {
-        user: userData._id,
-      });
+      const { data } = await axios.post(
+        "https://freelance-gmjr.onrender.com/getUserConvo",
+        {
+          user: userData._id,
+        }
+      );
       setRooms(data);
     } catch (error: any) {
       console.log(error.message);
