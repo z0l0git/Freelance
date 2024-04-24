@@ -31,7 +31,6 @@ export const ChatPage = () => {
     console.log("handleJoin", roomId);
     setShowChat(true);
     setroomId(roomId);
-    setUserName("Room Number: " + roomId);
     setUser(userData.firstName + " " + userData.lastName);
     push(`/chat?roomId=${roomId}`);
     socket.emit("join_room", roomId);
@@ -57,12 +56,11 @@ export const ChatPage = () => {
     getUserRooms();
     setUser(userData.firstName + " " + userData.lastName);
   }, [userData]);
-  console.log(rooms);
 
   return (
     <div className="flex w-full justify-center items-start h-[620px] mt-[20px]">
-      <div className="w-[17%] flex flex-col items-start bg-[#402e58] rounded-xl rounded-r-none h-full ">
-        <div className="px-4 py-3 border-b border-white w-full">
+      <div className="w-[17%] flex flex-col items-start bg-[#13203B] rounded-xl rounded-r-none h-full ">
+        <div className="px-4 py-3 pr-0 border-b border-white w-full">
           <LoggedUser
             name={userData.firstName + " " + userData.lastName}
             email={userData.firstName}
@@ -77,6 +75,7 @@ export const ChatPage = () => {
 
             return (
               <UserList
+                setUserName={setUserName}
                 key={i}
                 join={handleJoin}
                 room={el.roomId}
@@ -93,6 +92,7 @@ export const ChatPage = () => {
         </div>
       </div>
       <Chat
+        sendUser={userName}
         username={user}
         socket={socket}
         roomId={roomlist ? roomlist : roomId}

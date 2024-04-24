@@ -5,7 +5,7 @@ import { GoDotFill } from "react-icons/go";
 export const LoggedUser = (props: any) => {
   const { image, name, email } = props;
   return (
-    <div className="bg-transparent flex items-center gap-3">
+    <div className="bg-transparent flex items-center gap-3 border-r-2 border-slate-300">
       <div className="w-14 h-14 rounded-full overflow-hidden border-2 border-white bg-slate-100">
         <Image
           alt="pfp"
