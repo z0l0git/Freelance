@@ -11,6 +11,7 @@ type SkillType = {
   name: string;
   id: string;
 };
+
 type getDataType = {
   _id: string;
   firstName: string;

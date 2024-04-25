@@ -4,6 +4,7 @@ import { Menu } from "@/components/Menu/Menu";
 import { Profile } from "@/components/Profile/Profile";
 import React from "react";
 import axios from "axios";
+import { GetSkillCategory } from "@/utils/axiosInstance";
 
 type Response = {
   _id: string;
@@ -44,14 +45,14 @@ export default async function ProfilePage({
 }) {
   // console.log(searchParams.id, "idd");
   const data: any = await GetUserById(searchParams.id);
-  console.log(data, "data");
+  const skill = await GetSkillCategory();
 
   return (
     <div>
       <div className="bg-[url(https://pixner.net/aihire/aihire/assets/img/bn/breadcumndbg.jpg)]">
         <Menu />
       </div>
-      <Profile searchParams={searchParams.id} data={data} />
+      <Profile searchParams={searchParams.id} data={data} skill={skill} />
       <Footer />
     </div>
   );

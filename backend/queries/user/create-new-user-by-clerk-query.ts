@@ -3,12 +3,12 @@ import { UserModel } from "../../models";
 import { tokenGenerate } from "../../utils";
 
 export const CreateNewUserByClerkQuery = async (req: Request) => {
-  const { firstName, lastName, email } = req.body;
+  const { firstName = "", lastName = "", email } = req.body;
 
   try {
     const newUser = await UserModel.create({
       firstName,
-      lastName,
+      lastName: lastName === "null" ? "" : lastName,
       email,
       auth: "google",
     });
