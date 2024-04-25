@@ -11,11 +11,7 @@ type IdType = {
 };
 
 export const RatingAndReview = (props: IdType) => {
-
-  const { searchParams } = props;
   const { setRating, data } = useContext(DataContext);
-  console.log(data, "datainreviewsdaa");
-
 
   const { searchParams, rdata, setRdata } = props;
 
@@ -28,7 +24,7 @@ export const RatingAndReview = (props: IdType) => {
             createdFor: searchParams,
           }
         );
-        console.log("this worked aHAHAH");
+
         setRdata(reviews.data);
 
         const totalStarsArray: number[] = reviews.data.map((el) =>
@@ -40,13 +36,9 @@ export const RatingAndReview = (props: IdType) => {
 
         const roundedAverage: number = Number(average.toFixed(1));
 
-        console.log("Average stars:", roundedAverage);
-        console.log(totalStarsArray.length, "how ,may peopeel");
-
         // setdata({ ...data, stars: roundedAverage });
 
         setRating({ stars: roundedAverage, howMany: totalStarsArray.length });
-
 
         // setdata({
         //   ...data,
@@ -55,7 +47,7 @@ export const RatingAndReview = (props: IdType) => {
 
         return;
       } catch (error: any) {
-        throw new Error(error.message);
+        console.log(error.message);
       }
     };
     GetUserById();

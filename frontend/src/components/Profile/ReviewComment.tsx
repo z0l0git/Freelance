@@ -9,11 +9,10 @@ import { DataContext, useData } from "../context/DataContext";
 import { BlueButton } from "../Button";
 
 import { set } from "react-hook-form";
-import { toast } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
 import { Bounce } from "react-toastify";
 
 import { useRouter } from "next/navigation";
-
 
 type Datatype = {
   stars?: number;
@@ -44,9 +43,8 @@ export const RevieComment = (props: IdType) => {
     description: "",
   });
 
-
   const notifySuccess = () => {
-    toast.success("🦄 Changes applied successfully.", {
+    toast.success("🦄 Changes applied successfully From Zolo.", {
       position: "top-center",
       autoClose: 4000,
       hideProgressBar: false,
@@ -73,8 +71,8 @@ export const RevieComment = (props: IdType) => {
     });
   };
 
-  const handleChange = async () => {
-
+  const handleChange = async (e: any) => {
+    e.preventDefault();
     try {
       if (!isLoggedIn) {
         push("/sign");
@@ -87,14 +85,12 @@ export const RevieComment = (props: IdType) => {
           }
         );
         setRdata(reviews.data);
-
         const filterData = reviews.data.find(
           (item: any) => item.createdBy._id === userData._id
         );
         console.log(filterData, "hoosn2");
-
         if (filterData) {
-          notify();
+          // notifyError();
           return;
         } else {
           const { data } = await axios.post<Datatype[]>(
@@ -106,23 +102,17 @@ export const RevieComment = (props: IdType) => {
               createdFor: searchParams,
             }
           );
-
+          // notifySuccess();
           setRdata((prev: Datatype[]) => [...prev, data]);
           window.location.reload();
           return;
         }
-
-      );
-      window.location.reload();
-      notifySuccess();
-      return data;
-
+      }
     } catch (err: any) {
-      notifyError();
-      throw new Error(err.message);
+      console.log(err.message);
+      // notifyError();
     }
   };
-
   return (
     <div className="w-[382px] md:w-[816px] h-[718px] flex flex-col justify-center">
       <ToastContainer />
@@ -164,7 +154,7 @@ export const RevieComment = (props: IdType) => {
         buttonName={isLoggedIn ? "Submit Review" : "Login to Submit Review"}
         height="80px"
         width="250px"
-        handleSubmit={handleClick}
+        handleSubmit={handleChange}
       />
     </div>
   );

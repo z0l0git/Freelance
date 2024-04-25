@@ -44,7 +44,6 @@ export const DataProvider = ({ children }: any) => {
     howMany: 0,
     stars: 0,
   });
- 
 
   const [data, setdata] = useState<Response>({
     _id: "",
@@ -101,7 +100,6 @@ export const DataProvider = ({ children }: any) => {
         isLoggedIn,
         data,
         setdata,
-
         rating,
         setRating,
       }}

@@ -36,7 +36,6 @@ export const ProfileDetails = (props: PropsType) => {
 
   const { rating } = useContext(DataContext);
 
-
   function formatDate(originalDate: string): string {
     const [yearStr, monthStr, dayStr] = originalDate.split("-");
     const year = parseInt(yearStr);
@@ -106,10 +105,8 @@ export const ProfileDetails = (props: PropsType) => {
               <TbPointFilled />
               <StarIcon className="text-[#febf58] " />
               <p>
-
-                <span className="font-bold">{rating.stars}</span> (
-                {rating.howMany})
-
+                <span className="font-bold">{rating?.stars}</span> (
+                {rating?.howMany})
               </p>
             </li>
             <li className="w-fit h-[24px] flex justify-around items-center gap-[10px] ">
