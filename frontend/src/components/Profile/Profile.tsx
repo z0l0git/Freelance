@@ -22,21 +22,26 @@ type Response = {
   email: string;
   auth: string;
   socials: [];
-  skills: [];
+  skills: SkillType[];
   education?: [];
   workExp?: [];
   createdAt: string;
+};
+type SkillType = {
+  name: string;
+  id: string;
 };
 
 type PropsType = {
   data?: any;
   searchParams?: any;
+  skill?: SkillType[];
 };
 
 export const Profile = (props: PropsType) => {
-  const { data, searchParams } = props;
+  const { data, searchParams, skill } = props;
 
-  console.log(data, "profile datadddd");
+  console.log(data, "profile dataddczcsdd");
 
   // const [profile, setProfile] = useState<Response>();
   return (
@@ -45,7 +50,7 @@ export const Profile = (props: PropsType) => {
         <div className="[426px] md:w-[860px] flex items-center justify-center bg-white rounded-lg">
           <div className="w-[406px] md:w[816px] flex flex-col items-center justify-around gap-[30px]">
             <ProfileDetails data={data} />
-            <Skills />
+            <Skills skill={skill as SkillType[]} data={data} />
             <Education eduData={data.education} />
             <WorkExprience workData={data.workExp} />
             {/* <UserDetails /> */}

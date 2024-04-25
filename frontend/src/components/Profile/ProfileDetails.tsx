@@ -8,6 +8,7 @@ import CheckIcon from "@mui/icons-material/Check";
 import { format } from "path";
 import { useContext } from "react";
 import { DataContext } from "../context/DataContext";
+import { DataArrayTexture } from "three";
 type Response = {
   _id: string;
   firstName: string;
@@ -32,7 +33,7 @@ type PropsType = {
 export const ProfileDetails = (props: PropsType) => {
   const { data } = props;
 
-  const { rating } = useContext(DataContext);
+  const { rating, data: dataCon } = useContext(DataContext);
 
   function formatDate(originalDate: string): string {
     const [yearStr, monthStr, dayStr] = originalDate.split("-");
@@ -65,7 +66,7 @@ export const ProfileDetails = (props: PropsType) => {
   );
 
   return (
-    <div className="w-[426px] h-fit items-center justify-around gap-[10px] border border-inherit   md:w-[816px] md:h-fit md:py-8 rounded-lg flex flex-col md:items-center md:justify-center ">
+    <div className="w-[426px] h-fit items-center justify-around gap-[10px] border border-inherit  mt-[10px]  md:w-[816px] md:h-fit md:py-8 rounded-lg flex flex-col md:items-center md:justify-center ">
       <div className="w-[406px] h-fit flex-col px-5 py-5  bg-white  justify-between md:w-[774px] md:h-[145px] flex md:flex-row md:items-center md:justify-between md:pb-[24px]">
         <div className="flex justify-start md:items-center md:justify-center md:w-[100px] md:h-[100px]">
           <Image
@@ -103,8 +104,10 @@ export const ProfileDetails = (props: PropsType) => {
               <TbPointFilled />
               <StarIcon className="text-[#febf58] " />
               <p>
-                <span className="font-bold">{rating.stars}</span> (
-                {rating.howMany})
+                <span className="font-bold">
+                  {rating?.stars ? rating?.stars : 0}
+                </span>{" "}
+                ({rating?.howMany ? rating?.howMany : 0})
               </p>
             </li>
             <li className="w-fit h-[24px] flex justify-around items-center gap-[10px] ">

@@ -67,7 +67,6 @@ type BudgetType = {
 
 export default function FreelancersMidd(props: MiddType) {
   const { AllUser, skills } = props;
-  
 
   const AllUserData = AllUser?.map((el) => {
     return el._doc;
@@ -78,14 +77,11 @@ export default function FreelancersMidd(props: MiddType) {
   const [allUserState, setAllUserState] = useState<TypeSda[]>(AllUserData);
   const [starName, setstarName] = useState<string>("");
   const [search, setSearch] = useState<string>("");
- ;
-
   const [budget, setBudget] = useState<BudgetType>({
     min: 0,
     max: 0,
   });
   const [skillId, setSkillId] = useState<string>("");
- 
 
   useEffect(() => {
     setAllUserState(AllUserData);
@@ -97,13 +93,11 @@ export default function FreelancersMidd(props: MiddType) {
     setSkillId("");
 
     const starOnMap = name.split(" ")[0];
- 
 
     const filteredArray = AllUser?.filter((el) => {
       const ratingString = el.rating.toString();
       return ratingString.split(".")[0] === starOnMap;
     }).map((el) => el._doc);
-   
 
     setAllUserState(filteredArray);
   };
@@ -140,7 +134,6 @@ export default function FreelancersMidd(props: MiddType) {
       });
     });
 
-
     setAllUserState(UserData);
   };
 
@@ -151,6 +144,7 @@ export default function FreelancersMidd(props: MiddType) {
 
   const HandlerClicpush = (event: MouseEvent<HTMLDivElement>) => {
     const UserId = event.currentTarget.id;
+    // window.location.href = `/profile?id=${UserId}`;
     push(`/profile?id=${UserId}`);
   };
   const HnadleSearch = async () => {

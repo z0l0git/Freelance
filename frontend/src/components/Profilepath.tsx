@@ -4,6 +4,7 @@ import { BlueButton, WhiteButton } from "./Button";
 import Link from "next/link";
 import { IoIosArrowForward } from "react-icons/io";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 type Props = {
   PageBigName: string;
   Home: string;
@@ -33,6 +34,12 @@ export const PageHeroes = (props: Props) => {
     localStorage.deleteItem("token");
     localStorage.deleteItem("clerk-db-jwt");
     window.location.pathname = "/";
+  };
+  const { push } = useRouter();
+  const handleLogOut = () => {
+    localStorage.clear();
+    // push("/projects");
+    push("/sign");
   };
 
   return (
@@ -67,11 +74,20 @@ export const PageHeroes = (props: Props) => {
               height={273}
             />
           </div>
-          <WhiteButton
+          <div>
+            {" "}
+            <div
+              onClick={handleLogOut}
+              className="bg-gradient-to-r from-indigo-700 cursor-pointer rounded-2xl border-2 border-dashed border-black  px-6 py-3 font-semibold uppercase text-white transition-all duration-300 hover:translate-x-[-4px] hover:translate-y-[-4px] hover:rounded-md hover:shadow-[4px_4px_0px_black] active:translate-x-[0px] active:translate-y-[0px] active:rounded-2xl active:shadow-none"
+            >
+              Log out
+            </div>
+          </div>
+          {/* <WhiteButton
             buttonName={ButtonName}
             buttonClass={ButtonClass}
             onClick={handleLogout}
-          />
+          /> */}
         </div>
       </div>
     </div>
