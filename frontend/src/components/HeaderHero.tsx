@@ -3,73 +3,55 @@ import Image from "next/image";
 import { HeaderSearch } from "./HeaderSearch/HeaderSearch";
 import React from "react";
 import { Menu } from "./Menu/Menu";
+import { NeuButton } from "./Button";
+
+// const BubbleText = () => {
+//   return (
+//     <h2 className="text-center text-5xl font-thin text-indigo-300">
+//       {"Bubbbbbbbble text".split("").map((child, idx) => (
+//         <span className={hoverText} key={idx}>
+//           {child}
+//         </span>
+//       ))}
+//     </h2>
+//   );
+// };
 
 export const HeaderHero = () => {
   return (
-    <div className="w-screen relative z-20 bg-[url(https://res.cloudinary.com/dxarul6xr/image/upload/v1711501249/mknv2r8z1g8zp3ig9odn.jpg)] bg-cover no-repeat ">
+    <div className="w-screen relative z-20 bg-[url(https://pixner.net/aihire/aihire/assets/img/bn/bnbg1.jpg)]  bg-cover no-repeat ">
       <Menu />
-      <div className="w-screen lg:h-[784px] h-[870px] relative flex justify-center">
-        <div className="absolute left-[120px] sm:top-[90px] top-[130px] animate-[wiggle_1s_ease-in-out_infinite]">
-          <Image
-            alt=""
-            src="https://res.cloudinary.com/dxarul6xr/image/upload/v1711501249/ml4buhrfshorn1okzddt.png"
-            width={170}
-            height={150}
-          />
-        </div>
-        <div className=" absolute md:left-[400px] left-[120px] md:w-[70px] w-[50px] md:h-[70px] h-[50px] md:top-[90px] top-[40px] animate-[wiggle_1s_ease-in-out_infinite] ">
-          <Image
-            alt=""
-            src="https://res.cloudinary.com/dxarul6xr/image/upload/v1711501249/mhtzpqpsnstbznlim5j2.png"
-            width={0}
-            height={0}
-            sizes="100vw"
-            style={{ width: "100%", height: "100%", objectFit: "cover" }}
-          />
-        </div>
-        <div className="absolute md:w-[270px] w-[180px]   md:h-[400px] h-[259px]  xl:left-[90px] left-[10px] bottom-[90px] rounded-[130px] overflow-hidden animate-[BigImage_1s_ease-in-out_infinite] ">
-          <Image
-            alt=""
-            src="/himg.png"
-            width={0}
-            height={0}
-            sizes="100vw"
-            style={{ width: "100%", height: "100%", objectFit: "cover" }}
-          />
-        </div>
-        <div className="absolute lg:w-[270px] sm:w-[180px] w-[100px] lg:h-[400px] sm:h-[259px] h-[160px] xl:right-[90px] right-[10px] sm:top-[90px] top-[20px] rounded-[130px] overflow-hidden animate-[BigImage_1s_ease-in-out_infinite]">
-          <Image
-            alt=""
-            src="/hero.jpg"
-            width={0}
-            height={0}
-            sizes="100vw"
-            style={{ width: "100%", height: "100%", objectFit: "cover" }}
-          />
-        </div>
-        <div className="absolute md:w-[200px] w-[200px] md:h-[120px] h-[120px] md:right-[120px] sm:right-[70px] right-[20px] lg:bottom-[90px] sm:bottom-[180px] bottom-[100px] animate-[wiggle_1s_ease-in-out_infinite] ">
-          <Image
-            alt=""
-            src="https://res.cloudinary.com/dxarul6xr/image/upload/v1711501249/li0qidmqwz11zu6gjy9v.png"
-            width={0}
-            height={0}
-            sizes="100vw"
-            style={{ width: "100%", height: "100%", objectFit: "cover" }}
-          />
-        </div>
-
-        <div className="absolute text-center flex justify-center items-center mt-[200px]">
-          <div className="lg:w-[724px] sm:w-[600px] gap-[25px] flex flex-col ">
-            <div className=" text-amber-600 font-semibold text-[23px]">
-              Get Your Projects Completed
-            </div>
-            <div className="text-center font-semibold lg:text-[68px] sm:text-[50px] mobile:text-[40px] text-[30px] leading-tight text-white">
-              Find The Right Freelancers <br />
-            </div>
-            <div className="text-white text-[30px]">
-              Join our community of businesses and freelancers
-            </div>
+      <div className="w-screen lg:h-[784px] h-[870px] relative flex justify-center gap-3 items-center">
+        <div className="w-[40%] flex flex-col gap-4">
+          <h1 className="text-[#f3a102] text-[24px] font-bold">
+            Get Your Projects Done
+          </h1>
+          <h2 className="text-[72px] font-bold  leading-[80px]">
+            Find the Right <span className="text-[#2196f3]">Freelancers</span>{" "}
+            for Your Projects
+          </h2>
+          <p className="text-[20px] font-semibold">
+            Join our community of businesses, entrepreneurs, and freelancers who
+            are looking for the right talent or be the right talent.
+          </p>
+          <div className="flex gap-4">
+            <NeuButton
+              buttonName={"Projects"}
+              bClass={
+                "w-[150px] text-xl text-[#000] h-[50px] bg-[#f3a102] rouned-xl hover:bg-white hover:text-[#f3a102] shadow-[3px_3px_0px_slategray]"
+              }
+            />
+            <NeuButton
+              buttonName={"Freelancers"}
+              bClass={
+                "text-[#2196f3] w-[200px] text-xl bg-none shadow-[3px_3px_3px_#2196f3] hover:bg-[#2196f3] hover:text-white"
+              }
+            />
           </div>
+        </div>
+        <div className="w-[636px] h-[615px] relative">
+          <div className="absolute top-0 left-0 w-full h-full bg-cover no-repeat bg-[url(https://pixner.net/aihire/aihire/assets/img/bn/vec1.png)] animate-[rotate_9s_ease-in-out_infinite] "></div>
+          <div className="bg-[url(https://pixner.net/aihire/aihire/assets/img/bn/bannerthumb1.png)] absolute top-0 left-0 w-full h-full bg-cover no-repeat"></div>
         </div>
       </div>
     </div>

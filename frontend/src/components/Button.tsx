@@ -30,6 +30,17 @@ export const BlueButton = (props: any) => {
   );
 };
 
+export const NeuButton = (props: any) => {
+  const { buttonName, bClass = "" } = props;
+  return (
+    <button
+      className={`${bClass} rounded-xl px-6 py-2 font-medium w-fit transition-all shadow-[3px_3px_0px_black] hover:shadow-none hover:translate-x-[3px] hover:translate-y-[3px]`}
+    >
+      {buttonName}
+    </button>
+  );
+};
+
 export const WhiteButton = (props: any) => {
   const { buttonName, buttonClass, type, onClick, key = "", disabled } = props;
   return (

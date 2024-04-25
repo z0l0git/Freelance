@@ -71,6 +71,10 @@ const config = {
           // "0%, 100%": { transform: "rotate(-3deg)" },
           "50%": { transform: "rotate(3deg)" },
         },
+        rotate: {
+          // "0%, 100%": { transform: "rotate(-3deg)" },
+          "100%": { transform: "rotate(360deg)" },
+        },
         BigImage: {
           // "0%, 100%": { transform: "rotate(-3deg)" },
           "50%": { transform: "translateY(-10px)" },
@@ -78,6 +82,7 @@ const config = {
       },
       animation: {
         wiggle: "wiggle 3s ease-in-out infinite",
+        rotate: "rotate 3s infinite",
         BigImage: "BigImage 3s ease-in-out infinite",
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
