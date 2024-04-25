@@ -91,7 +91,7 @@ export const Zoom = () => {
 
       <div
         // style={rotateStyle}
-        className={`bbb rounded-[10px] sm:w-550px] w-fit h-fit lg:pt-[40px] pt-[30px] lg:pb-[100px] pb-[40px]  border border-gray-400 flex flex-col items-center gap-[25px] absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2`}
+        className={`bbb rounded-[10px] sm:w-550px] w-fit h-fit pt-[20px]  pb-[30px]   border border-gray-400 flex flex-col items-center gap-[25px] absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2`}
       >
         <div className="">
           {stage === 0 && <Login />}
@@ -99,7 +99,7 @@ export const Zoom = () => {
         </div>
         <div className="text-white text-start text-[10px]">
           {stage === 0 && (
-            <div className="flex gap-[10px] text-start md:text-[18px] xs:text-[15px] text-[12px]">
+            <div className="flex gap-[10px] text-start md:text-[16px] xs:text-[12px] sm:text-[12px] text-[9px]">
               <div className="">Don't you have an account?</div>
               <div
                 className="cursor-pointer text-blue-500 "
@@ -110,8 +110,8 @@ export const Zoom = () => {
             </div>
           )}
           {stage === 1 && (
-            <div className="flex gap-[10px]   ">
-              <div className="text-[10px]">Do dd you have an account?</div>
+            <div className="flex gap-[10px] text-start md:text-[16px] xs:text-[12px] sm:text-[12px] text-[9px  ">
+              <div className="">Do you have an account?</div>
               <div
                 className="cursor-pointer text-blue-500"
                 onClick={() => setStage(0)}

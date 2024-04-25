@@ -111,13 +111,10 @@ export const SignUp = (props: SignUpType) => {
   };
 
   return (
-    <div className="flex flex-col  sm:w-[550px] w-fit px-[30px]  ">
-      <div className="mb-[35px]">
-        <div className="font-bold text-[35px] text-white ">
+    <div className="flex flex-col h-fit sm:w-[550px] w-fit px-[30px]  ">
+      <div className="mb-[25px]">
+        <div className="font-bold text-[25px] text-white ">
           Let’s Get Started!
-        </div>
-        <div className="text-slate-400">
-          Please enter your email address to join us
         </div>
       </div>
       <Formik
@@ -127,7 +124,7 @@ export const SignUp = (props: SignUpType) => {
       >
         {({ setFieldValue }) => (
           <Form>
-            <div className="flex flex-col gap-[28px] mb-[30px]">
+            <div className="flex flex-col gap-[18px]">
               <div className="flex gap-[10px]">
                 <div>
                   <div className="font-semibold text-white text-[20px] mb-3">
