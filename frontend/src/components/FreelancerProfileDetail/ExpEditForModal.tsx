@@ -104,7 +104,7 @@ export default function ExpEditForModal(props: PropsType) {
     // setTemp({ ...temp, id: founded?._id });
     try {
       const { data } = await axios.post(
-        "http://localhost:8000/updateWorkExp",
+        "https://freelance-gmjr.onrender.com/updateWorkExp",
         temp
       );
       console.log(data, "uped daaa");

@@ -18,7 +18,6 @@ type SkillType = {
   id: string;
 };
 
-
 interface YourObjectType {
   _doc: {
     _id: string;
@@ -42,7 +41,7 @@ interface YourObjectType {
 const GetAllUser = async () => {
   try {
     const { data } = await axios.get<YourObjectType[]>(
-      "http://localhost:8000/allUser"
+      "https://freelance-gmjr.onrender.com/allUser"
     );
     return data;
   } catch (err: any) {

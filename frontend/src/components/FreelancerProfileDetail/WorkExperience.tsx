@@ -102,7 +102,7 @@ export const WorkExperienceComp = (props: Props) => {
   const AddnewEducation = async () => {
     try {
       const { data } = await axios.post(
-        "http://localhost:8000/createWorkExp",
+        "https://freelance-gmjr.onrender.com/createWorkExp",
         expData
       );
       HandlePushEduArray(data?.workExp[data?.workExp?.length - 1]);

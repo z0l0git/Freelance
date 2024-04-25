@@ -60,7 +60,7 @@ export default function ActiveProject(props: PropsType) {
     const getProjectByCreatedBy = async () => {
       try {
         const { data: getProjects } = await axios.post(
-          "http://localhost:8000/getProjectByCreatedBy",
+          "https://freelance-gmjr.onrender.com/getProjectByCreatedBy",
           {
             createdBy: data._id,
           }
@@ -82,7 +82,7 @@ export default function ActiveProject(props: PropsType) {
   const deleteProject = async () => {
     try {
       const { data: deletedProject } = await axios.post(
-        "http://localhost:8000/deleteProject",
+        "https://freelance-gmjr.onrender.com/deleteProject",
         {
           id: deleteId,
         }

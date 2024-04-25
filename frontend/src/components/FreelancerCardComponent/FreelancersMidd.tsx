@@ -165,7 +165,10 @@ export default function FreelancersMidd(props: MiddType) {
     };
 
     try {
-      const { data } = await axios.post("http://localhost:8000/allUser", body);
+      const { data } = await axios.post(
+        "https://freelance-gmjr.onrender.com/allUser",
+        body
+      );
       setAllUserState(data);
     } catch (err: any) {
       console.log(err.message);

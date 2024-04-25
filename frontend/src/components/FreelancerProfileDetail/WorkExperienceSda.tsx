@@ -85,9 +85,12 @@ export const WorkExperience = (props: PropsType) => {
 
   const deleteEdu = async () => {
     try {
-      const { data } = await axios.post("http://localhost:8000/deleteWorkExp", {
-        id: idForDelete,
-      });
+      const { data } = await axios.post(
+        "https://freelance-gmjr.onrender.com/deleteWorkExp",
+        {
+          id: idForDelete,
+        }
+      );
       const leftOverData: any = workExp?.workExp?.filter(
         (item: any) => item._id !== idForDelete
       );

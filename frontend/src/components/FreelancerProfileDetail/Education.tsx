@@ -79,7 +79,7 @@ export const Education = (props: PropsType) => {
   const deleteEdu = async () => {
     try {
       const { data } = await axios.post(
-        "http://localhost:8000/deleteEducation",
+        "https://freelance-gmjr.onrender.com/deleteEducation",
         {
           id: idForDelete,
         }
@@ -96,7 +96,6 @@ export const Education = (props: PropsType) => {
         }
       });
       handleClose();
-     
     } catch (err: any) {
       console.log(err, "err");
     }
@@ -116,7 +115,7 @@ export const Education = (props: PropsType) => {
 
   const editEdu = (event: MouseEvent<HTMLDivElement>) => {
     const eduId = event.currentTarget.id;
-   
+
     // setIdForEdit(eduId);
 
     const foundedOne = getUserState?.education?.find(
@@ -124,7 +123,6 @@ export const Education = (props: PropsType) => {
     );
 
     handleOpenEdit();
- 
 
     setFounded(foundedOne);
   };

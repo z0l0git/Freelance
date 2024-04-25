@@ -137,7 +137,7 @@ export const EditModal = (props: PropsType) => {
   const handleEdit = async () => {
     try {
       const { data } = await axios.post(
-        "http://localhost:8000/updateProject",
+        "https://freelance-gmjr.onrender.com/updateProject",
         editOne
       );
       console.log("Project updated successfully:", data);

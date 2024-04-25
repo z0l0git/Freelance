@@ -26,12 +26,9 @@ export const Skills = (props: PropsType) => {
 
   const { data } = useContext(DataContext);
 
-
-  
   const [addSkills, setAddSkills] = useState(false);
 
   const [skillData, setSkillData] = useState<SkillT[]>([]);
-
 
   useEffect(() => {
     setSkillData(data?.skills);
@@ -43,7 +40,6 @@ export const Skills = (props: PropsType) => {
 
   const handleSkillData = (event: MouseEvent<HTMLDivElement>) => {
     const SkillId: any = event.currentTarget.id;
-   
 
     const selectedSkill = skill.find((skill) => skill.id === SkillId);
 
@@ -89,7 +85,7 @@ export const Skills = (props: PropsType) => {
   const upSkills = async () => {
     try {
       const { data: skilledBaachka } = await axios.post(
-        "http://localhost:8000/skillUp",
+        "https://freelance-gmjr.onrender.com/skillUp",
         {
           id: data?._id,
           skills: skillData,

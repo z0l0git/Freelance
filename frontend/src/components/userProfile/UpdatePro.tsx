@@ -199,7 +199,7 @@ export const UpdatePro = (props: TypePropsstate) => {
   const HandleDeleteAccount = async () => {
     try {
       const { data: ass } = await axios.post(
-        "http://localhost:8000/deleteUser",
+        "https://freelance-gmjr.onrender.com/deleteUser",
         {
           email: data?.email,
         }

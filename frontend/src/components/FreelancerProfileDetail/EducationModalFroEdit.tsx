@@ -42,7 +42,7 @@ type getDataType = {
 type PropsType = {
   founded: eduType | undefined;
   setGetUserData: React.Dispatch<React.SetStateAction<getDataType | any>>;
-  getUserState: getDataType | undefined ;
+  getUserState: getDataType | undefined;
   handleCloseEdit: () => void;
 };
 
@@ -113,7 +113,7 @@ export default function EducationModalFroEdit(props: PropsType) {
     // setTemp({ ...temp, id: founded?._id });
     try {
       const { data } = await axios.post(
-        "http://localhost:8000/updateEducation",
+        "https://freelance-gmjr.onrender.com/updateEducation",
         temp
       );
       console.log(data, "uped daaa");
