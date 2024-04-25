@@ -302,30 +302,6 @@ export const UpdatePro = (props: TypePropsstate) => {
           {/* <Example onclick={HandlerClick} /> */}
         </div>
       </div>
-      {/* <div className="flex flex-col  justify-start p-[28px] bg-[#f8f9fc] rounded-[15px] border border-gray-300  mt-[32px]">
-        <div className="font-semibold text-[38px] mb-[20px]">Address</div>
-        <div className="w-[100%] ">
-          <div className="font-semibold text-[22px] mb-[20px] ">Location:</div>
-          <InputUserProfile name="firstName" />
-        </div>
-      </div> */}
-      <div className="flex flex-col  justify-start p-[28px] bg-[#f8f9fc] rounded-[15px] border border-gray-300  mt-[32px]">
-        <div className="font-semibold text-[38px] mb-[20px]">
-          Delete Account
-        </div>
-        <div>
-          When you delete your account, you lose access to Front account
-          services, and we permanently delete your personal data. You can cancel
-          the deletion for 14 days.
-        </div>
-        <div
-          onClick={HandleDeleteAccount}
-          className="mt-[10px] cursor-pointer w-fit active:scale-[0.95] hover:scale-[1.05] px-[15px] py-[10px] bg-[#0D47A1] rounded-2xl text-md text-white font-semibold"
-        >
-          Delete
-          {/* <Example onclick={HandlerClick} /> */}
-        </div>
-      </div>
     </div>
   );
 };

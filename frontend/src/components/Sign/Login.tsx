@@ -93,12 +93,12 @@ export const Login = () => {
   };
 
   return (
-    <div className="flex flex-col   sm:w-[550px] w-fit px-[30px] ">
-      <div className="mb-[45px]">
-        <div className="font-semibold text-[25px] text-white ">
+    <div className="flex flex-col   md:w-[550px] w-fit lg:px-[30px] px-[20px] ">
+      <div className="lg:mb-[45px] mb-[25px]">
+        <div className="font-semibold xs:text-[25px] text-[20px] text-white  ">
           Welcome back!
         </div>
-        <div className="text-slate-400">
+        <div className="text-slate-400 sx:text-[18px] text-[12px] ">
           Sign in to your account and join us
         </div>
       </div>
@@ -145,14 +145,6 @@ export const Login = () => {
                 />
               </div>
 
-              <div className="flex justify-end text-white ">
-                <div
-                  // onClick={toReset}
-                  className="cursor-pointer hover:text-blue-600 "
-                >
-                  Forgot Password?
-                </div>
-              </div>
               {error && <div className="text-red-500 text-center">{error}</div>}
 
               <div className=" flex flex-col gap-[18px]">
@@ -170,7 +162,7 @@ export const Login = () => {
                       cursor: "pointer",
                       boxShadow: "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px",
                     }}
-                    className="w-full px-[5px] h-[45px] flex justify-center items-center text-black bg-white rounded-[40px] font-semibold sm:text-[20px] gap-[20px] text-[14px]"
+                    className="w-full px-[5px] xs:h-[45px] h-[35px] xs:text-[20px] text-[12px] flex justify-center items-center text-black bg-white rounded-[40px] font-semibold  gap-[20px] text-[14px]"
                   >
                     <Image alt="" src="/google.jpeg" width={25} height={25} />
                     Continue with google
