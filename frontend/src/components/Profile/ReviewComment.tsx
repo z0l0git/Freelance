@@ -3,13 +3,16 @@ import { FaStarOfLife } from "react-icons/fa";
 import * as React from "react";
 import Rating from "@mui/material/Rating";
 import axios from "axios";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useContext } from "react";
 import { DataContext, useData } from "../context/DataContext";
 import { BlueButton } from "../Button";
+
 import { set } from "react-hook-form";
-import { toast } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
 import { Bounce } from "react-toastify";
+
+import { useRouter } from "next/navigation";
 
 type Datatype = {
   stars?: number;
@@ -21,18 +24,19 @@ type Datatype = {
 type IdType = {
   searchParams: any;
   name: string;
+  setRdata: any;
 };
 
-type Comment = {
+export type Comment = {
   stars: number | null;
   description: string;
 };
 
 export const RevieComment = (props: IdType) => {
-  const { searchParams, name } = props;
-  const { data: userData } = useContext(DataContext);
+  const { push } = useRouter();
 
-  console.log(userData, "dorjosda");
+  const { searchParams, name, setRdata } = props;
+  const { data: userData, isLoggedIn } = useContext(DataContext);
 
   const [comment, setComment] = useState<Comment>({
     stars: 0,
@@ -40,7 +44,7 @@ export const RevieComment = (props: IdType) => {
   });
 
   const notifySuccess = () => {
-    toast.success("🦄 Changes applied successfully.", {
+    toast.success("🦄 Changes applied successfully From Zolo.", {
       position: "top-center",
       autoClose: 4000,
       hideProgressBar: false,
@@ -67,50 +71,54 @@ export const RevieComment = (props: IdType) => {
     });
   };
 
-  const handleChange = async () => {
+  const handleChange = async (e: any) => {
+    e.preventDefault();
     try {
-      const { data } = await axios.post<Datatype>(
-        "https://freelance-gmjr.onrender.com/postreview",
-        {
-          stars: comment.stars,
-          description: comment.description,
-          createdBy: userData._id,
-          createdFor: searchParams,
+      if (!isLoggedIn) {
+        push("/sign");
+        return;
+      } else {
+        const reviews = await axios.post(
+          "https://freelance-gmjr.onrender.com/getallreview",
+          {
+            createdFor: searchParams,
+          }
+        );
+        setRdata(reviews.data);
+        const filterData = reviews.data.find(
+          (item: any) => item.createdBy._id === userData._id
+        );
+        console.log(filterData, "hoosn2");
+        if (filterData) {
+          // notifyError();
+          return;
+        } else {
+          const { data } = await axios.post<Datatype[]>(
+            "https://freelance-gmjr.onrender.com/postreview",
+            {
+              stars: comment.stars,
+              description: comment.description,
+              createdBy: userData._id,
+              createdFor: searchParams,
+            }
+          );
+          // notifySuccess();
+          setRdata((prev: Datatype[]) => [...prev, data]);
+          window.location.reload();
+          return;
         }
-      );
-      window.location.reload();
-      notifySuccess();
-      return data;
+      }
     } catch (err: any) {
-      notifyError();
-      throw new Error(err.message);
+      console.log(err.message);
+      // notifyError();
     }
   };
   return (
     <div className="w-[382px] md:w-[816px] h-[718px] flex flex-col justify-center">
+      <ToastContainer />
       <strong className="w-full text-center text-[24px] pb-6">
         Write A Review for <span className="text-[#0D47A1]">{name}</span>
       </strong>
-      {/* <div className="w-[382px] md:w-[816px] pb-6">
-        <div className="flex">
-          <strong className="text-[20px] md:text-[24px] ">Name</strong>
-          <FaStarOfLife width={10} height={24} className="text-[#0D47A1]" />
-        </div>
-
-        <div className="w-[362px] md:w-[816px] h-[47px] rounded-full flex items-center justify-center bg-white border border-black">
-          {`${userData.firstName} ${userData.lastName}`}
-        </div>
-      </div>
-      <div className="w-full pb-6">
-        <div className="flex">
-          <strong className="text-[20px] md:text-[24px] ">Email</strong>
-          <FaStarOfLife width={10} height={24} className="text-[#0D47A1]" />
-        </div>
-
-        <div className="w-[362px] md:w-[816px]  h-[47px]  rounded-full flex items-center justify-center bg-white border border-black">
-          {userData.email}
-        </div>
-      </div> */}
       <div className="w-full pb-6">
         <div className="flex">
           <strong className="text-[20px] md:text-[24px] ">Rating</strong>
@@ -134,7 +142,7 @@ export const RevieComment = (props: IdType) => {
         </div>
         <div className=" rounded-xl flex items-center justify-center bg-white border border-black">
           <textarea
-            value={comment.description}
+            value={comment?.description}
             onChange={(event) => {
               setComment({ ...comment, description: event.target.value });
             }}
@@ -143,7 +151,7 @@ export const RevieComment = (props: IdType) => {
         </div>
       </div>
       <BlueButton
-        buttonName="Submit Reviews"
+        buttonName={isLoggedIn ? "Submit Review" : "Login to Submit Review"}
         height="80px"
         width="250px"
         handleSubmit={handleChange}

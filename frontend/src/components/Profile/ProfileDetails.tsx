@@ -2,13 +2,18 @@
 import { CiLocationOn } from "react-icons/ci";
 import { TbPointFilled } from "react-icons/tb";
 import StarIcon from "@mui/icons-material/Star";
-import { ProfileInfoDetails } from "./ProfileInfoDetails";
+import { useState } from "react";
 import Image from "next/image";
+
 import CheckIcon from "@mui/icons-material/Check";
 import { format } from "path";
 import { useContext } from "react";
 import { DataContext } from "../context/DataContext";
+<<<<<<< HEAD
 import { DataArrayTexture } from "three";
+=======
+
+>>>>>>> 7acb9e7653abeb7d53bc9ef9b3749cbc8928e4a8
 type Response = {
   _id: string;
   firstName: string;
@@ -104,10 +109,15 @@ export const ProfileDetails = (props: PropsType) => {
               <TbPointFilled />
               <StarIcon className="text-[#febf58] " />
               <p>
+<<<<<<< HEAD
                 <span className="font-bold">
                   {rating?.stars ? rating?.stars : 0}
                 </span>{" "}
                 ({rating?.howMany ? rating?.howMany : 0})
+=======
+                <span className="font-bold">{rating?.stars}</span> (
+                {rating?.howMany})
+>>>>>>> 7acb9e7653abeb7d53bc9ef9b3749cbc8928e4a8
               </p>
             </li>
             <li className="w-fit h-[24px] flex justify-around items-center gap-[10px] ">
@@ -118,9 +128,6 @@ export const ProfileDetails = (props: PropsType) => {
           </ul>
         </div>
       </div>
-      {/* <div className=" flex flex-wrap gap-[10px]  w-[384px] h-[122px] md:w-[774px] md:h-[54px] divide-x divide-solid  md:flex md:justify-between ">
-        <ProfileInfoDetails />
-      </div> */}
     </div>
   );
 };

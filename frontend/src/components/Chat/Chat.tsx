@@ -15,7 +15,7 @@ type ChatProps = {
   roomId: string;
 };
 
-export const Chat = ({ socket, username, roomId }: any) => {
+export const Chat = ({ socket, username, roomId, sendUser }: any) => {
   const chatContainerRef = useRef<HTMLDivElement>(null);
   const [currentMsg, setCurrentMsg] = useState("");
   const [chat, setChat] = useState<IMsgDataTypes[]>([]);
@@ -47,6 +47,7 @@ export const Chat = ({ socket, username, roomId }: any) => {
           new Date(Date.now()).getMinutes(),
       };
       await socket.emit("send_msg", msgData);
+
       try {
         const msgID = await axios.post(
           "https://freelance-gmjr.onrender.com/createMsg",
@@ -64,7 +65,6 @@ export const Chat = ({ socket, username, roomId }: any) => {
       } catch (error: any) {
         console.log(error.message);
       }
-
       setCurrentMsg("");
       chatContainerRef.current?.scrollIntoView({ behavior: "smooth" });
     }
@@ -78,20 +78,22 @@ export const Chat = ({ socket, username, roomId }: any) => {
     });
   }, [socket]);
 
-  useEffect(() => {
-    if (chatContainerRef.current) {
-      chatContainerRef.current.scrollTop =
-        chatContainerRef.current.scrollHeight;
-    }
-  }, [chat]);
+  // useEffect(() => {
+  //   if (chatContainerRef.current) {
+  //     chatContainerRef.current.scrollTop =
+  //       chatContainerRef.current.scrollHeight;
+  //   }
+  // }, [chat]);
 
   return (
-    <div className="w-[50%] flex h-fit items-end">
-      <div className="w-full flex flex-col items-start h-[600px] rounded-l-none">
+    <div className="w-[50%] flex h-full items-end">
+      <div className="w-full flex flex-col items-start h-full rounded-l-none">
         <div className="w-full flex items-center gap-[2%] justify-start h-[81px] p-[30px] border-b-[1px] border-solid border-white bg-[#13203B] rounded-tr-xl rounded-l-none">
-          <p className="text-[20px] font-bold text-white ">{roomId}</p>
+          <p className="text-[20px] font-bold text-white ">
+            {sendUser ? sendUser : "Chat"}
+          </p>
         </div>
-        <div className="w-full h-[539px] flex flex-col rounded-xl justify-end rounded-t-none rounded-l-none bg-slate-300 p-[20px]">
+        <div className="w-full h-full flex flex-col rounded-xl justify-end rounded-t-none rounded-l-none bg-slate-300 p-[20px]">
           <div
             ref={chatContainerRef}
             className="w-full h-full flex flex-col overflow-y-scroll scrollbar-hide"
@@ -114,7 +116,6 @@ export const Chat = ({ socket, username, roomId }: any) => {
                 </ul>
               ))}
           </div>
-
           <div className="w-full flex gap-[20px] items-center">
             <form
               onSubmit={(e) => sendData(e)}

@@ -44,7 +44,6 @@ export const DataProvider = ({ children }: any) => {
     howMany: 0,
     stars: 0,
   });
- 
 
   const [data, setdata] = useState<Response>({
     _id: "",
@@ -80,11 +79,10 @@ export const DataProvider = ({ children }: any) => {
           // console.log(data, "hiiiiiii");
 
           setdata(data);
-         
 
           localStorage.setItem("userId", data._id);
+
           setIsLoggedIn(true);
-          console.log("yes");
         } catch (error) {
           console.log("eror from get logged in user");
         }
@@ -102,7 +100,6 @@ export const DataProvider = ({ children }: any) => {
         isLoggedIn,
         data,
         setdata,
-
         rating,
         setRating,
       }}
