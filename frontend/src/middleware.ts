@@ -18,6 +18,7 @@ export default authMiddleware({
     "/projectDetail",
     "/chat",
     "/user-profile",
+    "/new-gig",
   ],
 });
 
