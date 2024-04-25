@@ -21,7 +21,7 @@ const ConversationSchema = new Schema<ConversationModelType>({
   participants: [
     {
       type: Schema.Types.ObjectId,
-      ref: "User",
+      ref: "Users",
     },
   ],
 });

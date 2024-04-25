@@ -10,6 +10,8 @@ import { BadgetAndLinks } from "./Budget&Links";
 import { RatingAndReview } from "./RatingAndReviews";
 import { RevieComment } from "./ReviewComment";
 import { useState } from "react";
+import { useContext } from "react";
+import { DataContext, useData } from "../context/DataContext";
 
 type Response = {
   _id: string;
@@ -33,10 +35,21 @@ type PropsType = {
   searchParams?: any;
 };
 
+type stateType = {
+  _id: string;
+  createdFor: string;
+  stars: number;
+  createdAt: Date;
+  description: string;
+  createdBy: string;
+};
+
 export const Profile = (props: PropsType) => {
+  const [rdata, setRdata] = useState<stateType[]>([]);
   const { data, searchParams } = props;
 
-  console.log(data, "profile datadddd");
+  const { data: userData } = useContext(DataContext);
+
 
   // const [profile, setProfile] = useState<Response>();
   return (
@@ -48,20 +61,25 @@ export const Profile = (props: PropsType) => {
             <Skills />
             <Education eduData={data.education} />
             <WorkExprience workData={data.workExp} />
-            {/* <UserDetails /> */}
           </div>
         </div>
-        {/* <div className="w-[426px] md:w-[860px] h-fit flex items-center justify-center bg-white rounded-lg ">
-          <FeatureServive />
-        </div> */}
         <div className="w-[426px] md:w-[860px] flex items-center justify-center  bg-white rounded-lg">
-          <RatingAndReview searchParams={searchParams} />
+          <RatingAndReview
+            rdata={rdata}
+            setRdata={setRdata}
+            searchParams={searchParams}
+          />
         </div>
         <div className="w-[426px] md:w-[860px] flex items-center justify-center bg-white  rounded-lg">
-          <RevieComment
-            searchParams={searchParams}
-            name={data?.firstName + " " + data?.lastName}
-          />
+          {searchParams === userData._id ? (
+            <div></div>
+          ) : (
+            <RevieComment
+              setRdata={setRdata}
+              searchParams={searchParams}
+              name={data?.firstName + " " + data?.lastName}
+            />
+          )}
         </div>
       </div>
       <div className=" w-[402px] md:w-[416px] md:h-[623px] rounded-lg sticky top-0">

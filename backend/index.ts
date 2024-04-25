@@ -75,7 +75,5 @@ io.on("connection", (socket: any) => {
     socket.to(data.roomId).emit("receive_msg", data);
   });
 
-  socket.on("disconnect", () => {
-    console.log("A user disconnected:", socket.id);
-  });
+  socket.on("disconnect", () => {});
 });
