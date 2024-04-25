@@ -50,13 +50,13 @@ const StepTwo = (props: CateType) => {
         const filteredCategory = categories.filter((el) => el !== skillId);
 
         if (filteredCa) {
-          console.log(filteredCa);
+          
           return {
             ...prev,
             categorys: filteredCategory,
           };
         } else {
-          console.log(filteredCa);
+         
           return {
             ...prev,
             categorys: [...prev.categorys, skillId],
@@ -71,7 +71,7 @@ const StepTwo = (props: CateType) => {
     const filteredSkillCategpry = skillCategory?.find(
       ({ id }) => id === categoryId
     );
-    console.log(filteredSkillCategpry, "filteredSkillCategpry");
+   
 
     const filtered = postData?.skillss.find(
       (el) => el === filteredSkillCategpry?.id

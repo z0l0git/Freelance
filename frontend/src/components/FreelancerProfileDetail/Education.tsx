@@ -96,7 +96,7 @@ export const Education = (props: PropsType) => {
         }
       });
       handleClose();
-      console.log(leftOverData, "leftOverData");
+     
     } catch (err: any) {
       console.log(err, "err");
     }
@@ -116,7 +116,7 @@ export const Education = (props: PropsType) => {
 
   const editEdu = (event: MouseEvent<HTMLDivElement>) => {
     const eduId = event.currentTarget.id;
-    console.log(eduId, "id");
+   
     // setIdForEdit(eduId);
 
     const foundedOne = getUserState?.education?.find(
@@ -124,7 +124,7 @@ export const Education = (props: PropsType) => {
     );
 
     handleOpenEdit();
-    console.log(foundedOne, "foundadaddadasads");
+ 
 
     setFounded(foundedOne);
   };

@@ -5,6 +5,10 @@ import { MdCurrencyExchange } from "react-icons/md";
 import { Checkbox } from "@/components/ui/checkbox";
 import axios from "axios";
 import { Skills } from "../Profile/Skils";
+
+import { toast } from "react-toastify";
+import { Bounce } from "react-toastify";
+
 type SkillType = {
   name: string;
   id: any;
@@ -102,6 +106,34 @@ export const EditModal = (props: PropsType) => {
         }));
     }
   };
+
+  const notifySuccess = () => {
+    toast.success("🦄 Changes applied successfully.", {
+      position: "top-center",
+      autoClose: 4000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      transition: Bounce,
+    });
+  };
+
+  const notifyError = () => {
+    toast.error("❗Unable to update data. Please try again later", {
+      position: "top-center",
+      autoClose: 4000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      transition: Bounce,
+    });
+  };
   const handleEdit = async () => {
     try {
       const { data } = await axios.post(
@@ -132,13 +164,11 @@ export const EditModal = (props: PropsType) => {
       );
       console.log(updatedPost, "updatedPost");
 
-      // if (updatedPost) {
-      //   const sss = updatedPost?.skills.map((item) => item._id);
-      //   console.log(sss, "sss");
-      // }
+      notifySuccess();
 
       setProjects(updatedPost);
     } catch (error: any) {
+      notifyError();
       console.log("Error updating project:", error.message);
     }
   };

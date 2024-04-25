@@ -7,9 +7,10 @@ import Button from "./HoverButton";
 import { useState } from "react";
 import { BiSolidCommentEdit } from "react-icons/bi";
 import Example from "./HoverButton";
-
+import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
 import { Bounce } from "react-toastify";
+// import { clerk } from "./clerkConfig";
 type SetProDileype = {
   firstName: string;
   lastName: string;
@@ -55,6 +56,7 @@ const getPresignedURL = async () => {
 };
 
 export const UpdatePro = (props: TypePropsstate) => {
+  const { push } = useRouter();
   const { profile, setProfile, data } = props;
   console.log(profile, "pro");
   console.log(data, "data");
@@ -68,6 +70,7 @@ export const UpdatePro = (props: TypePropsstate) => {
 
   const handleChooseFile = (event: ChangeEvent<HTMLInputElement>) => {
     setImage(event.target.files);
+    uploadImage();
   };
   console.log(image, "imagee");
 
@@ -163,6 +166,53 @@ export const UpdatePro = (props: TypePropsstate) => {
   // } else {
   //   console.log("fale");
   // }
+  const notifySuccessde = () => {
+    toast.success(
+      "🗑️ Deletion successful. The your account has been removed.",
+      {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Bounce,
+      }
+    );
+  };
+
+  const notifyErrorde = () => {
+    toast.error("❗ Oops! Something went wrong", {
+      position: "top-center",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      transition: Bounce,
+    });
+  };
+  const HandleDeleteAccount = async () => {
+    try {
+      const { data: ass } = await axios.post(
+        "http://localhost:8000/deleteUser",
+        {
+          email: data?.email,
+        }
+      );
+      console.log(ass, "asss nigas");
+      localStorage.clear();
+      push("/");
+      notifySuccessde();
+    } catch (err: any) {
+      notifyErrorde();
+      console.log(err.message);
+    }
+  };
 
   return (
     <div>
@@ -204,7 +254,7 @@ export const UpdatePro = (props: TypePropsstate) => {
             </div>
           </div>
         </div>
-        <div className="max-md:flex-col flex w-[100%] gap-[30px] mt-[20px]">
+        {/* <div className="max-md:flex-col flex w-[100%] gap-[30px] mt-[20px]">
           <div className="updateProfileTitleBox">
             <h3 className="updateProfileTitles">FirstName:</h3>
             <InputUserProfile
@@ -223,7 +273,7 @@ export const UpdatePro = (props: TypePropsstate) => {
               handlehange={(e: ChangeEvent<HTMLInputElement>) => handlehange(e)}
             />
           </div>
-        </div>
+        </div> */}
         <div className="max-md:flex-col max-md:mt-0 flex w-[100%] gap-[30px] mt-[20px]">
           <div className="updateProfileTitleBox">
             <div className="updateProfileTitles">Location:</div>
@@ -268,7 +318,13 @@ export const UpdatePro = (props: TypePropsstate) => {
           services, and we permanently delete your personal data. You can cancel
           the deletion for 14 days.
         </div>
-        <div className="mt-[20px] text-[24px] font-semibold">Delete</div>
+        <div
+          onClick={HandleDeleteAccount}
+          className="mt-[10px] cursor-pointer w-fit active:scale-[0.95] hover:scale-[1.05] px-[15px] py-[10px] bg-[#0D47A1] rounded-2xl text-md text-white font-semibold"
+        >
+          Delete
+          {/* <Example onclick={HandlerClick} /> */}
+        </div>
       </div>
     </div>
   );

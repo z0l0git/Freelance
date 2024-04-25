@@ -11,7 +11,11 @@ type IdType = {
 };
 
 export const RatingAndReview = (props: IdType) => {
-  const { data: userData } = useContext(DataContext);
+
+  const { searchParams } = props;
+  const { setRating, data } = useContext(DataContext);
+  console.log(data, "datainreviewsdaa");
+
 
   const { searchParams, rdata, setRdata } = props;
 
@@ -37,7 +41,13 @@ export const RatingAndReview = (props: IdType) => {
         const roundedAverage: number = Number(average.toFixed(1));
 
         console.log("Average stars:", roundedAverage);
+        console.log(totalStarsArray.length, "how ,may peopeel");
+
         // setdata({ ...data, stars: roundedAverage });
+
+        setRating({ stars: roundedAverage, howMany: totalStarsArray.length });
+
+
         // setdata({
         //   ...data,
         //   rating: { stars: roundedAverage, howMany: totalStarsArray.length },

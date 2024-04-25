@@ -7,6 +7,8 @@ type DataContextType = {
   isLoggedIn: boolean;
   setdata: React.Dispatch<React.SetStateAction<Response>>;
   data: Response;
+  setRating: React.Dispatch<React.SetStateAction<Rating>>;
+  rating: Rating;
 };
 
 export const DataContext = createContext<DataContextType>(
@@ -34,11 +36,15 @@ type Response = {
   jobTitle: string;
   budget: number;
   skills: SkillT[];
-  rating: Rating;
 };
 
 export const DataProvider = ({ children }: any) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [rating, setRating] = useState<Rating>({
+    howMany: 0,
+    stars: 0,
+  });
+ 
 
   const [data, setdata] = useState<Response>({
     _id: "",
@@ -54,10 +60,6 @@ export const DataProvider = ({ children }: any) => {
     jobTitle: "",
     budget: 0,
     skills: [],
-    rating: {
-      howMany: 0,
-      stars: 0,
-    },
   });
 
   const accessToken =
@@ -75,6 +77,8 @@ export const DataProvider = ({ children }: any) => {
               },
             }
           );
+          // console.log(data, "hiiiiiii");
+
           setdata(data);
 
           localStorage.setItem("userId", data._id);
@@ -97,6 +101,9 @@ export const DataProvider = ({ children }: any) => {
         isLoggedIn,
         data,
         setdata,
+
+        rating,
+        setRating,
       }}
     >
       {children}

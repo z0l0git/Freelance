@@ -10,7 +10,7 @@ export const deleteUserQuery = async (req: Request) => {
     if (!user) {
       throw new Error("user not match");
     }
-    return "success";
+    return user;
   } catch (error: any) {
     return error.message;
   }

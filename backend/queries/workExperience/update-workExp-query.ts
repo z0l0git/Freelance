@@ -4,7 +4,7 @@ import { EducationModel, WorkExpModel } from "../../models";
 export const updateWorkExpQuery = async (req: Request) => {
   const { _id, hiredY, firedY, occupation, companyName, aboutCompany } =
     req.body;
-  console.log(_id, hiredY, firedY, occupation, companyName, aboutCompany);
+
 
   try {
     const upedEdu = await WorkExpModel.findByIdAndUpdate(

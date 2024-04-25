@@ -17,6 +17,7 @@ export default authMiddleware({
     "/profile",
     "/projectDetail",
     "/chat",
+    "/user-profile",
   ],
 });
 

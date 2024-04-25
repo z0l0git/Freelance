@@ -7,9 +7,13 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import Image from "next/image";
 import { Noto_Sans_Indic_Siyaq_Numbers } from "next/font/google";
-
+import axios from "axios";
 type SkillT = {
   id?: string;
+};
+type SkillType = {
+  name: string;
+  id: string;
 };
 type Response = {
   _id: string;
@@ -26,14 +30,34 @@ type Response = {
   budget: number;
   skills: SkillType[];
 };
-type SkillType = {
-  name: string;
-  id: string;
+
+type TypeSda = {
+  _id: string;
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone: string;
+  password: string;
+  discription: string;
+  location: string;
+  createdAt: string;
+  image: string;
+  jobTitle: string;
+  budget: number;
+  skills: SkillType[];
 };
+interface YourObjectType {
+  _doc: TypeSda;
+  rating: number;
+  howManyPeople: number;
+}
 
 type MiddType = {
-  AllUserData: Response[];
+  AllUser: YourObjectType[];
   skills: SkillType[];
+};
+type StarFilterType = {
+  category: string;
 };
 
 type BudgetType = {
@@ -42,27 +66,52 @@ type BudgetType = {
 };
 
 export default function FreelancersMidd(props: MiddType) {
-  const { AllUserData, skills } = props;
+  const { AllUser, skills } = props;
+  
+
+  const AllUserData = AllUser?.map((el) => {
+    return el._doc;
+  });
 
   const { push } = useRouter();
 
-  const [allUserState, setAllUserState] = useState<Response[]>(AllUserData);
-  console.log(allUserState, "Alllfreelanserc adara");
+  const [allUserState, setAllUserState] = useState<TypeSda[]>(AllUserData);
+  const [starName, setstarName] = useState<string>("");
+  const [search, setSearch] = useState<string>("");
+ ;
+
   const [budget, setBudget] = useState<BudgetType>({
     min: 0,
     max: 0,
   });
   const [skillId, setSkillId] = useState<string>("");
-  console.log(skillId, "skillId");
+ 
 
   useEffect(() => {
     setAllUserState(AllUserData);
-  }, [AllUserData]);
+  }, [AllUser]);
+
+  const filterByStar = (e: StarFilterType) => {
+    const name = e.category;
+    setstarName(name);
+    setSkillId("");
+
+    const starOnMap = name.split(" ")[0];
+ 
+
+    const filteredArray = AllUser?.filter((el) => {
+      const ratingString = el.rating.toString();
+      return ratingString.split(".")[0] === starOnMap;
+    }).map((el) => el._doc);
+   
+
+    setAllUserState(filteredArray);
+  };
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
     setBudget({ ...budget, [name]: value });
-
+    setstarName("");
     setSkillId("");
   };
 
@@ -82,15 +131,16 @@ export default function FreelancersMidd(props: MiddType) {
 
   const skillFilter = (e: SkillType) => {
     setSkillId(e.id);
+    setstarName("");
     // handleZero();
 
-    const UserData: Response[] = AllUserData?.filter((user) => {
+    const UserData: TypeSda[] = AllUserData?.filter((user) => {
       return user?.skills?.some((skill) => {
         return skill.name === e.name;
       });
     });
 
-    console.log(UserData, "Userskiltei sda");
+
     setAllUserState(UserData);
   };
 
@@ -103,34 +153,72 @@ export default function FreelancersMidd(props: MiddType) {
     const UserId = event.currentTarget.id;
     push(`/profile?id=${UserId}`);
   };
+  const HnadleSearch = async () => {
+    // setCategory("");
+    // setSkill("");
+
+    const body = {
+      filter: {
+        $or: [
+          {
+            firstName: {
+              $regex: search,
+              $options: "i",
+            },
+          },
+        ],
+      },
+    };
+
+    try {
+      const { data } = await axios.post("http://localhost:8000/allUser", body);
+      setAllUserState(data);
+    } catch (err: any) {
+      console.log(err.message);
+    }
+  };
 
   const Handlereset = () => {
     handleZero();
     setSkillId("");
+    setstarName("");
     // setAllUserState(AllUserData);
   };
   return (
     <div className="flex md:flex-row flex-col w-screen items-start justify-center gap-5 pt-32">
-      <FreelancerFilter
-        mark={"NPL specialists"}
-        counter={"45"}
-        handleChange={handleChange}
-        handleZero={handleZero}
-        budget={budget}
-        Handlereset={Handlereset}
-        skills={skills}
-        skillFilter={skillFilter}
-        skillId={skillId}
-      />
+      <div className="sticky top-[80px]">
+        <FreelancerFilter
+          HnadleSearch={HnadleSearch}
+          search={search}
+          setSearch={setSearch}
+          starName={starName}
+          filterByStar={filterByStar}
+          mark={"NPL specialists"}
+          counter={"45"}
+          handleChange={handleChange}
+          handleZero={handleZero}
+          budget={budget}
+          Handlereset={Handlereset}
+          skills={skills}
+          skillFilter={skillFilter}
+          skillId={skillId}
+        />
+      </div>
       <div>
         {allUserState.length === 0 ? (
           <div className="flex w-fit md:w-[880px] sm:w-[800px]  h-fit  flex-wrap justify-center items-center gap-[30px] ">
             <Image alt="" src="/error.png" width={500} height={300} />
           </div>
         ) : (
-          <div className="flex w-fit md:w-[880px] sm:w-[800px]  h-fit  flex-wrap justify-center items-center gap-[30px] ">
+          <div className="flex  w-fit md:w-[880px] sm:w-[800px]  h-fit  flex-wrap justify-center items-center gap-[30px] ">
             {" "}
-            {allUserState?.map((el: Response, i: number) => {
+            {allUserState?.map((el: any, i: number) => {
+              const userRating =
+                AllUser?.find((user) => user._doc._id === el._id)?.rating || 0;
+              const userHowManyPeople =
+                AllUser?.find((user) => user._doc._id === el._id)
+                  ?.howManyPeople || 0;
+
               return (
                 <div id={el._id} onClick={HandlerClicpush} key={i}>
                   <FreelancerCard
@@ -140,12 +228,13 @@ export default function FreelancersMidd(props: MiddType) {
                     name={`${el.firstName}  ${el.lastName}`}
                     image={el.image}
                     worktype="worktype"
-                    experience="experience"
                     wages={`${
                       el.budget
                         ? el.budget.toLocaleString() + "₮"
                         : "Not specified"
                     }`}
+                    rating={userRating}
+                    howManyPeople={userHowManyPeople}
                   />
                 </div>
               );
