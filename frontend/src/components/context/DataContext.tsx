@@ -60,12 +60,15 @@ export const DataProvider = ({ children }: any) => {
     budget: 0,
     skills: [],
   });
-
+  console.log(isLoggedIn);
   const accessToken =
     typeof window !== "undefined" && localStorage.getItem("token");
 
   useEffect(() => {
+    console.log("if can hear token");
     if (accessToken) {
+      console.log("if access token");
+
       const getloggedUser = async () => {
         try {
           const { data } = await axios.get(
@@ -76,12 +79,8 @@ export const DataProvider = ({ children }: any) => {
               },
             }
           );
-          // console.log(data, "hiiiiiii");
-
           setdata(data);
-
           localStorage.setItem("userId", data._id);
-
           setIsLoggedIn(true);
         } catch (error) {
           console.log("eror from get logged in user");
@@ -89,8 +88,9 @@ export const DataProvider = ({ children }: any) => {
       };
       getloggedUser();
     } else {
+      console.log("else access token");
+
       setIsLoggedIn(false);
-      console.log("No");
     }
   }, [accessToken]);
 

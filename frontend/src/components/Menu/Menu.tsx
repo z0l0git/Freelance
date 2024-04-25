@@ -27,13 +27,13 @@ export const Menu = () => {
     setOpenProfile(false);
   };
 
-  useEffect(() => {
-    if (isLoggedIn) {
-      setProfile(true);
-    } else {
-      setProfile(false);
-    }
-  }, [isLoggedIn]);
+  // useEffect(() => {
+  //   if (isLoggedIn) {
+  //     setProfile(true);
+  //   } else {
+  //     setProfile(false);
+  //   }
+  // }, [isLoggedIn]);
 
   return (
     <div className="sticky top-0 z-40">
@@ -107,7 +107,7 @@ export const Menu = () => {
             </nav>
 
             <nav className="flex justify-center items-center rounded-full relative w-10 h-10 ">
-              {profile ? (
+              {isLoggedIn ? (
                 <MenuProfileCard
                   profilePicture={`${data.image ? data?.image : "/proq.webp"}`}
                   setOpenBell={setOpenBell}

@@ -81,9 +81,11 @@ export const Login = () => {
         "https://freelance-gmjr.onrender.com/login",
         values
       );
-      console.log(data, "token");
-      localStorage.setItem("token", data);
-      push("/");
+
+      if (data) {
+        localStorage.setItem("token", data);
+        push("/");
+      }
       notifySuccess();
     } catch (err: any) {
       notifyError();

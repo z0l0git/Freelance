@@ -44,7 +44,7 @@ export const RevieComment = (props: IdType) => {
   });
 
   const notifySuccess = () => {
-    toast.success("🦄 Changes applied successfully From Zolo.", {
+    toast.success("🦄 Changes applied successfully.", {
       position: "top-center",
       autoClose: 4000,
       hideProgressBar: false,
@@ -58,7 +58,7 @@ export const RevieComment = (props: IdType) => {
   };
 
   const notifyError = () => {
-    toast.error("❗Unable to update data. Please try again later", {
+    toast.error("You have already posted this review❗", {
       position: "top-center",
       autoClose: 4000,
       hideProgressBar: false,
@@ -88,10 +88,11 @@ export const RevieComment = (props: IdType) => {
         const filterData = reviews.data.find(
           (item: any) => item.createdBy._id === userData._id
         );
-        console.log(filterData, "hoosn2");
+
         if (filterData) {
-          // notifyError();
-          return;
+          console.log("if filter data log");
+
+          notifyError();
         } else {
           const { data } = await axios.post<Datatype[]>(
             "https://freelance-gmjr.onrender.com/postreview",
@@ -102,15 +103,14 @@ export const RevieComment = (props: IdType) => {
               createdFor: searchParams,
             }
           );
-          // notifySuccess();
+          notifySuccess();
           setRdata((prev: Datatype[]) => [...prev, data]);
           window.location.reload();
-          return;
         }
       }
     } catch (err: any) {
       console.log(err.message);
-      // notifyError();
+      notifyError();
     }
   };
   return (
@@ -150,12 +150,22 @@ export const RevieComment = (props: IdType) => {
           ></textarea>
         </div>
       </div>
-      <BlueButton
-        buttonName={isLoggedIn ? "Submit Review" : "Login to Submit Review"}
-        height="80px"
-        width="250px"
-        handleSubmit={handleChange}
-      />
+      {isLoggedIn ? (
+        <BlueButton
+          buttonName={"Submit Review"}
+          height="80px"
+          width="250px"
+          handleSubmit={handleChange}
+        />
+      ) : (
+        <p>
+          Please{" "}
+          <a className="text-blue-600" href="/sign">
+            Log In
+          </a>{" "}
+          to post a review
+        </p>
+      )}
     </div>
   );
 };
