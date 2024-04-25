@@ -205,7 +205,7 @@ export default function ProjectDetail(props: PropsType) {
             ))}
           </div>
         </div>
-        <div className="w-[420px] h-fit  rounded-xl p-[20px] bg-white sticky top-0">
+        <div className="w-[420px] h-fit  rounded-xl p-[20px] bg-white sticky top-[80px]">
           <div className="border-b border-dashed border-slate-300 pb-[20px]">
             <div className="font-semibold text-[31px]">Budget</div>
             <div className="flex items-center mt-[20px] gap-[14px]">

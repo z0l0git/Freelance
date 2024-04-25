@@ -84,7 +84,7 @@ const config = {
       },
     },
     screens: {
-      sm: "375px",
+      sm: "392px",
       // => @media (min-width: 640px) { ... }
 
       md: "1000px",
@@ -100,6 +100,9 @@ const config = {
       // => @media (min-width: 1536px) { ... }
       x: "1199px",
       m: "992px",
+
+      s: "768px",
+      xs: "576px",
     },
   },
   plugins: [require("tailwindcss-animate"), require("tailwind-scrollbar-hide")],
