@@ -7,7 +7,7 @@ import { DataContext } from "../context/DataContext";
 import axios from "axios";
 import { ProjectTemplate } from "./ProjectTemplate";
 import { MouseEvent } from "react";
-
+import Image from "next/image";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
@@ -123,25 +123,34 @@ export default function ActiveProject(props: PropsType) {
 
   return (
     <div className="flex flex-col gap-10">
-      {projects?.map((el: any, index: number) => {
-        return (
-          <div key={index}>
-            <ProjectTemplate
-              editProject={editProject}
-              getIdforDelete={getIdforDelete}
-              id={el._id}
-              title={el.title}
-              description={el.description}
-              price={el.budget}
-              flexible={el.flexible}
-              createdAt={el.createdAt}
-              category={el.skills?.map((el2: any, index2: number) => {
-                return el2.name;
-              })}
-            />
-          </div>
-        );
-      })}
+      {projects?.length === 0 ? (
+        <div className="flex justify-center items-center">
+          <Image alt="" src="/error.png" width={500} height={300} />
+        </div>
+      ) : (
+        <div>
+          {" "}
+          {projects?.map((el: any, index: number) => {
+            return (
+              <div key={index}>
+                <ProjectTemplate
+                  editProject={editProject}
+                  getIdforDelete={getIdforDelete}
+                  id={el._id}
+                  title={el.title}
+                  description={el.description}
+                  price={el.budget}
+                  flexible={el.flexible}
+                  createdAt={el.createdAt}
+                  category={el.skills?.map((el2: any, index2: number) => {
+                    return el2.name;
+                  })}
+                />
+              </div>
+            );
+          })}
+        </div>
+      )}
 
       <Modal
         open={open}

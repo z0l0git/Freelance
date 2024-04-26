@@ -8,7 +8,7 @@ export const CreateNewUserByClerkQuery = async (req: Request) => {
   try {
     const newUser = await UserModel.create({
       firstName,
-      lastName: lastName === "null" ? "" : lastName,
+      lastName,
       email,
       auth: "google",
     });

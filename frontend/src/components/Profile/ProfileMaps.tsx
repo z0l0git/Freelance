@@ -168,7 +168,11 @@ export const ReviewMap = ({ userData }: any) => {
         <p className="text-[14px]">{userData?.description}</p>
         <div className="w-[354px] md:w-[752px] flex gap-[20px] pt-5 ">
           <Image
-            src={userData?.createdBy?.image}
+            src={
+              userData?.createdBy?.image
+                ? userData?.createdBy?.image
+                : "/proq.webp"
+            }
             alt=""
             width={60}
             height={60}

@@ -21,10 +21,20 @@ type Datatype = {
   createdFor?: string;
 };
 
+type stateType = {
+  _id: string;
+  createdFor: string;
+  stars: number;
+  createdAt: Date;
+  description: string;
+  createdBy: string;
+};
+
 type IdType = {
   searchParams: any;
   name: string;
-  setRdata: any;
+  setRdata: React.Dispatch<React.SetStateAction<stateType[]>>;
+  rdata: stateType[];
 };
 
 export type Comment = {
@@ -35,8 +45,10 @@ export type Comment = {
 export const RevieComment = (props: IdType) => {
   const { push } = useRouter();
 
-  const { searchParams, name, setRdata } = props;
+  const { searchParams, name, setRdata, rdata } = props;
   const { data: userData, isLoggedIn } = useContext(DataContext);
+
+  console.log(userData, "userDatsssssa");
 
   const [comment, setComment] = useState<Comment>({
     stars: 0,
@@ -70,51 +82,66 @@ export const RevieComment = (props: IdType) => {
       transition: Bounce,
     });
   };
+  const notifyError2 = () => {
+    toast.error("Something went wrong. Sorry try again❗", {
+      position: "top-center",
+      autoClose: 4000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      transition: Bounce,
+    });
+  };
+
+  const PushLogin = () => {
+    push("/sign");
+  };
 
   const handleChange = async (e: any) => {
     e.preventDefault();
     try {
-      if (!isLoggedIn) {
-        push("/sign");
-        return;
+      const filterData = rdata?.find(
+        (item: any) => item.createdBy._id === userData._id
+      );
+      console.log(filterData, "pbikbbpkjjjjjjjjj");
+
+      if (filterData) {
+        console.log("if filter data log");
+
+        notifyError();
       } else {
-        const reviews = await axios.post(
+        const { data } = await axios.post(
+          "https://freelance-gmjr.onrender.com/postreview",
+          {
+            stars: comment.stars,
+            description: comment.description,
+            createdBy: userData._id,
+            createdFor: searchParams,
+          }
+        );
+        const reviews = await axios.post<any[]>(
           "https://freelance-gmjr.onrender.com/getallreview",
           {
             createdFor: searchParams,
           }
         );
+
         setRdata(reviews.data);
-        const filterData = reviews.data.find(
-          (item: any) => item.createdBy._id === userData._id
-        );
+        // console.log(data, "revdata");
 
-        if (filterData) {
-          console.log("if filter data log");
-
-          notifyError();
-        } else {
-          const { data } = await axios.post<Datatype[]>(
-            "https://freelance-gmjr.onrender.com/postreview",
-            {
-              stars: comment.stars,
-              description: comment.description,
-              createdBy: userData._id,
-              createdFor: searchParams,
-            }
-          );
-          notifySuccess();
-          setRdata((prev: Datatype[]) => [...prev, data]);
-          window.location.reload();
-        }
+        // setRdata((prev: Datatype[]) => [...prev, data]);
+        notifySuccess();
       }
     } catch (err: any) {
+      notifyError2();
       console.log(err.message);
-      notifyError();
     }
   };
   return (
-    <div className="w-[382px] md:w-[816px] h-[718px] flex flex-col justify-center">
+    <div className="w-[382px] md:w-[816px] h-fit py-[40px] flex flex-col justify-center">
       <ToastContainer />
       <strong className="w-full text-center text-[24px] pb-6">
         Write A Review for <span className="text-[#0D47A1]">{name}</span>

@@ -51,8 +51,10 @@ export default function ProjectPageMidd(props: PropsType) {
   const [search, setSearch] = useState("");
   const [tempStage, settempStage] = useState<boolean>();
   const [postData, setPostData] = useState<PosdtDataType[]>([]);
+  console.log(postData, "postData");
 
   const [stage, setStage] = useState(true);
+  console.log(stage, "stage");
 
   const handlerClick = () => {
     setStage(true);
@@ -67,11 +69,13 @@ export default function ProjectPageMidd(props: PropsType) {
     setStage(false);
     setSearch("");
     setCategory("");
-    handleZero();
+
 
     const dataSkill: PosdtDataType[] = AllPost.filter((post) => {
       return post?.skills?.some((skill) => skill.name === e.name);
     });
+    console.log(dataSkill, "dataSkill");
+
     setPostData(dataSkill);
   };
 
@@ -81,12 +85,12 @@ export default function ProjectPageMidd(props: PropsType) {
     setSearch("");
     setSkill("");
     setStage(false);
-    handleZero();
+ 
 
     const datacategory: PosdtDataType[] = AllPost.filter((post) => {
       return post?.category?.some((category) => category._id === e._id);
     });
-    console.log(datacategory, "datacategory");
+    console.log(datacategory, "datacatevvcgory");
 
     setPostData(datacategory);
   };
