@@ -55,7 +55,7 @@ export const ChatPage = () => {
 
   useEffect(() => {
     getUserRooms();
-    setUser(userData.firstName + " " + userData.lastName);
+    setUser(userData?.firstName + " " + userData?.lastName);
     console.log("check if inf");
   }, [userData]);
 
@@ -64,7 +64,7 @@ export const ChatPage = () => {
       <div className="w-[40%] md:w-[17%] flex flex-col items-start bg-[#13203B] rounded-xl rounded-r-none h-full ">
         <div className="px-4 py-3 pr-0 border-b border-white w-full">
           <LoggedUser
-            name={userData.firstName + " " + userData.lastName}
+            name={userData?.firstName + " " + userData?.lastName}
             email={userData.firstName}
             image={userData.image}
           />
