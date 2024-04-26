@@ -10,6 +10,7 @@ import { FaSkype } from "react-icons/fa";
 import { BsFillTelephonePlusFill } from "react-icons/bs";
 import { FaEnvelopeOpen } from "react-icons/fa";
 import { FaLocationDot } from "react-icons/fa6";
+import Link from "next/link";
 
 export const Footer = () => {
   return (
@@ -18,7 +19,7 @@ export const Footer = () => {
         <div className="px-3 w-[336px] mt-[24px]">
           <div>
             <div className="pb-6">
-              <Image alt="logo" src="/logo.png " width={186} height={49} />
+              <Image alt="logo" src="/logo.png" width={186} height={49} />
             </div>
 
             <div className="text-white pb-[30px]">
@@ -26,7 +27,7 @@ export const Footer = () => {
               <br />
               entrepreneurs, and freelancers
             </div>
-            <div className="flex gap-[12px]">
+            {/* <div className="flex gap-[12px]">
               <div className="border rounded-[50px] w-[36px] h-[36px] border-blue-700 flex justify-center items-center">
                 <FaFacebook className="w-4 h-4 text-white" />
               </div>
@@ -42,7 +43,7 @@ export const Footer = () => {
               <div className="border rounded-[50px] w-[36px] h-[36px] border-blue-700 flex justify-center items-center">
                 <FaSkype className="w-4 h-4 text-white" />
               </div>
-            </div>
+            </div> */}
           </div>
           <div></div>
         </div>
@@ -52,10 +53,15 @@ export const Footer = () => {
           </div>
           <div className="flex flex-col gap-[6px]">
             <div className="cursor-pointer font-semibold">About us</div>
-            <div className="cursor-pointer font-semibold">Browse Job</div>
-            <div className="cursor-pointer font-semibold">Find Talent</div>
-            <div className="cursor-pointer font-semibold">FAQs</div>
-            <div className="cursor-pointer font-semibold">Blog</div>
+            <div className="cursor-pointer font-semibold">
+              <Link href="/projects"> Browse Projects </Link>
+            </div>
+            <div className="cursor-pointer font-semibold">
+              <Link href="/freelancers"> Find Talents </Link>
+            </div>
+            <div className="cursor-pointer font-semibold">
+              <Link href="/contact"> Contact</Link>
+            </div>
           </div>
         </div>
         <div className="text-white px-3 w-[336px] mt-[24px]">
@@ -66,7 +72,7 @@ export const Footer = () => {
             <div className="border rounded-[50px] w-[36px] h-[36px] border-blue-700 flex justify-center items-center">
               <BsFillTelephonePlusFill className="w-4 h-4 text-white" />
             </div>
-            (976) 8811-1188
+            (976) 8005-2392
           </div>
           <div className="flex items-center gap-3 pb-[16px]">
             <div className="border rounded-[50px] w-[36px] h-[36px] border-blue-700 flex justify-center items-center">

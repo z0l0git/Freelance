@@ -32,7 +32,7 @@ export const ChatPage = () => {
     console.log("handleJoin", roomId);
     setShowChat(true);
     setroomId(roomId);
-    setUser(userData.firstName + " " + userData.lastName);
+    setUser(userData?.firstName + " " + userData?.lastName);
     push(`/chat?roomId=${roomId}`);
     socket.emit("join_room", roomId);
   };
