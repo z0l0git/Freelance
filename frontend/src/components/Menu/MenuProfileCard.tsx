@@ -61,10 +61,10 @@ export const MenuProfileCard = (props: any) => {
               <span className="font-semibold text-gray-800">Profile</span>
             </Link>
           </div>
-          <div className="flex gap-2 w-full h-8 items-center">
+          {/* <div className="flex gap-2 w-full h-8 items-center">
             <IoMdNotificationsOutline />
             <span className="font-semibold text-gray-800 ">Notifications</span>
-          </div>
+          </div> */}
 
           <div className="flex gap-2 w-full h-8">
             <Link

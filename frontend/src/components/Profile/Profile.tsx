@@ -69,6 +69,18 @@ export const Profile = (props: PropsType) => {
             <Education eduData={data.education} />
             <WorkExprience workData={data.workExp} />
           </div>
+        </div>{" "}
+        <div className="w-[426px] md:w-[860px] flex items-center justify-center bg-white  rounded-lg">
+          {searchParams === userData._id ? (
+            <div></div>
+          ) : (
+            <RevieComment
+              rdata={rdata}
+              setRdata={setRdata}
+              searchParams={searchParams}
+              name={data?.firstName + " " + data?.lastName}
+            />
+          )}
         </div>
         <div className="w-[426px] md:w-[860px] flex items-center justify-center  bg-white rounded-lg">
           <RatingAndReview
@@ -76,17 +88,6 @@ export const Profile = (props: PropsType) => {
             setRdata={setRdata}
             searchParams={searchParams}
           />
-        </div>
-        <div className="w-[426px] md:w-[860px] flex items-center justify-center bg-white  rounded-lg">
-          {searchParams === userData._id ? (
-            <div></div>
-          ) : (
-            <RevieComment
-              setRdata={setRdata}
-              searchParams={searchParams}
-              name={data?.firstName + " " + data?.lastName}
-            />
-          )}
         </div>
       </div>
       <div className=" w-[402px] md:w-[416px] md:h-[623px] rounded-lg sticky top-0">
