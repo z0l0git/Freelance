@@ -139,7 +139,7 @@ export const Filter = (props: PropsType) => {
               placeholder="Min"
               name="min"
               type="number"
-              value={budget.min ? budget.min : ""}
+              // value={budget.min ? budget.min : ""}
               onChange={(event) => handleChange(event)}
             />
           </div>
@@ -150,7 +150,7 @@ export const Filter = (props: PropsType) => {
               placeholder="Max"
               name="max"
               type="number"
-              value={budget.max ? budget.max : ""}
+              // value={budget.max ? budget.max : ""}
               onChange={(event) => handleChange(event)}
             />
           </div>

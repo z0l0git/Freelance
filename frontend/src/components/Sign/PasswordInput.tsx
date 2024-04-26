@@ -18,7 +18,7 @@ export const InputPassWord = (props: SS) => {
     setShow(!show);
   };
   return (
-    <div className="w-[100%] h-[45px] flex items-center justify-between  px-[25px]  border border-slate-300 rounded-[40px] text-[15px] text-[white]">
+    <div className="w-[100%] xs:h-[45px] h-[35px] flex items-center justify-between  px-[25px]  border border-slate-300 rounded-[40px] text-[15px] text-[white]">
       <input
         // id={id}
         name={name}

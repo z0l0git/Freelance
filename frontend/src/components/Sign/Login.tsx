@@ -110,9 +110,9 @@ export const Login = () => {
           onSubmit={hanldeSubmit}
         >
           {({ setFieldValue }) => (
-            <Form className="flex flex-col gap-[28px]   ">
+            <Form className="flex flex-col xs:gap-[28px] gap-[18px]   ">
               <div>
-                <div className="font-semibold text-white text-[15px] mb-3">
+                <div className="font-semibold text-white xs:text-[15px] text-[11px] mb-3">
                   Enter Your Email ID
                 </div>
                 <Input
@@ -129,7 +129,7 @@ export const Login = () => {
                 />
               </div>
               <div>
-                <div className="font-semibold text-white text-[15px] mb-3">
+                <div className="font-semibold text-white xs:text-[15px] text-[11px] mb-3">
                   Enter Your Password
                 </div>
                 <InputPassWord
@@ -147,7 +147,7 @@ export const Login = () => {
 
               {error && <div className="text-red-500 text-center">{error}</div>}
 
-              <div className=" flex flex-col gap-[18px]">
+              <div className=" flex flex-col xs:gap-[18px] gap-[8px]">
                 <Button text="Login" type="submit" />
                 <div className="flex">
                   <div className=" border-b border-white w-[50%] mb-[10px] mr-[10px]"></div>
@@ -162,10 +162,10 @@ export const Login = () => {
                       cursor: "pointer",
                       boxShadow: "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px",
                     }}
-                    className="w-full px-[5px] xs:h-[45px] h-[35px] xs:text-[20px] text-[12px] flex justify-center items-center text-black bg-white rounded-[40px] font-semibold  gap-[20px] text-[14px]"
+                    className="w-full px-[5px] xs:h-[45px] h-[35px] xs:text-[20px] sm:text-[12px] text-[10px] flex justify-center items-center text-black bg-white rounded-[40px] font-semibold  gap-[20px] text-[14px]"
                   >
                     <Image alt="" src="/google.jpeg" width={25} height={25} />
-                    Continue with google
+                    <div className="hidden xs:block">Continue with google</div>
                   </button>
                 </Link>
               </div>

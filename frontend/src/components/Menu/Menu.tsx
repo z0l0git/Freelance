@@ -86,7 +86,7 @@ export const Menu = () => {
             >
               <BsChatText className="color-white text-white w-6 h-6" />
             </div>
-            <nav className="flex justify-center items-center p-2 rounded-full bg-[#343e56] w-10 h-10 relative">
+            {/* <nav className="flex justify-center items-center p-2 rounded-full bg-[#343e56] w-10 h-10 relative">
               <BsBell
                 className="color-white text-white w-6 h-6"
                 onClick={handleClick}
@@ -104,7 +104,7 @@ export const Menu = () => {
                   ""
                 )}
               </nav>
-            </nav>
+            </nav> */}
 
             <nav className="flex justify-center items-center rounded-full relative w-10 h-10 ">
               {isLoggedIn ? (
