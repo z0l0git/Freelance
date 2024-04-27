@@ -40,6 +40,8 @@ type Response = {
 
 export const DataProvider = ({ children }: any) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  console.log(isLoggedIn, "deer");
+
   const [rating, setRating] = useState<Rating>({
     howMany: 0,
     stars: 0,
@@ -61,15 +63,15 @@ export const DataProvider = ({ children }: any) => {
     skills: [],
   });
   console.log(isLoggedIn);
-  const accessToken =
-    typeof window !== "undefined" && localStorage.getItem("token");
 
   useEffect(() => {
-    console.log("if can hear token");
-    if (accessToken) {
-      console.log("if access token");
+    const getLoggedUser = async () => {
+      console.log("Function called");
+      const accessToken =
+        typeof window !== "undefined" && localStorage.getItem("token");
+      console.log(accessToken, "this is token");
 
-      const getloggedUser = async () => {
+      if (accessToken !== null) {
         try {
           const { data } = await axios.get(
             "https://freelance-gmjr.onrender.com/users/refresh",
@@ -79,20 +81,40 @@ export const DataProvider = ({ children }: any) => {
               },
             }
           );
+
           setdata(data);
           localStorage.setItem("userId", data._id);
           setIsLoggedIn(true);
+          console.log("User logged in successfully");
         } catch (error) {
-          console.log("eror from get logged in user");
+          setIsLoggedIn(false);
+          console.error("Error from getLoggedUser:", error);
         }
-      };
-      getloggedUser();
-    } else {
-      console.log("else access token");
+      }
+      if (accessToken === null) {
+        console.log("checking again");
+        console.log(isLoggedIn);
+        console.log(accessToken, "tohnn");
 
-      setIsLoggedIn(false);
-    }
-  }, [accessToken]);
+        setTimeout(getLoggedUser, 1000);
+      }
+    };
+    getLoggedUser();
+  }, []);
+
+  // const sda = () => {
+  //   if (!isLoggedIn) {
+  //     console.log("loggded", isLoggedIn);
+  //     console.log("checking again");
+
+  //     setTimeout(getLoggedUser, 1000);
+  //   }
+  // };
+
+  // useEffect(() => {
+  //   getLoggedUser();
+  //   // sda();
+  // }, []);
 
   return (
     <DataContext.Provider
