@@ -37,7 +37,8 @@ export const PageHeroes = (props: Props) => {
   };
   const { push } = useRouter();
   const handleLogOut = () => {
-    localStorage.clear();
+    localStorage.removeItem("token");
+
     // push("/projects");
     push("/sign");
   };
