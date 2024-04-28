@@ -44,6 +44,7 @@
     "kill-port": "^2.0.1",
     "lucide-react": "^0.363.0",
     "next": "^14.1.4",
+    "nodemailer": "^6.9.13",
     "radix-ui": "^1.0.1",
     "react": "^18",
     "react-dom": "^18",

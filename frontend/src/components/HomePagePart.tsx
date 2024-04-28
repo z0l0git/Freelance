@@ -80,7 +80,7 @@ export const HomePagePart = () => {
     <div className="w-screen flex items-center justify-center">
       <div className="flex flex-col-reverse w-[426px] h-fit py-5 md:flex-row md:w-[1320px] md:h-[627px] items-center justify-between ">
         <div className="w-[402px] h-[460px] md:w-[526px] md:h-[603px]">
-          <Image alt="" src={"/HomePic.png"} width={526} height={603} />
+          <Image alt="" src={"/HomePic.jpg"} width={526} height={603} />
         </div>
 
         <div className="w-[402px] h-fit md:w-[636px] md:h-[567px] flex flex-col items-center justify-around ">

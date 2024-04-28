@@ -112,11 +112,11 @@ export const AboutUs = () => {
                   transition: { duration: 0.7 },
                 }}
               >
-                Access a curated pool of highly skilled AI professionals with
-                expertise in cutting-edge technologies. Find AI projects that
-                align with your interests and showcase your capabilities.
-                Collaborate with clients who value your expertise and provide
-                opportunities for growth.
+                Access a curated pool of highly skilled professionals with
+                expertise in cutting-edge technologies. Find projects that align
+                with your interests and showcase your capabilities. Collaborate
+                with clients who value your expertise and provide opportunities
+                for growth.
               </motion.div>
             )}
             {stage == 1 && (
@@ -127,11 +127,11 @@ export const AboutUs = () => {
                   transition: { duration: 0.7 },
                 }}
               >
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                Corporis modi excepturi exercitationem? Illum voluptas aut rerum
-                molestias maiores modi provident quod earum. Sit culpa
-                consequatur officiis, id ratione nostrum aliquam libero veniam
-                distinctio facere praesentium nisi quia dolor! Illum, amet?
+                We aim to connect professionals and employers fast, easy and
+                conveniently. Ultimately, our vision is to be the catalyst for a
+                thriving freelance economy, where skilled individuals can build
+                fulfilling careers and businesses can access the expertise they
+                need to succeed.
               </motion.div>
             )}
             {stage == 2 && (
@@ -142,29 +142,45 @@ export const AboutUs = () => {
                   transition: { duration: 0.7 },
                 }}
               >
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Mollitia, ad.
+                Our website provides an easy to access platform for freelancers
+                and employers to use, saving your valuable time. If you have any
+                questions, please feel free to contact us.
+                {/* <ul className="flex flex-col gap-[10px]">
+                  <li>
+                    <span className="font-semibold">Post a Project: </span>
+                    <p>
+                      Post the projects you want in detail to get them done by
+                      professionals.
+                    </p>
+                  </li>
+                  <li>
+                    <span className="font-semibold">
+                      Connect with Professionals:
+                    </span>
+                    <p>Find and Connect with the talent you are looking for</p>
+                  </li>
+                </ul> */}
               </motion.div>
             )}
           </div>
         </div>
         <div className="lg:w-[606px] md:w-[700px] sm:w-[540px] w-full  sm:h-[607px] h-[709px] ml-[20px]  relative">
           <div className="w-[335px] h-[135px] bg-[#0d47a1] rounded-2xl absolute z-20 bottom-0 right-0 flex justify-center gap-[20px] items-center px-[30px]">
-            <div className="text-yellow-400 text-[70px] font-semibold">30+</div>
+            <div className="text-yellow-400 text-[70px] font-semibold">10+</div>
             <div className="text-[#fff] text-[20px] font-semibold">
-              Years of experience
+              Trusted Clients
             </div>
           </div>
           <Image
             alt=""
-            src="/r1.jpeg"
+            src="/r1.png"
             width={400}
             height={324}
             className="absolute top-[0px] right-[0px] rounded-2xl"
           />
           <Image
             alt=""
-            src="/r2.jpeg"
+            src="/r2.jpg"
             width={300}
             height={364}
             className="absolute bottom-[40px] xl:left-[0px] lg:left-[80px] md:left-[0px]  rounded-2xl"
@@ -172,9 +188,9 @@ export const AboutUs = () => {
           <Image
             alt=""
             src="/r4.png"
-            width={80}
-            height={80}
-            className="absolute sm:bottom-[370px] bottom-[570px] xl:left-[130px] lg:left-[100px] md:left-[260px] left-[100px] rounded-2xl animate-bounce"
+            width={100}
+            height={100}
+            className="absolute sm:bottom-[370px] bottom-[570px] xl:left-[130px] lg:left-[100px] md:left-[260px] left-[100px] rounded-[50%] animate-bounce"
           />
           <Image
             alt=""

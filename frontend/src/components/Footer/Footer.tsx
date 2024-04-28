@@ -52,7 +52,9 @@ export const Footer = () => {
             Quick Link
           </div>
           <div className="flex flex-col gap-[6px]">
-            <div className="cursor-pointer font-semibold">About us</div>
+            <Link href="/">
+              <div className="cursor-pointer font-semibold">About us</div>
+            </Link>
             <div className="cursor-pointer font-semibold">
               <Link href="/projects"> Browse Projects </Link>
             </div>
