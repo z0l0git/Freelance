@@ -1,7 +1,7 @@
+"use client";
 import { BsTags } from "react-icons/bs";
 import { CiCircleInfo } from "react-icons/ci";
-import { CheckBoxMap } from "./ProfileMaps";
-import { LinkMap } from "./ProfileMaps";
+
 import {
   FaFacebook,
   FaInstagram,
@@ -12,47 +12,48 @@ import {
 } from "react-icons/fa";
 import { GoPlus } from "react-icons/go";
 import { BlueButton, WhiteButton } from "../Button";
-const LinkData = [
-  {
-    linkIcon: <FaFacebook width={16} height={16} className="text-[#0D47A1]" />,
-  },
-  {
-    linkIcon: <FaInstagram width={16} height={16} className="text-[#0D47A1]" />,
-  },
-  {
-    linkIcon: <FaTwitter width={16} height={16} className="text-[#0D47A1]" />,
-  },
-  {
-    linkIcon: <FaPinterest width={16} height={16} className="text-[#0D47A1]" />,
-  },
-  {
-    linkIcon: <FaLinkedin width={16} height={16} className="text-[#0D47A1]" />,
-  },
-  {
-    linkIcon: <FaGithub width={16} height={16} className="text-[#0D47A1]" />,
-  },
-  {
-    linkIcon: <GoPlus width={16} height={16} className="text-[#0D47A1]" />,
-  },
-];
+import { useRouter } from "next/navigation";
+import axios from "axios";
+import { io } from "socket.io-client";
+import { useContext } from "react";
+import { DataContext } from "../context/DataContext";
+import { useSearchParams } from "next/navigation";
 
-const CheckBoxData = [
-  {
-    text: "Prompt writing",
-  },
-  {
-    text: "Generated image examples",
-  },
-  {
-    text: "Unlimited Revisions",
-  },
-  {
-    text: "Image upscaling",
-  },
-];
+type ConversationType = {
+  _id: string;
+  roomId: string;
+  messages: string[];
+  participants: [string];
+};
 
 export const BadgetAndLinks = (props: any) => {
   const { budget } = props;
+  const { data: userData } = useContext(DataContext);
+
+  const { push } = useRouter();
+  const searchParams = useSearchParams();
+
+  const URL = process.env.NEXT_PUBLIC_BACKEND;
+
+  var socket: any;
+  socket = io(URL || "https://freelance-gmjr.onrender.com", {
+    transports: ["websocket"],
+  });
+  const user = searchParams?.get("id");
+
+  const handleChat = async () => {
+    const conversation = await axios.post<ConversationType>(
+      "https://freelance-gmjr.onrender.com/createConvo",
+      {
+        participants: [user, userData._id],
+      }
+    );
+    console.log(conversation.data);
+
+    socket.emit("join_room", conversation.data.roomId);
+    push(`/chat?roomId=${conversation?.data.roomId}`);
+  };
+
   return (
     <div className="h-fit md:h-fit flex flex-col items-center justify-around gap-[20px]">
       <div className="w-full h-fit py-5 flex  items-center justify-center rounded-lg bg-white ">
@@ -81,7 +82,7 @@ export const BadgetAndLinks = (props: any) => {
               return <CheckBoxMap key={index} text={el.text} />;
             })}
           </div> */}
-          <div className="w-full mt-[20px]">
+          <div className="w-full mt-[20px]" onClick={handleChat}>
             <BlueButton buttonName="Send Chat" />
           </div>
         </div>

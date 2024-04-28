@@ -3,7 +3,6 @@ import { Request } from "express";
 
 export const likeCounter = async (req: Request) => {
   const { createdFor } = req.params;
-  console.log(createdFor);
 
   try {
     const LikeCount = await ReviewsModel.findOneAndUpdate(
