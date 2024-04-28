@@ -9,6 +9,9 @@ import {
   motion,
   animate,
 } from "framer-motion";
+import gsap from "gsap";
+import ScrollTrigger from "gsap/dist/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
 
 const COLORS_TOP = ["#13FFAA", "#1E67C6", "#CE84CF", "#DD335C"];
 export const AboutUs = () => {
@@ -25,6 +28,33 @@ export const AboutUs = () => {
     });
   }, []);
 
+  useEffect(() => {
+    const sds = document.querySelectorAll(".indood");
+    sds.forEach((el, index) => {
+      gsap.fromTo(
+        el,
+        {
+          duration: 3,
+          x: 100,
+          opacity: 0,
+          ease: "ease-in",
+        },
+        {
+          opacity: 1,
+          x: 0,
+          scrollTrigger: {
+            id: `section${index + 1} `,
+            trigger: el,
+            start: "top 90%", // Start line
+            end: "bottom 0%", // End line
+            // markers: true,
+            toggleActions: "play none nones reverse",
+          },
+        }
+      );
+    });
+  }, []);
+
   const backgroundImage = useMotionTemplate`linear-gradient(125% 125% at 50% 0%, #020617 50%, ${color})`;
   const border = useMotionTemplate`1px solid ${color}`;
   const boxShadow = useMotionTemplate`0px 4px 24px ${color}`;
@@ -35,13 +65,13 @@ export const AboutUs = () => {
     >
       <div className="xl:w-[1280px] w-[1020px] h-fit flex lg:flex-row flex-col lg:justify-between justify-center lg:items-start  items-center lg:gap-0 gap-[50px]">
         <div className="xl:w-[739px] lg:w-[530px] md:w-[700px] sm:w-[540px] w-fit flex flex-col gap-[20px]">
-          <div className="text-[#0D47A9] text-[20px] font-semibold">
+          <div className="indood text-[#0D47A9] text-[20px] font-semibold">
             About us
           </div>
-          <div className="md:text-[40px] text-[30px] font-semibold">
+          <div className="indood md:text-[40px] text-[30px] font-semibold">
             Our Service Provides Connections for Everyone
           </div>
-          <div className="flex  sm:w-[400px] w-fit border-b border-slate-500 justify-between sm:gap-0 gap-[15px] ">
+          <div className="indood flex  sm:w-[400px] w-fit border-b border-slate-500 justify-between sm:gap-0 gap-[15px] ">
             <div
               onClick={(e) => {
                 setStage(0);
@@ -73,7 +103,7 @@ export const AboutUs = () => {
               How We Work
             </div>
           </div>
-          <div className="sm:h-[120px] h-fit ">
+          <div className="indood sm:h-[120px] h-fit ">
             {stage == 0 && (
               <motion.div
                 initial={{ scale: 0.96 }}

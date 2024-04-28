@@ -14,8 +14,10 @@ import { Example } from "./MenuToggle";
 import { MenuList } from "./MenuList";
 import { DataContext } from "../context/DataContext";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 export const Menu = () => {
+  const { push } = useRouter();
   const [open, setOpen] = useState(false);
   const [openBell, setOpenBell] = useState(false);
   const [openProfile, setOpenProfile] = useState(false);
@@ -26,7 +28,9 @@ export const Menu = () => {
     setOpenBell(!openBell);
     setOpenProfile(false);
   };
-
+  const handlePush = () => {
+    push("/");
+  };
   // useEffect(() => {
   //   if (isLoggedIn) {
   //     setProfile(true);
@@ -55,7 +59,7 @@ export const Menu = () => {
               width={186}
               height={49}
               className="cursor-pointer"
-              onClick={() => window.location.replace("/")}
+              onClick={handlePush}
             />
             <div className="flex items-center gap-[6%] w-full">
               <Link href={"/projects"}>
