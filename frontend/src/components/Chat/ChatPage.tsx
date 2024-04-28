@@ -29,7 +29,6 @@ export const ChatPage = () => {
   });
 
   const handleJoin = (roomId: string) => {
-    console.log("handleJoin", roomId);
     setShowChat(true);
     setroomId(roomId);
     setUser(userData?.firstName + " " + userData?.lastName);
@@ -56,7 +55,6 @@ export const ChatPage = () => {
   useEffect(() => {
     getUserRooms();
     setUser(userData?.firstName + " " + userData?.lastName);
-    console.log("check if inf");
   }, [userData]);
 
   return (

@@ -43,7 +43,6 @@ export default async function ProfilePage({
 }: {
   searchParams: { id: string };
 }) {
-  // console.log(searchParams.id, "idd");
   const data: any = await GetUserById(searchParams.id);
   const skill = await GetSkillCategory();
 

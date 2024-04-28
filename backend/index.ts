@@ -48,8 +48,6 @@ const server = app.listen(8000, () => {
 
 const URL = process.env.FRONT_URL;
 
-console.log(URL);
-
 const io = require("socket.io")(server, {
   pingTimeout: 60000,
   cors: {
