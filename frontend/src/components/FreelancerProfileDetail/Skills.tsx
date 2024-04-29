@@ -122,7 +122,7 @@ export const Skills = (props: PropsType) => {
               <WhiteButton
                 disabled={!addSkills}
                 buttonName={el.name}
-                buttonClass={`rounded-[100px] border-[#DFE0E4] border px-4 py-3 overflow-hidden  text-sm  text-[#404A60] flex items-center gap-1 ${
+                buttonClass={`rounded-[100px] border-[#DFE0E4] border px-4 py-3 overflow-hidden cursor-pointer  text-sm  text-[#404A60] flex items-center gap-1 ${
                   skillData?.some((skill) => skill === el.id)
                     ? "bg-[#0D47A9] text-white"
                     : "bg-[#f8f9fc] text-black"

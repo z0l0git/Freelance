@@ -16,6 +16,7 @@ import { currentUser, auth } from "@clerk/nextjs";
 import axios from "axios";
 import { AuroraHero } from "@/components/Header/StarsHeader";
 
+
 let url: string = process.env.NEXT_PUBLIC_PRODUCTION!;
 
 export default function Home() {
