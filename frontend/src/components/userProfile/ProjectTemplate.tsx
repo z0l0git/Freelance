@@ -90,20 +90,23 @@ export const ProjectTemplate = (props: ProjectCard) => {
           </div>
           <div className="flex w-full justify-between">
             <h6 className="text-base">{description}</h6>
-            <div className="text-[30px]  mt-[-20px] ">
+            <div className="flex flex-row-reverse items-center gap-4 text-[30px] ">
               <div className=" ">
                 <div id={id} onClick={getIdforDelete}>
-                  <MdOutlineDeleteSweep className="cursor-pointer" />
+                  <MdOutlineDeleteSweep
+                    color="red"
+                    className="cursor-pointer"
+                  />
                 </div>
               </div>
               <div onClick={editProject} id={id}>
-                <BiEditAlt className="cursor-pointer" />
+                <BiEditAlt color="rgb(13,71,169)" className="cursor-pointer" />
               </div>
             </div>
           </div>
+          <div className="flex justify-end font-bold">{formattedDate}</div>
         </div>
       </div>
-      <div className="flex justify-end font-bold">{formattedDate}</div>
     </div>
   );
 };

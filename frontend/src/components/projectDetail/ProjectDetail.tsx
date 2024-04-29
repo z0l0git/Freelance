@@ -184,11 +184,11 @@ export default function ProjectDetail(props: PropsType) {
             </div>
           </div>
           <div className="mt-[20px] border-b border-dashed border-slate-300 pb-[20px]">
-            <div className="text-[35px] font-semibold">Description</div>
-            <div className="mt-[17px]">{Description}</div>
+            <div className="text-[25px] font-semibold">Description:</div>
+            <div className="mt-[17px] text-[20px]">{Description}</div>
           </div>
           <div className="mt-[20px] border-b border-dashed border-slate-300 pb-[20px]">
-            <div className="text-[35px] font-semibold">Skills required</div>
+            <div className="text-[25px] font-semibold">Skills required: </div>
             <div className="mt-[17px] flex flex-wrap gap-4">
               {data?.skills?.map((el, index) => (
                 <Skill skil={el.name} key={index} />

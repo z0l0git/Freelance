@@ -8,9 +8,6 @@ import axios from "axios";
 import { ProjectTemplate } from "./ProjectTemplate";
 import { MouseEvent } from "react";
 import Image from "next/image";
-import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import { DeleteModal } from "./DeleteModal";
 import { EditModal } from "./EditModal";
@@ -128,7 +125,7 @@ export default function ActiveProject(props: PropsType) {
           <Image alt="" src="/error.png" width={500} height={300} />
         </div>
       ) : (
-        <div>
+        <div className="flex flex-col gap-5">
           {" "}
           {projects?.map((el: any, index: number) => {
             return (
@@ -151,40 +148,41 @@ export default function ActiveProject(props: PropsType) {
           })}
         </div>
       )}
-
-      <Modal
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 ">
-          <div>
-            <DeleteModal
-              handleClose={handleClose}
-              deleteProject={deleteProject}
-            />
+      <div className="flex justify-center items-center">
+        <Modal
+          open={open}
+          onClose={handleClose}
+          aria-labelledby="modal-modal-title"
+          aria-describedby="modal-modal-description"
+        >
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 ">
+            <div>
+              <DeleteModal
+                handleClose={handleClose}
+                deleteProject={deleteProject}
+              />
+            </div>
           </div>
-        </div>
-      </Modal>
-      <Modal
-        open={openEditEdu}
-        onClose={handleCloseEdit}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 ">
-          <div>
-            <EditModal
-              postEdit={postEdit}
-              skill={skill}
-              handleCloseEdit={handleCloseEdit}
-              setProjects={setProjects as any}
-              projects={projects}
-            />
+        </Modal>
+        <Modal
+          open={openEditEdu}
+          onClose={handleCloseEdit}
+          aria-labelledby="modal-modal-title"
+          aria-describedby="modal-modal-description"
+        >
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 ">
+            <div>
+              <EditModal
+                postEdit={postEdit}
+                skill={skill}
+                handleCloseEdit={handleCloseEdit}
+                setProjects={setProjects as any}
+                projects={projects}
+              />
+            </div>
           </div>
-        </div>
-      </Modal>
+        </Modal>
+      </div>
     </div>
   );
 }

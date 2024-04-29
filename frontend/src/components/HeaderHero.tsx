@@ -6,6 +6,7 @@ import { Menu } from "./Menu/Menu";
 import { NeuButton } from "./Button";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
+import Link from "next/link";
 gsap.registerPlugin(ScrollTrigger);
 // const BubbleText = () => {
 //   return (
@@ -59,18 +60,22 @@ export const HeaderHero = () => {
             are looking for the right talent or be the right talent.
           </p>
           <div className="flex gap-4">
-            <NeuButton
-              buttonName={"Projects"}
-              bClass={
-                "sda3 w-[150px] text-xl text-[#000] h-[50px] bg-[#f3a102] rouned-xl hover:bg-white hover:text-[#f3a102] shadow-[3px_3px_0px_slategray]"
-              }
-            />
-            <NeuButton
-              buttonName={"Freelancers"}
-              bClass={
-                "sda3 text-[#2196f3] w-[200px] text-xl bg-none shadow-[3px_3px_3px_#2196f3] hover:bg-[#2196f3] hover:text-white"
-              }
-            />
+            <Link href="/projects">
+              <NeuButton
+                buttonName={"Projects"}
+                bClass={
+                  "sda3 w-[150px] text-xl text-[#000] h-[50px] bg-[#f3a102] rouned-xl hover:bg-white hover:text-[#f3a102] shadow-[3px_3px_0px_slategray]"
+                }
+              />
+            </Link>
+            <Link href="/freelancers">
+              <NeuButton
+                buttonName={"Freelancers"}
+                bClass={
+                  "sda3 text-[#2196f3] w-[200px] h-[50px] text-xl bg-none shadow-[3px_3px_3px_#2196f3] hover:bg-[#2196f3] hover:text-white"
+                }
+              />
+            </Link>
           </div>
         </div>
         <div className="w-[636px] h-[615px] relative">
