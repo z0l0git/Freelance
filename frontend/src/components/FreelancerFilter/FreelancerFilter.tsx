@@ -67,10 +67,10 @@ export const FreelancerFilter = (props: freelance) => {
     <div className="flex bg-slate-100 w-fit h-fit rounded-2xl">
       <div
         style={{ boxShadow: "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;" }}
-        className="flex flex-col w-fit md:w-fit md:h-fit sm:w-[696px] sm:h-[1747px] rounded-xl p-4 bg-slate-50"
+        className="flex flex-col w-fit md:w-fit md:h-fit sm:w-[696px] sm:h-[1747px] rounded-xl p-4 bg-slate-50 gap-4"
       >
-        <div className="w-[352px]">
-          <h3 className="text-2xl font-semibold">Filter</h3>
+        <div className="w-full flex justify-center">
+          <h3 className="text-4xl font-semibold">Filter</h3>
         </div>
 
         {/* <div className="w-full h-[46px] px-[10px] flex items-center justify-between rounded-3xl bg-slate-200">
@@ -107,7 +107,7 @@ export const FreelancerFilter = (props: freelance) => {
           />
           <div
             onClick={handleZero}
-            className="flex items-center justify-center text-[30px] font-semibold"
+            className="flex items-center justify-center text-[30px] font-semibold cursor-pointer"
           >
             <MdClear />
           </div>
@@ -122,7 +122,7 @@ export const FreelancerFilter = (props: freelance) => {
                 onClick={() => skillFilter(el)}
                 id={el.id}
                 key={i}
-                className="flex items-center justify-between w-352px h-[32px"
+                className="flex items-center justify-between w-352px h-[25px] cursor-pointer"
               >
                 <div className="flex gap-2 items-center">
                   <CheckCircle className="" checked={skillId === el.id} />
@@ -142,7 +142,7 @@ export const FreelancerFilter = (props: freelance) => {
               <div
                 key={i}
                 onClick={() => filterByStar(el)}
-                className="flex items-center justify-between w-352px h-[32px"
+                className="flex items-center justify-between w-352px h-[25px] cursor-pointer"
               >
                 <div className="flex gap-2 items-center">
                   <CheckCircle

@@ -174,19 +174,17 @@ export const EditModal = (props: PropsType) => {
   };
 
   return (
-    <div className="flex flex-col gap-4 bg-white p-4 rounded-lg w-[450px]">
+    <div className="flex flex-col gap-4 bg-white p-4 rounded-lg w-[660px]">
       <div>
-        {" "}
-        <div className="flex flex-col gap-4">
-          <p className="font-bold text-[18px] text-[#212e48]">Edit your post</p>
+        <div className="flex flex-col gap-6">
+          <p className="font-bold text-2xl w-full flex justify-center">
+            Edit your post
+          </p>
           <div>
-            <p>
-              Keep it short and simple - this will help us match you to the
-              right category.
-            </p>
-            <div className="bg-slate-300 rounded-[25px] border-2 border-slate-600 p-2 ml-[15px]">
+            <p className="font-semibold">Edit the Title of Your Project:</p>
+            <div className="bg-slate-200 rounded-[25px] border-2 border-slate-600 p-2 ml-[15px]">
               <input
-                className="text-black flex flex-col-reverse bg-slate-300 outline-none w-[100%]"
+                className="text-black flex flex-col-reverse bg-transparent outline-none w-[100%]"
                 placeholder="Inter Title"
                 name="title"
                 value={editOne.title}
@@ -195,12 +193,14 @@ export const EditModal = (props: PropsType) => {
             </div>
           </div>
           <div>
-            <p>Give in depth information about what you need.</p>
-            <div className="ml-[15px] bg-slate-300 rounded-[25px] border-2 border-slate-600 p-2">
+            <p className="font-semibold">
+              Edit the Description of Your Project:
+            </p>
+            <div className="ml-[15px] bg-slate-200 rounded-[25px] border-2 border-slate-600 p-2">
               <input
                 name="description"
                 value={editOne.description}
-                className="text-black flex flex-col-reverse bg-slate-300 outline-none w-[100%] "
+                className="text-black flex flex-col-reverse bg-transparent outline-none w-[100%] "
                 type="text"
                 placeholder="Write your text here..."
                 onChange={(el: ChangeEvent<HTMLInputElement>) =>
@@ -210,7 +210,9 @@ export const EditModal = (props: PropsType) => {
             </div>
           </div>
           <div>
-            <div>Required skills</div>
+            <p className="font-semibold">
+              Please Reselect or Add new Required Skills:
+            </p>
             <div className="w-[100%] flex flex-wrap gap-5 ml-[15px]">
               {skill?.map((el, index) => (
                 <div
@@ -230,17 +232,17 @@ export const EditModal = (props: PropsType) => {
           </div>
           <div>
             <div className="flex flex-col ">
-              <p className=" text-[18px] text-[#212e48]">Enter your budget</p>
-              <div className="ml-[15px] flex bg-slate-300 rounded-[25px] border-2 border-slate-600 p-2">
+              <p className="font-semibold">Enter your budget: </p>
+              <div className="ml-[15px] flex bg-slate-200 rounded-[25px] border-2 border-slate-600 p-2">
                 <input
                   type="number"
                   value={editOne.budget}
                   onChange={handleChange}
                   name="budget"
                   placeholder="Enter Budget (MNT)"
-                  className="text-black flex flex-col-reverse bg-slate-300 outline-none w-[100%] "
+                  className="text-black flex flex-col-reverse bg-transparent outline-none w-[100%] "
                 />
-                <div className=" flex  justify-end items-center mr-[20px]   ">
+                <div className=" flex  justify-end items-center mr-[20px]">
                   <div className="">₮</div>
                 </div>
               </div>
@@ -260,17 +262,15 @@ export const EditModal = (props: PropsType) => {
             </div>
           </div>
           <div>
-            <p className=" text-[18px] text-[#212e48]">
-              Enter delivery time in days
-            </p>
-            <div className="ml-[15px] flex bg-slate-300 rounded-[25px] border-2 border-slate-600 p-2">
+            <p className="font-semibold">Enter delivery time in days:</p>
+            <div className="ml-[15px] flex bg-slate-200 rounded-[25px] border-2 border-slate-600 p-2">
               <input
                 value={editOne.deliveryTime}
                 onChange={handleChange}
                 type="text"
                 placeholder="day(s)"
                 name="deliveryTime"
-                className="text-black flex flex-col-reverse bg-slate-300 outline-none w-[100%]"
+                className="text-black flex flex-col-reverse bg-transparent outline-none w-[100%]"
               />
             </div>
           </div>

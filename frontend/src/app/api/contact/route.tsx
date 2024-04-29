@@ -6,6 +6,7 @@ const nodemailer = require("nodemailer");
 export async function POST(request: any) {
   console.log("dealing with request");
   const formData = await request.formData();
+
   const name = formData.get("Name");
   const email = formData.get("Email");
   const message = formData.get("Message");
@@ -30,7 +31,6 @@ export async function POST(request: any) {
     const mail = await transporter.sendMail({
       from: "freelancer01.devs@gmail.com",
       to: email,
-      replyTo: email,
       subject: `Contact Form Submission from ${email}`,
       html: `
             <p>Name: ${name} </p>

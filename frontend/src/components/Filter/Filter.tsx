@@ -89,10 +89,10 @@ export const Filter = (props: PropsType) => {
   // const { push } = useRouter();
 
   return (
-    <div className="flex bg-slate-50 rounded-xl overflow-y-auto scrollbar-hide px-[10px] py-[20px] max-h-screen h-fit justify-center">
-      <div className="flex flex-col w-[352px] xl:w-[416px] h-fit rounded-xl p-8 ">
-        <div className="w-[352px] h-[56px] ">
-          <h3 className="text-2xl font-semibold ml-[-14px]">Filter</h3>
+    <div className="flex bg-slate-50 rounded-xl overflow-y-auto scrollbar-hide px-[10px] py-[10px] max-h-screen h-fit justify-center">
+      <div className="flex flex-col w-[352px] xl:w-[416px] h-fit rounded-xl p-4 px-6">
+        <div className="w-full h-[56px] ">
+          <h3 className="text-3xl font-semibold flex justify-center">Filter</h3>
         </div>
 
         <div className="w-full h-[46px] px-[10px] flex items-center justify-between rounded-3xl bg-slate-200">
@@ -103,7 +103,10 @@ export const Filter = (props: PropsType) => {
             value={search}
             onChange={(el) => setSearch(el.target.value)}
           />
-          <BiSearch className="text-[30px]" onClick={HnadleSearch} />
+          <BiSearch
+            className="text-[30px] cursor-pointer"
+            onClick={HnadleSearch}
+          />
         </div>
 
         <div className="w-[352px] h-[56px] pt-6 mb-5">
@@ -118,7 +121,7 @@ export const Filter = (props: PropsType) => {
                 onClick={() => hnadlecategoryFilter(el)}
                 id={el._id}
                 key={i}
-                className="flex items-center justify-between w-352px h-[32px"
+                className="flex items-center justify-between w-352px h-[25px] cursor-pointer"
               >
                 <div className="flex gap-2 items-center">
                   <CheckCircle className="" checked={category === el._id} />
@@ -156,7 +159,7 @@ export const Filter = (props: PropsType) => {
           </div>
           <div
             onClick={handleZero}
-            className="flex items-center justify-center text-[30px] font-semibold"
+            className="flex items-center justify-center text-[30px] font-semibold cursor-pointer"
           >
             <MdClear />
           </div>
@@ -172,7 +175,7 @@ export const Filter = (props: PropsType) => {
                 onClick={() => handleSkillFilter(el)}
                 id={el.id}
                 key={i}
-                className="flex items-center justify-between w-352px h-[32px"
+                className="flex items-center justify-between w-352px h-[25px] cursor-pointer"
               >
                 <div className="flex gap-2 items-center">
                   <CheckCircle checked={skill === el.id} />
@@ -186,7 +189,7 @@ export const Filter = (props: PropsType) => {
         <div>
           <button
             onClick={handlerClick}
-            className="flex items-center  justify-center p-4 w-full h-12 border-solid border-[#0D47A1] border-2 bg-slate-50 rounded-3xl mt-8 text-base font-semibold text-[#0D47A1] "
+            className="flex items-center cursor-pointer justify-center p-4 w-full h-12 border-solid border-[#0D47A1] border-2 bg-slate-50 rounded-3xl mt-8 text-base font-semibold text-[#0D47A1] hover:bg-[#0D47A1] hover:text-white"
           >
             Reset Filter
           </button>
