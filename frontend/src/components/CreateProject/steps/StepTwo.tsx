@@ -50,13 +50,11 @@ const StepTwo = (props: CateType) => {
         const filteredCategory = categories.filter((el) => el !== skillId);
 
         if (filteredCa) {
-          
           return {
             ...prev,
             categorys: filteredCategory,
           };
         } else {
-         
           return {
             ...prev,
             categorys: [...prev.categorys, skillId],
@@ -71,7 +69,6 @@ const StepTwo = (props: CateType) => {
     const filteredSkillCategpry = skillCategory?.find(
       ({ id }) => id === categoryId
     );
-   
 
     const filtered = postData?.skillss.find(
       (el) => el === filteredSkillCategpry?.id
@@ -121,7 +118,7 @@ const StepTwo = (props: CateType) => {
                     postData?.skillss.includes(el.id)
                       ? "bg-[#0D47A9] text-white"
                       : "bg-[#f8f9fc] text-black"
-                  }  px-[10px] py-[5px] w-fit rounded-xl font-bold  text-[#404a60] text-[18px]`}
+                  }  px-[10px] py-[5px] w-fit rounded-xl font-bold  text-[#404a60] text-[18px] cursor-pointer`}
                 >
                   {el.name}
                 </div>
@@ -145,12 +142,13 @@ const StepTwo = (props: CateType) => {
           <p>These suggestions are based on your brief&apos;s title.</p>
           <div className=" bg-[#f8f9fc] rounded-xl">
             {dataProjectCategory?.map((el, index) => (
-              <CheckCategory
-                name={el.name}
-                text={el.description}
-                onClick={handleClickCategories(el._id)}
-                key={index}
-              />
+              <div key={index} className="cursor-pointer">
+                <CheckCategory
+                  name={el.name}
+                  text={el.description}
+                  onClick={handleClickCategories(el._id)}
+                />
+              </div>
             ))}
           </div>
         </div>
