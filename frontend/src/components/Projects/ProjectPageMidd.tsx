@@ -70,7 +70,6 @@ export default function ProjectPageMidd(props: PropsType) {
     setSearch("");
     setCategory("");
 
-
     const dataSkill: PosdtDataType[] = AllPost.filter((post) => {
       return post?.skills?.some((skill) => skill.name === e.name);
     });
@@ -85,7 +84,6 @@ export default function ProjectPageMidd(props: PropsType) {
     setSearch("");
     setSkill("");
     setStage(false);
- 
 
     const datacategory: PosdtDataType[] = AllPost.filter((post) => {
       return post?.category?.some((category) => category._id === e._id);
@@ -99,6 +97,7 @@ export default function ProjectPageMidd(props: PropsType) {
     const { name, value } = event.target;
     setBudget({ ...budget, [name]: value });
     setStage(false);
+    setSkill("");
     setSearch("");
     setCategory("");
   };

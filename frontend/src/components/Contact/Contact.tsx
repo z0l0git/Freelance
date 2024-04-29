@@ -10,6 +10,9 @@ import { Label } from "../../components/ui/label";
 import { Menu } from "../Menu/Menu";
 import { BlueButton } from "../Button";
 
+import { toast } from "react-toastify";
+import { Bounce } from "react-toastify";
+
 type Props = {
   name: string;
   placeholder: string;
@@ -32,15 +35,56 @@ export const NameInputComponent = (props: Props) => {
   );
 };
 
+const notifySuccess = () => {
+  toast.success(
+    "Your message has been sent successfully. Thank you for contacting us.",
+    {
+      position: "top-center",
+      autoClose: 4000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      transition: Bounce,
+    }
+  );
+};
+
+const notifyError = () => {
+  toast.error("❗ Oops! There seems to be problem sending your message", {
+    position: "top-center",
+    autoClose: 4000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "light",
+    transition: Bounce,
+  });
+};
+
 async function handleSubmit(event: any) {
   event.preventDefault();
+  try {
+    const formData = new FormData(event.target);
 
-  const formData = new FormData(event.target);
+    const response = await fetch("/api/contact", {
+      method: "post",
+      body: formData,
+    });
+    notifySuccess();
+    formData
+      .getAll("Name")
+      .forEach((value: any, key: any) => console.log(`${key}: ${value}`));
+    event.target.reset();
+  } catch (err: any) {
+    notifyError();
 
-  const response = await fetch("/api/contact", {
-    method: "post",
-    body: formData,
-  });
+    console.log(err);
+  }
 }
 
 export const Contact = () => {
@@ -103,6 +147,7 @@ export const Contact = () => {
               <div className="w-[396px] h-[90px] px-3 mt-6 max-lg:w-full">
                 <label className="text-xl font-normal">Name</label>
                 <input
+                  required
                   name="Name"
                   className="bg-slate-100 w-full rounded-2xl p-4"
                   placeholder="Type your Name here"
@@ -111,6 +156,7 @@ export const Contact = () => {
               <div className="w-[396px] h-[90px] px-3 mt-6 max-lg:w-full">
                 <label className="text-xl font-normal">Email</label>
                 <input
+                  required
                   name="Email"
                   className="bg-slate-100 w-full rounded-2xl p-4"
                   placeholder="Type your Email here (Make sure it's valid)"
@@ -121,6 +167,7 @@ export const Contact = () => {
               <div className="w-[792px] h-[180px] px-3 max-lg:w-full">
                 <label className="text-xl font-normal">Message</label>
                 <textarea
+                  required
                   name="Message"
                   className="bg-slate-100 mt-4 w-full rounded-2xl h-[150px] p-4"
                   placeholder="Type your text here"
